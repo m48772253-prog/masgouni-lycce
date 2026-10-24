@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ثانوية مسغوني</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f4f7f6;
+      color: #26352f;
+      line-height: 1.8;
+    }
+
+    header {
+      background: #075b43;
+      color: white;
+      text-align: center;
+      padding: 28px 16px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(25px, 4vw, 38px);
+    }
+
+    header p {
+      margin-bottom: 0;
+    }
+
+    nav {
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px;
+      box-shadow: 0 2px 10px #00000010;
+    }
+
+    nav a {
+      color: #075b43;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 13px;
+      border-radius: 8px;
+    }
+
+    nav a:hover {
+      background: #d9f3e7;
+    }
+
+    .hero {
+      text-align: center;
+      background: linear-gradient(135deg, #d9f3e7, #ffffff);
+      padding: clamp(35px, 7vw, 75px) 18px;
+    }
+
+    .hero h2 {
+      color: #075b43;
+      font-size: clamp(23px, 4vw, 36px);
+      margin-top: 0;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .container {
+      width: min(1100px, 100%);
+      margin: auto;
+      padding: 28px 18px;
+    }
+
+    .section-title {
+      color: #075b43;
+      font-size: clamp(22px, 3vw, 29px);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, 240px), 1fr)
+      );
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px #0000000a;
+      border: 1px solid #e5eee9;
+    }
+
+    .card h3 {
+      color: #087653;
+      margin-top: 0;
+    }
+
+    .notice {
+      background: white;
+      padding: 20px;
+      border-right: 5px solid #059669;
+      border-radius: 10px;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      background: #064432;
+      color: white;
+      text-align: center;
+      padding: 22px 15px;
+      margin-top: 25px;
+    }
+
+    a:focus-visible {
+      outline: 3px solid #10b981;
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 22px 12px;
+      }
+
+      nav {
+        gap: 4px;
+        padding: 8px;
+      }
+
+      nav a {
+        padding: 7px 9px;
+        font-size: 14px;
+      }
+
+      .container {
+        padding: 22px 14px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>ثانوية مسغوني</h1>
+    <p>العلم أساس النجاح والتميز</p>
+  </header>
+
+  <nav aria-label="القائمة الرئيسية">
+    <a href="#home">الرئيسية</a>
+    <a href="#about">عن الثانوية</a>
+    <a href="#news">الإعلانات</a>
+    <a href="#students">فضاء التلاميذ</a>
+    <a href="#contact">اتصل بنا</a>
+  </nav>
+
+  <section class="hero" id="home">
+    <h2>مرحبًا بكم في ثانوية مسغوني</h2>
+    <p>
+      فضاء مدرسي للتعلم والمعرفة والتواصل
+      ومتابعة مستجدات المؤسسة.
+    </p>
+  </section>
+
+  <main class="container">
+
+    <section id="about">
+      <h2 class="section-title">عن الثانوية</h2>
+      <p>
+        نرحب بالتلاميذ والأولياء والزوار في الموقع
+        الإلكتروني لثانوية مسغوني.
+      </p>
+    </section>
+
+    <section id="news">
+      <h2 class="section-title">الإعلانات المدرسية</h2>
+
+      <div class="cards">
+        <article class="card">
+          <h3>📢 إعلانات الإدارة</h3>
+          <p>تُنشر هنا الإعلانات الرسمية للمؤسسة.</p>
+        </article>
+
+        <article class="card">
+          <h3>📚 الدراسة والاختبارات</h3>
+          <p>معلومات حول الدراسة ومواعيد الاختبارات.</p>
+        </article>
+
+        <article class="card" id="students">
+          <h3>🎓 فضاء التلاميذ</h3>
+          <p>معلومات وموارد مفيدة للمسار الدراسي.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">اتصل بنا</h2>
+      <div class="notice">
+        <p>عنوان الثانوية: يُضاف العنوان الرسمي هنا.</p>
+        <p>هاتف الإدارة: يُضاف الرقم الرسمي هنا.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>ثانوية مسغوني © 2026</p>
+    <p>العلم والعمل طريق النجاح</p>
+  </footer>
+
+</body>
+</html>
