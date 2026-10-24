@@ -1,431 +1,504 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ثانوية مسغوني</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0c3d2d">
+<meta name="description" content="الموقع الإلكتروني لثانوية مسغوني، التعريف بالمؤسسة والموارد الدراسية.">
+<title>ثانوية مسغوني | الموقع الرسمي</title>
 
-  <style>
-    :root {
-      --green: #145c43;
-      --dark-green: #0c3d2d;
-      --gold: #d9b45b;
-      --white: #ffffff;
-      --light: #f4f8f5;
-      --text: #24352d;
-    }
+<style>
+:root {
+  --green: #145c43;
+  --dark-green: #0c3d2d;
+  --gold: #d9b45b;
+  --light: #f4f8f5;
+  --text: #24352d;
+  --muted: #687a70;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+body {
+  margin: 0;
+  font-family: Arial, Tahoma, sans-serif;
+  background: var(--light);
+  color: var(--text);
+  line-height: 1.8;
+}
+a, button { transition: all .3s ease; }
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(20,92,67,.97);
+  backdrop-filter: blur(10px);
+  color: white;
+  border-bottom: 4px solid var(--gold);
+  box-shadow: 0 4px 18px #00000012;
+}
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 13px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.school-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.school-icon {
+  width: 49px;
+  height: 49px;
+  border: 2px solid var(--gold);
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 29px;
+}
+.school-name h2 { margin: 0; font-size: 21px; }
+.school-name p { margin: 0; color: #f5dfa0; font-size: 12px; }
+.header-actions { display: flex; align-items: center; gap: 10px; }
+.language-button, .menu-button {
+  padding: 9px 14px;
+  border: 1px solid #ffffff55;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.language-button { background: var(--gold); color: var(--dark-green); }
+.menu-button { background: transparent; color: white; display: none; }
+.language-button:hover, .menu-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px #0002;
+}
+nav {
+  background: var(--dark-green);
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 15px;
+  flex-wrap: wrap;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 13px;
+  border-radius: 7px;
+  font-size: 14px;
+}
+nav a:hover { background: var(--gold); color: var(--dark-green); }
 
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+.hero {
+  min-height: 510px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 65px 22px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, rgba(5,45,31,.86), rgba(12,61,45,.65)),
+    url("facade.jpg") center/cover no-repeat;
+  border-bottom: 5px solid var(--gold);
+}
+.hero-content {
+  max-width: 850px;
+  animation: fadeUp .9s ease both;
+}
+.eyebrow {
+  display: inline-block;
+  padding: 6px 16px;
+  border: 1px solid #d9b45b99;
+  border-radius: 30px;
+  color: #f5dfa0;
+  background: #ffffff0c;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+.hero h1 {
+  color: var(--gold);
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.3;
+  margin: 0 0 12px;
+  text-shadow: 2px 3px 10px #0008;
+}
+.hero h2 { font-size: clamp(21px, 4vw, 31px); margin: 0 0 12px; }
+.hero p { max-width: 700px; margin: 0 auto 27px; font-size: 18px; }
+.actions { display: flex; justify-content: center; gap: 13px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 22px;
+  border-radius: 9px;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn:hover { transform: translateY(-4px); box-shadow: 0 10px 23px #0003; }
+.btn-gold { background: var(--gold); color: #173b2c; }
+.btn-gold:hover { background: white; }
+.btn-outline { border-color: #ffffff85; color: white; background: #ffffff0c; }
+.btn-outline:hover { background: white; color: var(--green); }
 
-    body {
-      margin: 0;
-      font-family: Arial, Tahoma, sans-serif;
-      background: var(--light);
-      color: var(--text);
-      line-height: 1.8;
-    }
+section { padding: 70px 22px; }
+.container { max-width: 1160px; margin: auto; }
+.section-heading { text-align: center; margin-bottom: 35px; }
+.section-heading .eyebrow-small {
+  color: #98721f;
+  font-size: 13px;
+  font-weight: bold;
+}
+.section-heading h2 { color: var(--green); font-size: clamp(27px,4vw,36px); margin: 4px 0; }
+.section-heading p { max-width: 680px; margin: 8px auto 0; color: var(--muted); }
+.title-line { width: 68px; height: 4px; background: var(--gold); margin: 13px auto; border-radius: 5px; }
 
-    header {
-      background: var(--green);
-      color: white;
-      padding: 15px 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      border-bottom: 4px solid var(--gold);
-    }
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 23px; }
+.intro-card {
+  padding: 28px;
+  background: white;
+  border: 1px solid #e3ebe5;
+  border-radius: 16px;
+  box-shadow: 0 8px 28px #104b380b;
+  transition: transform .3s, box-shadow .3s;
+}
+.intro-card:hover { transform: translateY(-5px); box-shadow: 0 14px 32px #104b3817; }
+.intro-card h3 { color: var(--green); font-size: 23px; margin: 0 0 10px; }
+.intro-card p { color: var(--muted); }
+.feature-list { list-style: none; padding: 0; margin: 15px 0; }
+.feature-list li { padding: 7px 0; border-bottom: 1px solid #edf0ed; }
+.feature-list li::before { content: "✓"; color: #b38a2e; font-weight: bold; margin-left: 10px; }
+html[dir="ltr"] .feature-list li::before { margin-left: 0; margin-right: 10px; }
 
-    .school-name {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+.cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 21px; }
+.card {
+  background: white;
+  padding: 26px 22px;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid #e2e9e4;
+  border-bottom: 4px solid var(--gold);
+  box-shadow: 0 6px 22px #00000008;
+  transition: transform .3s, box-shadow .3s;
+}
+.card:hover { transform: translateY(-7px); box-shadow: 0 13px 28px #104b3817; }
+.card-icon { font-size: 38px; }
+.card h3 { color: var(--green); margin: 8px 0; }
+.card p { color: var(--muted); margin-bottom: 0; font-size: 15px; }
 
-    .school-icon {
-      font-size: 38px;
-    }
+.studies { background: #e9f1eb; }
+.study-card {
+  background: white;
+  padding: 27px 22px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid #e0e9e2;
+  box-shadow: 0 7px 23px #104b380a;
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s, box-shadow .3s;
+}
+.study-card::before {
+  content: "";
+  position: absolute;
+  top: 0; right: 0; left: 0;
+  height: 4px;
+  background: var(--gold);
+}
+.study-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px #104b3817; }
+.study-card h3 { color: var(--green); font-size: 21px; }
+.study-card p { color: var(--muted); font-size: 14px; min-height: 50px; }
+.study-card .btn { width: 100%; margin-top: 10px; }
 
-    .school-name h2 {
-      margin: 0;
-      font-size: 23px;
-    }
+.about-banner {
+  background: linear-gradient(120deg, var(--green), #1b7352);
+  color: white;
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.about-banner h2 { margin: 0 0 6px; font-size: 26px; }
+.about-banner p { margin: 0; color: #e2eee6; }
 
-    .school-name p {
-      margin: 0;
-      color: #f5dfa0;
-      font-size: 13px;
-    }
+.contact { background: #e8f0eb; text-align: center; }
+.contact p { margin: 8px 0; }
+footer { background: #092f23; color: white; padding: 30px 20px 18px; border-top: 4px solid var(--gold); }
+.footer-inner {
+  max-width: 1160px; margin: auto;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 18px; flex-wrap: wrap;
+}
+.footer-title { font-size: 20px; font-weight: bold; }
+.footer-note { font-size: 13px; color: #cbdad1; }
+.copyright { max-width: 1160px; margin: 20px auto 0; padding-top: 15px; border-top: 1px solid #ffffff22; text-align: center; color: #cbdad1; font-size: 12px; }
 
-    .language-button {
-      background: var(--gold);
-      color: var(--dark-green);
-      border: none;
-      padding: 9px 15px;
-      border-radius: 7px;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 15px;
-    }
-
-    nav {
-      background: var(--dark-green);
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 5px;
-      padding: 10px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-    }
-
-    nav a:hover {
-      background: var(--gold);
-      color: var(--dark-green);
-    }
-
-    .hero {
-      position: relative;
-      min-height: 390px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 35px 20px;
-      color: white;
-      background:
-        linear-gradient(rgba(5, 45, 31, 0.72), rgba(5, 45, 31, 0.78)),
-        url("facade.jpg") center/cover no-repeat;
-      border-bottom: 5px solid var(--gold);
-    }
-
-    .hero-content {
-      max-width: 800px;
-    }
-
-    .hero h1 {
-      font-size: clamp(30px, 6vw, 52px);
-      margin: 0 0 12px;
-      color: var(--gold);
-      text-shadow: 2px 2px 5px #000;
-    }
-
-    .hero h2 {
-      font-size: clamp(20px, 4vw, 30px);
-      margin: 0 0 12px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      margin: 0 auto 20px;
-    }
-
-    .hero-button {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 11px 24px;
-      background: var(--gold);
-      color: #20342c;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-    }
-
-    .hero-button:hover {
-      background: white;
-    }
-
-    section {
-      padding: 45px 6%;
-    }
-
-    .section-title {
-      text-align: center;
-      color: var(--green);
-      font-size: 29px;
-      margin: 0 0 10px;
-    }
-
-    .title-line {
-      width: 75px;
-      height: 4px;
-      background: var(--gold);
-      margin: 0 auto 28px;
-      border-radius: 5px;
-    }
-
-    .about-text {
-      max-width: 850px;
-      margin: auto;
-      text-align: center;
-      font-size: 17px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: white;
-      padding: 24px 18px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      border-bottom: 4px solid var(--gold);
-    }
-
-    .card-icon {
-      font-size: 38px;
-    }
-
-    .card h3 {
-      color: var(--green);
-      margin: 8px 0;
-    }
-
-    .study-card {
-      background: white;
-      padding: 22px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      border: 1px solid #e2e9e4;
-    }
-
-    .study-card h3 {
-      color: var(--green);
-    }
-
-    .study-card a {
-      display: inline-block;
-      background: var(--green);
-      color: white;
-      text-decoration: none;
-      padding: 9px 18px;
-      border-radius: 7px;
-      margin-top: 8px;
-    }
-
-    .study-card a:hover {
-      background: var(--gold);
-      color: var(--dark-green);
-    }
-
-    .contact {
-      background: #e8f0eb;
-      text-align: center;
-    }
-
-    .contact p {
-      margin: 8px 0;
-    }
-
-    footer {
-      background: var(--dark-green);
-      color: white;
-      text-align: center;
-      padding: 22px 12px;
-      border-top: 4px solid var(--gold);
-    }
-
-    footer p {
-      margin: 5px;
-    }
-
-    @media (max-width: 600px) {
-      header {
-        justify-content: center;
-        text-align: center;
-      }
-
-      .school-name {
-        justify-content: center;
-      }
-
-      nav a {
-        padding: 7px 9px;
-        font-size: 14px;
-      }
-
-      .hero {
-        min-height: 330px;
-      }
-
-      section {
-        padding: 32px 5%;
-      }
-    }
-  </style>
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media(max-width:850px) {
+  .header-inner { flex-wrap: wrap; }
+  .menu-button { display: inline-block; }
+  nav { display: none; flex-direction: column; align-items: stretch; }
+  nav.open { display: flex; }
+  nav a { padding: 10px 13px; }
+  .intro-grid { grid-template-columns: 1fr; }
+  .cards { grid-template-columns: repeat(2,1fr); }
+}
+@media(max-width:600px) {
+  .header-inner { padding: 12px 14px; }
+  .school-name h2 { font-size: 17px; }
+  .school-name p { font-size: 11px; }
+  .school-icon { width: 43px; height: 43px; }
+  .header-actions { gap: 6px; }
+  .language-button, .menu-button { padding: 8px 10px; font-size: 13px; }
+  .hero { min-height: 430px; padding: 45px 17px; }
+  .hero p { font-size: 16px; }
+  section { padding: 48px 16px; }
+  .cards { grid-template-columns: 1fr; }
+  .about-banner { padding: 24px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
 </head>
 
 <body>
-
-  <header>
+<header>
+  <div class="header-inner">
     <div class="school-name">
       <span class="school-icon">🎓</span>
       <div>
         <h2 data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</h2>
-        <p data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail sont la clé du succès">العلم والعمل أساس النجاح</p>
+        <p data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail, clés de la réussite">العلم والعمل أساس النجاح</p>
       </div>
     </div>
-
-    <button class="language-button" onclick="changeLanguage()" id="languageButton">
-      Français
-    </button>
-  </header>
-
-  <nav>
+    <div class="header-actions">
+      <button class="language-button" onclick="changeLanguage()" id="languageButton">Français</button>
+      <button class="menu-button" onclick="toggleMenu()" data-ar="☰ القائمة" data-fr="☰ Menu">☰ القائمة</button>
+    </div>
+  </div>
+  <nav id="navigation">
     <a href="#home" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a>
-    <a href="#about" data-ar="عن الثانوية" data-fr="À propos">عن الثانوية</a>
+    <a href="about.html" data-ar="اكتشف ثانويتنا" data-fr="Découvrir notre lycée">اكتشف ثانويتنا</a>
     <a href="#services" data-ar="خدماتنا" data-fr="Nos services">خدماتنا</a>
-    <a href="#study" data-ar="المستويات الدراسية" data-fr="Niveaux scolaires">المستويات الدراسية</a>
+    <a href="#study" data-ar="الموارد الدراسية" data-fr="Ressources scolaires">الموارد الدراسية</a>
     <a href="#contact" data-ar="اتصل بنا" data-fr="Contact">اتصل بنا</a>
   </nav>
+</header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-content">
-        <h1 data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</h1>
-        <h2 data-ar="مرحبًا بكم في موقع ثانويتنا" data-fr="Bienvenue sur le site de notre lycée">مرحبًا بكم في موقع ثانويتنا</h2>
-        <p data-ar="فضاء للتعلم والمعرفة والتواصل، نحو مستقبل أفضل لأبنائنا التلاميذ."
-           data-fr="Un espace d’apprentissage, de savoir et de communication pour un meilleur avenir de nos élèves.">
-          فضاء للتعلم والمعرفة والتواصل، نحو مستقبل أفضل لأبنائنا التلاميذ.
-        </p>
-        <a class="hero-button" href="#about"
-           data-ar="اكتشف ثانويتنا" data-fr="Découvrir notre lycée">اكتشف ثانويتنا</a>
-      </div>
-    </section>
-
-    <section id="about">
-      <h2 class="section-title" data-ar="عن الثانوية" data-fr="À propos du lycée">عن الثانوية</h2>
-      <div class="title-line"></div>
-      <p class="about-text"
-         data-ar="تسعى ثانوية مسغوني إلى توفير بيئة تعليمية مناسبة تساعد التلاميذ على اكتساب المعارف والمهارات، وتنمية قدراتهم العلمية والأخلاقية، وتحضيرهم لمستقبل ناجح."
-         data-fr="Le lycée Mesgouni cherche à offrir un environnement éducatif favorable, permettant aux élèves d’acquérir des connaissances, de développer leurs compétences et de préparer leur avenir.">
-        تسعى ثانوية مسغوني إلى توفير بيئة تعليمية مناسبة تساعد التلاميذ على اكتساب المعارف والمهارات، وتنمية قدراتهم العلمية والأخلاقية، وتحضيرهم لمستقبل ناجح.
+<main>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="eyebrow" data-ar="مرحبًا بكم في فضاء المعرفة" data-fr="Bienvenue dans l’espace du savoir">مرحبًا بكم في فضاء المعرفة</div>
+      <h1 data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</h1>
+      <h2 data-ar="مستقبل أبنائنا يبدأ بالعلم" data-fr="L’avenir de nos élèves commence par le savoir">مستقبل أبنائنا يبدأ بالعلم</h2>
+      <p data-ar="فضاء للتعلم والمعرفة والتواصل، نحو مستقبل أفضل لأبنائنا التلاميذ."
+         data-fr="Un espace d’apprentissage, de savoir et de communication pour un meilleur avenir de nos élèves.">
+        فضاء للتعلم والمعرفة والتواصل، نحو مستقبل أفضل لأبنائنا التلاميذ.
       </p>
-    </section>
+      <div class="actions">
+        <a class="btn btn-gold" href="about.html" data-ar="اكتشف ثانويتنا ←" data-fr="Découvrir notre lycée ←">اكتشف ثانويتنا ←</a>
+        <a class="btn btn-outline" href="#study" data-ar="الوصول إلى الموارد ↓" data-fr="Accéder aux ressources ↓">الوصول إلى الموارد ↓</a>
+      </div>
+    </div>
+  </section>
 
-    <section id="services">
-      <h2 class="section-title" data-ar="خدماتنا" data-fr="Nos services">خدماتنا</h2>
-      <div class="title-line"></div>
+  <section>
+    <div class="container intro-grid">
+      <div class="intro-card reveal">
+        <h3 data-ar="معًا نحو التميز والنجاح" data-fr="Ensemble vers l’excellence et la réussite">معًا نحو التميز والنجاح</h3>
+        <p data-ar="نؤمن بأن التعليم الجيد يبدأ ببيئة محفزة، وعمل جاد، وتعاون بين الأسرة والمدرسة والتلميذ."
+           data-fr="Nous croyons qu’une bonne éducation repose sur un environnement motivant, le travail sérieux et la coopération entre la famille, l’école et l’élève.">
+          نؤمن بأن التعليم الجيد يبدأ ببيئة محفزة، وعمل جاد، وتعاون بين الأسرة والمدرسة والتلميذ.
+        </p>
+        <a class="btn btn-gold" href="about.html" data-ar="التعريف بالثانوية" data-fr="Présentation du lycée">التعريف بالثانوية</a>
+      </div>
+      <div class="intro-card reveal">
+        <h3 data-ar="ماذا تجد في موقعنا؟" data-fr="Que trouverez-vous sur notre site ?">ماذا تجد في موقعنا؟</h3>
+        <ul class="feature-list">
+          <li data-ar="روابط الموارد التعليمية حسب المستوى" data-fr="Ressources pédagogiques par niveau">روابط الموارد التعليمية حسب المستوى</li>
+          <li data-ar="التعريف بالمؤسسة وأهدافها" data-fr="Présentation de l’établissement et de ses objectifs">التعريف بالمؤسسة وأهدافها</li>
+          <li data-ar="الوصول السريع إلى موارد المراجعة" data-fr="Accès rapide aux ressources de révision">الوصول السريع إلى موارد المراجعة</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
+  <section id="services">
+    <div class="container">
+      <div class="section-heading reveal">
+        <div class="eyebrow-small" data-ar="فضاء تعليمي متكامل" data-fr="UN ESPACE ÉDUCATIF">فضاء تعليمي متكامل</div>
+        <h2 data-ar="خدمات الموقع" data-fr="Les services du site">خدمات الموقع</h2>
+        <div class="title-line"></div>
+        <p data-ar="خدمات وروابط تساعد التلاميذ على تنظيم تعلمهم والوصول إلى الموارد بسهولة."
+           data-fr="Des services et des liens pour aider les élèves à organiser leurs études et accéder facilement aux ressources.">
+          خدمات وروابط تساعد التلاميذ على تنظيم تعلمهم والوصول إلى الموارد بسهولة.
+        </p>
+      </div>
       <div class="cards">
-        <div class="card">
+        <article class="card reveal">
           <div class="card-icon">📚</div>
           <h3 data-ar="الموارد التعليمية" data-fr="Ressources pédagogiques">الموارد التعليمية</h3>
-          <p data-ar="فضاء للوصول إلى الموارد والدروس التعليمية."
-             data-fr="Un espace pour accéder aux ressources et aux cours.">
-            فضاء للوصول إلى الموارد والدروس التعليمية.
-          </p>
-        </div>
-
-        <div class="card">
+          <p data-ar="الوصول إلى الدروس والملخصات والتمارين."
+             data-fr="Accéder aux cours, résumés et exercices.">الوصول إلى الدروس والملخصات والتمارين.</p>
+        </article>
+        <article class="card reveal">
           <div class="card-icon">📝</div>
           <h3 data-ar="الفروض والاختبارات" data-fr="Devoirs et examens">الفروض والاختبارات</h3>
-          <p data-ar="مراجعة الدروس والتحضير للفروض والاختبارات."
-             data-fr="Réviser les cours et se préparer aux devoirs et examens.">
-            مراجعة الدروس والتحضير للفروض والاختبارات.
-          </p>
-        </div>
-
-        <div class="card">
+          <p data-ar="المراجعة والتدريب والتحضير الجيد للاختبارات."
+             data-fr="Réviser et bien se préparer aux examens.">المراجعة والتدريب والتحضير الجيد للاختبارات.</p>
+        </article>
+        <article class="card reveal">
           <div class="card-icon">🏫</div>
           <h3 data-ar="الحياة المدرسية" data-fr="Vie scolaire">الحياة المدرسية</h3>
-          <p data-ar="متابعة أخبار ونشاطات المؤسسة المدرسية."
-             data-fr="Suivre les actualités et les activités de l’établissement.">
-            متابعة أخبار ونشاطات المؤسسة المدرسية.
-          </p>
-        </div>
+          <p data-ar="التعريف بالمؤسسة وأهدافها والشعب الدراسية."
+             data-fr="Découvrir l’établissement, ses objectifs et ses filières.">التعريف بالمؤسسة وأهدافها والشعب الدراسية.</p>
+        </article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="study">
-      <h2 class="section-title" data-ar="المستويات الدراسية" data-fr="Niveaux scolaires">المستويات الدراسية</h2>
-      <div class="title-line"></div>
-
+  <section class="studies" id="study">
+    <div class="container">
+      <div class="section-heading reveal">
+        <div class="eyebrow-small" data-ar="اختر مستواك الدراسي" data-fr="CHOISISSEZ VOTRE NIVEAU">اختر مستواك الدراسي</div>
+        <h2 data-ar="الموارد الدراسية" data-fr="Ressources scolaires">الموارد الدراسية</h2>
+        <div class="title-line"></div>
+        <p data-ar="اضغط على زر الدخول للانتقال مباشرة إلى موارد مستواك الدراسي."
+           data-fr="Cliquez sur le bouton pour accéder directement aux ressources de votre niveau.">
+          اضغط على زر الدخول للانتقال مباشرة إلى موارد مستواك الدراسي.
+        </p>
+      </div>
       <div class="cards">
-        <div class="study-card">
+        <article class="study-card reveal">
           <div class="card-icon">📘</div>
           <h3 data-ar="السنة الأولى ثانوي" data-fr="Première année secondaire">السنة الأولى ثانوي</h3>
-          <p data-ar="موارد ودروس السنة الأولى."
-             data-fr="Ressources et cours de première année.">
-            موارد ودروس السنة الأولى.
-          </p>
-          <a href="first-year.html" data-ar="الدخول" data-fr="Accéder">الدخول</a>
-        </div>
-
-        <div class="study-card">
+          <p data-ar="دروس وتمارين وملخصات للمراجعة."
+             data-fr="Cours, exercices et résumés pour réviser.">دروس وتمارين وملخصات للمراجعة.</p>
+          <a class="btn btn-gold" href="https://www.dzexams.com/ar/1as" target="_blank" rel="noopener noreferrer" data-ar="الدخول إلى الموارد ↗" data-fr="Accéder aux ressources ↗">الدخول إلى الموارد ↗</a>
+        </article>
+        <article class="study-card reveal">
           <div class="card-icon">📗</div>
           <h3 data-ar="السنة الثانية ثانوي" data-fr="Deuxième année secondaire">السنة الثانية ثانوي</h3>
-          <p data-ar="موارد ودروس السنة الثانية."
-             data-fr="Ressources et cours de deuxième année.">
-            موارد ودروس السنة الثانية.
-          </p>
-          <a href="second-year.html" data-ar="الدخول" data-fr="Accéder">الدخول</a>
-        </div>
-
-        <div class="study-card">
+          <p data-ar="مصادر تعليمية لدعم التعلم والمراجعة."
+             data-fr="Des ressources pour apprendre et réviser.">مصادر تعليمية لدعم التعلم والمراجعة.</p>
+          <a class="btn btn-gold" href="https://www.dzexams.com/ar/2as" target="_blank" rel="noopener noreferrer" data-ar="الدخول إلى الموارد ↗" data-fr="Accéder aux ressources ↗">الدخول إلى الموارد ↗</a>
+        </article>
+        <article class="study-card reveal">
           <div class="card-icon">📕</div>
           <h3 data-ar="السنة الثالثة ثانوي" data-fr="Troisième année secondaire">السنة الثالثة ثانوي</h3>
-          <p data-ar="موارد ودروس السنة الثالثة والتحضير للبكالوريا."
-             data-fr="Ressources de troisième année et préparation au baccalauréat.">
-            موارد ودروس السنة الثالثة والتحضير للبكالوريا.
-          </p>
-          <a href="third-year.html" data-ar="الدخول" data-fr="Accéder">الدخول</a>
-        </div>
+          <p data-ar="موارد للمراجعة والتحضير لشهادة البكالوريا."
+             data-fr="Ressources de révision pour préparer le baccalauréat.">موارد للمراجعة والتحضير لشهادة البكالوريا.</p>
+          <a class="btn btn-gold" href="https://www.dzexams.com/ar/3as" target="_blank" rel="noopener noreferrer" data-ar="الدخول إلى الموارد ↗" data-fr="Accéder aux ressources ↗">الدخول إلى الموارد ↗</a>
+        </article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="contact" id="contact">
-      <h2 class="section-title" data-ar="اتصل بنا" data-fr="Contactez-nous">اتصل بنا</h2>
-      <div class="title-line"></div>
-      <p data-ar="مرحبًا بكم في موقع ثانوية مسغوني."
-         data-fr="Bienvenue sur le site du lycée Mesgouni.">
-        مرحبًا بكم في موقع ثانوية مسغوني.
-      </p>
+  <section>
+    <div class="container">
+      <div class="about-banner reveal">
+        <div>
+          <h2 data-ar="اكتشف ثانوية مسغوني" data-fr="Découvrez le lycée Mesgouni">اكتشف ثانوية مسغوني</h2>
+          <p data-ar="تعرّف على المؤسسة وأهدافها وخصائصها والشعب الدراسية."
+             data-fr="Découvrez l’établissement, ses objectifs, ses caractéristiques et ses filières.">
+            تعرّف على المؤسسة وأهدافها وخصائصها والشعب الدراسية.
+          </p>
+        </div>
+        <a class="btn btn-gold" href="about.html" data-ar="اكتشف ثانويتنا ←" data-fr="Découvrir notre lycée ←">اكتشف ثانويتنا ←</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-heading reveal">
+        <h2 data-ar="اتصل بنا" data-fr="Contactez-nous">اتصل بنا</h2>
+        <div class="title-line"></div>
+      </div>
+      <p data-ar="مرحبًا بكم في الموقع الإلكتروني لثانوية مسغوني."
+         data-fr="Bienvenue sur le site du lycée Mesgouni.">مرحبًا بكم في الموقع الإلكتروني لثانوية مسغوني.</p>
       <p data-ar="يمكن إضافة معلومات الاتصال الرسمية للمؤسسة هنا."
          data-fr="Les coordonnées officielles de l’établissement peuvent être ajoutées ici.">
         يمكن إضافة معلومات الاتصال الرسمية للمؤسسة هنا.
       </p>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
 
-  <footer>
-    <p data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</p>
-    <p data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail sont la clé du succès">العلم والعمل أساس النجاح</p>
-    <p>© 2026</p>
-    <p>Made by Developer Majd</p>
-  </footer>
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-title" data-ar="🎓 ثانوية مسغوني" data-fr="🎓 Lycée Mesgouni">🎓 ثانوية مسغوني</div>
+      <div class="footer-note" data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail, clés de la réussite">العلم والعمل أساس النجاح</div>
+    </div>
+    <a class="btn btn-outline" href="about.html" data-ar="عن الثانوية" data-fr="À propos">عن الثانوية</a>
+  </div>
+  <div class="copyright">© 2026 <span data-ar="ثانوية مسغوني — جميع الحقوق محفوظة" data-fr="Lycée Mesgouni — Tous droits réservés">ثانوية مسغوني — جميع الحقوق محفوظة</span></div>
+</footer>
 
-  <script>
-    let currentLanguage = "ar";
+<script>
+let currentLanguage = "ar";
 
-    function changeLanguage() {
-      currentLanguage = currentLanguage === "ar" ? "fr" : "ar";
+function changeLanguage() {
+  currentLanguage = currentLanguage === "ar" ? "fr" : "ar";
+  document.documentElement.lang = currentLanguage;
+  document.documentElement.dir = currentLanguage === "ar" ? "rtl" : "ltr";
 
-      document.documentElement.lang = currentLanguage;
-      document.documentElement.dir = currentLanguage === "ar" ? "rtl" : "ltr";
+  document.querySelectorAll("[data-ar][data-fr]").forEach(function(element) {
+    element.innerHTML = element.getAttribute("data-" + currentLanguage);
+  });
 
-      document.querySelectorAll("[data-ar][data-fr]").forEach(function(element) {
-        element.textContent = element.getAttribute("data-" + currentLanguage);
-      });
+  document.getElementById("languageButton").textContent =
+    currentLanguage === "ar" ? "Français" : "العربية";
+}
 
-      document.getElementById("languageButton").textContent =
-        currentLanguage === "ar" ? "Français" : "العربية";
-    }
-  </script>
+function toggleMenu() {
+  document.getElementById("navigation").classList.toggle("open");
+}
 
+document.querySelectorAll("#navigation a").forEach(function(link) {
+  link.addEventListener("click", function() {
+    document.getElementById("navigation").classList.remove("open");
+  });
+});
+
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".reveal").forEach(function(element) {
+    observer.observe(element);
+  });
+} else {
+  document.querySelectorAll(".reveal").forEach(function(element) {
+    element.classList.add("visible");
+  });
+}
+</script>
 </body>
 </html>
