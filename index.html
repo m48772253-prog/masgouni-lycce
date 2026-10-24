@@ -3,472 +3,429 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="الموقع الإلكتروني لثانوية مسغوني: فضاء للتواصل ومتابعة الإعلانات المدرسية.">
-  <title>ثانوية مسغوني | الموقع الرسمي</title>
+  <title>ثانوية مسغوني</title>
 
   <style>
     :root {
-      --green: #075b43;
-      --green-light: #e5f5ed;
-      --gold: #e5b65c;
-      --ink: #20342c;
-      --muted: #64746c;
+      --green: #145c43;
+      --dark-green: #0c3d2d;
+      --gold: #d9b45b;
       --white: #ffffff;
-      --bg: #f5f8f6;
+      --light: #f4f8f5;
+      --text: #24352d;
     }
 
     * {
       box-sizing: border-box;
-    }
-
-    html {
       scroll-behavior: smooth;
-      scroll-padding-top: 20px;
     }
 
     body {
       margin: 0;
-      font-family: Tahoma, Arial, sans-serif;
-      color: var(--ink);
-      background: var(--bg);
-      line-height: 1.9;
+      font-family: Arial, Tahoma, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.8;
     }
 
-    a {
-      color: inherit;
-    }
-
-    .topline {
-      height: 5px;
-      background: var(--gold);
-    }
-
-    .header {
+    header {
       background: var(--green);
-      color: var(--white);
-      padding: 24px 18px;
-    }
-
-    .header-inner {
-      max-width: 1120px;
-      margin: auto;
+      color: white;
+      padding: 15px 5%;
       display: flex;
       align-items: center;
-      gap: 16px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-bottom: 4px solid var(--gold);
     }
 
-    .school-mark {
-      width: 65px;
-      height: 65px;
-      flex-shrink: 0;
-      display: grid;
-      place-items: center;
-      border: 2px solid var(--gold);
-      border-radius: 50%;
-      font-size: 30px;
+    .school-name {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .school-name h1 {
+    .school-icon {
+      font-size: 38px;
+    }
+
+    .school-name h2 {
       margin: 0;
-      font-size: clamp(23px, 4vw, 34px);
-      line-height: 1.5;
+      font-size: 23px;
     }
 
     .school-name p {
-      margin: 3px 0 0;
-      color: #e0f2e9;
-      font-size: 14px;
+      margin: 0;
+      color: #f5dfa0;
+      font-size: 13px;
     }
 
-    .nav {
-      background: var(--white);
-      border-bottom: 1px solid #e3ebe6;
-    }
-
-    .nav-inner {
-      max-width: 1120px;
-      margin: auto;
-      padding: 8px 14px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 5px;
-    }
-
-    .nav a {
-      text-decoration: none;
-      font-size: 14px;
+    .language-button {
+      background: var(--gold);
+      color: var(--dark-green);
+      border: none;
+      padding: 9px 15px;
+      border-radius: 7px;
       font-weight: bold;
-      padding: 10px 14px;
-      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
     }
 
-    .nav a:hover,
-    .nav a:focus-visible {
-      background: var(--green-light);
-      color: var(--green);
+    nav {
+      background: var(--dark-green);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5px;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+    }
+
+    nav a:hover {
+      background: var(--gold);
+      color: var(--dark-green);
     }
 
     .hero {
-      background: linear-gradient(135deg, #075b43, #13815e);
-      color: white;
-      padding: clamp(45px, 8vw, 90px) 20px;
+      position: relative;
+      min-height: 390px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      padding: 35px 20px;
+      color: white;
+      background:
+        linear-gradient(rgba(5, 45, 31, 0.72), rgba(5, 45, 31, 0.78)),
+        url("facade.jpg") center/cover no-repeat;
       border-bottom: 5px solid var(--gold);
     }
 
     .hero-content {
-      max-width: 820px;
-      margin: auto;
+      max-width: 800px;
     }
 
-    .hero-label {
-      display: inline-block;
-      border: 1px solid #ffffff75;
-      border-radius: 30px;
-      padding: 4px 15px;
-      font-size: 13px;
+    .hero h1 {
+      font-size: clamp(30px, 6vw, 52px);
+      margin: 0 0 12px;
+      color: var(--gold);
+      text-shadow: 2px 2px 5px #000;
     }
 
     .hero h2 {
-      font-size: clamp(28px, 5vw, 44px);
-      line-height: 1.5;
-      margin: 18px 0 10px;
+      font-size: clamp(20px, 4vw, 30px);
+      margin: 0 0 12px;
     }
 
     .hero p {
-      color: #e4f5ec;
-      max-width: 650px;
-      margin: auto;
+      font-size: 18px;
+      margin: 0 auto 20px;
     }
 
     .hero-button {
       display: inline-block;
-      margin-top: 25px;
-      padding: 10px 23px;
+      margin-top: 10px;
+      padding: 11px 24px;
       background: var(--gold);
-      color: #24352c;
+      color: #20342c;
       text-decoration: none;
       font-weight: bold;
       border-radius: 8px;
     }
 
-    .container {
-      width: min(1120px, 100%);
-      padding: 30px 20px;
-      margin: auto;
-    }
-
-    .section-heading {
-      margin-bottom: 20px;
-    }
-
-    .section-heading h2 {
-      margin: 0;
-      font-size: clamp(22px, 3vw, 29px);
-      color: var(--green);
-    }
-
-    .section-heading p {
-      margin: 4px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .intro {
+    .hero-button:hover {
       background: white;
-      padding: 24px;
-      border-radius: 14px;
-      border: 1px solid #e5ece7;
+    }
+
+    section {
+      padding: 45px 6%;
+    }
+
+    .section-title {
+      text-align: center;
+      color: var(--green);
+      font-size: 29px;
+      margin: 0 0 10px;
+    }
+
+    .title-line {
+      width: 75px;
+      height: 4px;
+      background: var(--gold);
+      margin: 0 auto 28px;
+      border-radius: 5px;
+    }
+
+    .about-text {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+      font-size: 17px;
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(min(100%, 235px), 1fr)
-      );
-      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
     }
 
     .card {
       background: white;
-      padding: 23px;
-      border-radius: 14px;
-      border: 1px solid #e4ece7;
-      box-shadow: 0 5px 18px #153d2b08;
+      padding: 24px 18px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      border-bottom: 4px solid var(--gold);
     }
 
     .card-icon {
-      font-size: 30px;
+      font-size: 38px;
     }
 
     .card h3 {
       color: var(--green);
       margin: 8px 0;
-      font-size: 19px;
     }
 
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .notice {
-      background: var(--green-light);
-      border-right: 5px solid var(--green);
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(min(100%, 220px), 1fr)
-      );
-      gap: 14px;
-    }
-
-    .contact-item {
-      padding: 18px;
+    .study-card {
       background: white;
-      border: 1px solid #e4ece7;
+      padding: 22px;
       border-radius: 12px;
-      overflow-wrap: anywhere;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e9e4;
     }
 
-    .contact-item strong {
+    .study-card h3 {
       color: var(--green);
     }
 
-    .footer {
-      background: #063f30;
+    .study-card a {
+      display: inline-block;
+      background: var(--green);
+      color: white;
+      text-decoration: none;
+      padding: 9px 18px;
+      border-radius: 7px;
+      margin-top: 8px;
+    }
+
+    .study-card a:hover {
+      background: var(--gold);
+      color: var(--dark-green);
+    }
+
+    .contact {
+      background: #e8f0eb;
+      text-align: center;
+    }
+
+    .contact p {
+      margin: 8px 0;
+    }
+
+    footer {
+      background: var(--dark-green);
       color: white;
       text-align: center;
-      padding: 25px 15px;
-      margin-top: 20px;
+      padding: 22px 12px;
+      border-top: 4px solid var(--gold);
     }
 
-    .footer p {
-      margin: 4px;
-    }
-
-    .footer small {
-      color: #d0e6db;
+    footer p {
+      margin: 5px;
     }
 
     @media (max-width: 600px) {
-      .header {
-        padding: 18px 14px;
+      header {
+        justify-content: center;
+        text-align: center;
       }
 
-      .header-inner {
-        gap: 11px;
+      .school-name {
+        justify-content: center;
       }
 
-      .school-mark {
-        width: 51px;
-        height: 51px;
-        font-size: 24px;
+      nav a {
+        padding: 7px 9px;
+        font-size: 14px;
       }
 
-      .school-name p {
-        font-size: 12px;
+      .hero {
+        min-height: 330px;
       }
 
-      .nav-inner {
-        gap: 2px;
-        padding: 7px 5px;
-      }
-
-      .nav a {
-        padding: 8px 9px;
-        font-size: 13px;
-      }
-
-      .container {
-        padding: 24px 14px;
-      }
-
-      .intro,
-      .card {
-        padding: 18px;
+      section {
+        padding: 32px 5%;
       }
     }
   </style>
 </head>
 
 <body>
-<img src="facade.jpg" alt="واجهة ثانوية مسغوني" style="width:100%; max-width:1000px; height:auto; display:block; margin:20px auto; border-radius:12px; filter:blur(2px);">:12px;">  
- <h1>ثانوية مسغوني</h1>
-  <div class="topline"></div>
 
-  <header class="header">
-    <div class="header-inner">
-      <div class="school-mark" aria-hidden="true">🎓</div>
-      <div class="school-name">
-        <h1>ثانوية مسغوني</h1>
-        <p>العلم والمعرفة طريق النجاح والتميز</p>
+  <header>
+    <div class="school-name">
+      <span class="school-icon">🎓</span>
+      <div>
+        <h2 data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</h2>
+        <p data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail sont la clé du succès">العلم والعمل أساس النجاح</p>
       </div>
     </div>
+
+    <button class="language-button" onclick="changeLanguage()" id="languageButton">
+      Français
+    </button>
   </header>
 
-  <nav class="nav" aria-label="القائمة الرئيسية">
-    <div class="nav-inner">
-      <a href="#home">الرئيسية</a>
-      <a href="#about">عن الثانوية</a>
-      <a href="#services">الخدمات</a>
-      <a href="#news">الإعلانات</a>
-      <a href="#contact">اتصل بنا</a>
-    </div>
+  <nav>
+    <a href="#home" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a>
+    <a href="#about" data-ar="عن الثانوية" data-fr="À propos">عن الثانوية</a>
+    <a href="#services" data-ar="خدماتنا" data-fr="Nos services">خدماتنا</a>
+    <a href="#study" data-ar="المستويات الدراسية" data-fr="Niveaux scolaires">المستويات الدراسية</a>
+    <a href="#contact" data-ar="اتصل بنا" data-fr="Contact">اتصل بنا</a>
   </nav>
 
   <main>
     <section class="hero" id="home">
       <div class="hero-content">
-        <span class="hero-label">مرحبًا بكم في فضائنا المدرسي</span>
-        <h2>ثانوية مسغوني ترحب بكم</h2>
-        <p>
-          فضاء إلكتروني للتواصل والمعرفة، ومتابعة مستجدات
-          المؤسسة والإعلانات والخدمات المدرسية.
+        <h1 data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</h1>
+        <h2 data-ar="مرحبًا بكم في موقع ثانويتنا" data-fr="Bienvenue sur le site de notre lycée">مرحبًا بكم في موقع ثانويتنا</h2>
+        <p data-ar="فضاء للتعلم والمعرفة والتواصل، نحو مستقبل أفضل لأبنائنا التلاميذ."
+           data-fr="Un espace d’apprentissage, de savoir et de communication pour un meilleur avenir de nos élèves.">
+          فضاء للتعلم والمعرفة والتواصل، نحو مستقبل أفضل لأبنائنا التلاميذ.
         </p>
-        <a class="hero-button" href="#services">اكتشف خدماتنا</a>
+        <a class="hero-button" href="#about"
+           data-ar="اكتشف ثانويتنا" data-fr="Découvrir notre lycée">اكتشف ثانويتنا</a>
       </div>
     </section>
 
-    <section class="container" id="about">
-      <div class="section-heading">
-        <h2>عن الثانوية</h2>
-        <p>معًا نحو بيئة مدرسية أفضل</p>
-      </div>
-
-      <div class="intro">
-        مرحبًا بالتلاميذ والأولياء والزوار في الموقع الإلكتروني
-        لثانوية مسغوني. نسعى إلى توفير فضاء منظم للمعلومات
-        المدرسية والتواصل ومتابعة أخبار المؤسسة.
-        <p>
-          ستُضاف المعلومات الرسمية عن المؤسسة بعد التأكد منها.
-        </p>
-      </div>
+    <section id="about">
+      <h2 class="section-title" data-ar="عن الثانوية" data-fr="À propos du lycée">عن الثانوية</h2>
+      <div class="title-line"></div>
+      <p class="about-text"
+         data-ar="تسعى ثانوية مسغوني إلى توفير بيئة تعليمية مناسبة تساعد التلاميذ على اكتساب المعارف والمهارات، وتنمية قدراتهم العلمية والأخلاقية، وتحضيرهم لمستقبل ناجح."
+         data-fr="Le lycée Mesgouni cherche à offrir un environnement éducatif favorable, permettant aux élèves d’acquérir des connaissances, de développer leurs compétences et de préparer leur avenir.">
+        تسعى ثانوية مسغوني إلى توفير بيئة تعليمية مناسبة تساعد التلاميذ على اكتساب المعارف والمهارات، وتنمية قدراتهم العلمية والأخلاقية، وتحضيرهم لمستقبل ناجح.
+      </p>
     </section>
 
-    <section class="container" id="services">
-      <div class="section-heading">
-        <h2>فضاءات الموقع</h2>
-        <p>أهم الأقسام المدرسية في مكان واحد</p>
-      </div>
+    <section id="services">
+      <h2 class="section-title" data-ar="خدماتنا" data-fr="Nos services">خدماتنا</h2>
+      <div class="title-line"></div>
 
       <div class="cards">
-        <article class="card" id="news">
-          <div class="card-icon" aria-hidden="true">📢</div>
-          <h3>الإعلانات المدرسية</h3>
-          <p>
-            مساحة مخصصة لنشر إعلانات الإدارة والأخبار
-            والمستجدات الرسمية.
+        <div class="card">
+          <div class="card-icon">📚</div>
+          <h3 data-ar="الموارد التعليمية" data-fr="Ressources pédagogiques">الموارد التعليمية</h3>
+          <p data-ar="فضاء للوصول إلى الموارد والدروس التعليمية."
+             data-fr="Un espace pour accéder aux ressources et aux cours.">
+            فضاء للوصول إلى الموارد والدروس التعليمية.
           </p>
-        </article>
+        </div>
 
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">📚</div>
-          <h3>الدراسة والاختبارات</h3>
-          <p>
-            مساحة مخصصة للجداول ومواعيد الاختبارات
-            والمعلومات الدراسية.
+        <div class="card">
+          <div class="card-icon">📝</div>
+          <h3 data-ar="الفروض والاختبارات" data-fr="Devoirs et examens">الفروض والاختبارات</h3>
+          <p data-ar="مراجعة الدروس والتحضير للفروض والاختبارات."
+             data-fr="Réviser les cours et se préparer aux devoirs et examens.">
+            مراجعة الدروس والتحضير للفروض والاختبارات.
           </p>
-        </article>
+        </div>
 
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">🎓</div>
-          <h3>فضاء التلاميذ</h3>
-          <p>
-            موارد ومعلومات تساعد التلاميذ في مسارهم الدراسي.
+        <div class="card">
+          <div class="card-icon">🏫</div>
+          <h3 data-ar="الحياة المدرسية" data-fr="Vie scolaire">الحياة المدرسية</h3>
+          <p data-ar="متابعة أخبار ونشاطات المؤسسة المدرسية."
+             data-fr="Suivre les actualités et les activités de l’établissement.">
+            متابعة أخبار ونشاطات المؤسسة المدرسية.
           </p>
-        </article>
+        </div>
       </div>
     </section>
 
-    <section class="container" id="contact">
-      <div class="section-heading">
-        <h2>معلومات الاتصال</h2>
-        <p>معلومات المؤسسة الرسمية</p>
-      </div>
+    <section id="study">
+      <h2 class="section-title" data-ar="المستويات الدراسية" data-fr="Niveaux scolaires">المستويات الدراسية</h2>
+      <div class="title-line"></div>
 
-      <div class="contact-grid">
-        <div class="contact-item">
-          <strong>🏫 عنوان الثانوية</strong>
-          <p>يُضاف العنوان الرسمي بعد التأكد منه.</p>
+      <div class="cards">
+        <div class="study-card">
+          <div class="card-icon">📘</div>
+          <h3 data-ar="السنة الأولى ثانوي" data-fr="Première année secondaire">السنة الأولى ثانوي</h3>
+          <p data-ar="موارد ودروس السنة الأولى."
+             data-fr="Ressources et cours de première année.">
+            موارد ودروس السنة الأولى.
+          </p>
+          <a href="first-year.html" data-ar="الدخول" data-fr="Accéder">الدخول</a>
         </div>
 
-        <div class="contact-item">
-          <strong>☎️ هاتف الإدارة</strong>
-          <p>يُضاف رقم الاتصال الرسمي عند توفره.</p>
+        <div class="study-card">
+          <div class="card-icon">📗</div>
+          <h3 data-ar="السنة الثانية ثانوي" data-fr="Deuxième année secondaire">السنة الثانية ثانوي</h3>
+          <p data-ar="موارد ودروس السنة الثانية."
+             data-fr="Ressources et cours de deuxième année.">
+            موارد ودروس السنة الثانية.
+          </p>
+          <a href="second-year.html" data-ar="الدخول" data-fr="Accéder">الدخول</a>
+        </div>
+
+        <div class="study-card">
+          <div class="card-icon">📕</div>
+          <h3 data-ar="السنة الثالثة ثانوي" data-fr="Troisième année secondaire">السنة الثالثة ثانوي</h3>
+          <p data-ar="موارد ودروس السنة الثالثة والتحضير للبكالوريا."
+             data-fr="Ressources de troisième année et préparation au baccalauréat.">
+            موارد ودروس السنة الثالثة والتحضير للبكالوريا.
+          </p>
+          <a href="third-year.html" data-ar="الدخول" data-fr="Accéder">الدخول</a>
         </div>
       </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2 class="section-title" data-ar="اتصل بنا" data-fr="Contactez-nous">اتصل بنا</h2>
+      <div class="title-line"></div>
+      <p data-ar="مرحبًا بكم في موقع ثانوية مسغوني."
+         data-fr="Bienvenue sur le site du lycée Mesgouni.">
+        مرحبًا بكم في موقع ثانوية مسغوني.
+      </p>
+      <p data-ar="يمكن إضافة معلومات الاتصال الرسمية للمؤسسة هنا."
+         data-fr="Les coordonnées officielles de l’établissement peuvent être ajoutées ici.">
+        يمكن إضافة معلومات الاتصال الرسمية للمؤسسة هنا.
+      </p>
     </section>
   </main>
 
+  <footer>
+    <p data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</p>
+    <p data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail sont la clé du succès">العلم والعمل أساس النجاح</p>
+    <p>© 2026</p>
+    <p>Made by Developer Majd</p>
+  </footer>
 
-<section class="container" id="study" dir="rtl">
-  <div class="section-heading">
-    <h2>📚 أقسام الدراسة والمواد</h2>
-    <p>مرحبًا بكم في فضاء الدراسة لثانوية مسغوني</p>
-    <p>اختر السنة الدراسية:</p>
-  </div>
+  <script>
+    let currentLanguage = "ar";
 
-  <div class="cards">
-    <a class="card study-card" href="first-year.html">
-      <div class="card-icon">📘</div>
-      <h3>السنة الأولى ثانوي</h3>
-      <p>الدروس والتمارين</p>
-    </a>
+    function changeLanguage() {
+      currentLanguage = currentLanguage === "ar" ? "fr" : "ar";
 
-    <a class="card study-card" href="second-year.html">
-      <div class="card-icon">📗</div>
-      <h3>السنة الثانية ثانوي</h3>
-      <p>الدروس والتمارين</p>
-    </a>
+      document.documentElement.lang = currentLanguage;
+      document.documentElement.dir = currentLanguage === "ar" ? "rtl" : "ltr";
 
-    <a class="card study-card" href="third-year.html">
-      <div class="card-icon">🎓</div>
-      <h3>السنة الثالثة ثانوي</h3>
-      <p>الدروس والتحضير للبكالوريا</p>
-    </a>
-  </div>
-</section>
+      document.querySelectorAll("[data-ar][data-fr]").forEach(function(element) {
+        element.textContent = element.getAttribute("data-" + currentLanguage);
+      });
 
-<style>
-  .study-card {
-    text-decoration: none;
-    border-top: 4px solid #176b45;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+      document.getElementById("languageButton").textContent =
+        currentLanguage === "ar" ? "Français" : "العربية";
+    }
+  </script>
 
-  .study-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 22px #153d2b18;
-  }
-
-  .study-card:focus-visible {
-    outline: 3px solid #e5b65c;
-    outline-offset: 3px;
-  }
-</style>
-  <footer dir="rtl" style="background:#064432;color:white;text-align:center;padding:25px 15px;margin-top:40px;">
-  <h3 style="margin:0 0 10px;">ثانوية مسغوني</h3>
-
-  <p style="margin:8px 0;color:#f1d17a;">
-    العلم والعمل أساس النجاح
-  </p>
-
-  <p dir="ltr" style="margin:8px 0;">
-    © 2026
-  </p>
-
-  <p dir="ltr" style="margin:8px 0;font-size:14px;">
-    Made by Developer Majd
-  </p>
-</footer>
 </body>
 </html>
