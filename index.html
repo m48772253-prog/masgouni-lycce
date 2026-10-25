@@ -1,285 +1,238 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0c3d2d">
-<meta name="description" content="الموقع الإلكتروني لثانوية مسغوني، التعريف بالمؤسسة والموارد الدراسية.">
+<meta name="description" content="الموقع الإلكتروني لثانوية مسغوني: الموارد الدراسية، التوجيه الجامعي، ومعلومات التعليم في الجزائر.">
 <title>ثانوية مسغوني | الموقع الرسمي</title>
 
 <style>
 :root {
-  --green: #145c43;
-  --dark-green: #0c3d2d;
-  --gold: #d9b45b;
-  --light: #f4f8f5;
-  --text: #24352d;
-  --muted: #687a70;
+  --green:#145c43;
+  --dark:#0c3d2d;
+  --gold:#d9b45b;
+  --light:#f4f8f5;
+  --text:#24352d;
+  --muted:#687a70;
+  --white:#fff;
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 85px; }
-body {
-  margin: 0;
-  font-family: Arial, Tahoma, sans-serif;
-  background: var(--light);
-  color: var(--text);
-  line-height: 1.8;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{
+  margin:0;
+  font-family:Arial,Tahoma,sans-serif;
+  background:var(--light);
+  color:var(--text);
+  line-height:1.8;
 }
-a, button { transition: all .3s ease; }
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(20,92,67,.97);
-  backdrop-filter: blur(10px);
-  color: white;
-  border-bottom: 4px solid var(--gold);
-  box-shadow: 0 4px 18px #00000012;
+button,input,textarea{font:inherit}
+a,button{transition:.25s}
+button{cursor:pointer}
+header{
+  position:sticky;top:0;z-index:1000;
+  color:white;background:rgba(20,92,67,.98);
+  border-bottom:4px solid var(--gold);
+  box-shadow:0 4px 18px #0001;
 }
-.header-inner {
-  max-width: 1200px;
-  margin: auto;
-  padding: 13px 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
+.header-inner{
+  max-width:1200px;margin:auto;padding:12px 20px;
+  display:flex;justify-content:space-between;
+  align-items:center;gap:14px;flex-wrap:wrap;
 }
-.school-name {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.school-name{display:flex;align-items:center;gap:12px}
+.school-icon{
+  width:48px;height:48px;border:2px solid var(--gold);
+  border-radius:13px;display:grid;place-items:center;font-size:27px;
 }
-.school-icon {
-  width: 49px;
-  height: 49px;
-  border: 2px solid var(--gold);
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  font-size: 29px;
+.school-name h2{margin:0;font-size:21px}
+.school-name p{margin:0;color:#f5dfa0;font-size:12px}
+.header-actions{display:flex;gap:8px;align-items:center}
+.language-button,.menu-button{
+  padding:8px 12px;border-radius:8px;font-weight:bold;
+  border:1px solid #ffffff55;
 }
-.school-name h2 { margin: 0; font-size: 21px; }
-.school-name p { margin: 0; color: #f5dfa0; font-size: 12px; }
-.header-actions { display: flex; align-items: center; gap: 10px; }
-.language-button, .menu-button {
-  padding: 9px 14px;
-  border: 1px solid #ffffff55;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
+.language-button{background:var(--gold);color:var(--dark)}
+.menu-button{background:transparent;color:white;display:none}
+nav{
+  display:flex;justify-content:center;gap:5px;flex-wrap:wrap;
+  background:var(--dark);padding:8px 12px;
 }
-.language-button { background: var(--gold); color: var(--dark-green); }
-.menu-button { background: transparent; color: white; display: none; }
-.language-button:hover, .menu-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 14px #0002;
+nav a{
+  color:white;text-decoration:none;padding:8px 12px;
+  border-radius:7px;font-size:14px;
 }
-nav {
-  background: var(--dark-green);
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  padding: 9px 15px;
-  flex-wrap: wrap;
+nav a:hover{background:var(--gold);color:var(--dark)}
+.hero{
+  min-height:480px;display:grid;place-items:center;text-align:center;
+  padding:60px 20px;color:white;
+  background:linear-gradient(120deg,#052d1fef,#0c3d2dbd),
+  url("facade.jpg") center/cover no-repeat;
+  border-bottom:5px solid var(--gold);
 }
-nav a {
-  color: white;
-  text-decoration: none;
-  padding: 8px 13px;
-  border-radius: 7px;
-  font-size: 14px;
+.hero-content{max-width:850px}
+.eyebrow{
+  display:inline-block;border:1px solid #d9b45b99;
+  border-radius:30px;padding:5px 15px;
+  color:#f5dfa0;background:#ffffff0d;font-size:14px;
 }
-nav a:hover { background: var(--gold); color: var(--dark-green); }
+.hero h1{
+  color:var(--gold);font-size:clamp(36px,6vw,62px);
+  line-height:1.3;margin:14px 0 8px;
+  text-shadow:2px 3px 10px #0008;
+}
+.hero h2{font-size:clamp(20px,4vw,30px);margin:0 0 10px}
+.hero p{max-width:700px;margin:0 auto 25px;font-size:17px}
+.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;justify-content:center;align-items:center;
+  padding:11px 20px;border-radius:9px;text-decoration:none;
+  font-weight:bold;border:1px solid transparent;
+}
+.btn:hover{transform:translateY(-3px)}
+.btn-gold{background:var(--gold);color:var(--dark)}
+.btn-outline{border-color:#ffffff85;color:white;background:#ffffff0d}
+.btn-outline:hover{background:white;color:var(--green)}
+section{padding:62px 20px}
+.container{max-width:1160px;margin:auto}
+.section-heading{text-align:center;margin-bottom:32px}
+.section-heading h2{color:var(--green);font-size:clamp(26px,4vw,35px);margin:4px 0}
+.section-heading p{max-width:680px;margin:8px auto;color:var(--muted)}
+.eyebrow-small{font-size:13px;font-weight:bold;color:#98721f}
+.title-line{width:65px;height:4px;background:var(--gold);margin:12px auto;border-radius:5px}
+.intro-grid,.cards{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;
+}
+.intro-card,.card,.study-card{
+  background:white;border:1px solid #e2e9e4;border-radius:15px;
+  padding:25px;box-shadow:0 6px 22px #00000008;
+}
+.intro-card h3,.card h3,.study-card h3{color:var(--green);margin:5px 0 10px}
+.intro-card p,.card p,.study-card p{color:var(--muted)}
+.feature-list{padding:0;list-style:none}
+.feature-list li{padding:6px 0;border-bottom:1px solid #edf0ed}
+.feature-list li::before{content:"✓";color:#b38a2e;font-weight:bold;margin-left:9px}
+html[dir="ltr"] .feature-list li::before{margin:0 9px 0 0}
+.card{text-align:center;border-bottom:4px solid var(--gold)}
+.card-icon{font-size:36px}
+.card p{font-size:14px;margin-bottom:0}
+.studies{background:#e9f1eb}
+.study-card{text-align:center;position:relative;overflow:hidden}
+.study-card::before{
+  content:"";position:absolute;top:0;right:0;left:0;
+  height:4px;background:var(--gold);
+}
+.study-card p{font-size:14px;min-height:45px}
+.study-card .btn{width:100%;margin-top:10px}
+.contact{background:#e8f0eb;text-align:center}
+.contact p{color:var(--muted)}
+footer{
+  background:#092f23;color:white;padding:25px 18px 15px;
+  border-top:4px solid var(--gold);
+}
+.footer-inner{
+  max-width:1160px;margin:auto;display:flex;
+  justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;
+}
+.footer-title{font-size:20px;font-weight:bold}
+.footer-note{font-size:13px;color:#cbdad1}
+.copyright{
+  max-width:1160px;margin:18px auto 0;padding-top:13px;
+  border-top:1px solid #ffffff22;text-align:center;
+  color:#cbdad1;font-size:13px;
+}
+.copyright p{margin:4px}
+.copyright strong{color:#f5dfa0}
 
-.hero {
-  min-height: 510px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 65px 22px;
-  color: white;
-  position: relative;
-  overflow: hidden;
-  background:
-    linear-gradient(120deg, rgba(5,45,31,.86), rgba(12,61,45,.65)),
-    url("facade.jpg") center/cover no-repeat;
-  border-bottom: 5px solid var(--gold);
+/* مساعد الذكاء الاصطناعي */
+.ai-launcher{
+  position:fixed;bottom:20px;left:20px;z-index:2000;
+  width:62px;height:62px;border:2px solid var(--gold);
+  border-radius:50%;background:var(--green);color:white;
+  box-shadow:0 5px 20px #0003;font-size:26px;
 }
-.hero-content {
-  max-width: 850px;
-  animation: fadeUp .9s ease both;
+.ai-launcher:hover{transform:scale(1.06)}
+.ai-panel{
+  position:fixed;bottom:95px;left:20px;z-index:2000;
+  width:min(390px,calc(100vw - 28px));height:min(570px,75dvh);
+  background:white;border:1px solid #dfe8e1;border-radius:17px;
+  box-shadow:0 12px 40px #0003;overflow:hidden;
+  display:none;flex-direction:column;
 }
-.eyebrow {
-  display: inline-block;
-  padding: 6px 16px;
-  border: 1px solid #d9b45b99;
-  border-radius: 30px;
-  color: #f5dfa0;
-  background: #ffffff0c;
-  font-size: 14px;
-  margin-bottom: 15px;
+.ai-panel.open{display:flex}
+.ai-header{
+  background:var(--green);color:white;padding:13px 15px;
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  border-bottom:3px solid var(--gold);
 }
-.hero h1 {
-  color: var(--gold);
-  font-size: clamp(36px, 6vw, 64px);
-  line-height: 1.3;
-  margin: 0 0 12px;
-  text-shadow: 2px 3px 10px #0008;
+.ai-header h3{margin:0;font-size:17px}
+.ai-header p{margin:0;font-size:11px;color:#e0eae3}
+.ai-close{border:0;background:transparent;color:white;font-size:25px}
+.ai-notice{
+  padding:9px 12px;background:#f7f5eb;color:#675626;
+  font-size:11px;line-height:1.6;border-bottom:1px solid #eee6cc;
 }
-.hero h2 { font-size: clamp(21px, 4vw, 31px); margin: 0 0 12px; }
-.hero p { max-width: 700px; margin: 0 auto 27px; font-size: 18px; }
-.actions { display: flex; justify-content: center; gap: 13px; flex-wrap: wrap; }
-.btn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 22px;
-  border-radius: 9px;
-  text-decoration: none;
-  font-weight: bold;
-  border: 1px solid transparent;
-  cursor: pointer;
+.ai-messages{
+  flex:1;overflow-y:auto;padding:13px;
+  display:flex;flex-direction:column;gap:11px;
 }
-.btn:hover { transform: translateY(-4px); box-shadow: 0 10px 23px #0003; }
-.btn-gold { background: var(--gold); color: #173b2c; }
-.btn-gold:hover { background: white; }
-.btn-outline { border-color: #ffffff85; color: white; background: #ffffff0c; }
-.btn-outline:hover { background: white; color: var(--green); }
-
-section { padding: 70px 22px; }
-.container { max-width: 1160px; margin: auto; }
-.section-heading { text-align: center; margin-bottom: 35px; }
-.section-heading .eyebrow-small {
-  color: #98721f;
-  font-size: 13px;
-  font-weight: bold;
+.message{
+  padding:10px 12px;border-radius:12px;max-width:92%;
+  white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:1.7;
 }
-.section-heading h2 { color: var(--green); font-size: clamp(27px,4vw,36px); margin: 4px 0; }
-.section-heading p { max-width: 680px; margin: 8px auto 0; color: var(--muted); }
-.title-line { width: 68px; height: 4px; background: var(--gold); margin: 13px auto; border-radius: 5px; }
-
-.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 23px; }
-.intro-card {
-  padding: 28px;
-  background: white;
-  border: 1px solid #e3ebe5;
-  border-radius: 16px;
-  box-shadow: 0 8px 28px #104b380b;
-  transition: transform .3s, box-shadow .3s;
+.message.bot{background:#edf4ef;align-self:flex-start;border-bottom-right-radius:3px}
+.message.user{background:var(--green);color:white;align-self:flex-end;border-bottom-left-radius:3px}
+.message a{color:#146044}
+.ai-suggestions{display:flex;gap:6px;flex-wrap:wrap;padding:0 11px 10px}
+.ai-suggestions button{
+  border:1px solid #d8e4da;border-radius:18px;background:white;
+  color:var(--green);padding:6px 9px;font-size:11px;
 }
-.intro-card:hover { transform: translateY(-5px); box-shadow: 0 14px 32px #104b3817; }
-.intro-card h3 { color: var(--green); font-size: 23px; margin: 0 0 10px; }
-.intro-card p { color: var(--muted); }
-.feature-list { list-style: none; padding: 0; margin: 15px 0; }
-.feature-list li { padding: 7px 0; border-bottom: 1px solid #edf0ed; }
-.feature-list li::before { content: "✓"; color: #b38a2e; font-weight: bold; margin-left: 10px; }
-html[dir="ltr"] .feature-list li::before { margin-left: 0; margin-right: 10px; }
-
-.cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 21px; }
-.card {
-  background: white;
-  padding: 26px 22px;
-  border-radius: 15px;
-  text-align: center;
-  border: 1px solid #e2e9e4;
-  border-bottom: 4px solid var(--gold);
-  box-shadow: 0 6px 22px #00000008;
-  transition: transform .3s, box-shadow .3s;
+.ai-suggestions button:hover{background:#edf4ef}
+.ai-form{
+  display:flex;gap:7px;padding:10px;border-top:1px solid #e5ebe6;
 }
-.card:hover { transform: translateY(-7px); box-shadow: 0 13px 28px #104b3817; }
-.card-icon { font-size: 38px; }
-.card h3 { color: var(--green); margin: 8px 0; }
-.card p { color: var(--muted); margin-bottom: 0; font-size: 15px; }
-
-.studies { background: #e9f1eb; }
-.study-card {
-  background: white;
-  padding: 27px 22px;
-  border-radius: 16px;
-  text-align: center;
-  border: 1px solid #e0e9e2;
-  box-shadow: 0 7px 23px #104b380a;
-  position: relative;
-  overflow: hidden;
-  transition: transform .3s, box-shadow .3s;
+.ai-form textarea{
+  flex:1;min-width:0;resize:none;max-height:90px;
+  border:1px solid #d4ded6;border-radius:9px;padding:9px;
+  outline-color:var(--green);
 }
-.study-card::before {
-  content: "";
-  position: absolute;
-  top: 0; right: 0; left: 0;
-  height: 4px;
-  background: var(--gold);
+.ai-form button{
+  border:0;background:var(--green);color:white;
+  border-radius:9px;padding:0 14px;font-weight:bold;
 }
-.study-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px #104b3817; }
-.study-card h3 { color: var(--green); font-size: 21px; }
-.study-card p { color: var(--muted); font-size: 14px; min-height: 50px; }
-.study-card .btn { width: 100%; margin-top: 10px; }
-
-.about-banner {
-  background: linear-gradient(120deg, var(--green), #1b7352);
-  color: white;
-  border-radius: 20px;
-  padding: 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
+.ai-form button:disabled{opacity:.5;cursor:not-allowed}
+.typing{color:var(--muted);font-size:12px}
+.reveal{opacity:0;transform:translateY(18px);transition:.6s}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:850px){
+  .menu-button{display:inline-block}
+  nav{display:none;flex-direction:column;align-items:stretch}
+  nav.open{display:flex}
+  nav a{padding:10px}
 }
-.about-banner h2 { margin: 0 0 6px; font-size: 26px; }
-.about-banner p { margin: 0; color: #e2eee6; }
-
-.contact { background: #e8f0eb; text-align: center; }
-.contact p { margin: 8px 0; }
-footer { background: #092f23; color: white; padding: 30px 20px 18px; border-top: 4px solid var(--gold); }
-.footer-inner {
-  max-width: 1160px; margin: auto;
-  display: flex; justify-content: space-between; align-items: center;
-  gap: 18px; flex-wrap: wrap;
+@media(max-width:600px){
+  .header-inner{padding:10px 12px}
+  .school-name h2{font-size:16px}
+  .school-icon{width:42px;height:42px}
+  .language-button,.menu-button{padding:7px 9px;font-size:12px}
+  .hero{min-height:420px;padding:45px 16px}
+  .hero p{font-size:15px}
+  section{padding:45px 15px}
+  .intro-grid,.cards{grid-template-columns:1fr}
+  .ai-panel{bottom:86px;left:10px;height:min(570px,78dvh)}
+  .ai-launcher{bottom:14px;left:14px}
 }
-.footer-title { font-size: 20px; font-weight: bold; }
-.footer-note { font-size: 13px; color: #cbdad1; }
-.copyright { max-width: 1160px; margin: 20px auto 0; padding-top: 15px; border-top: 1px solid #ffffff22; text-align: center; color: #cbdad1; font-size: 12px; }
-
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@media(max-width:850px) {
-  .header-inner { flex-wrap: wrap; }
-  .menu-button { display: inline-block; }
-  nav { display: none; flex-direction: column; align-items: stretch; }
-  nav.open { display: flex; }
-  nav a { padding: 10px 13px; }
-  .intro-grid { grid-template-columns: 1fr; }
-  .cards { grid-template-columns: repeat(2,1fr); }
-}
-@media(max-width:600px) {
-  .header-inner { padding: 12px 14px; }
-  .school-name h2 { font-size: 17px; }
-  .school-name p { font-size: 11px; }
-  .school-icon { width: 43px; height: 43px; }
-  .header-actions { gap: 6px; }
-  .language-button, .menu-button { padding: 8px 10px; font-size: 13px; }
-  .hero { min-height: 430px; padding: 45px 17px; }
-  .hero p { font-size: 16px; }
-  section { padding: 48px 16px; }
-  .cards { grid-template-columns: 1fr; }
-  .about-banner { padding: 24px; }
-}
-@media(prefers-reduced-motion:reduce) {
-  *,*::before,*::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
-  .reveal { opacity: 1; transform: none; }
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+  .reveal{opacity:1;transform:none}
 }
 </style>
 </head>
 
 <body>
+
 <header>
   <div class="header-inner">
     <div class="school-name">
@@ -290,7 +243,7 @@ footer { background: #092f23; color: white; padding: 30px 20px 18px; border-top:
       </div>
     </div>
     <div class="header-actions">
-      <button class="language-button" onclick="changeLanguage()" id="languageButton">Français</button>
+      <button class="language-button" id="languageButton" onclick="changeLanguage()">Français</button>
       <button class="menu-button" onclick="toggleMenu()" data-ar="☰ القائمة" data-fr="☰ Menu">☰ القائمة</button>
     </div>
   </div>
@@ -299,6 +252,7 @@ footer { background: #092f23; color: white; padding: 30px 20px 18px; border-top:
     <a href="about.html" data-ar="اكتشف ثانويتنا" data-fr="Découvrir notre lycée">اكتشف ثانويتنا</a>
     <a href="#services" data-ar="خدماتنا" data-fr="Nos services">خدماتنا</a>
     <a href="#study" data-ar="الموارد الدراسية" data-fr="Ressources scolaires">الموارد الدراسية</a>
+    <a href="#assistant" data-ar="مساعد الذكاء الاصطناعي" data-fr="Assistant IA">مساعد الذكاء الاصطناعي</a>
     <a href="#contact" data-ar="اتصل بنا" data-fr="Contact">اتصل بنا</a>
   </nav>
 </header>
@@ -308,14 +262,14 @@ footer { background: #092f23; color: white; padding: 30px 20px 18px; border-top:
     <div class="hero-content">
       <div class="eyebrow" data-ar="مرحبًا بكم في فضاء المعرفة" data-fr="Bienvenue dans l’espace du savoir">مرحبًا بكم في فضاء المعرفة</div>
       <h1 data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</h1>
-      <h2 data-ar="مستقبل أبنائنا يبدأ بالعلم" data-fr="L’avenir de nos élèves commence par le savoir">مستقبل أبنائنا يبدأ بالعلم</h2>
-      <p data-ar="فضاء للتعلم والمعرفة والتواصل، نحو مستقبل أفضل لأبنائنا التلاميذ."
-         data-fr="Un espace d’apprentissage, de savoir et de communication pour un meilleur avenir de nos élèves.">
-        فضاء للتعلم والمعرفة والتواصل، نحو مستقبل أفضل لأبنائنا التلاميذ.
+      <h2 data-ar="مستقبل أبنائنا يبدأ بالعلم" data-fr="L’avenir commence par le savoir">مستقبل أبنائنا يبدأ بالعلم</h2>
+      <p data-ar="فضاء للتعلم والمعرفة والتواصل، نحو مستقبل أفضل للتلاميذ."
+         data-fr="Un espace d’apprentissage, de savoir et de communication pour un meilleur avenir des élèves.">
+        فضاء للتعلم والمعرفة والتواصل، نحو مستقبل أفضل للتلاميذ.
       </p>
       <div class="actions">
         <a class="btn btn-gold" href="about.html" data-ar="اكتشف ثانويتنا ←" data-fr="Découvrir notre lycée ←">اكتشف ثانويتنا ←</a>
-        <a class="btn btn-outline" href="#study" data-ar="الوصول إلى الموارد ↓" data-fr="Accéder aux ressources ↓">الوصول إلى الموارد ↓</a>
+        <a class="btn btn-outline" href="#study" data-ar="الموارد الدراسية ↓" data-fr="Ressources scolaires ↓">الموارد الدراسية ↓</a>
       </div>
     </div>
   </section>
@@ -323,18 +277,19 @@ footer { background: #092f23; color: white; padding: 30px 20px 18px; border-top:
   <section>
     <div class="container intro-grid">
       <div class="intro-card reveal">
-        <h3 data-ar="معًا نحو التميز والنجاح" data-fr="Ensemble vers l’excellence et la réussite">معًا نحو التميز والنجاح</h3>
-        <p data-ar="نؤمن بأن التعليم الجيد يبدأ ببيئة محفزة، وعمل جاد، وتعاون بين الأسرة والمدرسة والتلميذ."
-           data-fr="Nous croyons qu’une bonne éducation repose sur un environnement motivant, le travail sérieux et la coopération entre la famille, l’école et l’élève.">
-          نؤمن بأن التعليم الجيد يبدأ ببيئة محفزة، وعمل جاد، وتعاون بين الأسرة والمدرسة والتلميذ.
+        <h3 data-ar="معًا نحو التميز والنجاح" data-fr="Ensemble vers la réussite">معًا نحو التميز والنجاح</h3>
+        <p data-ar="نؤمن بأن التعليم الجيد يبدأ ببيئة محفزة وعمل جاد وتعاون بين الأسرة والمدرسة والتلميذ."
+           data-fr="Une bonne éducation repose sur un environnement motivant, le travail sérieux et la coopération.">
+          نؤمن بأن التعليم الجيد يبدأ ببيئة محفزة وعمل جاد وتعاون بين الأسرة والمدرسة والتلميذ.
         </p>
         <a class="btn btn-gold" href="about.html" data-ar="التعريف بالثانوية" data-fr="Présentation du lycée">التعريف بالثانوية</a>
       </div>
       <div class="intro-card reveal">
-        <h3 data-ar="ماذا تجد في موقعنا؟" data-fr="Que trouverez-vous sur notre site ?">ماذا تجد في موقعنا؟</h3>
+        <h3 data-ar="ماذا تجد في موقعنا؟" data-fr="Que trouverez-vous ici ?">ماذا تجد في موقعنا؟</h3>
         <ul class="feature-list">
           <li data-ar="روابط الموارد التعليمية حسب المستوى" data-fr="Ressources pédagogiques par niveau">روابط الموارد التعليمية حسب المستوى</li>
-          <li data-ar="التعريف بالمؤسسة وأهدافها" data-fr="Présentation de l’établissement et de ses objectifs">التعريف بالمؤسسة وأهدافها</li>
+          <li data-ar="التعريف بالمؤسسة وأهدافها" data-fr="Présentation de l’établissement">التعريف بالمؤسسة وأهدافها</li>
+          <li data-ar="مساعد للتوجيه الجامعي في الجزائر" data-fr="Assistant d’orientation universitaire en Algérie">مساعد للتوجيه الجامعي في الجزائر</li>
           <li data-ar="الوصول السريع إلى موارد المراجعة" data-fr="Accès rapide aux ressources de révision">الوصول السريع إلى موارد المراجعة</li>
         </ul>
       </div>
@@ -344,32 +299,34 @@ footer { background: #092f23; color: white; padding: 30px 20px 18px; border-top:
   <section id="services">
     <div class="container">
       <div class="section-heading reveal">
-        <div class="eyebrow-small" data-ar="فضاء تعليمي متكامل" data-fr="UN ESPACE ÉDUCATIF">فضاء تعليمي متكامل</div>
+        <div class="eyebrow-small" data-ar="فضاء تعليمي متكامل" data-fr="ESPACE ÉDUCATIF">فضاء تعليمي متكامل</div>
         <h2 data-ar="خدمات الموقع" data-fr="Les services du site">خدمات الموقع</h2>
         <div class="title-line"></div>
-        <p data-ar="خدمات وروابط تساعد التلاميذ على تنظيم تعلمهم والوصول إلى الموارد بسهولة."
-           data-fr="Des services et des liens pour aider les élèves à organiser leurs études et accéder facilement aux ressources.">
-          خدمات وروابط تساعد التلاميذ على تنظيم تعلمهم والوصول إلى الموارد بسهولة.
+        <p data-ar="موارد وخدمات تساعد التلاميذ على التعلم والمراجعة والتخطيط لمستقبلهم."
+           data-fr="Des ressources pour apprendre, réviser et préparer son avenir.">
+          موارد وخدمات تساعد التلاميذ على التعلم والمراجعة والتخطيط لمستقبلهم.
         </p>
       </div>
       <div class="cards">
         <article class="card reveal">
           <div class="card-icon">📚</div>
           <h3 data-ar="الموارد التعليمية" data-fr="Ressources pédagogiques">الموارد التعليمية</h3>
-          <p data-ar="الوصول إلى الدروس والملخصات والتمارين."
-             data-fr="Accéder aux cours, résumés et exercices.">الوصول إلى الدروس والملخصات والتمارين.</p>
+          <p data-ar="روابط للدروس والملخصات والتمارين لمختلف المستويات."
+             data-fr="Cours, résumés et exercices pour différents niveaux.">روابط للدروس والملخصات والتمارين لمختلف المستويات.</p>
         </article>
         <article class="card reveal">
           <div class="card-icon">📝</div>
           <h3 data-ar="الفروض والاختبارات" data-fr="Devoirs et examens">الفروض والاختبارات</h3>
-          <p data-ar="المراجعة والتدريب والتحضير الجيد للاختبارات."
-             data-fr="Réviser et bien se préparer aux examens.">المراجعة والتدريب والتحضير الجيد للاختبارات.</p>
+          <p data-ar="تدرّب وراجع دروسك استعدادًا للاختبارات."
+             data-fr="Entraînez-vous et révisez avant les examens.">تدرّب وراجع دروسك استعدادًا للاختبارات.</p>
         </article>
         <article class="card reveal">
-          <div class="card-icon">🏫</div>
-          <h3 data-ar="الحياة المدرسية" data-fr="Vie scolaire">الحياة المدرسية</h3>
-          <p data-ar="التعريف بالمؤسسة وأهدافها والشعب الدراسية."
-             data-fr="Découvrir l’établissement, ses objectifs et ses filières.">التعريف بالمؤسسة وأهدافها والشعب الدراسية.</p>
+          <div class="card-icon">🎓</div>
+          <h3 data-ar="التوجيه الجامعي" data-fr="Orientation universitaire">التوجيه الجامعي</h3>
+          <p data-ar="استكشف التخصصات والجامعات وشروط الالتحاق عبر مساعد الموقع."
+             data-fr="Explorez les filières, les universités et les conditions d’accès avec l’assistant.">
+            استكشف التخصصات والجامعات وشروط الالتحاق عبر مساعد الموقع.
+          </p>
         </article>
       </div>
     </div>
@@ -381,9 +338,9 @@ footer { background: #092f23; color: white; padding: 30px 20px 18px; border-top:
         <div class="eyebrow-small" data-ar="اختر مستواك الدراسي" data-fr="CHOISISSEZ VOTRE NIVEAU">اختر مستواك الدراسي</div>
         <h2 data-ar="الموارد الدراسية" data-fr="Ressources scolaires">الموارد الدراسية</h2>
         <div class="title-line"></div>
-        <p data-ar="اضغط على زر الدخول للانتقال مباشرة إلى موارد مستواك الدراسي."
-           data-fr="Cliquez sur le bouton pour accéder directement aux ressources de votre niveau.">
-          اضغط على زر الدخول للانتقال مباشرة إلى موارد مستواك الدراسي.
+        <p data-ar="اختر مستواك للانتقال إلى الدروس والملخصات والتمارين."
+           data-fr="Choisissez votre niveau pour accéder aux cours et exercices.">
+          اختر مستواك للانتقال إلى الدروس والملخصات والتمارين.
         </p>
       </div>
       <div class="cards">
@@ -391,38 +348,47 @@ footer { background: #092f23; color: white; padding: 30px 20px 18px; border-top:
           <div class="card-icon">📘</div>
           <h3 data-ar="السنة الأولى ثانوي" data-fr="Première année secondaire">السنة الأولى ثانوي</h3>
           <p data-ar="دروس وتمارين وملخصات للمراجعة."
-             data-fr="Cours, exercices et résumés pour réviser.">دروس وتمارين وملخصات للمراجعة.</p>
+             data-fr="Cours, exercices et résumés.">دروس وتمارين وملخصات للمراجعة.</p>
           <a class="btn btn-gold" href="https://www.dzexams.com/ar/1as" target="_blank" rel="noopener noreferrer" data-ar="الدخول إلى الموارد ↗" data-fr="Accéder aux ressources ↗">الدخول إلى الموارد ↗</a>
         </article>
         <article class="study-card reveal">
           <div class="card-icon">📗</div>
           <h3 data-ar="السنة الثانية ثانوي" data-fr="Deuxième année secondaire">السنة الثانية ثانوي</h3>
           <p data-ar="مصادر تعليمية لدعم التعلم والمراجعة."
-             data-fr="Des ressources pour apprendre et réviser.">مصادر تعليمية لدعم التعلم والمراجعة.</p>
+             data-fr="Ressources pour apprendre et réviser.">مصادر تعليمية لدعم التعلم والمراجعة.</p>
           <a class="btn btn-gold" href="https://www.dzexams.com/ar/2as" target="_blank" rel="noopener noreferrer" data-ar="الدخول إلى الموارد ↗" data-fr="Accéder aux ressources ↗">الدخول إلى الموارد ↗</a>
         </article>
         <article class="study-card reveal">
           <div class="card-icon">📕</div>
           <h3 data-ar="السنة الثالثة ثانوي" data-fr="Troisième année secondaire">السنة الثالثة ثانوي</h3>
           <p data-ar="موارد للمراجعة والتحضير لشهادة البكالوريا."
-             data-fr="Ressources de révision pour préparer le baccalauréat.">موارد للمراجعة والتحضير لشهادة البكالوريا.</p>
+             data-fr="Ressources pour préparer le baccalauréat.">موارد للمراجعة والتحضير لشهادة البكالوريا.</p>
           <a class="btn btn-gold" href="https://www.dzexams.com/ar/3as" target="_blank" rel="noopener noreferrer" data-ar="الدخول إلى الموارد ↗" data-fr="Accéder aux ressources ↗">الدخول إلى الموارد ↗</a>
         </article>
       </div>
     </div>
   </section>
 
-  <section>
+  <section id="assistant">
     <div class="container">
-      <div class="about-banner reveal">
-        <div>
-          <h2 data-ar="اكتشف ثانوية مسغوني" data-fr="Découvrez le lycée Mesgouni">اكتشف ثانوية مسغوني</h2>
-          <p data-ar="تعرّف على المؤسسة وأهدافها وخصائصها والشعب الدراسية."
-             data-fr="Découvrez l’établissement, ses objectifs, ses caractéristiques et ses filières.">
-            تعرّف على المؤسسة وأهدافها وخصائصها والشعب الدراسية.
-          </p>
-        </div>
-        <a class="btn btn-gold" href="about.html" data-ar="اكتشف ثانويتنا ←" data-fr="Découvrir notre lycée ←">اكتشف ثانويتنا ←</a>
+      <div class="section-heading reveal">
+        <div class="eyebrow-small" data-ar="مساعدك الدراسي" data-fr="VOTRE ASSISTANT SCOLAIRE">مساعدك الدراسي</div>
+        <h2 data-ar="اسأل مساعد الذكاء الاصطناعي" data-fr="Posez vos questions à l’assistant IA">اسأل مساعد الذكاء الاصطناعي</h2>
+        <div class="title-line"></div>
+        <p data-ar="أسئلة حول الدراسة في الجزائر، البكالوريا، التخصصات والجامعات."
+           data-fr="Questions sur les études en Algérie, le bac, les filières et les universités.">
+          أسئلة حول الدراسة في الجزائر، البكالوريا، التخصصات والجامعات.
+        </p>
+      </div>
+      <div class="intro-card" style="text-align:center">
+        <div style="font-size:42px">🤖</div>
+        <h3 data-ar="مساعد التوجيه والتعليم" data-fr="Assistant scolaire et d’orientation">مساعد التوجيه والتعليم</h3>
+        <p data-ar="اضغط على الزر لفتح نافذة المحادثة. يمكنك السؤال عن التخصصات الجامعية أو شروط القبول أو طلب مساعدة في فهم المسار الدراسي."
+           data-fr="Ouvrez la conversation pour poser vos questions sur les études, les filières et les admissions.">
+          اضغط على الزر لفتح نافذة المحادثة. يمكنك السؤال عن التخصصات الجامعية أو شروط القبول أو طلب مساعدة في فهم المسار الدراسي.
+        </p>
+        <button class="btn btn-gold" onclick="toggleAssistant(true)"
+          data-ar="ابدأ المحادثة ↗" data-fr="Commencer la conversation ↗">ابدأ المحادثة ↗</button>
       </div>
     </div>
   </section>
@@ -446,13 +412,53 @@ footer { background: #092f23; color: white; padding: 30px 20px 18px; border-top:
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-title" data-ar="🎓 ثانوية مسغوني" data-fr="🎓 Lycée Mesgouni">🎓 ثانوية مسغوني</div>
+      <div class="footer-title">🎓 ثانوية مسغوني</div>
       <div class="footer-note" data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail, clés de la réussite">العلم والعمل أساس النجاح</div>
     </div>
-    <a class="btn btn-outline" href="about.html" data-ar="عن الثانوية" data-fr="À propos">عن الثانوية</a>
+    <a class="btn btn-outline" href="about.html" data-ar="اكتشف ثانويتنا" data-fr="Découvrir notre lycée">اكتشف ثانويتنا</a>
   </div>
-  <div class="copyright">© 2026 <span data-ar="ثانوية مسغوني — جميع الحقوق محفوظة" data-fr="Lycée Mesgouni — Tous droits réservés">ثانوية مسغوني — جميع الحقوق محفوظة</span></div>
+  <div class="copyright">
+    <p>© 2026 ثانوية مسغوني — جميع الحقوق محفوظة</p>
+    <p>صنع بواسطة <strong>مجد بن حرزالله</strong> و<strong>أيوب شبيرات</strong></p>
+  </div>
 </footer>
+
+<!-- نافذة مساعد الذكاء الاصطناعي -->
+<button class="ai-launcher" onclick="toggleAssistant()" aria-label="فتح مساعد الذكاء الاصطناعي">🤖</button>
+
+<aside class="ai-panel" id="aiPanel" aria-label="مساعد الذكاء الاصطناعي">
+  <div class="ai-header">
+    <div>
+      <h3 data-ar="المساعد الدراسي الذكي" data-fr="Assistant scolaire intelligent">المساعد الدراسي الذكي</h3>
+      <p data-ar="الدراسة والجامعات في الجزائر" data-fr="Études et universités en Algérie">الدراسة والجامعات في الجزائر</p>
+    </div>
+    <button class="ai-close" onclick="toggleAssistant(false)" aria-label="إغلاق">×</button>
+  </div>
+
+  <div class="ai-notice" data-ar="تحقق من شروط القبول والمعدلات من المنشورات الرسمية لوزارة التعليم العالي؛ فقد تتغير سنويًا."
+       data-fr="Vérifiez les conditions d’admission dans les publications officielles, car elles peuvent changer chaque année.">
+    تحقق من شروط القبول والمعدلات من المنشورات الرسمية لوزارة التعليم العالي؛ فقد تتغير سنويًا.
+  </div>
+
+  <div class="ai-messages" id="aiMessages" aria-live="polite">
+    <div class="message bot" data-ar="مرحبًا! يمكنني مساعدتك في معرفة التخصصات الجامعية في الجزائر، ومسارات ما بعد البكالوريا، ومعلومات الدراسة. ما سؤالك؟"
+         data-fr="Bonjour ! Je peux vous aider sur les filières universitaires en Algérie et les parcours après le bac. Quelle est votre question ?">
+      مرحبًا! يمكنني مساعدتك في معرفة التخصصات الجامعية في الجزائر، ومسارات ما بعد البكالوريا، ومعلومات الدراسة. ما سؤالك؟
+    </div>
+  </div>
+
+  <div class="ai-suggestions">
+    <button onclick="askSuggestion('ما هي تخصصات الإعلام الآلي في الجزائر؟')" data-ar="تخصصات الإعلام الآلي" data-fr="Filières informatique">تخصصات الإعلام الآلي</button>
+    <button onclick="askSuggestion('كيف أعرف معدل القبول الجامعي؟')" data-ar="معدلات القبول" data-fr="Moyennes d’admission">معدلات القبول</button>
+    <button onclick="askSuggestion('ما هي خطوات التسجيل الجامعي بعد البكالوريا في الجزائر؟')" data-ar="التسجيل الجامعي" data-fr="Inscription universitaire">التسجيل الجامعي</button>
+  </div>
+
+  <form class="ai-form" id="aiForm">
+    <textarea id="aiInput" rows="1" maxlength="1500"
+      placeholder="اكتب سؤالك هنا..." aria-label="اكتب سؤالك"></textarea>
+    <button id="aiSend" type="submit">إرسال</button>
+  </form>
+</aside>
 
 <script>
 let currentLanguage = "ar";
@@ -462,12 +468,17 @@ function changeLanguage() {
   document.documentElement.lang = currentLanguage;
   document.documentElement.dir = currentLanguage === "ar" ? "rtl" : "ltr";
 
-  document.querySelectorAll("[data-ar][data-fr]").forEach(function(element) {
-    element.innerHTML = element.getAttribute("data-" + currentLanguage);
+  document.querySelectorAll("[data-ar][data-fr]").forEach(function(el) {
+    el.textContent = el.getAttribute("data-" + currentLanguage);
   });
 
   document.getElementById("languageButton").textContent =
     currentLanguage === "ar" ? "Français" : "العربية";
+
+  document.getElementById("aiInput").placeholder =
+    currentLanguage === "ar" ? "اكتب سؤالك هنا..." : "Écrivez votre question...";
+  document.getElementById("aiSend").textContent =
+    currentLanguage === "ar" ? "إرسال" : "Envoyer";
 }
 
 function toggleMenu() {
@@ -480,6 +491,101 @@ document.querySelectorAll("#navigation a").forEach(function(link) {
   });
 });
 
+function toggleAssistant(forceOpen) {
+  const panel = document.getElementById("aiPanel");
+  const shouldOpen = typeof forceOpen === "boolean"
+    ? forceOpen
+    : !panel.classList.contains("open");
+
+  panel.classList.toggle("open", shouldOpen);
+
+  if (shouldOpen) {
+    document.getElementById("aiInput").focus();
+  }
+}
+
+function addMessage(text, type) {
+  const messages = document.getElementById("aiMessages");
+  const item = document.createElement("div");
+  item.className = "message " + type;
+  item.textContent = text;
+  messages.appendChild(item);
+  messages.scrollTop = messages.scrollHeight;
+  return item;
+}
+
+function askSuggestion(question) {
+  document.getElementById("aiInput").value = question;
+  toggleAssistant(true);
+  document.getElementById("aiForm").requestSubmit();
+}
+
+document.getElementById("aiForm").addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  const input = document.getElementById("aiInput");
+  const send = document.getElementById("aiSend");
+  const question = input.value.trim();
+
+  if (!question || send.disabled) return;
+
+  addMessage(question, "user");
+  input.value = "";
+  send.disabled = true;
+
+  const typing = addMessage(
+    currentLanguage === "ar" ? "جارٍ إعداد الإجابة..." : "Préparation de la réponse...",
+    "bot"
+  );
+  typing.classList.add("typing");
+
+  try {
+    /*
+      اربط الواجهة بخادمك الآمن عبر POST /api/chat.
+      يجب أن يستقبل الخادم:
+      { "message": "...", "language": "ar" }
+      ويعيد:
+      { "reply": "..." }
+
+      لا تضع مفتاح API داخل هذا الملف.
+    */
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: question,
+        language: currentLanguage
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error("AI_SERVICE_UNAVAILABLE");
+    }
+
+    const data = await response.json();
+
+    if (!data || typeof data.reply !== "string" || !data.reply.trim()) {
+      throw new Error("INVALID_RESPONSE");
+    }
+
+    typing.remove();
+    addMessage(data.reply, "bot");
+
+  } catch (error) {
+    typing.remove();
+
+    addMessage(
+      currentLanguage === "ar"
+        ? "المساعد الذكي غير متصل بالخادم حاليًا. هذه الواجهة جاهزة، لكن يلزم إعداد خدمة الذكاء الاصطناعي على الخادم قبل الحصول على إجابات مولّدة. لا تعتمد على معدلات قبول قديمة؛ راجع منشورات وزارة التعليم العالي والجامعة المعنية."
+        : "L’assistant n’est pas encore relié à son serveur. L’interface est prête, mais un service d’IA doit être configuré pour générer des réponses. Consultez les publications officielles pour les seuils d’admission.",
+      "bot"
+    );
+  } finally {
+    send.disabled = false;
+    input.focus();
+  }
+});
+
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
@@ -490,14 +596,16 @@ if ("IntersectionObserver" in window) {
     });
   }, { threshold: 0.12 });
 
-  document.querySelectorAll(".reveal").forEach(function(element) {
-    observer.observe(element);
+  document.querySelectorAll(".reveal").forEach(function(el) {
+    observer.observe(el);
   });
 } else {
-  document.querySelectorAll(".reveal").forEach(function(element) {
-    element.classList.add("visible");
+  document.querySelectorAll(".reveal").forEach(function(el) {
+    el.classList.add("visible");
   });
 }
 </script>
+
 </body>
 </html>
+```
