@@ -1,706 +1,1139 @@
 
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0c3d2d">
-<meta name="description" content="الموقع الإلكتروني لثانوية مسغوني، التعريف بالمؤسسة والموارد الدراسية.">
-<title>ثانوية مسغوني | الموقع الرسمي</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0c3d2d">
+  <meta name="description" content="تعرّف على ثانوية مسغوني وعلى نظام التعليم الثانوي في الجزائر وأهدافه ومساراته الدراسية.">
+  <title>عن ثانوية مسغوني | التعريف بالمؤسسة</title>
 
-<style>
-:root {
-  --green: #145c43;
-  --dark-green: #0c3d2d;
-  --gold: #d9b45b;
-  --light: #f4f8f5;
-  --text: #24352d;
-  --muted: #687a70;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 85px; }
-body {
-  margin: 0;
-  font-family: Arial, Tahoma, sans-serif;
-  background: var(--light);
-  color: var(--text);
-  line-height: 1.8;
-}
-a, button { transition: all .3s ease; }
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(20,92,67,.97);
-  backdrop-filter: blur(10px);
-  color: white;
-  border-bottom: 4px solid var(--gold);
-  box-shadow: 0 4px 18px #00000012;
-}
-.header-inner {
-  max-width: 1200px;
-  margin: auto;
-  padding: 13px 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-.school-name {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.school-icon {
-  width: 49px;
-  height: 49px;
-  border: 2px solid var(--gold);
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  font-size: 29px;
-}
-.school-name h2 { margin: 0; font-size: 21px; }
-.school-name p { margin: 0; color: #f5dfa0; font-size: 12px; }
-.header-actions { display: flex; align-items: center; gap: 10px; }
-.language-button, .menu-button {
-  padding: 9px 14px;
-  border: 1px solid #ffffff55;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-.language-button { background: var(--gold); color: var(--dark-green); }
-.menu-button { background: transparent; color: white; display: none; }
-.language-button:hover, .menu-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 14px #0002;
-}
-nav {
-  background: var(--dark-green);
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  padding: 9px 15px;
-  flex-wrap: wrap;
-}
-nav a {
-  color: white;
-  text-decoration: none;
-  padding: 8px 13px;
-  border-radius: 7px;
-  font-size: 14px;
-}
-nav a:hover { background: var(--gold); color: var(--dark-green); }
+  <style>
+    :root {
+      --green: #145c43;
+      --dark-green: #0c3d2d;
+      --gold: #d9b45b;
+      --light: #f4f8f5;
+      --white: #ffffff;
+      --text: #24352d;
+      --muted: #687a70;
+      --border: #e0e9e2;
+      --shadow: 0 8px 28px #104b3810;
+      --radius: 16px;
+    }
 
-.hero {
-  min-height: 510px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 65px 22px;
-  color: white;
-  position: relative;
-  overflow: hidden;
-  background:
-    linear-gradient(120deg, rgba(5,45,31,.86), rgba(12,61,45,.65)),
-    url("facade.jpg") center/cover no-repeat;
-  border-bottom: 5px solid var(--gold);
-}
-.hero-content {
-  max-width: 850px;
-  animation: fadeUp .9s ease both;
-}
-.eyebrow {
-  display: inline-block;
-  padding: 6px 16px;
-  border: 1px solid #d9b45b99;
-  border-radius: 30px;
-  color: #f5dfa0;
-  background: #ffffff0c;
-  font-size: 14px;
-  margin-bottom: 15px;
-}
-.hero h1 {
-  color: var(--gold);
-  font-size: clamp(36px, 6vw, 64px);
-  line-height: 1.3;
-  margin: 0 0 12px;
-  text-shadow: 2px 3px 10px #0008;
-}
-.hero h2 { font-size: clamp(21px, 4vw, 31px); margin: 0 0 12px; }
-.hero p { max-width: 700px; margin: 0 auto 27px; font-size: 18px; }
-.actions { display: flex; justify-content: center; gap: 13px; flex-wrap: wrap; }
-.btn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 22px;
-  border-radius: 9px;
-  text-decoration: none;
-  font-weight: bold;
-  border: 1px solid transparent;
-  cursor: pointer;
-}
-.btn:hover { transform: translateY(-4px); box-shadow: 0 10px 23px #0003; }
-.btn-gold { background: var(--gold); color: #173b2c; }
-.btn-gold:hover { background: white; }
-.btn-outline { border-color: #ffffff85; color: white; background: #ffffff0c; }
-.btn-outline:hover { background: white; color: var(--green); }
+    * {
+      box-sizing: border-box;
+    }
 
-section { padding: 70px 22px; }
-.container { max-width: 1160px; margin: auto; }
-.section-heading { text-align: center; margin-bottom: 35px; }
-.section-heading .eyebrow-small {
-  color: #98721f;
-  font-size: 13px;
-  font-weight: bold;
-}
-.section-heading h2 { color: var(--green); font-size: clamp(27px,4vw,36px); margin: 4px 0; }
-.section-heading p { max-width: 680px; margin: 8px auto 0; color: var(--muted); }
-.title-line { width: 68px; height: 4px; background: var(--gold); margin: 13px auto; border-radius: 5px; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 95px;
+    }
 
-.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 23px; }
-.intro-card {
-  padding: 28px;
-  background: white;
-  border: 1px solid #e3ebe5;
-  border-radius: 16px;
-  box-shadow: 0 8px 28px #104b380b;
-  transition: transform .3s, box-shadow .3s;
-}
-.intro-card:hover { transform: translateY(-5px); box-shadow: 0 14px 32px #104b3817; }
-.intro-card h3 { color: var(--green); font-size: 23px; margin: 0 0 10px; }
-.intro-card p { color: var(--muted); }
-.feature-list { list-style: none; padding: 0; margin: 15px 0; }
-.feature-list li { padding: 7px 0; border-bottom: 1px solid #edf0ed; }
-.feature-list li::before { content: "✓"; color: #b38a2e; font-weight: bold; margin-left: 10px; }
-html[dir="ltr"] .feature-list li::before { margin-left: 0; margin-right: 10px; }
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.9;
+    }
 
-.cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 21px; }
-.card {
-  background: white;
-  padding: 26px 22px;
-  border-radius: 15px;
-  text-align: center;
-  border: 1px solid #e2e9e4;
-  border-bottom: 4px solid var(--gold);
-  box-shadow: 0 6px 22px #00000008;
-  transition: transform .3s, box-shadow .3s;
-}
-.card:hover { transform: translateY(-7px); box-shadow: 0 13px 28px #104b3817; }
-.card-icon { font-size: 38px; }
-.card h3 { color: var(--green); margin: 8px 0; }
-.card p { color: var(--muted); margin-bottom: 0; font-size: 15px; }
+    a, button {
+      -webkit-tap-highlight-color: transparent;
+    }
 
-.studies { background: #e9f1eb; }
-.study-card {
-  background: white;
-  padding: 27px 22px;
-  border-radius: 16px;
-  text-align: center;
-  border: 1px solid #e0e9e2;
-  box-shadow: 0 7px 23px #104b380a;
-  position: relative;
-  overflow: hidden;
-  transition: transform .3s, box-shadow .3s;
-}
-.study-card::before {
-  content: "";
-  position: absolute;
-  top: 0; right: 0; left: 0;
-  height: 4px;
-  background: var(--gold);
-}
-.study-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px #104b3817; }
-.study-card h3 { color: var(--green); font-size: 21px; }
-.study-card p { color: var(--muted); font-size: 14px; min-height: 50px; }
-.study-card .btn { width: 100%; margin-top: 10px; }
+    a {
+      color: inherit;
+    }
 
-.about-banner {
-  background: linear-gradient(120deg, var(--green), #1b7352);
-  color: white;
-  border-radius: 20px;
-  padding: 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.about-banner h2 { margin: 0 0 6px; font-size: 26px; }
-.about-banner p { margin: 0; color: #e2eee6; }
+    button {
+      font: inherit;
+    }
 
-.contact { background: #e8f0eb; text-align: center; }
-.contact p { margin: 8px 0; }
-footer { background: #092f23; color: white; padding: 30px 20px 18px; border-top: 4px solid var(--gold); }
-.footer-inner {
-  max-width: 1160px; margin: auto;
-  display: flex; justify-content: space-between; align-items: center;
-  gap: 18px; flex-wrap: wrap;
-}
-.footer-title { font-size: 20px; font-weight: bold; }
-.footer-note { font-size: 13px; color: #cbdad1; }
-.copyright { max-width: 1160px; margin: 20px auto 0; padding-top: 15px; border-top: 1px solid #ffffff22; text-align: center; color: #cbdad1; font-size: 12px; }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
 
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@media(max-width:850px) {
-  .header-inner { flex-wrap: wrap; }
-  .menu-button { display: inline-block; }
-  nav { display: none; flex-direction: column; align-items: stretch; }
-  nav.open { display: flex; }
-  nav a { padding: 10px 13px; }
-  .intro-grid { grid-template-columns: 1fr; }
-  .cards { grid-template-columns: repeat(2,1fr); }
-}
-@media(max-width:600px) {
-  .header-inner { padding: 12px 14px; }
-  .school-name h2 { font-size: 17px; }
-  .school-name p { font-size: 11px; }
-  .school-icon { width: 43px; height: 43px; }
-  .header-actions { gap: 6px; }
-  .language-button, .menu-button { padding: 8px 10px; font-size: 13px; }
-  .hero { min-height: 430px; padding: 45px 17px; }
-  .hero p { font-size: 16px; }
-  section { padding: 48px 16px; }
-  .cards { grid-template-columns: 1fr; }
-  .about-banner { padding: 24px; }
-}
-@media(prefers-reduced-motion:reduce) {
-  *,*::before,*::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
-  .reveal { opacity: 1; transform: none; }
-}
-</style>
+    .container {
+      width: min(1120px, calc(100% - 36px));
+      margin-inline: auto;
+    }
+
+    /* رأس الصفحة */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(20, 92, 67, .98);
+      color: var(--white);
+      border-bottom: 4px solid var(--gold);
+      box-shadow: 0 4px 18px #00000012;
+    }
+
+    .header-inner {
+      width: min(1200px, calc(100% - 36px));
+      min-height: 76px;
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding-block: 10px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      text-decoration: none;
+      min-width: 0;
+    }
+
+    .brand-icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      border: 2px solid var(--gold);
+      border-radius: 14px;
+      font-size: 26px;
+    }
+
+    .brand-name {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    .brand-tagline {
+      display: block;
+      color: #f5dfa0;
+      font-size: 12px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 43px;
+      padding: 9px 17px;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease,
+                  transform .2s ease, box-shadow .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 18px #00000018;
+    }
+
+    .button-gold {
+      background: var(--gold);
+      color: var(--dark-green);
+    }
+
+    .button-gold:hover {
+      background: #f0d78f;
+    }
+
+    .button-outline {
+      background: transparent;
+      border-color: #ffffff80;
+      color: white;
+    }
+
+    .button-outline:hover {
+      background: white;
+      color: var(--green);
+    }
+
+    .menu-button {
+      display: none;
+    }
+
+    .site-nav {
+      background: var(--dark-green);
+    }
+
+    .nav-inner {
+      width: min(1200px, calc(100% - 36px));
+      margin-inline: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+      padding-block: 7px;
+    }
+
+    .site-nav a {
+      padding: 7px 13px;
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .site-nav a:hover,
+    .site-nav a[aria-current="page"] {
+      background: var(--gold);
+      color: var(--dark-green);
+    }
+
+    /* الواجهة الرئيسية */
+    .hero {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 390px;
+      padding: 65px 20px;
+      overflow: hidden;
+      color: white;
+      text-align: center;
+      background:
+        linear-gradient(120deg, #062f23ed, #145c43d9),
+        url("facade.jpg") center / cover no-repeat;
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: min(850px, 100%);
+      animation: appear .7s ease both;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 5px 15px;
+      border: 1px solid #d9b45b99;
+      border-radius: 30px;
+      color: #f5dfa0;
+      background: #ffffff0d;
+      font-size: 14px;
+    }
+
+    .hero h1 {
+      margin: 0 0 12px;
+      color: var(--gold);
+      font-size: clamp(32px, 5vw, 53px);
+      line-height: 1.35;
+      text-shadow: 2px 3px 10px #0006;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 0 auto 24px;
+      color: #f1f6f2;
+      font-size: 17px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* الأقسام */
+    .section {
+      padding-block: 60px;
+    }
+
+    .section-heading {
+      max-width: 780px;
+      margin: 0 auto 30px;
+      text-align: center;
+    }
+
+    .section-label {
+      color: #98721f;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .section-heading h2 {
+      margin: 5px 0;
+      color: var(--green);
+      font-size: clamp(25px, 4vw, 34px);
+      line-height: 1.5;
+    }
+
+    .section-heading p {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .title-line {
+      width: 66px;
+      height: 4px;
+      margin: 13px auto;
+      border-radius: 5px;
+      background: var(--gold);
+    }
+
+    .panel {
+      padding: clamp(20px, 4vw, 32px);
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .panel h3 {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-size: 22px;
+    }
+
+    .panel p {
+      margin: 0 0 14px;
+      color: #53645a;
+    }
+
+    .panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .two-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .highlight-section {
+      background: #e9f1eb;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      min-width: 0;
+      padding: 24px 22px;
+      background: white;
+      border: 1px solid var(--border);
+      border-bottom: 4px solid var(--gold);
+      border-radius: var(--radius);
+      box-shadow: 0 6px 22px #00000008;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 13px 28px #104b3817;
+    }
+
+    .card-icon {
+      font-size: 34px;
+    }
+
+    .card h3 {
+      margin: 8px 0;
+      color: var(--green);
+      font-size: 20px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 15px;
+    }
+
+    .timeline-item {
+      padding: 20px 22px;
+      background: white;
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--gold);
+      border-radius: 12px;
+      box-shadow: 0 5px 18px #104b3808;
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 6px;
+      color: var(--green);
+      font-size: 19px;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .stream-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .stream {
+      padding: 14px 17px;
+      background: white;
+      border: 1px solid var(--border);
+      border-inline-start: 4px solid var(--gold);
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .notice {
+      margin-top: 20px;
+      padding: 16px 18px;
+      color: #654d19;
+      background: #fff7df;
+      border: 1px solid #f0dfad;
+      border-radius: 11px;
+      font-size: 14px;
+    }
+
+    .callout {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: clamp(22px, 4vw, 34px);
+      color: white;
+      background: linear-gradient(120deg, var(--green), #1b7352);
+      border-radius: 18px;
+    }
+
+    .callout h2 {
+      margin: 0 0 6px;
+      font-size: 24px;
+    }
+
+    .callout p {
+      margin: 0;
+      color: #e2eee6;
+    }
+
+    .official-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .text-link {
+      color: var(--green);
+      font-weight: bold;
+      text-underline-offset: 4px;
+    }
+
+    /* التذييل */
+    .site-footer {
+      margin-top: 25px;
+      padding: 30px 18px 18px;
+      color: white;
+      background: #092f23;
+      border-top: 4px solid var(--gold);
+    }
+
+    .footer-inner {
+      width: min(1120px, 100%);
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .footer-title {
+      margin: 0;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .footer-note {
+      margin: 3px 0 0;
+      color: #d4e2d9;
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .copyright {
+      width: min(1120px, 100%);
+      margin: 22px auto 0;
+      padding-top: 15px;
+      border-top: 1px solid #ffffff22;
+      color: #cbdad1;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .credits {
+      margin-top: 8px;
+      color: #f5dfa0;
+      font-size: 13px;
+    }
+
+    /* تأثيرات الظهور */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* الشاشات الصغيرة */
+    @media (max-width: 800px) {
+      .menu-button {
+        display: inline-flex;
+      }
+
+      .nav-inner {
+        display: none;
+        align-items: stretch;
+        flex-direction: column;
+        padding-block: 8px 14px;
+      }
+
+      .site-nav.open .nav-inner {
+        display: flex;
+      }
+
+      .site-nav a {
+        padding: 10px 13px;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container,
+      .header-inner,
+      .nav-inner {
+        width: calc(100% - 28px);
+      }
+
+      .header-inner {
+        gap: 10px;
+      }
+
+      .brand-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 23px;
+      }
+
+      .brand-name {
+        font-size: 16px;
+      }
+
+      .brand-tagline {
+        font-size: 10px;
+      }
+
+      .header-actions {
+        gap: 6px;
+      }
+
+      .button {
+        min-height: 39px;
+        padding: 8px 11px;
+        font-size: 13px;
+      }
+
+      .hero {
+        min-height: 350px;
+        padding: 48px 16px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .section {
+        padding-block: 42px;
+      }
+
+      .two-columns,
+      .cards,
+      .stream-list {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        padding: 21px;
+      }
+
+      .callout {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<header>
+
+<header class="site-header">
   <div class="header-inner">
-    <div class="school-name">
-      <span class="school-icon">🎓</span>
-      <div>
-        <h2 data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</h2>
-        <p data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail, clés de la réussite">العلم والعمل أساس النجاح</p>
-      </div>
-    </div>
+    <a class="brand" href="index.html" aria-label="العودة إلى الصفحة الرئيسية">
+      <span class="brand-icon" aria-hidden="true">🎓</span>
+      <span>
+        <span class="brand-name"
+          data-ar="ثانوية مسغوني"
+          data-fr="Lycée Mesgouni">ثانوية مسغوني</span>
+        <span class="brand-tagline"
+          data-ar="العلم والعمل أساس النجاح"
+          data-fr="Le savoir et le travail, clés de la réussite">العلم والعمل أساس النجاح</span>
+      </span>
+    </a>
+
     <div class="header-actions">
-      <button class="language-button" onclick="changeLanguage()" id="languageButton">Français</button>
-      <button class="menu-button" onclick="toggleMenu()" data-ar="☰ القائمة" data-fr="☰ Menu">☰ القائمة</button>
+      <button class="button button-outline" id="languageButton"
+        type="button" aria-label="تغيير لغة الصفحة" onclick="changeLanguage()">
+        Français
+      </button>
+
+      <button class="button button-outline menu-button"
+        type="button" aria-expanded="false" aria-controls="siteNavigation"
+        onclick="toggleMenu()" id="menuButton">
+        <span data-ar="☰ القائمة" data-fr="☰ Menu">☰ القائمة</span>
+      </button>
     </div>
   </div>
-  <nav id="navigation">
-    <a href="#home" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a>
-    <a href="about.html" data-ar="اكتشف ثانويتنا" data-fr="Découvrir notre lycée">اكتشف ثانويتنا</a>
-    <a href="#services" data-ar="خدماتنا" data-fr="Nos services">خدماتنا</a>
-    <a href="#study" data-ar="الموارد الدراسية" data-fr="Ressources scolaires">الموارد الدراسية</a>
-    <a href="#contact" data-ar="اتصل بنا" data-fr="Contact">اتصل بنا</a>
+
+  <nav class="site-nav" id="siteNavigation" aria-label="التنقل الرئيسي">
+    <div class="nav-inner">
+      <a href="index.html"
+        data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a>
+      <a href="#introduction" aria-current="page"
+        data-ar="عن الثانوية" data-fr="À propos">عن الثانوية</a>
+      <a href="#algerian-system"
+        data-ar="التعليم في الجزائر" data-fr="L’enseignement en Algérie">التعليم في الجزائر</a>
+      <a href="#study-path"
+        data-ar="المسار الدراسي" data-fr="Parcours scolaire">المسار الدراسي</a>
+      <a href="#streams"
+        data-ar="الشعب الدراسية" data-fr="Les filières">الشعب الدراسية</a>
+      <a href="#resources"
+        data-ar="الموارد الرسمية" data-fr="Ressources officielles">الموارد الرسمية</a>
+    </div>
   </nav>
 </header>
 
 <main>
-  <section class="hero" id="home">
+  <section class="hero">
     <div class="hero-content">
-      <div class="eyebrow" data-ar="مرحبًا بكم في فضاء المعرفة" data-fr="Bienvenue dans l’espace du savoir">مرحبًا بكم في فضاء المعرفة</div>
-      <h1 data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</h1>
-      <h2 data-ar="مستقبل أبنائنا يبدأ بالعلم" data-fr="L’avenir de nos élèves commence par le savoir">مستقبل أبنائنا يبدأ بالعلم</h2>
-      <p data-ar="فضاء للتعلم والمعرفة والتواصل، نحو مستقبل أفضل لأبنائنا التلاميذ."
-         data-fr="Un espace d’apprentissage, de savoir et de communication pour un meilleur avenir de nos élèves.">
-        فضاء للتعلم والمعرفة والتواصل، نحو مستقبل أفضل لأبنائنا التلاميذ.
+      <span class="eyebrow"
+        data-ar="فضاء العلم والمعرفة"
+        data-fr="Un espace de savoir et de connaissance">فضاء العلم والمعرفة</span>
+
+      <h1 data-ar="اكتشف ثانوية مسغوني"
+        data-fr="Découvrez le lycée Mesgouni">اكتشف ثانوية مسغوني</h1>
+
+      <p data-ar="صفحة تعريفية بالمؤسسة وبمرحلة التعليم الثانوي في الجزائر، وأهدافها التعليمية، والمسارات الدراسية التي تساعد التلميذ على الاستعداد لمستقبله."
+         data-fr="Une présentation de l’établissement, de l’enseignement secondaire en Algérie, de ses objectifs et des parcours qui aident les élèves à préparer leur avenir.">
+        صفحة تعريفية بالمؤسسة وبمرحلة التعليم الثانوي في الجزائر، وأهدافها التعليمية، والمسارات الدراسية التي تساعد التلميذ على الاستعداد لمستقبله.
       </p>
-      <div class="actions">
-        <a class="btn btn-gold" href="about.html" data-ar="اكتشف ثانويتنا ←" data-fr="Découvrir notre lycée ←">اكتشف ثانويتنا ←</a>
-        <a class="btn btn-outline" href="#study" data-ar="الوصول إلى الموارد ↓" data-fr="Accéder aux ressources ↓">الوصول إلى الموارد ↓</a>
+
+      <div class="hero-actions">
+        <a class="button button-gold" href="#introduction"
+          data-ar="التعريف بالمؤسسة ↓"
+          data-fr="Présentation de l’établissement ↓">التعريف بالمؤسسة ↓</a>
+
+        <a class="button button-outline" href="index.html"
+          data-ar="العودة إلى الرئيسية"
+          data-fr="Retour à l’accueil">العودة إلى الرئيسية</a>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="container intro-grid">
-      <div class="intro-card reveal">
-        <h3 data-ar="معًا نحو التميز والنجاح" data-fr="Ensemble vers l’excellence et la réussite">معًا نحو التميز والنجاح</h3>
-        <p data-ar="نؤمن بأن التعليم الجيد يبدأ ببيئة محفزة، وعمل جاد، وتعاون بين الأسرة والمدرسة والتلميذ."
-           data-fr="Nous croyons qu’une bonne éducation repose sur un environnement motivant, le travail sérieux et la coopération entre la famille, l’école et l’élève.">
-          نؤمن بأن التعليم الجيد يبدأ ببيئة محفزة، وعمل جاد، وتعاون بين الأسرة والمدرسة والتلميذ.
-        </p>
-        <a class="btn btn-gold" href="about.html" data-ar="التعريف بالثانوية" data-fr="Présentation du lycée">التعريف بالثانوية</a>
-      </div>
-      <div class="intro-card reveal">
-        <h3 data-ar="ماذا تجد في موقعنا؟" data-fr="Que trouverez-vous sur notre site ?">ماذا تجد في موقعنا؟</h3>
-        <ul class="feature-list">
-          <li data-ar="روابط الموارد التعليمية حسب المستوى" data-fr="Ressources pédagogiques par niveau">روابط الموارد التعليمية حسب المستوى</li>
-          <li data-ar="التعريف بالمؤسسة وأهدافها" data-fr="Présentation de l’établissement et de ses objectifs">التعريف بالمؤسسة وأهدافها</li>
-          <li data-ar="الوصول السريع إلى موارد المراجعة" data-fr="Accès rapide aux ressources de révision">الوصول السريع إلى موارد المراجعة</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="services">
+  <!-- التعريف بثانوية مسغوني -->
+  <section class="section" id="introduction">
     <div class="container">
       <div class="section-heading reveal">
-        <div class="eyebrow-small" data-ar="فضاء تعليمي متكامل" data-fr="UN ESPACE ÉDUCATIF">فضاء تعليمي متكامل</div>
-        <h2 data-ar="خدمات الموقع" data-fr="Les services du site">خدمات الموقع</h2>
+        <span class="section-label"
+          data-ar="من نحن؟" data-fr="QUI SOMMES-NOUS ?">من نحن؟</span>
+        <h2 data-ar="التعريف بثانوية مسغوني"
+          data-fr="Présentation du lycée Mesgouni">التعريف بثانوية مسغوني</h2>
         <div class="title-line"></div>
-        <p data-ar="خدمات وروابط تساعد التلاميذ على تنظيم تعلمهم والوصول إلى الموارد بسهولة."
-           data-fr="Des services et des liens pour aider les élèves à organiser leurs études et accéder facilement aux ressources.">
-          خدمات وروابط تساعد التلاميذ على تنظيم تعلمهم والوصول إلى الموارد بسهولة.
+        <p data-ar="التعليم رسالة مشتركة تقوم على الاجتهاد والتعاون واحترام القيم."
+           data-fr="L’éducation est une mission commune fondée sur l’effort, la coopération et le respect des valeurs.">
+          التعليم رسالة مشتركة تقوم على الاجتهاد والتعاون واحترام القيم.
         </p>
       </div>
-      <div class="cards">
-        <article class="card reveal">
-          <div class="card-icon">📚</div>
-          <h3 data-ar="الموارد التعليمية" data-fr="Ressources pédagogiques">الموارد التعليمية</h3>
-          <p data-ar="الوصول إلى الدروس والملخصات والتمارين."
-             data-fr="Accéder aux cours, résumés et exercices.">الوصول إلى الدروس والملخصات والتمارين.</p>
+
+      <div class="two-columns">
+        <article class="panel reveal">
+          <h3 data-ar="مؤسسة للتعلم وبناء المستقبل"
+            data-fr="Un établissement pour apprendre et préparer l’avenir">مؤسسة للتعلم وبناء المستقبل</h3>
+
+          <p data-ar="تُقدَّم ثانوية مسغوني في هذه الصفحة باعتبارها مؤسسة للتعليم الثانوي، ويهدف هذا الموقع التعريفي إلى مساعدة التلاميذ والأولياء على الوصول إلى معلومات تعليمية وموارد للمراجعة، والتعرّف على أهمية المرحلة الثانوية في المسار الدراسي."
+             data-fr="Cette page présente le lycée Mesgouni comme un établissement d’enseignement secondaire. Le site vise à aider les élèves et les parents à accéder à des informations éducatives, à des ressources de révision et à mieux comprendre l’importance de cette étape scolaire.">
+            تُقدَّم ثانوية مسغوني في هذه الصفحة باعتبارها مؤسسة للتعليم الثانوي، ويهدف هذا الموقع التعريفي إلى مساعدة التلاميذ والأولياء على الوصول إلى معلومات تعليمية وموارد للمراجعة، والتعرّف على أهمية المرحلة الثانوية في المسار الدراسي.
+          </p>
+
+          <p data-ar="ويقوم النجاح الدراسي على المثابرة، وتنظيم الوقت، والمتابعة المنتظمة للدروس، والتواصل الإيجابي بين التلميذ والأسرة والأساتذة والإدارة."
+             data-fr="La réussite scolaire repose sur la persévérance, l’organisation du temps, le suivi régulier des cours et une communication constructive entre l’élève, sa famille, les enseignants et l’administration.">
+            ويقوم النجاح الدراسي على المثابرة، وتنظيم الوقت، والمتابعة المنتظمة للدروس، والتواصل الإيجابي بين التلميذ والأسرة والأساتذة والإدارة.
+          </p>
         </article>
-        <article class="card reveal">
-          <div class="card-icon">📝</div>
-          <h3 data-ar="الفروض والاختبارات" data-fr="Devoirs et examens">الفروض والاختبارات</h3>
-          <p data-ar="المراجعة والتدريب والتحضير الجيد للاختبارات."
-             data-fr="Réviser et bien se préparer aux examens.">المراجعة والتدريب والتحضير الجيد للاختبارات.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card-icon">🏫</div>
-          <h3 data-ar="الحياة المدرسية" data-fr="Vie scolaire">الحياة المدرسية</h3>
-          <p data-ar="التعريف بالمؤسسة وأهدافها والشعب الدراسية."
-             data-fr="Découvrir l’établissement, ses objectifs et ses filières.">التعريف بالمؤسسة وأهدافها والشعب الدراسية.</p>
+
+        <article class="panel reveal">
+          <h3 data-ar="رسالة الموقع"
+            data-fr="La mission du site">رسالة الموقع</h3>
+
+          <p data-ar="يسعى الموقع إلى أن يكون فضاءً رقميًا مساعدًا في الحياة المدرسية، من خلال جمع روابط الموارد التعليمية وتقديم معلومات عامة عن التعليم الثانوي والتوجيه الدراسي."
+             data-fr="Le site vise à être un espace numérique utile à la vie scolaire, en regroupant des ressources pédagogiques et en présentant des informations générales sur l’enseignement secondaire et l’orientation.">
+            يسعى الموقع إلى أن يكون فضاءً رقميًا مساعدًا في الحياة المدرسية، من خلال جمع روابط الموارد التعليمية وتقديم معلومات عامة عن التعليم الثانوي والتوجيه الدراسي.
+          </p>
+
+          <p data-ar="المعلومات الواردة هنا حول النظام التعليمي معلومات عامة، أما بيانات الاتصال الرسمية وتاريخ تأسيس المؤسسة وشعبها المتوفرة فتُضاف بعد التحقق منها من إدارة الثانوية."
+             data-fr="Les informations sur le système éducatif sont générales. Les coordonnées officielles, la date de création et les filières réellement proposées par le lycée doivent être ajoutées après vérification auprès de son administration.">
+            المعلومات الواردة هنا حول النظام التعليمي معلومات عامة، أما بيانات الاتصال الرسمية وتاريخ تأسيس المؤسسة وشعبها المتوفرة فتُضاف بعد التحقق منها من إدارة الثانوية.
+          </p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="studies" id="study">
+  <!-- تعريف مفصل بالتعليم الثانوي -->
+  <section class="section highlight-section" id="algerian-system">
     <div class="container">
       <div class="section-heading reveal">
-        <div class="eyebrow-small" data-ar="اختر مستواك الدراسي" data-fr="CHOISISSEZ VOTRE NIVEAU">اختر مستواك الدراسي</div>
-        <h2 data-ar="الموارد الدراسية" data-fr="Ressources scolaires">الموارد الدراسية</h2>
+        <span class="section-label"
+          data-ar="النظام التربوي الجزائري"
+          data-fr="SYSTÈME ÉDUCATIF ALGÉRIEN">النظام التربوي الجزائري</span>
+
+        <h2 data-ar="ما هو التعليم الثانوي في الجزائر؟"
+          data-fr="Qu’est-ce que l’enseignement secondaire en Algérie ?">
+          ما هو التعليم الثانوي في الجزائر؟
+        </h2>
+
         <div class="title-line"></div>
-        <p data-ar="اضغط على زر الدخول للانتقال مباشرة إلى موارد مستواك الدراسي."
-           data-fr="Cliquez sur le bouton pour accéder directement aux ressources de votre niveau.">
-          اضغط على زر الدخول للانتقال مباشرة إلى موارد مستواك الدراسي.
+      </div>
+
+      <article class="panel reveal">
+        <p data-ar="التعليم الثانوي مرحلة من مراحل التعليم المدرسي في الجزائر، تأتي بعد التعليم المتوسط. ويلتحق بها التلميذ بعد إتمام المرحلة المتوسطة وفق شروط الانتقال والتوجيه المعمول بها. وتمثل هذه المرحلة فترة مهمة لاكتساب معارف أعمق، وتطوير مهارات التفكير والتحليل والاستقلالية، والاستعداد لمواصلة الدراسة أو بناء مشروع مستقبلي."
+           data-fr="L’enseignement secondaire est une étape de la scolarité en Algérie qui vient après l’enseignement moyen. L’élève y accède après avoir terminé le cycle moyen, selon les règles d’admission et d’orientation en vigueur. Cette étape permet d’approfondir les connaissances, de développer la réflexion, l’analyse et l’autonomie, et de préparer la poursuite des études ou un projet d’avenir.">
+          التعليم الثانوي مرحلة من مراحل التعليم المدرسي في الجزائر، تأتي بعد التعليم المتوسط. ويلتحق بها التلميذ بعد إتمام المرحلة المتوسطة وفق شروط الانتقال والتوجيه المعمول بها. وتمثل هذه المرحلة فترة مهمة لاكتساب معارف أعمق، وتطوير مهارات التفكير والتحليل والاستقلالية، والاستعداد لمواصلة الدراسة أو بناء مشروع مستقبلي.
+        </p>
+
+        <p data-ar="يدوم التعليم الثانوي العام والتكنولوجي عادةً ثلاث سنوات: السنة الأولى ثانوي، والسنة الثانية ثانوي، والسنة الثالثة ثانوي. ويواصل التلميذ دراسة مواد متعددة، مع اختلاف التركيز على المواد بحسب المستوى والمسار الدراسي."
+           data-fr="L’enseignement secondaire général et technologique dure généralement trois années : première, deuxième et troisième année secondaire. Les élèves étudient plusieurs matières, avec une importance différente accordée à certaines disciplines selon le niveau et le parcours.">
+          يدوم التعليم الثانوي العام والتكنولوجي عادةً ثلاث سنوات: السنة الأولى ثانوي، والسنة الثانية ثانوي، والسنة الثالثة ثانوي. ويواصل التلميذ دراسة مواد متعددة، مع اختلاف التركيز على المواد بحسب المستوى والمسار الدراسي.
+        </p>
+
+        <p data-ar="لا يقتصر دور الثانوية على تقديم الدروس والتحضير للامتحانات؛ بل يشمل كذلك تنمية الانضباط وتحمل المسؤولية، والتعاون، واحترام الآخرين، والقدرة على البحث والتعلم الذاتي، وهي مهارات يحتاجها التلميذ في الجامعة وفي الحياة المهنية."
+           data-fr="Le rôle du lycée ne se limite pas aux cours et à la préparation aux examens. Il contribue également au développement de la discipline, de la responsabilité, de la coopération, du respect d’autrui et de la capacité à effectuer des recherches et à apprendre de manière autonome.">
+          لا يقتصر دور الثانوية على تقديم الدروس والتحضير للامتحانات؛ بل يشمل كذلك تنمية الانضباط وتحمل المسؤولية، والتعاون، واحترام الآخرين، والقدرة على البحث والتعلم الذاتي، وهي مهارات يحتاجها التلميذ في الجامعة وفي الحياة المهنية.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- المسار الدراسي -->
+  <section class="section" id="study-path">
+    <div class="container">
+      <div class="section-heading reveal">
+        <span class="section-label"
+          data-ar="المراحل الدراسية" data-fr="LES ÉTAPES SCOLAIRES">المراحل الدراسية</span>
+        <h2 data-ar="كيف يسير المسار في الثانوية؟"
+          data-fr="Comment se déroule le parcours au lycée ?">كيف يسير المسار في الثانوية؟</h2>
+        <div class="title-line"></div>
+        <p data-ar="نظرة عامة على السنوات الثلاث من التعليم الثانوي."
+          data-fr="Aperçu général des trois années de l’enseignement secondaire.">
+          نظرة عامة على السنوات الثلاث من التعليم الثانوي.
         </p>
       </div>
+
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <h3 data-ar="السنة الأولى ثانوي — الجذع المشترك"
+            data-fr="Première année secondaire — Tronc commun">السنة الأولى ثانوي — الجذع المشترك</h3>
+          <p data-ar="يواصل التلميذ دراسة مجموعة من المواد الأساسية والعامة، ويعمل على ترسيخ مكتسباته وتحديد ميوله وقدراته استعدادًا للتوجيه الدراسي وفق التنظيم المعمول به."
+             data-fr="L’élève poursuit l’étude de matières fondamentales et générales, consolide ses acquis et commence à mieux identifier ses intérêts et ses aptitudes en vue de l’orientation scolaire.">
+            يواصل التلميذ دراسة مجموعة من المواد الأساسية والعامة، ويعمل على ترسيخ مكتسباته وتحديد ميوله وقدراته استعدادًا للتوجيه الدراسي وفق التنظيم المعمول به.
+          </p>
+        </article>
+
+        <article class="timeline-item reveal">
+          <h3 data-ar="السنة الثانية ثانوي — تعميق المعارف"
+            data-fr="Deuxième année secondaire — Approfondissement">السنة الثانية ثانوي — تعميق المعارف</h3>
+          <p data-ar="يتابع التلميذ دراسته ضمن المسار أو الشعبة التي وُجّه إليها، ويطوّر معارفه ومهاراته في المواد المرتبطة بتخصصه، مع مواصلة دراسة المواد الأخرى المقررة."
+             data-fr="L’élève poursuit ses études dans le parcours ou la filière vers laquelle il a été orienté. Il approfondit les matières liées à sa spécialité tout en continuant les autres enseignements prévus.">
+            يتابع التلميذ دراسته ضمن المسار أو الشعبة التي وُجّه إليها، ويطوّر معارفه ومهاراته في المواد المرتبطة بتخصصه، مع مواصلة دراسة المواد الأخرى المقررة.
+          </p>
+        </article>
+
+        <article class="timeline-item reveal">
+          <h3 data-ar="السنة الثالثة ثانوي — التحضير للبكالوريا"
+            data-fr="Troisième année secondaire — Préparation au baccalauréat">السنة الثالثة ثانوي — التحضير للبكالوريا</h3>
+          <p data-ar="يركز التلميذ على استكمال البرنامج الدراسي والمراجعة والتدرب على نماذج الاختبارات، استعدادًا لاجتياز امتحان شهادة البكالوريا وفق المواد والضوابط الرسمية المعتمدة."
+             data-fr="L’élève achève le programme, révise les cours et s’entraîne sur des sujets d’examen afin de préparer l’épreuve officielle du baccalauréat, selon les matières et les règles en vigueur.">
+            يركز التلميذ على استكمال البرنامج الدراسي والمراجعة والتدرب على نماذج الاختبارات، استعدادًا لاجتياز امتحان شهادة البكالوريا وفق المواد والضوابط الرسمية المعتمدة.
+          </p>
+        </article>
+      </div>
+
+      <div class="notice reveal"
+        data-ar="تنبيه: قد تتغير تفاصيل البرامج والتوجيه والشعب وفق القرارات الرسمية. يُرجى الرجوع إلى وزارة التربية الوطنية وإدارة المؤسسة للحصول على أحدث المعلومات."
+        data-fr="Remarque : les programmes, l’orientation et les filières peuvent évoluer selon les décisions officielles. Consultez le ministère de l’Éducation nationale et l’administration de l’établissement pour les informations les plus récentes.">
+        تنبيه: قد تتغير تفاصيل البرامج والتوجيه والشعب وفق القرارات الرسمية. يُرجى الرجوع إلى وزارة التربية الوطنية وإدارة المؤسسة للحصول على أحدث المعلومات.
+      </div>
+    </div>
+  </section>
+
+  <!-- أهداف الثانوية -->
+  <section class="section highlight-section" id="goals">
+    <div class="container">
+      <div class="section-heading reveal">
+        <span class="section-label"
+          data-ar="قيمنا وأهدافنا" data-fr="NOS VALEURS ET OBJECTIFS">قيمنا وأهدافنا</span>
+        <h2 data-ar="أهداف التعليم الثانوي"
+          data-fr="Les objectifs de l’enseignement secondaire">أهداف التعليم الثانوي</h2>
+        <div class="title-line"></div>
+      </div>
+
       <div class="cards">
-        <article class="study-card reveal">
-          <div class="card-icon">📘</div>
-          <h3 data-ar="السنة الأولى ثانوي" data-fr="Première année secondaire">السنة الأولى ثانوي</h3>
-          <p data-ar="دروس وتمارين وملخصات للمراجعة."
-             data-fr="Cours, exercices et résumés pour réviser.">دروس وتمارين وملخصات للمراجعة.</p>
-          <a class="btn btn-gold" href="https://www.dzexams.com/ar/1as" target="_blank" rel="noopener noreferrer" data-ar="الدخول إلى الموارد ↗" data-fr="Accéder aux ressources ↗">الدخول إلى الموارد ↗</a>
+        <article class="card reveal">
+          <div class="card-icon" aria-hidden="true">📚</div>
+          <h3 data-ar="التحصيل العلمي"
+            data-fr="Acquis scolaires">التحصيل العلمي</h3>
+          <p data-ar="تعميق المعارف في مختلف المواد، وتنمية القدرة على الفهم والتحليل والاستنتاج وحل المشكلات."
+            data-fr="Approfondir les connaissances et développer la compréhension, l’analyse, le raisonnement et la résolution de problèmes.">
+            تعميق المعارف في مختلف المواد، وتنمية القدرة على الفهم والتحليل والاستنتاج وحل المشكلات.
+          </p>
         </article>
-        <article class="study-card reveal">
-          <div class="card-icon">📗</div>
-          <h3 data-ar="السنة الثانية ثانوي" data-fr="Deuxième année secondaire">السنة الثانية ثانوي</h3>
-          <p data-ar="مصادر تعليمية لدعم التعلم والمراجعة."
-             data-fr="Des ressources pour apprendre et réviser.">مصادر تعليمية لدعم التعلم والمراجعة.</p>
-          <a class="btn btn-gold" href="https://www.dzexams.com/ar/2as" target="_blank" rel="noopener noreferrer" data-ar="الدخول إلى الموارد ↗" data-fr="Accéder aux ressources ↗">الدخول إلى الموارد ↗</a>
+
+        <article class="card reveal">
+          <div class="card-icon" aria-hidden="true">🎯</div>
+          <h3 data-ar="التوجيه الدراسي"
+            data-fr="Orientation scolaire">التوجيه الدراسي</h3>
+          <p data-ar="مساعدة التلميذ على فهم ميوله وقدراته والتعرف على المسارات التي يمكن أن تناسب أهدافه المستقبلية."
+            data-fr="Aider l’élève à comprendre ses intérêts et ses aptitudes et à découvrir les parcours adaptés à ses projets.">
+            مساعدة التلميذ على فهم ميوله وقدراته والتعرف على المسارات التي يمكن أن تناسب أهدافه المستقبلية.
+          </p>
         </article>
-        <article class="study-card reveal">
-          <div class="card-icon">📕</div>
-          <h3 data-ar="السنة الثالثة ثانوي" data-fr="Troisième année secondaire">السنة الثالثة ثانوي</h3>
-          <p data-ar="موارد للمراجعة والتحضير لشهادة البكالوريا."
-             data-fr="Ressources de révision pour préparer le baccalauréat.">موارد للمراجعة والتحضير لشهادة البكالوريا.</p>
-          <a class="btn btn-gold" href="https://www.dzexams.com/ar/3as" target="_blank" rel="noopener noreferrer" data-ar="الدخول إلى الموارد ↗" data-fr="Accéder aux ressources ↗">الدخول إلى الموارد ↗</a>
+
+        <article class="card reveal">
+          <div class="card-icon" aria-hidden="true">🤝</div>
+          <h3 data-ar="القيم والمسؤولية"
+            data-fr="Valeurs et responsabilité">القيم والمسؤولية</h3>
+          <p data-ar="تعزيز الاحترام والانضباط والتعاون وروح المسؤولية والمشاركة الإيجابية في الحياة المدرسية."
+            data-fr="Renforcer le respect, la discipline, la coopération, le sens des responsabilités et la participation à la vie scolaire.">
+            تعزيز الاحترام والانضباط والتعاون وروح المسؤولية والمشاركة الإيجابية في الحياة المدرسية.
+          </p>
         </article>
       </div>
     </div>
   </section>
 
-  <section>
+  <!-- الشعب -->
+  <section class="section" id="streams">
     <div class="container">
-      <div class="about-banner reveal">
+      <div class="section-heading reveal">
+        <span class="section-label"
+          data-ar="المسارات الدراسية" data-fr="PARCOURS SCOLAIRES">المسارات الدراسية</span>
+        <h2 data-ar="أمثلة عن الشعب في التعليم الثانوي"
+          data-fr="Exemples de filières du secondaire">أمثلة عن الشعب في التعليم الثانوي</h2>
+        <div class="title-line"></div>
+        <p data-ar="تختلف المواد الأساسية ووجهات التخصص بحسب الشعبة والتنظيم المعتمد."
+          data-fr="Les matières principales et les possibilités d’orientation varient selon la filière et la réglementation en vigueur.">
+          تختلف المواد الأساسية ووجهات التخصص بحسب الشعبة والتنظيم المعتمد.
+        </p>
+      </div>
+
+      <div class="stream-list reveal">
+        <div class="stream"
+          data-ar="🔬 علوم تجريبية"
+          data-fr="🔬 Sciences expérimentales">🔬 علوم تجريبية</div>
+
+        <div class="stream"
+          data-ar="📐 رياضيات"
+          data-fr="📐 Mathématiques">📐 رياضيات</div>
+
+        <div class="stream"
+          data-ar="⚙️ تقني رياضي"
+          data-fr="⚙️ Techniques mathématiques">⚙️ تقني رياضي</div>
+
+        <div class="stream"
+          data-ar="📊 تسيير واقتصاد"
+          data-fr="📊 Gestion et économie">📊 تسيير واقتصاد</div>
+
+        <div class="stream"
+          data-ar="📖 آداب وفلسفة"
+          data-fr="📖 Lettres et philosophie">📖 آداب وفلسفة</div>
+
+        <div class="stream"
+          data-ar="🌍 لغات أجنبية"
+          data-fr="🌍 Langues étrangères">🌍 لغات أجنبية</div>
+      </div>
+
+      <div class="notice reveal"
+        data-ar="هذه أمثلة عامة عن الشعب المعروفة في التعليم الثانوي الجزائري، وليست قائمة مؤكدة بالشعب المفتوحة في ثانوية مسغوني. يجب التأكد من الشعب المتاحة ومن تنظيم التوجيه لدى إدارة المؤسسة ووزارة التربية الوطنية."
+        data-fr="Il s’agit d’exemples généraux de filières connues dans l’enseignement secondaire algérien, et non d’une liste confirmée des filières ouvertes au lycée Mesgouni. Vérifiez les filières disponibles et les règles d’orientation auprès de l’établissement et du ministère.">
+        هذه أمثلة عامة عن الشعب المعروفة في التعليم الثانوي الجزائري، وليست قائمة مؤكدة بالشعب المفتوحة في ثانوية مسغوني. يجب التأكد من الشعب المتاحة ومن تنظيم التوجيه لدى إدارة المؤسسة ووزارة التربية الوطنية.
+      </div>
+    </div>
+  </section>
+
+  <!-- الموارد -->
+  <section class="section highlight-section" id="resources">
+    <div class="container">
+      <div class="section-heading reveal">
+        <span class="section-label"
+          data-ar="مصادر مفيدة" data-fr="SOURCES UTILES">مصادر مفيدة</span>
+        <h2 data-ar="الموارد التعليمية الرسمية"
+          data-fr="Ressources éducatives officielles">الموارد التعليمية الرسمية</h2>
+        <div class="title-line"></div>
+        <p data-ar="للمعلومات الدقيقة والمستجدات، يُفضّل الرجوع إلى المواقع الرسمية."
+          data-fr="Pour obtenir des informations précises et à jour, privilégiez les sites officiels.">
+          للمعلومات الدقيقة والمستجدات، يُفضّل الرجوع إلى المواقع الرسمية.
+        </p>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card-icon" aria-hidden="true">🏛️</div>
+          <h3 data-ar="وزارة التربية الوطنية"
+            data-fr="Ministère de l’Éducation nationale">وزارة التربية الوطنية</h3>
+          <p data-ar="لمتابعة الإعلانات والقرارات والمعلومات المتعلقة بالمدرسة والتعليم."
+            data-fr="Pour consulter les annonces, les décisions et les informations sur l’éducation.">
+            لمتابعة الإعلانات والقرارات والمعلومات المتعلقة بالمدرسة والتعليم.
+          </p>
+          <a class="text-link" href="https://www.education.gov.dz/"
+             target="_blank" rel="noopener noreferrer"
+             data-ar="زيارة الموقع الرسمي ↗"
+             data-fr="Visiter le site officiel ↗">زيارة الموقع الرسمي ↗</a>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon" aria-hidden="true">🎓</div>
+          <h3 data-ar="التوجيه الجامعي"
+            data-fr="Orientation universitaire">التوجيه الجامعي</h3>
+          <p data-ar="للتعرف على معلومات التكوين العالي ومسارات الدراسة الجامعية في الجزائر."
+            data-fr="Pour découvrir les formations supérieures et les parcours universitaires en Algérie.">
+            للتعرف على معلومات التكوين العالي ومسارات الدراسة الجامعية في الجزائر.
+          </p>
+          <a class="text-link" href="https://www.mesrs.dz/"
+             target="_blank" rel="noopener noreferrer"
+             data-ar="وزارة التعليم العالي ↗"
+             data-fr="Ministère de l’Enseignement supérieur ↗">وزارة التعليم العالي ↗</a>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon" aria-hidden="true">📖</div>
+          <h3 data-ar="الموارد الدراسية"
+            data-fr="Ressources scolaires">الموارد الدراسية</h3>
+          <p data-ar="العودة إلى الصفحة الرئيسية للوصول إلى روابط المراجعة حسب السنة الدراسية."
+            data-fr="Retournez à la page d’accueil pour accéder aux ressources de révision selon l’année scolaire.">
+            العودة إلى الصفحة الرئيسية للوصول إلى روابط المراجعة حسب السنة الدراسية.
+          </p>
+          <a class="text-link" href="index.html#study"
+             data-ar="عرض الموارد الدراسية ↗"
+             data-fr="Voir les ressources scolaires ↗">عرض الموارد الدراسية ↗</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="callout reveal">
         <div>
-          <h2 data-ar="اكتشف ثانوية مسغوني" data-fr="Découvrez le lycée Mesgouni">اكتشف ثانوية مسغوني</h2>
-          <p data-ar="تعرّف على المؤسسة وأهدافها وخصائصها والشعب الدراسية."
-             data-fr="Découvrez l’établissement, ses objectifs, ses caractéristiques et ses filières.">
-            تعرّف على المؤسسة وأهدافها وخصائصها والشعب الدراسية.
+          <h2 data-ar="واصل رحلتك نحو النجاح"
+            data-fr="Poursuivez votre chemin vers la réussite">واصل رحلتك نحو النجاح</h2>
+          <p data-ar="انتقل إلى الصفحة الرئيسية لاستكشاف الموارد الدراسية المتاحة."
+            data-fr="Rendez-vous sur la page d’accueil pour découvrir les ressources scolaires disponibles.">
+            انتقل إلى الصفحة الرئيسية لاستكشاف الموارد الدراسية المتاحة.
           </p>
         </div>
-        <a class="btn btn-gold" href="about.html" data-ar="اكتشف ثانويتنا ←" data-fr="Découvrir notre lycée ←">اكتشف ثانويتنا ←</a>
-      </div>
-    </div>
-  </section>
 
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="section-heading reveal">
-        <h2 data-ar="اتصل بنا" data-fr="Contactez-nous">اتصل بنا</h2>
-        <div class="title-line"></div>
+        <a class="button button-gold" href="index.html#study"
+          data-ar="استكشاف الموارد ←"
+          data-fr="Explorer les ressources ←">استكشاف الموارد ←</a>
       </div>
-      <p data-ar="مرحبًا بكم في الموقع الإلكتروني لثانوية مسغوني."
-         data-fr="Bienvenue sur le site du lycée Mesgouni.">مرحبًا بكم في الموقع الإلكتروني لثانوية مسغوني.</p>
-      <p data-ar="يمكن إضافة معلومات الاتصال الرسمية للمؤسسة هنا."
-         data-fr="Les coordonnées officielles de l’établissement peuvent être ajoutées ici.">
-        يمكن إضافة معلومات الاتصال الرسمية للمؤسسة هنا.
-      </p>
     </div>
   </section>
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="footer-inner">
     <div>
-      <div class="footer-title" data-ar="🎓 ثانوية مسغوني" data-fr="🎓 Lycée Mesgouni">🎓 ثانوية مسغوني</div>
-      <div class="footer-note" data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail, clés de la réussite">العلم والعمل أساس النجاح</div>
+      <p class="footer-title"
+        data-ar="🎓 ثانوية مسغوني"
+        data-fr="🎓 Lycée Mesgouni">🎓 ثانوية مسغوني</p>
+
+      <p class="footer-note"
+        data-ar="العلم والعمل أساس النجاح"
+        data-fr="Le savoir et le travail, clés de la réussite">العلم والعمل أساس النجاح</p>
     </div>
-    <a class="btn btn-outline" href="about.html" data-ar="عن الثانوية" data-fr="À propos">عن الثانوية</a>
+
+    <div class="footer-links">
+      <a class="button button-outline" href="index.html"
+        data-ar="الصفحة الرئيسية"
+        data-fr="Page d’accueil">الصفحة الرئيسية</a>
+      <a class="button button-outline" href="#introduction"
+        data-ar="عن الثانوية ↑"
+        data-fr="À propos ↑">عن الثانوية ↑</a>
+    </div>
   </div>
-  <div class="copyright">© 2026 <span data-ar="ثانوية مسغوني — جميع الحقوق محفوظة" data-fr="Lycée Mesgouni — Tous droits réservés">ثانوية مسغوني — جميع الحقوق محفوظة</span></div>
+
+  <div class="copyright">
+    <div>© <span id="currentYear">2026</span>
+      <span data-ar="ثانوية مسغوني — جميع الحقوق محفوظة"
+        data-fr="Lycée Mesgouni — Tous droits réservés">ثانوية مسغوني — جميع الحقوق محفوظة</span>
+    </div>
+
+    <div class="credits"
+      data-ar="صنع بواسطة مجد بن حرزالله و أيوب شبيرات"
+      data-fr="Réalisé par Madjd Ben Harzallah et Ayoub Chabirat">
+      صنع بواسطة مجد بن حرزالله و أيوب شبيرات
+    </div>
+  </div>
 </footer>
 
 <script>
-let currentLanguage = "ar";
+  "use strict";
 
-function changeLanguage() {
-  currentLanguage = currentLanguage === "ar" ? "fr" : "ar";
-  document.documentElement.lang = currentLanguage;
-  document.documentElement.dir = currentLanguage === "ar" ? "rtl" : "ltr";
+  let currentLanguage = "ar";
 
-  document.querySelectorAll("[data-ar][data-fr]").forEach(function(element) {
-    element.innerHTML = element.getAttribute("data-" + currentLanguage);
-  });
+  function changeLanguage() {
+    currentLanguage = currentLanguage === "ar" ? "fr" : "ar";
 
-  document.getElementById("languageButton").textContent =
-    currentLanguage === "ar" ? "Français" : "العربية";
-}
+    document.documentElement.lang = currentLanguage;
+    document.documentElement.dir =
+      currentLanguage === "ar" ? "rtl" : "ltr";
 
-function toggleMenu() {
-  document.getElementById("navigation").classList.toggle("open");
-}
-
-document.querySelectorAll("#navigation a").forEach(function(link) {
-  link.addEventListener("click", function() {
-    document.getElementById("navigation").classList.remove("open");
-  });
-});
-
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
+    document.querySelectorAll("[data-ar][data-fr]").forEach(function (element) {
+      element.textContent = element.getAttribute("data-" + currentLanguage);
     });
-  }, { threshold: 0.12 });
 
-  document.querySelectorAll(".reveal").forEach(function(element) {
-    observer.observe(element);
+    const languageButton = document.getElementById("languageButton");
+    languageButton.textContent =
+      currentLanguage === "ar" ? "Français" : "العربية";
+
+    languageButton.setAttribute(
+      "aria-label",
+      currentLanguage === "ar" ? "تغيير اللغة إلى الفرنسية" : "Changer la langue en arabe"
+    );
+
+    document.querySelector("nav").setAttribute(
+      "aria-label",
+      currentLanguage === "ar" ? "التنقل الرئيسي" : "Navigation principale"
+    );
+
+    document.title = currentLanguage === "ar"
+      ? "عن ثانوية مسغوني | التعريف بالمؤسسة"
+      : "À propos du lycée Mesgouni";
+
+    document.querySelector('meta[name="description"]').setAttribute(
+      "content",
+      currentLanguage === "ar"
+        ? "تعرّف على ثانوية مسغوني وعلى نظام التعليم الثانوي في الجزائر وأهدافه ومساراته الدراسية."
+        : "Découvrez le lycée Mesgouni, l’enseignement secondaire en Algérie, ses objectifs et ses parcours scolaires."
+    );
+  }
+
+  function toggleMenu() {
+    const navigation = document.getElementById("siteNavigation");
+    const menuButton = document.getElementById("menuButton");
+    const isOpen = navigation.classList.toggle("open");
+
+    menuButton.setAttribute("aria-expanded", String(isOpen));
+  }
+
+  document.querySelectorAll("#siteNavigation a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      const navigation = document.getElementById("siteNavigation");
+      const menuButton = document.getElementById("menuButton");
+
+      navigation.classList.remove("open");
+      menuButton.setAttribute("aria-expanded", "false");
+    });
   });
-} else {
-  document.querySelectorAll(".reveal").forEach(function(element) {
-    element.classList.add("visible");
-  });
-}
+
+  document.getElementById("currentYear").textContent =
+    new Date().getFullYear();
+
+  if ("IntersectionObserver" in window &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll(".reveal").forEach(function (element) {
+      observer.observe(element);
+    });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function (element) {
+      element.classList.add("visible");
+    });
+  }
 </script>
+
 </body>
 </html>
-```
-
-```html
-
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0c3d2d">
-<title>اكتشف ثانوية مسغوني</title>
-<style>
-:root{--green:#145c43;--dark-green:#0c3d2d;--gold:#d9b45b;--light:#f4f8f5;--text:#24352d;--muted:#687a70}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,Tahoma,sans-serif;background:var(--light);color:var(--text);line-height:1.9}
-a,button{transition:all .3s ease}
-header{background:var(--green);color:white;border-bottom:4px solid var(--gold)}
-.header-inner{max-width:1100px;margin:auto;padding:15px 22px;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:12px;color:white;text-decoration:none;font-size:21px;font-weight:bold}
-.logo{width:47px;height:47px;border:2px solid var(--gold);border-radius:13px;display:grid;place-items:center;font-size:28px}
-.btn{display:inline-block;padding:10px 17px;border-radius:9px;text-decoration:none;font-weight:bold;border:1px solid transparent;cursor:pointer}
-.gold{background:var(--gold);color:var(--dark-green)}
-.outline{background:transparent;color:white;border-color:#ffffff70}
-.btn:hover{transform:translateY(-3px);box-shadow:0 8px 20px #0002}
-.hero{padding:75px 22px;text-align:center;color:white;background:linear-gradient(120deg,#082e22e8,#176b4dd9),url("facade.jpg") center/cover no-repeat;border-bottom:4px solid var(--gold)}
-.hero h1{font-size:clamp(32px,5vw,49px);margin:0 0 12px;color:var(--gold)}
-.hero p{max-width:760px;margin:auto;font-size:17px}
-.container{max-width:1100px;margin:auto;padding:55px 22px}
-.heading{text-align:center;margin-bottom:30px}
-.heading h2{color:var(--green);font-size:30px;margin:0}
-.heading p{color:var(--muted)}
-.line{height:4px;width:65px;background:var(--gold);border-radius:5px;margin:12px auto}
-.intro{background:white;border:1px solid #e3ebe5;border-radius:17px;padding:28px;box-shadow:0 10px 30px #104b380c}
-.intro p{margin:0;color:#53645a}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{background:white;border:1px solid #e2e9e3;border-bottom:4px solid var(--gold);border-radius:16px;padding:23px;box-shadow:0 7px 24px #104b3809;transition:transform .3s,box-shadow .3s}
-.card:hover{transform:translateY(-6px);box-shadow:0 14px 30px #104b3817}
-.icon{font-size:35px}
-.card h3{color:var(--green);margin:8px 0}
-.card p{color:var(--muted);margin:0;font-size:15px}
-.streams{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
-.stream{background:white;padding:15px 18px;border-right:4px solid var(--gold);border-radius:10px;box-shadow:0 5px 15px #104b3808}
-html[dir="ltr"] .stream{border-right:0;border-left:4px solid var(--gold)}
-.note{margin-top:20px;padding:16px;border-radius:10px;background:#fff7df;color:#654d19;font-size:14px}
-.callout{background:linear-gradient(120deg,var(--green),#1b7352);color:white;border-radius:18px;padding:27px;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
-.callout h2{margin:0 0 5px}
-footer{background:#092f23;color:#d4e2d9;text-align:center;padding:25px 15px;font-size:13px}
-footer a{color:var(--gold)}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
-.reveal.visible{opacity:1;transform:translateY(0)}
-@media(max-width:720px){.grid{grid-template-columns:1fr}.streams{grid-template-columns:1fr}.container{padding:40px 16px}.header-inner{padding:12px 15px}.brand{font-size:18px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
-</style>
-</head>
-<body>
-<header>
-  <div class="header-inner">
-    <a class="brand" href="index.html"><span class="logo">🎓</span><span data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</span></a>
-    <div>
-      <button class="btn outline" id="languageButton" onclick="changeLanguage()">Français</button>
-      <a class="btn gold" href="index.html" data-ar="العودة إلى الرئيسية" data-fr="Retour à l’accueil">العودة إلى الرئيسية</a>
-    </div>
-  </div>
-</header>
-
-<section class="hero">
-  <h1 data-ar="اكتشف ثانوية مسغوني" data-fr="Découvrez le lycée Mesgouni">اكتشف ثانوية مسغوني</h1>
-  <p data-ar="مؤسسة تربوية تسعى إلى دعم التعلم وتنمية قدرات التلاميذ وفتح آفاق النجاح أمامهم."
-     data-fr="Un établissement éducatif qui soutient l’apprentissage, développe les compétences des élèves et favorise leur réussite.">
-    مؤسسة تربوية تسعى إلى دعم التعلم وتنمية قدرات التلاميذ وفتح آفاق النجاح أمامهم.
-  </p>
-</section>
-
-<main>
-  <section class="container">
-    <div class="heading reveal">
-      <h2 data-ar="تعريف بالمؤسسة" data-fr="Présentation de l’établissement">تعريف بالمؤسسة</h2>
-      <div class="line"></div>
-    </div>
-    <div class="intro reveal">
-      <p data-ar="ثانوية مسغوني مؤسسة تربوية تهدف إلى توفير بيئة مناسبة للتعليم والتعلم، وتشجيع التلاميذ على الاجتهاد والانضباط وتنمية روح المسؤولية. ويهدف هذا الموقع إلى تسهيل الوصول إلى الموارد الدراسية والتعريف بالمؤسسة وخدماتها."
-         data-fr="Le lycée Mesgouni vise à offrir un environnement favorable à l’enseignement et à l’apprentissage, à encourager l’effort et la discipline et à développer le sens des responsabilités. Ce site facilite l’accès aux ressources scolaires et présente l’établissement et ses services.">
-        ثانوية مسغوني مؤسسة تربوية تهدف إلى توفير بيئة مناسبة للتعليم والتعلم، وتشجيع التلاميذ على الاجتهاد والانضباط وتنمية روح المسؤولية. ويهدف هذا الموقع إلى تسهيل الوصول إلى الموارد الدراسية والتعريف بالمؤسسة وخدماتها.
-      </p>
-    </div>
-  </section>
-
-  <section class="container" style="padding-top:0">
-    <div class="heading reveal">
-      <h2 data-ar="أهدافنا وخصائصنا" data-fr="Nos objectifs et caractéristiques">أهدافنا وخصائصنا</h2>
-      <div class="line"></div>
-    </div>
-    <div class="grid">
-      <article class="card reveal">
-        <div class="icon">🎓</div>
-        <h3 data-ar="التميز الدراسي" data-fr="Excellence scolaire">التميز الدراسي</h3>
-        <p data-ar="تشجيع الاجتهاد والمثابرة والعمل على تطوير المستوى الدراسي للتلاميذ."
-           data-fr="Encourager l’effort et la persévérance pour améliorer le niveau scolaire des élèves.">
-          تشجيع الاجتهاد والمثابرة والعمل على تطوير المستوى الدراسي للتلاميذ.
-        </p>
-      </article>
-      <article class="card reveal">
-        <div class="icon">🤝</div>
-        <h3 data-ar="القيم والمسؤولية" data-fr="Valeurs et responsabilité">القيم والمسؤولية</h3>
-        <p data-ar="تعزيز الاحترام والانضباط والتعاون وروح المسؤولية داخل الوسط المدرسي."
-           data-fr="Renforcer le respect, la discipline, la coopération et le sens des responsabilités.">
-          تعزيز الاحترام والانضباط والتعاون وروح المسؤولية داخل الوسط المدرسي.
-        </p>
-      </article>
-      <article class="card reveal">
-        <div class="icon">📚</div>
-        <h3 data-ar="دعم التعلم" data-fr="Soutien à l’apprentissage">دعم التعلم</h3>
-        <p data-ar="تسهيل وصول التلاميذ إلى الدروس والتمارين والموارد المساعدة على المراجعة."
-           data-fr="Faciliter l’accès aux cours, aux exercices et aux ressources de révision.">
-          تسهيل وصول التلاميذ إلى الدروس والتمارين والموارد المساعدة على المراجعة.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <section class="container" style="padding-top:0">
-    <div class="heading reveal">
-      <h2 data-ar="الشعب والتخصصات الدراسية" data-fr="Filières et spécialités">الشعب والتخصصات الدراسية</h2>
-      <div class="line"></div>
-      <p data-ar="فيما يلي أمثلة عن الشعب المعروفة في التعليم الثانوي بالجزائر. يرجى تأكيد الشعب المتوفرة فعليًا في المؤسسة."
-         data-fr="Voici des exemples de filières du secondaire en Algérie. Les filières réellement disponibles dans l’établissement doivent être confirmées.">
-        فيما يلي أمثلة عن الشعب المعروفة في التعليم الثانوي بالجزائر. يرجى تأكيد الشعب المتوفرة فعليًا في المؤسسة.
-      </p>
-    </div>
-    <div class="streams reveal">
-      <div class="stream" data-ar="🔬 علوم تجريبية" data-fr="🔬 Sciences expérimentales">🔬 علوم تجريبية</div>
-      <div class="stream" data-ar="📐 رياضيات" data-fr="📐 Mathématiques">📐 رياضيات</div>
-      <div class="stream" data-ar="⚙️ تقني رياضي" data-fr="⚙️ Techniques mathématiques">⚙️ تقني رياضي</div>
-      <div class="stream" data-ar="📊 تسيير واقتصاد" data-fr="📊 Gestion et économie">📊 تسيير واقتصاد</div>
-      <div class="stream" data-ar="📖 آداب وفلسفة" data-fr="📖 Lettres et philosophie">📖 آداب وفلسفة</div>
-      <div class="stream" data-ar="🌍 لغات أجنبية" data-fr="🌍 Langues étrangères">🌍 لغات أجنبية</div>
-    </div>
-    <div class="note reveal" data-ar="ملاحظة: هذه قائمة عامة بالشعب المعروفة في الثانوي بالجزائر، وليست تأكيدًا بأن جميعها متوفرة في ثانوية مسغوني."
-         data-fr="Remarque : cette liste présente des filières générales du secondaire en Algérie et ne confirme pas qu’elles sont toutes proposées au lycée Mesgouni.">
-      ملاحظة: هذه قائمة عامة بالشعب المعروفة في الثانوي بالجزائر، وليست تأكيدًا بأن جميعها متوفرة في ثانوية مسغوني.
-    </div>
-  </section>
-
-  <section class="container" style="padding-top:0">
-    <div class="callout reveal">
-      <div>
-        <h2 data-ar="اكتشف الموارد الدراسية" data-fr="Découvrez les ressources scolaires">اكتشف الموارد الدراسية</h2>
-        <p data-ar="انتقل إلى الصفحة الرئيسية لاختيار مستواك الدراسي."
-           data-fr="Retournez à l’accueil pour choisir votre niveau scolaire.">
-          انتقل إلى الصفحة الرئيسية لاختيار مستواك الدراسي.
-        </p>
-      </div>
-      <a class="btn gold" href="index.html#study" data-ar="الموارد الدراسية ←" data-fr="Ressources scolaires ←">الموارد الدراسية ←</a>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <p data-ar="ثانوية مسغوني — العلم والعمل أساس النجاح" data-fr="Lycée Mesgouni — Le savoir et le travail, clés de la réussite">ثانوية مسغوني — العلم والعمل أساس النجاح</p>
-  <p>© 2026</p>
-  <a href="index.html" data-ar="العودة إلى الرئيسية" data-fr="Retour à l’accueil">العودة إلى الرئيسية</a>
-</footer>
-
-<script>
-let currentLanguage = "ar";
-
-function changeLanguage() {
-  currentLanguage = currentLanguage === "ar" ? "fr" : "ar";
-  document.documentElement.lang = currentLanguage;
-  document.documentElement.dir = currentLanguage === "ar" ? "rtl" : "ltr";
-
-  document.querySelectorAll("[data-ar][data-fr]").forEach(function(element) {
-    element.innerHTML = element.getAttribute("data-" + currentLanguage);
-  });
-
-  document.getElementById("languageButton").textContent =
-    currentLanguage === "ar" ? "Français" : "العربية";
-}
-
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll(".reveal").forEach(function(element) {
-    observer.observe(element);
-  });
-} else {
-  document.querySelectorAll(".reveal").forEach(function(element) {
-    element.classList.add("visible");
-  });
-}
-</script>
-</body>
-</html>
-```
