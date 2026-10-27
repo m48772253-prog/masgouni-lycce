@@ -1,610 +1,331 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0c3d2d">
-<meta name="description" content="الموقع الإلكتروني لثانوية مسغوني: الموارد الدراسية، التوجيه الجامعي، ومعلومات التعليم في الجزائر.">
-<title>ثانوية مسغوني | الموقع الرسمي</title>
-
-<style>
-:root {
-  --green:#145c43;
-  --dark:#0c3d2d;
-  --gold:#d9b45b;
-  --light:#f4f8f5;
-  --text:#24352d;
-  --muted:#687a70;
-  --white:#fff;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:100px}
-body{
-  margin:0;
-  font-family:Arial,Tahoma,sans-serif;
-  background:var(--light);
-  color:var(--text);
-  line-height:1.8;
-}
-button,input,textarea{font:inherit}
-a,button{transition:.25s}
-button{cursor:pointer}
-header{
-  position:sticky;top:0;z-index:1000;
-  color:white;background:rgba(20,92,67,.98);
-  border-bottom:4px solid var(--gold);
-  box-shadow:0 4px 18px #0001;
-}
-.header-inner{
-  max-width:1200px;margin:auto;padding:12px 20px;
-  display:flex;justify-content:space-between;
-  align-items:center;gap:14px;flex-wrap:wrap;
-}
-.school-name{display:flex;align-items:center;gap:12px}
-.school-icon{
-  width:48px;height:48px;border:2px solid var(--gold);
-  border-radius:13px;display:grid;place-items:center;font-size:27px;
-}
-.school-name h2{margin:0;font-size:21px}
-.school-name p{margin:0;color:#f5dfa0;font-size:12px}
-.header-actions{display:flex;gap:8px;align-items:center}
-.language-button,.menu-button{
-  padding:8px 12px;border-radius:8px;font-weight:bold;
-  border:1px solid #ffffff55;
-}
-.language-button{background:var(--gold);color:var(--dark)}
-.menu-button{background:transparent;color:white;display:none}
-nav{
-  display:flex;justify-content:center;gap:5px;flex-wrap:wrap;
-  background:var(--dark);padding:8px 12px;
-}
-nav a{
-  color:white;text-decoration:none;padding:8px 12px;
-  border-radius:7px;font-size:14px;
-}
-nav a:hover{background:var(--gold);color:var(--dark)}
-.hero{
-  min-height:480px;display:grid;place-items:center;text-align:center;
-  padding:60px 20px;color:white;
-  background:linear-gradient(120deg,#052d1fef,#0c3d2dbd),
-  url("facade.jpg") center/cover no-repeat;
-  border-bottom:5px solid var(--gold);
-}
-.hero-content{max-width:850px}
-.eyebrow{
-  display:inline-block;border:1px solid #d9b45b99;
-  border-radius:30px;padding:5px 15px;
-  color:#f5dfa0;background:#ffffff0d;font-size:14px;
-}
-.hero h1{
-  color:var(--gold);font-size:clamp(36px,6vw,62px);
-  line-height:1.3;margin:14px 0 8px;
-  text-shadow:2px 3px 10px #0008;
-}
-.hero h2{font-size:clamp(20px,4vw,30px);margin:0 0 10px}
-.hero p{max-width:700px;margin:0 auto 25px;font-size:17px}
-.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.btn{
-  display:inline-flex;justify-content:center;align-items:center;
-  padding:11px 20px;border-radius:9px;text-decoration:none;
-  font-weight:bold;border:1px solid transparent;
-}
-.btn:hover{transform:translateY(-3px)}
-.btn-gold{background:var(--gold);color:var(--dark)}
-.btn-outline{border-color:#ffffff85;color:white;background:#ffffff0d}
-.btn-outline:hover{background:white;color:var(--green)}
-section{padding:62px 20px}
-.container{max-width:1160px;margin:auto}
-.section-heading{text-align:center;margin-bottom:32px}
-.section-heading h2{color:var(--green);font-size:clamp(26px,4vw,35px);margin:4px 0}
-.section-heading p{max-width:680px;margin:8px auto;color:var(--muted)}
-.eyebrow-small{font-size:13px;font-weight:bold;color:#98721f}
-.title-line{width:65px;height:4px;background:var(--gold);margin:12px auto;border-radius:5px}
-.intro-grid,.cards{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;
-}
-.intro-card,.card,.study-card{
-  background:white;border:1px solid #e2e9e4;border-radius:15px;
-  padding:25px;box-shadow:0 6px 22px #00000008;
-}
-.intro-card h3,.card h3,.study-card h3{color:var(--green);margin:5px 0 10px}
-.intro-card p,.card p,.study-card p{color:var(--muted)}
-.feature-list{padding:0;list-style:none}
-.feature-list li{padding:6px 0;border-bottom:1px solid #edf0ed}
-.feature-list li::before{content:"✓";color:#b38a2e;font-weight:bold;margin-left:9px}
-html[dir="ltr"] .feature-list li::before{margin:0 9px 0 0}
-.card{text-align:center;border-bottom:4px solid var(--gold)}
-.card-icon{font-size:36px}
-.card p{font-size:14px;margin-bottom:0}
-.studies{background:#e9f1eb}
-.study-card{text-align:center;position:relative;overflow:hidden}
-.study-card::before{
-  content:"";position:absolute;top:0;right:0;left:0;
-  height:4px;background:var(--gold);
-}
-.study-card p{font-size:14px;min-height:45px}
-.study-card .btn{width:100%;margin-top:10px}
-.contact{background:#e8f0eb;text-align:center}
-.contact p{color:var(--muted)}
-footer{
-  background:#092f23;color:white;padding:25px 18px 15px;
-  border-top:4px solid var(--gold);
-}
-.footer-inner{
-  max-width:1160px;margin:auto;display:flex;
-  justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;
-}
-.footer-title{font-size:20px;font-weight:bold}
-.footer-note{font-size:13px;color:#cbdad1}
-.copyright{
-  max-width:1160px;margin:18px auto 0;padding-top:13px;
-  border-top:1px solid #ffffff22;text-align:center;
-  color:#cbdad1;font-size:13px;
-}
-.copyright p{margin:4px}
-.copyright strong{color:#f5dfa0}
-
-/* مساعد الذكاء الاصطناعي */
-.ai-launcher{
-  position:fixed;bottom:20px;left:20px;z-index:2000;
-  width:62px;height:62px;border:2px solid var(--gold);
-  border-radius:50%;background:var(--green);color:white;
-  box-shadow:0 5px 20px #0003;font-size:26px;
-}
-.ai-launcher:hover{transform:scale(1.06)}
-.ai-panel{
-  position:fixed;bottom:95px;left:20px;z-index:2000;
-  width:min(390px,calc(100vw - 28px));height:min(570px,75dvh);
-  background:white;border:1px solid #dfe8e1;border-radius:17px;
-  box-shadow:0 12px 40px #0003;overflow:hidden;
-  display:none;flex-direction:column;
-}
-.ai-panel.open{display:flex}
-.ai-header{
-  background:var(--green);color:white;padding:13px 15px;
-  display:flex;justify-content:space-between;align-items:center;gap:10px;
-  border-bottom:3px solid var(--gold);
-}
-.ai-header h3{margin:0;font-size:17px}
-.ai-header p{margin:0;font-size:11px;color:#e0eae3}
-.ai-close{border:0;background:transparent;color:white;font-size:25px}
-.ai-notice{
-  padding:9px 12px;background:#f7f5eb;color:#675626;
-  font-size:11px;line-height:1.6;border-bottom:1px solid #eee6cc;
-}
-.ai-messages{
-  flex:1;overflow-y:auto;padding:13px;
-  display:flex;flex-direction:column;gap:11px;
-}
-.message{
-  padding:10px 12px;border-radius:12px;max-width:92%;
-  white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:1.7;
-}
-.message.bot{background:#edf4ef;align-self:flex-start;border-bottom-right-radius:3px}
-.message.user{background:var(--green);color:white;align-self:flex-end;border-bottom-left-radius:3px}
-.message a{color:#146044}
-.ai-suggestions{display:flex;gap:6px;flex-wrap:wrap;padding:0 11px 10px}
-.ai-suggestions button{
-  border:1px solid #d8e4da;border-radius:18px;background:white;
-  color:var(--green);padding:6px 9px;font-size:11px;
-}
-.ai-suggestions button:hover{background:#edf4ef}
-.ai-form{
-  display:flex;gap:7px;padding:10px;border-top:1px solid #e5ebe6;
-}
-.ai-form textarea{
-  flex:1;min-width:0;resize:none;max-height:90px;
-  border:1px solid #d4ded6;border-radius:9px;padding:9px;
-  outline-color:var(--green);
-}
-.ai-form button{
-  border:0;background:var(--green);color:white;
-  border-radius:9px;padding:0 14px;font-weight:bold;
-}
-.ai-form button:disabled{opacity:.5;cursor:not-allowed}
-.typing{color:var(--muted);font-size:12px}
-.reveal{opacity:0;transform:translateY(18px);transition:.6s}
-.reveal.visible{opacity:1;transform:none}
-@media(max-width:850px){
-  .menu-button{display:inline-block}
-  nav{display:none;flex-direction:column;align-items:stretch}
-  nav.open{display:flex}
-  nav a{padding:10px}
-}
-@media(max-width:600px){
-  .header-inner{padding:10px 12px}
-  .school-name h2{font-size:16px}
-  .school-icon{width:42px;height:42px}
-  .language-button,.menu-button{padding:7px 9px;font-size:12px}
-  .hero{min-height:420px;padding:45px 16px}
-  .hero p{font-size:15px}
-  section{padding:45px 15px}
-  .intro-grid,.cards{grid-template-columns:1fr}
-  .ai-panel{bottom:86px;left:10px;height:min(570px,78dvh)}
-  .ai-launcher{bottom:14px;left:14px}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
-  .reveal{opacity:1;transform:none}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c3d2d">
+  <meta name="description" content="الموقع الإلكتروني لثانوية مسغوني: التعريف بالمؤسسة، الموارد الدراسية، الأنشطة، المستجدات والتوجيه الدراسي في الجزائر.">
+  <meta name="color-scheme" content="light">
+  <title>ثانوية مسغوني | الموقع المدرسي</title>
+  <style>
+    :root{--green:#145c43;--dark:#0c3d2d;--gold:#d9b45b;--light:#f4f8f5;--text:#24352d;--muted:#687a70;--white:#fff;--line:#dfe8e1;--shadow:0 8px 28px #0c3d2d10}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:115px}body{margin:0;font-family:Arial,Tahoma,sans-serif;background:var(--light);color:var(--text);line-height:1.8}button,input,textarea,select{font:inherit}button,a{touch-action:manipulation}a{color:var(--green)}button{cursor:pointer}img{max-width:100%}.container{width:min(1160px,calc(100% - 32px));margin-inline:auto}
+    .skip-link{position:absolute;top:-100px;right:12px;background:#fff;padding:10px;z-index:3000}.skip-link:focus{top:12px}
+    .site-header{position:sticky;top:0;z-index:1000;background:#145c43f7;color:#fff;border-bottom:4px solid var(--gold);box-shadow:0 4px 18px #0001;backdrop-filter:blur(12px)}.header-inner{max-width:1200px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{display:flex;align-items:center;gap:11px;color:#fff;text-decoration:none;min-width:0}.brand-icon{width:48px;height:48px;border:2px solid var(--gold);border-radius:14px;display:grid;place-items:center;font-size:25px;flex-shrink:0}.brand h1{font-size:20px;line-height:1.35;margin:0}.brand p{font-size:12px;color:#f5dfa0;margin:2px 0 0}.header-actions{display:flex;gap:8px;align-items:center}.small-button{border:1px solid #ffffff55;border-radius:8px;padding:7px 11px;font-weight:bold}.language-button{background:var(--gold);color:var(--dark)}.menu-button{display:none;background:transparent;color:#fff}
+    .main-nav{display:flex;justify-content:center;gap:4px;flex-wrap:wrap;background:var(--dark);padding:7px 12px}.main-nav a{color:#fff;text-decoration:none;padding:7px 11px;border-radius:7px;font-size:13px}.main-nav a:hover,.main-nav a:focus-visible{background:var(--gold);color:var(--dark)}
+    .hero{min-height:490px;display:grid;place-items:center;text-align:center;padding:64px 18px;color:#fff;background:linear-gradient(120deg,#052d1ff2,#0c3d2dc4),url('facade.jpg') center/cover no-repeat;border-bottom:5px solid var(--gold)}.hero-content{max-width:850px}.eyebrow{display:inline-block;border:1px solid #d9b45b99;border-radius:30px;padding:4px 14px;color:#f5dfa0;background:#ffffff0d;font-size:13px}.hero h2{font-size:clamp(36px,6vw,64px);line-height:1.25;color:var(--gold);margin:14px 0 8px;text-shadow:2px 3px 10px #0008}.hero h3{font-size:clamp(19px,3vw,29px);margin:0 0 12px}.hero p{max-width:690px;margin:0 auto 24px;font-size:17px}.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.btn{display:inline-flex;justify-content:center;align-items:center;gap:6px;padding:10px 18px;border-radius:9px;text-decoration:none;font-weight:bold;border:1px solid transparent;transition:transform .2s,background .2s}.btn:hover{transform:translateY(-2px)}.btn-gold{background:var(--gold);color:var(--dark)}.btn-green{background:var(--green);color:#fff}.btn-outline{border-color:#ffffff85;color:#fff;background:#ffffff0d}.btn-outline:hover{background:#fff;color:var(--green)}.btn-light{background:#edf4ef;color:var(--green);border-color:#d9e6dc}
+    section{padding:58px 0}.section-heading{text-align:center;margin:0 auto 30px;max-width:760px}.section-kicker{font-size:12px;font-weight:bold;color:#98721f;letter-spacing:.04em}.section-heading h2{color:var(--green);font-size:clamp(25px,4vw,35px);margin:4px 0}.section-heading p{color:var(--muted);margin:7px auto}.title-line{width:64px;height:4px;background:var(--gold);margin:10px auto;border-radius:5px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:23px;box-shadow:var(--shadow);min-width:0}.card h3{color:var(--green);margin:4px 0 8px;font-size:20px}.card p{color:var(--muted);margin:6px 0 12px}.card-icon{font-size:34px}.card-top{border-top:4px solid var(--gold)}.card-link{display:inline-block;font-weight:bold;text-decoration:none;margin-top:6px}.card-link:hover{text-decoration:underline}.muted{color:var(--muted)}.feature-list{padding:0;list-style:none;margin:12px 0}.feature-list li{padding:5px 0;border-bottom:1px solid #edf0ed}.feature-list li::before{content:'✓';color:#98721f;font-weight:bold;margin-inline-end:9px}.soft-section{background:#e9f1eb}.dark-section{background:var(--dark);color:#fff}.dark-section .section-heading h2,.dark-section .card h3{color:#fff}.dark-section .section-heading p,.dark-section .card p{color:#d5e1d9}.dark-section .card{background:#ffffff0c;border-color:#ffffff24}.values-grid .card{text-align:center}.resource-card{text-align:center;border-bottom:4px solid var(--gold)}.resource-card .btn{width:100%;margin-top:9px}.tag{display:inline-block;background:#edf4ef;color:var(--green);padding:3px 9px;border-radius:20px;font-size:12px;font-weight:bold}.news-date{font-size:12px;color:#98721f;font-weight:bold}.notice{background:#fff8e7;border:1px solid #ead9a4;padding:14px 16px;border-radius:10px;color:#66552b}.two-column{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}.link-list{display:grid;gap:9px}.link-list a{background:#fff;border:1px solid var(--line);padding:11px 13px;border-radius:9px;text-decoration:none}.link-list a:hover{border-color:var(--gold)}
+    .search-row{display:flex;gap:8px;max-width:650px;margin:0 auto 22px}.search-row input{width:100%;padding:12px 14px;border:1px solid #cddbd0;border-radius:10px;background:#fff;outline-color:var(--green)}.empty-state{display:none;text-align:center;padding:18px;color:var(--muted)}
+    .event{display:flex;gap:14px;align-items:flex-start}.event-date{flex:0 0 64px;text-align:center;border-radius:10px;background:#edf4ef;padding:7px 4px;color:var(--green);font-weight:bold}.event-date strong{display:block;font-size:23px;line-height:1.25}.event h3{margin:0 0 4px}.event p{margin:0}
+    .faq details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;margin:9px 0}.faq summary{cursor:pointer;font-weight:bold;color:var(--green)}.faq details p{color:var(--muted);margin-bottom:0}
+    .contact-form{display:grid;gap:10px}.contact-form label{font-weight:bold;font-size:14px}.contact-form input,.contact-form textarea{display:block;width:100%;margin-top:4px;border:1px solid #cddbd0;border-radius:9px;padding:11px;background:#fff;outline-color:var(--green)}.contact-form textarea{min-height:110px;resize:vertical}.form-note{font-size:12px;color:var(--muted)}
+    footer{background:#092f23;color:#fff;padding:27px 18px 15px;border-top:4px solid var(--gold)}.footer-inner{max-width:1160px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}.footer-title{font-size:20px;font-weight:bold}.footer-note{font-size:13px;color:#cbdad1}.footer-links{display:flex;gap:12px;flex-wrap:wrap}.footer-links a{color:#f5dfa0;text-decoration:none}.copyright{max-width:1160px;margin:18px auto 0;padding-top:13px;border-top:1px solid #ffffff22;text-align:center;color:#cbdad1;font-size:13px}.copyright p{margin:4px}.copyright strong{color:#f5dfa0}
+    .ai-launcher{position:fixed;bottom:18px;left:18px;z-index:2000;width:60px;height:60px;border:2px solid var(--gold);border-radius:50%;background:var(--green);color:#fff;box-shadow:0 5px 20px #0003;font-size:25px}.ai-panel{position:fixed;bottom:88px;left:18px;z-index:2000;width:min(390px,calc(100vw - 26px));height:min(570px,78dvh);background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 12px 40px #0003;overflow:hidden;display:none;flex-direction:column}.ai-panel.open{display:flex}.ai-header{background:var(--green);color:#fff;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:3px solid var(--gold)}.ai-header h3{margin:0;font-size:16px}.ai-header p{margin:0;font-size:11px;color:#e0eae3}.ai-close{border:0;background:transparent;color:#fff;font-size:25px}.ai-notice{padding:8px 11px;background:#fff8e7;color:#675626;font-size:11px;line-height:1.6;border-bottom:1px solid #eee6cc}.ai-messages{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px}.message{padding:9px 11px;border-radius:12px;max-width:94%;white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.7}.message.bot{background:#edf4ef;align-self:flex-start;border-bottom-right-radius:3px}.message.user{background:var(--green);color:#fff;align-self:flex-end;border-bottom-left-radius:3px}.ai-suggestions{display:flex;gap:5px;flex-wrap:wrap;padding:0 10px 9px}.ai-suggestions button{border:1px solid #d8e4da;border-radius:18px;background:#fff;color:var(--green);padding:5px 8px;font-size:11px}.ai-form{display:flex;gap:7px;padding:9px;border-top:1px solid #e5ebe6}.ai-form textarea{flex:1;min-width:0;resize:none;max-height:90px;border:1px solid #d4ded6;border-radius:9px;padding:8px;outline-color:var(--green)}.ai-form button{border:0;background:var(--green);color:#fff;border-radius:9px;padding:0 12px;font-weight:bold}.ai-form button:disabled{opacity:.5;cursor:not-allowed}.typing{color:var(--muted);font-size:12px}
+    .back-top{position:fixed;bottom:20px;right:18px;z-index:900;border:0;border-radius:10px;background:#fff;color:var(--green);box-shadow:var(--shadow);padding:9px 12px;display:none}.back-top.show{display:block}.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s}.reveal.visible{opacity:1;transform:none}
+    @media(max-width:850px){.menu-button{display:inline-block}.main-nav{display:none;flex-direction:column;align-items:stretch}.main-nav.open{display:flex}.main-nav a{padding:9px 12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{min-height:440px}}
+    @media(max-width:620px){.header-inner{padding:9px 11px}.brand h1{font-size:16px}.brand-icon{width:41px;height:41px}.small-button{padding:6px 8px;font-size:12px}.grid,.grid.two,.two-column{grid-template-columns:1fr}.hero{min-height:420px;padding:44px 15px}.hero p{font-size:15px}section{padding:42px 0}.card{padding:19px}.ai-panel{left:10px;bottom:82px;height:min(570px,78dvh)}.ai-launcher{left:12px;bottom:12px}.back-top{right:12px;bottom:14px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
+  </style>
 </head>
-
 <body>
+  <a class="skip-link" href="#main" data-ar="تجاوز إلى المحتوى" data-fr="Passer au contenu">تجاوز إلى المحتوى</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="ثانوية مسغوني - الرئيسية">
+        <span class="brand-icon" aria-hidden="true">🎓</span>
+        <span><h1 data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</h1><p data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail, clés de la réussite">العلم والعمل أساس النجاح</p></span>
+      </a>
+      <div class="header-actions">
+        <button class="small-button language-button" id="languageButton" type="button" aria-label="تغيير اللغة">Français</button>
+        <button class="small-button menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="navigation" data-ar="☰ القائمة" data-fr="☰ Menu">☰ القائمة</button>
+      </div>
+    </div>
+    <nav class="main-nav" id="navigation" aria-label="التنقل الرئيسي">
+      <a href="#home" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a>
+      <a href="#about" data-ar="عن الثانوية" data-fr="Notre lycée">عن الثانوية</a>
+      <a href="#programs" data-ar="التعليم والأنشطة" data-fr="Études et activités">التعليم والأنشطة</a>
+      <a href="#resources" data-ar="الموارد الدراسية" data-fr="Ressources scolaires">الموارد الدراسية</a>
+      <a href="#news" data-ar="الأخبار" data-fr="Actualités">الأخبار</a>
+      <a href="#calendar" data-ar="التقويم" data-fr="Calendrier">التقويم</a>
+      <a href="#families" data-ar="فضاء الأولياء" data-fr="Espace familles">فضاء الأولياء</a>
+      <a href="#assistant" data-ar="المساعد الذكي" data-fr="Assistant IA">المساعد الذكي</a>
+      <a href="#contact" data-ar="اتصل بنا" data-fr="Contact">اتصل بنا</a>
+    </nav>
+  </header>
 
-<header>
-  <div class="header-inner">
-    <div class="school-name">
-      <span class="school-icon">🎓</span>
-      <div>
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <span class="eyebrow" data-ar="فضاء المعرفة والطموح" data-fr="Un espace de savoir et d’ambition">فضاء المعرفة والطموح</span>
         <h2 data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</h2>
-        <p data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail, clés de la réussite">العلم والعمل أساس النجاح</p>
+        <h3 data-ar="مستقبل أبنائنا يبدأ بالعلم" data-fr="L’avenir commence par le savoir">مستقبل أبنائنا يبدأ بالعلم</h3>
+        <p data-ar="منصة مدرسية تجمع التعريف بالمؤسسة والموارد التعليمية والمستجدات والأنشطة، وتساعد التلاميذ على تنظيم تعلمهم والتخطيط لمستقبلهم." data-fr="Une plateforme scolaire qui rassemble la présentation de l’établissement, les ressources pédagogiques, les actualités et les activités afin d’accompagner les élèves dans leur apprentissage et leur avenir.">منصة مدرسية تجمع التعريف بالمؤسسة والموارد التعليمية والمستجدات والأنشطة، وتساعد التلاميذ على تنظيم تعلمهم والتخطيط لمستقبلهم.</p>
+        <div class="actions"><a class="btn btn-gold" href="#resources" data-ar="تصفح الموارد الدراسية ↓" data-fr="Voir les ressources ↓">تصفح الموارد الدراسية ↓</a><a class="btn btn-outline" href="#about" data-ar="اكتشف ثانويتنا" data-fr="Découvrir notre lycée">اكتشف ثانويتنا</a></div>
       </div>
-    </div>
-    <div class="header-actions">
-      <button class="language-button" id="languageButton" onclick="changeLanguage()">Français</button>
-      <button class="menu-button" onclick="toggleMenu()" data-ar="☰ القائمة" data-fr="☰ Menu">☰ القائمة</button>
-    </div>
-  </div>
-  <nav id="navigation">
-    <a href="#home" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a>
-    <a href="about.html" data-ar="اكتشف ثانويتنا" data-fr="Découvrir notre lycée">اكتشف ثانويتنا</a>
-    <a href="#services" data-ar="خدماتنا" data-fr="Nos services">خدماتنا</a>
-    <a href="#study" data-ar="الموارد الدراسية" data-fr="Ressources scolaires">الموارد الدراسية</a>
-    <a href="#assistant" data-ar="مساعد الذكاء الاصطناعي" data-fr="Assistant IA">مساعد الذكاء الاصطناعي</a>
-    <a href="#contact" data-ar="اتصل بنا" data-fr="Contact">اتصل بنا</a>
-  </nav>
-</header>
+    </section>
 
-<main>
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <div class="eyebrow" data-ar="مرحبًا بكم في فضاء المعرفة" data-fr="Bienvenue dans l’espace du savoir">مرحبًا بكم في فضاء المعرفة</div>
-      <h1 data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</h1>
-      <h2 data-ar="مستقبل أبنائنا يبدأ بالعلم" data-fr="L’avenir commence par le savoir">مستقبل أبنائنا يبدأ بالعلم</h2>
-      <p data-ar="فضاء للتعلم والمعرفة والتواصل، نحو مستقبل أفضل للتلاميذ."
-         data-fr="Un espace d’apprentissage, de savoir et de communication pour un meilleur avenir des élèves.">
-        فضاء للتعلم والمعرفة والتواصل، نحو مستقبل أفضل للتلاميذ.
-      </p>
-      <div class="actions">
-        <a class="btn btn-gold" href="about.html" data-ar="اكتشف ثانويتنا ←" data-fr="Découvrir notre lycée ←">اكتشف ثانويتنا ←</a>
-        <a class="btn btn-outline" href="#study" data-ar="الموارد الدراسية ↓" data-fr="Ressources scolaires ↓">الموارد الدراسية ↓</a>
+    <section id="about">
+      <div class="container">
+        <div class="section-heading reveal"><div class="section-kicker" data-ar="من نحن" data-fr="QUI SOMMES-NOUS">من نحن</div><h2 data-ar="مرحبًا بكم في ثانوية مسغوني" data-fr="Bienvenue au lycée Mesgouni">مرحبًا بكم في ثانوية مسغوني</h2><div class="title-line"></div><p data-ar="تعرّفوا على دور الثانوية ورسالتها التربوية، وعلى الخدمات التي يقدمها هذا الموقع للتلاميذ والأولياء." data-fr="Découvrez le rôle du lycée, sa mission éducative et les services proposés aux élèves et aux familles.">تعرّفوا على دور الثانوية ورسالتها التربوية، وعلى الخدمات التي يقدمها هذا الموقع للتلاميذ والأولياء.</p></div>
+        <div class="grid two">
+          <article class="card reveal"><div class="card-icon">🏫</div><h3 data-ar="مؤسسة للتعلم وبناء المستقبل" data-fr="Un établissement pour apprendre et construire l’avenir">مؤسسة للتعلم وبناء المستقبل</h3><p data-ar="تُعدّ المرحلة الثانوية محطة أساسية في المسار الدراسي؛ إذ تعزز المعارف والمهارات، وتساعد التلميذ على الاستعداد للبكالوريا ومتابعة الدراسة أو اختيار مسار مهني مناسب." data-fr="Le lycée est une étape importante du parcours scolaire : il approfondit les connaissances et les compétences et prépare les élèves au baccalauréat et à la poursuite de leurs études.">تُعدّ المرحلة الثانوية محطة أساسية في المسار الدراسي؛ إذ تعزز المعارف والمهارات، وتساعد التلميذ على الاستعداد للبكالوريا ومتابعة الدراسة أو اختيار مسار مهني مناسب.</p><ul class="feature-list"><li data-ar="تنمية التفكير والتحليل وحل المشكلات" data-fr="Développer la réflexion et la résolution de problèmes">تنمية التفكير والتحليل وحل المشكلات</li><li data-ar="ترسيخ الانضباط والمسؤولية والعمل الجماعي" data-fr="Renforcer la responsabilité et le travail d’équipe">ترسيخ الانضباط والمسؤولية والعمل الجماعي</li><li data-ar="الاستعداد للامتحانات ومواصلة الدراسة" data-fr="Préparer les examens et la poursuite des études">الاستعداد للامتحانات ومواصلة الدراسة</li></ul></article>
+          <article class="card reveal"><div class="card-icon">🌱</div><h3 data-ar="رؤيتنا التربوية" data-fr="Notre vision éducative">رؤيتنا التربوية</h3><p data-ar="يسعى الموقع إلى تسهيل الوصول إلى الموارد والمعلومات المدرسية، وتشجيع التعلم المستمر، وإبراز أهمية التعاون بين التلميذ والأسرة والمحيط التربوي." data-fr="Le site vise à faciliter l’accès aux ressources scolaires, encourager l’apprentissage continu et valoriser la coopération entre l’élève, la famille et la communauté éducative.">يسعى الموقع إلى تسهيل الوصول إلى الموارد والمعلومات المدرسية، وتشجيع التعلم المستمر، وإبراز أهمية التعاون بين التلميذ والأسرة والمحيط التربوي.</p><div class="notice" data-ar="ملاحظة: تُضاف هنا لاحقًا المعلومات الرسمية الخاصة بالمؤسسة، مثل العنوان وتاريخ التأسيس واسم الإدارة، بعد التحقق منها." data-fr="Remarque : les informations officielles de l’établissement, comme l’adresse, la date de création et la direction, seront ajoutées après vérification.">ملاحظة: تُضاف هنا لاحقًا المعلومات الرسمية الخاصة بالمؤسسة، مثل العنوان وتاريخ التأسيس واسم الإدارة، بعد التحقق منها.</div></article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section>
-    <div class="container intro-grid">
-      <div class="intro-card reveal">
-        <h3 data-ar="معًا نحو التميز والنجاح" data-fr="Ensemble vers la réussite">معًا نحو التميز والنجاح</h3>
-        <p data-ar="نؤمن بأن التعليم الجيد يبدأ ببيئة محفزة وعمل جاد وتعاون بين الأسرة والمدرسة والتلميذ."
-           data-fr="Une bonne éducation repose sur un environnement motivant, le travail sérieux et la coopération.">
-          نؤمن بأن التعليم الجيد يبدأ ببيئة محفزة وعمل جاد وتعاون بين الأسرة والمدرسة والتلميذ.
-        </p>
-        <a class="btn btn-gold" href="about.html" data-ar="التعريف بالثانوية" data-fr="Présentation du lycée">التعريف بالثانوية</a>
+    <section class="soft-section" id="values">
+      <div class="container"><div class="section-heading reveal"><div class="section-kicker" data-ar="قيمنا" data-fr="NOS VALEURS">قيمنا</div><h2 data-ar="قيم تصنع بيئة مدرسية أفضل" data-fr="Des valeurs pour un meilleur environnement scolaire">قيم تصنع بيئة مدرسية أفضل</h2><div class="title-line"></div><p data-ar="مبادئ عامة تدعم التعلم الإيجابي والتعامل المسؤول داخل المجتمع المدرسي." data-fr="Des principes qui favorisent l’apprentissage et la responsabilité au sein de la communauté scolaire.">مبادئ عامة تدعم التعلم الإيجابي والتعامل المسؤول داخل المجتمع المدرسي.</p></div>
+        <div class="grid values-grid">
+          <article class="card reveal"><div class="card-icon">🧠</div><h3 data-ar="التفكير النقدي" data-fr="Esprit critique">التفكير النقدي</h3><p data-ar="طرح الأسئلة، والتحقق من المعلومات، وبناء الآراء على الأدلة." data-fr="Poser des questions, vérifier les informations et s’appuyer sur des preuves.">طرح الأسئلة، والتحقق من المعلومات، وبناء الآراء على الأدلة.</p></article>
+          <article class="card reveal"><div class="card-icon">🤝</div><h3 data-ar="الاحترام والتعاون" data-fr="Respect et coopération">الاحترام والتعاون</h3><p data-ar="الإنصات إلى الآخرين والعمل بروح الفريق واحترام الاختلاف." data-fr="Écouter les autres, travailler en équipe et respecter les différences.">الإنصات إلى الآخرين والعمل بروح الفريق واحترام الاختلاف.</p></article>
+          <article class="card reveal"><div class="card-icon">🎯</div><h3 data-ar="المثابرة" data-fr="Persévérance">المثابرة</h3><p data-ar="تنظيم الوقت، والتعلم من الأخطاء، والسعي المتواصل إلى التحسن." data-fr="Organiser son temps, apprendre de ses erreurs et progresser continuellement.">تنظيم الوقت، والتعلم من الأخطاء، والسعي المتواصل إلى التحسن.</p></article>
+        </div>
       </div>
-      <div class="intro-card reveal">
-        <h3 data-ar="ماذا تجد في موقعنا؟" data-fr="Que trouverez-vous ici ?">ماذا تجد في موقعنا؟</h3>
-        <ul class="feature-list">
-          <li data-ar="روابط الموارد التعليمية حسب المستوى" data-fr="Ressources pédagogiques par niveau">روابط الموارد التعليمية حسب المستوى</li>
-          <li data-ar="التعريف بالمؤسسة وأهدافها" data-fr="Présentation de l’établissement">التعريف بالمؤسسة وأهدافها</li>
-          <li data-ar="مساعد للتوجيه الجامعي في الجزائر" data-fr="Assistant d’orientation universitaire en Algérie">مساعد للتوجيه الجامعي في الجزائر</li>
-          <li data-ar="الوصول السريع إلى موارد المراجعة" data-fr="Accès rapide aux ressources de révision">الوصول السريع إلى موارد المراجعة</li>
-        </ul>
+    </section>
+
+    <section id="programs">
+      <div class="container"><div class="section-heading reveal"><div class="section-kicker" data-ar="الحياة المدرسية" data-fr="VIE SCOLAIRE">الحياة المدرسية</div><h2 data-ar="التعليم والأنشطة" data-fr="Études et activités">التعليم والأنشطة</h2><div class="title-line"></div><p data-ar="أقسام مقترحة لتنظيم المعلومات المدرسية. تُحدّث تفاصيل البرامج والأنشطة وفق ما تعتمده المؤسسة فعليًا." data-fr="Des rubriques pour organiser les informations scolaires. Les détails seront mis à jour selon les activités réellement proposées par l’établissement.">أقسام مقترحة لتنظيم المعلومات المدرسية. تُحدّث تفاصيل البرامج والأنشطة وفق ما تعتمده المؤسسة فعليًا.</p></div>
+        <div class="grid">
+          <article class="card card-top reveal"><div class="card-icon">📚</div><h3 data-ar="المسار الدراسي" data-fr="Parcours scolaire">المسار الدراسي</h3><p data-ar="التعريف بالمستويات والشعب الدراسية، ومساعدة التلاميذ على فهم خياراتهم التعليمية." data-fr="Présentation des niveaux et des filières pour aider les élèves à comprendre leurs choix.">التعريف بالمستويات والشعب الدراسية، ومساعدة التلاميذ على فهم خياراتهم التعليمية.</p><a class="card-link" href="#resources" data-ar="انتقل إلى الموارد ←" data-fr="Voir les ressources ←">انتقل إلى الموارد ←</a></article>
+          <article class="card card-top reveal"><div class="card-icon">🎭</div><h3 data-ar="الثقافة والفنون" data-fr="Culture et arts">الثقافة والفنون</h3><p data-ar="مكان لعرض النوادي الثقافية والمسابقات والأنشطة الفنية عندما تتوفر معلوماتها الرسمية." data-fr="Un espace pour présenter les clubs culturels, concours et activités artistiques lorsqu’ils sont confirmés.">مكان لعرض النوادي الثقافية والمسابقات والأنشطة الفنية عندما تتوفر معلوماتها الرسمية.</p><a class="card-link" href="#news" data-ar="تابع المستجدات ←" data-fr="Voir les actualités ←">تابع المستجدات ←</a></article>
+          <article class="card card-top reveal"><div class="card-icon">⚽</div><h3 data-ar="الرياضة والعمل الجماعي" data-fr="Sport et esprit d’équipe">الرياضة والعمل الجماعي</h3><p data-ar="مساحة للإعلان عن الأنشطة الرياضية والفعاليات المدرسية التي تؤكدها إدارة المؤسسة." data-fr="Un espace dédié aux activités sportives et événements confirmés par l’établissement.">مساحة للإعلان عن الأنشطة الرياضية والفعاليات المدرسية التي تؤكدها إدارة المؤسسة.</p><a class="card-link" href="#calendar" data-ar="عرض التقويم ←" data-fr="Voir le calendrier ←">عرض التقويم ←</a></article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="services">
-    <div class="container">
-      <div class="section-heading reveal">
-        <div class="eyebrow-small" data-ar="فضاء تعليمي متكامل" data-fr="ESPACE ÉDUCATIF">فضاء تعليمي متكامل</div>
-        <h2 data-ar="خدمات الموقع" data-fr="Les services du site">خدمات الموقع</h2>
-        <div class="title-line"></div>
-        <p data-ar="موارد وخدمات تساعد التلاميذ على التعلم والمراجعة والتخطيط لمستقبلهم."
-           data-fr="Des ressources pour apprendre, réviser et préparer son avenir.">
-          موارد وخدمات تساعد التلاميذ على التعلم والمراجعة والتخطيط لمستقبلهم.
-        </p>
+    <section class="soft-section" id="resources">
+      <div class="container"><div class="section-heading reveal"><div class="section-kicker" data-ar="تعلّم وراجع" data-fr="APPRENDRE ET RÉVISER">تعلّم وراجع</div><h2 data-ar="الموارد الدراسية" data-fr="Ressources scolaires">الموارد الدراسية</h2><div class="title-line"></div><p data-ar="اختر مستواك للوصول إلى دروس وتمارين وملخصات خارجية. الروابط التالية موارد عامة وليست ملفات رسمية صادرة عن الثانوية." data-fr="Choisissez votre niveau pour accéder à des cours, exercices et résumés externes. Ces liens sont des ressources générales et non des documents officiels du lycée.">اختر مستواك للوصول إلى دروس وتمارين وملخصات خارجية. الروابط التالية موارد عامة وليست ملفات رسمية صادرة عن الثانوية.</p></div>
+        <div class="search-row"><input id="resourceSearch" type="search" aria-label="البحث في الموارد" placeholder="ابحث عن مستوى دراسي..." data-placeholder-ar="ابحث عن مستوى دراسي..." data-placeholder-fr="Rechercher un niveau scolaire..."></div>
+        <div class="grid" id="resourceGrid">
+          <article class="card resource-card reveal" data-search="السنة الأولى ثانوي 1as première année secondaire"><div class="card-icon">📘</div><span class="tag" data-ar="1 ثانوي" data-fr="1re secondaire">1 ثانوي</span><h3 data-ar="السنة الأولى ثانوي" data-fr="Première année secondaire">السنة الأولى ثانوي</h3><p data-ar="دروس وتمارين وملخصات للمراجعة." data-fr="Cours, exercices et résumés pour réviser.">دروس وتمارين وملخصات للمراجعة.</p><a class="btn btn-gold" href="https://www.dzexams.com/ar/1as" target="_blank" rel="noopener noreferrer" data-ar="فتح الموارد ↗" data-fr="Ouvrir les ressources ↗">فتح الموارد ↗</a></article>
+          <article class="card resource-card reveal" data-search="السنة الثانية ثانوي 2as deuxième année secondaire"><div class="card-icon">📗</div><span class="tag" data-ar="2 ثانوي" data-fr="2e secondaire">2 ثانوي</span><h3 data-ar="السنة الثانية ثانوي" data-fr="Deuxième année secondaire">السنة الثانية ثانوي</h3><p data-ar="مصادر تعليمية لدعم التعلم والمراجعة." data-fr="Ressources pour apprendre et réviser.">مصادر تعليمية لدعم التعلم والمراجعة.</p><a class="btn btn-gold" href="https://www.dzexams.com/ar/2as" target="_blank" rel="noopener noreferrer" data-ar="فتح الموارد ↗" data-fr="Ouvrir les ressources ↗">فتح الموارد ↗</a></article>
+          <article class="card resource-card reveal" data-search="السنة الثالثة ثانوي بكالوريا 3as troisième année secondaire bac"><div class="card-icon">📕</div><span class="tag" data-ar="3 ثانوي" data-fr="3e secondaire">3 ثانوي</span><h3 data-ar="السنة الثالثة ثانوي" data-fr="Troisième année secondaire">السنة الثالثة ثانوي</h3><p data-ar="موارد للمراجعة والتحضير لشهادة البكالوريا." data-fr="Ressources de révision pour le baccalauréat.">موارد للمراجعة والتحضير لشهادة البكالوريا.</p><a class="btn btn-gold" href="https://www.dzexams.com/ar/3as" target="_blank" rel="noopener noreferrer" data-ar="فتح الموارد ↗" data-fr="Ouvrir les ressources ↗">فتح الموارد ↗</a></article>
+        </div><p id="resourceEmpty" class="empty-state" data-ar="لا توجد موارد مطابقة للبحث." data-fr="Aucune ressource ne correspond à la recherche.">لا توجد موارد مطابقة للبحث.</p>
+        <p class="form-note" style="text-align:center;margin-top:18px" data-ar="لإضافة ملفات الثانوية نفسها، ارفع ملفات PDF إلى المستودع ثم أضف روابطها هنا." data-fr="Pour ajouter les propres documents du lycée, téléversez les PDF dans le dépôt puis ajoutez leurs liens ici.">لإضافة ملفات الثانوية نفسها، ارفع ملفات PDF إلى المستودع ثم أضف روابطها هنا.</p>
       </div>
-      <div class="cards">
-        <article class="card reveal">
-          <div class="card-icon">📚</div>
-          <h3 data-ar="الموارد التعليمية" data-fr="Ressources pédagogiques">الموارد التعليمية</h3>
-          <p data-ar="روابط للدروس والملخصات والتمارين لمختلف المستويات."
-             data-fr="Cours, résumés et exercices pour différents niveaux.">روابط للدروس والملخصات والتمارين لمختلف المستويات.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card-icon">📝</div>
-          <h3 data-ar="الفروض والاختبارات" data-fr="Devoirs et examens">الفروض والاختبارات</h3>
-          <p data-ar="تدرّب وراجع دروسك استعدادًا للاختبارات."
-             data-fr="Entraînez-vous et révisez avant les examens.">تدرّب وراجع دروسك استعدادًا للاختبارات.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card-icon">🎓</div>
-          <h3 data-ar="التوجيه الجامعي" data-fr="Orientation universitaire">التوجيه الجامعي</h3>
-          <p data-ar="استكشف التخصصات والجامعات وشروط الالتحاق عبر مساعد الموقع."
-             data-fr="Explorez les filières, les universités et les conditions d’accès avec l’assistant.">
-            استكشف التخصصات والجامعات وشروط الالتحاق عبر مساعد الموقع.
-          </p>
-        </article>
+    </section>
+
+    <section id="news">
+      <div class="container"><div class="section-heading reveal"><div class="section-kicker" data-ar="ابقَ على اطلاع" data-fr="RESTEZ INFORMÉS">ابقَ على اطلاع</div><h2 data-ar="الأخبار والإعلانات" data-fr="Actualités et annonces">الأخبار والإعلانات</h2><div class="title-line"></div><p data-ar="واجهة مخصصة لنشر إعلانات الإدارة والأنشطة والنتائج. الأمثلة أدناه توضيحية ويجب استبدالها بأخبار حقيقية قبل النشر." data-fr="Un espace pour publier les annonces, activités et résultats. Les exemples ci-dessous sont indicatifs et doivent être remplacés par des informations réelles.">واجهة مخصصة لنشر إعلانات الإدارة والأنشطة والنتائج. الأمثلة أدناه توضيحية ويجب استبدالها بأخبار حقيقية قبل النشر.</p></div>
+        <div class="notice" style="margin-bottom:18px" data-ar="تنبيه: لا تُعدّ البطاقات التالية إعلانات فعلية؛ غيّر محتواها إلى بيانات مؤكدة من إدارة الثانوية." data-fr="Attention : les cartes ci-dessous ne sont pas des annonces réelles. Remplacez-les par des informations confirmées par l’administration.">تنبيه: لا تُعدّ البطاقات التالية إعلانات فعلية؛ غيّر محتواها إلى بيانات مؤكدة من إدارة الثانوية.</div>
+        <div class="grid">
+          <article class="card reveal"><div class="news-date" data-ar="إعلان مدرسي" data-fr="Annonce scolaire">إعلان مدرسي</div><h3 data-ar="إعلانات الإدارة" data-fr="Annonces de l’administration">إعلانات الإدارة</h3><p data-ar="يُستخدم هذا القسم لنشر المواعيد والتعليمات والإعلانات الرسمية بعد التحقق منها." data-fr="Cette rubrique sert à publier les dates, consignes et annonces officielles après vérification.">يُستخدم هذا القسم لنشر المواعيد والتعليمات والإعلانات الرسمية بعد التحقق منها.</p></article>
+          <article class="card reveal"><div class="news-date" data-ar="أنشطة وفعاليات" data-fr="Activités et événements">أنشطة وفعاليات</div><h3 data-ar="الحياة المدرسية" data-fr="Vie scolaire">الحياة المدرسية</h3><p data-ar="أضف تقارير موجزة وصورًا مناسبة للأنشطة والمسابقات التي تنظمها المؤسسة." data-fr="Ajoutez de courts comptes rendus et des photos adaptées des activités et concours organisés.">أضف تقارير موجزة وصورًا مناسبة للأنشطة والمسابقات التي تنظمها المؤسسة.</p></article>
+          <article class="card reveal"><div class="news-date" data-ar="توجيه ومراجعة" data-fr="Orientation et révision">توجيه ومراجعة</div><h3 data-ar="مواعيد وموارد مفيدة" data-fr="Dates et ressources utiles">مواعيد وموارد مفيدة</h3><p data-ar="شارك الروابط الرسمية للتوجيه والمراجعة، مع توضيح تاريخ نشر كل معلومة." data-fr="Partagez les liens officiels d’orientation et de révision en indiquant la date de publication.">شارك الروابط الرسمية للتوجيه والمراجعة، مع توضيح تاريخ نشر كل معلومة.</p></article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="studies" id="study">
-    <div class="container">
-      <div class="section-heading reveal">
-        <div class="eyebrow-small" data-ar="اختر مستواك الدراسي" data-fr="CHOISISSEZ VOTRE NIVEAU">اختر مستواك الدراسي</div>
-        <h2 data-ar="الموارد الدراسية" data-fr="Ressources scolaires">الموارد الدراسية</h2>
-        <div class="title-line"></div>
-        <p data-ar="اختر مستواك للانتقال إلى الدروس والملخصات والتمارين."
-           data-fr="Choisissez votre niveau pour accéder aux cours et exercices.">
-          اختر مستواك للانتقال إلى الدروس والملخصات والتمارين.
-        </p>
+    <section class="soft-section" id="calendar">
+      <div class="container"><div class="section-heading reveal"><div class="section-kicker" data-ar="خطط لمواعيدك" data-fr="PLANIFIEZ VOS DATES">خطط لمواعيدك</div><h2 data-ar="التقويم المدرسي" data-fr="Calendrier scolaire">التقويم المدرسي</h2><div class="title-line"></div><p data-ar="مكان لعرض الاختبارات والاجتماعات والأنشطة والمواعيد المدرسية. لا توجد مواعيد فعلية مدرجة هنا حتى تُضاف من مصدر موثوق." data-fr="Un espace pour afficher les examens, réunions, activités et dates scolaires. Aucun événement réel n’est indiqué avant confirmation par une source fiable.">مكان لعرض الاختبارات والاجتماعات والأنشطة والمواعيد المدرسية. لا توجد مواعيد فعلية مدرجة هنا حتى تُضاف من مصدر موثوق.</p></div>
+        <div class="grid two">
+          <article class="card reveal"><div class="event"><div class="event-date"><strong>—</strong><span data-ar="التاريخ" data-fr="Date">التاريخ</span></div><div><h3 data-ar="مواعيد الفروض والاختبارات" data-fr="Devoirs et examens">مواعيد الفروض والاختبارات</h3><p data-ar="أضف تاريخ الاختبار والمستوى المعني بعد صدور البرنامج الرسمي." data-fr="Ajoutez la date et le niveau concernés après publication du calendrier officiel.">أضف تاريخ الاختبار والمستوى المعني بعد صدور البرنامج الرسمي.</p></div></div></article>
+          <article class="card reveal"><div class="event"><div class="event-date"><strong>—</strong><span data-ar="التاريخ" data-fr="Date">التاريخ</span></div><div><h3 data-ar="الاجتماعات والأنشطة" data-fr="Réunions et activités">الاجتماعات والأنشطة</h3><p data-ar="أضف مواعيد الاجتماعات أو المسابقات أو الأنشطة المعتمدة من الإدارة." data-fr="Ajoutez les dates des réunions, concours et activités validés par l’administration.">أضف مواعيد الاجتماعات أو المسابقات أو الأنشطة المعتمدة من الإدارة.</p></div></div></article>
+        </div>
+        <p style="text-align:center;margin-top:18px"><a class="btn btn-green" href="https://www.education.gov.dz/" target="_blank" rel="noopener noreferrer" data-ar="موقع وزارة التربية الوطنية ↗" data-fr="Ministère de l’Éducation nationale ↗">موقع وزارة التربية الوطنية ↗</a></p>
       </div>
-      <div class="cards">
-        <article class="study-card reveal">
-          <div class="card-icon">📘</div>
-          <h3 data-ar="السنة الأولى ثانوي" data-fr="Première année secondaire">السنة الأولى ثانوي</h3>
-          <p data-ar="دروس وتمارين وملخصات للمراجعة."
-             data-fr="Cours, exercices et résumés.">دروس وتمارين وملخصات للمراجعة.</p>
-          <a class="btn btn-gold" href="https://www.dzexams.com/ar/1as" target="_blank" rel="noopener noreferrer" data-ar="الدخول إلى الموارد ↗" data-fr="Accéder aux ressources ↗">الدخول إلى الموارد ↗</a>
-        </article>
-        <article class="study-card reveal">
-          <div class="card-icon">📗</div>
-          <h3 data-ar="السنة الثانية ثانوي" data-fr="Deuxième année secondaire">السنة الثانية ثانوي</h3>
-          <p data-ar="مصادر تعليمية لدعم التعلم والمراجعة."
-             data-fr="Ressources pour apprendre et réviser.">مصادر تعليمية لدعم التعلم والمراجعة.</p>
-          <a class="btn btn-gold" href="https://www.dzexams.com/ar/2as" target="_blank" rel="noopener noreferrer" data-ar="الدخول إلى الموارد ↗" data-fr="Accéder aux ressources ↗">الدخول إلى الموارد ↗</a>
-        </article>
-        <article class="study-card reveal">
-          <div class="card-icon">📕</div>
-          <h3 data-ar="السنة الثالثة ثانوي" data-fr="Troisième année secondaire">السنة الثالثة ثانوي</h3>
-          <p data-ar="موارد للمراجعة والتحضير لشهادة البكالوريا."
-             data-fr="Ressources pour préparer le baccalauréat.">موارد للمراجعة والتحضير لشهادة البكالوريا.</p>
-          <a class="btn btn-gold" href="https://www.dzexams.com/ar/3as" target="_blank" rel="noopener noreferrer" data-ar="الدخول إلى الموارد ↗" data-fr="Accéder aux ressources ↗">الدخول إلى الموارد ↗</a>
-        </article>
+    </section>
+
+    <section id="families">
+      <div class="container"><div class="section-heading reveal"><div class="section-kicker" data-ar="التواصل والمتابعة" data-fr="COMMUNICATION ET SUIVI">التواصل والمتابعة</div><h2 data-ar="فضاء التلاميذ والأولياء" data-fr="Espace élèves et familles">فضاء التلاميذ والأولياء</h2><div class="title-line"></div><p data-ar="روابط سريعة إلى الخدمات التعليمية ومصادر التوجيه. لا يتضمن هذا الموقع تسجيل دخول أو قاعدة بيانات للعلامات؛ لا تشارك كلمات المرور أو المعلومات الشخصية في نموذج التواصل." data-fr="Des liens rapides vers les ressources éducatives et l’orientation. Ce site ne contient ni connexion ni base de notes ; ne partagez pas de mots de passe ni de données personnelles dans le formulaire.">روابط سريعة إلى الخدمات التعليمية ومصادر التوجيه. لا يتضمن هذا الموقع تسجيل دخول أو قاعدة بيانات للعلامات؛ لا تشارك كلمات المرور أو المعلومات الشخصية في نموذج التواصل.</p></div>
+        <div class="two-column">
+          <div class="link-list reveal"><a href="#resources" data-ar="📚 الموارد الدراسية حسب المستوى" data-fr="📚 Ressources scolaires par niveau">📚 الموارد الدراسية حسب المستوى</a><a href="#calendar" data-ar="🗓️ مواعيد الاختبارات والأنشطة" data-fr="🗓️ Dates des examens et activités">🗓️ مواعيد الاختبارات والأنشطة</a><a href="https://www.education.gov.dz/" target="_blank" rel="noopener noreferrer" data-ar="🏛️ وزارة التربية الوطنية" data-fr="🏛️ Ministère de l’Éducation nationale">🏛️ وزارة التربية الوطنية</a><a href="https://www.mesrs.dz/" target="_blank" rel="noopener noreferrer" data-ar="🎓 وزارة التعليم العالي والبحث العلمي" data-fr="🎓 Ministère de l’Enseignement supérieur">🎓 وزارة التعليم العالي والبحث العلمي</a><a href="https://www.orientation-esi.dz/" target="_blank" rel="noopener noreferrer" data-ar="🧭 بوابة التوجيه الجامعي (تحقق من توفرها ومواعيدها)" data-fr="🧭 Portail d’orientation universitaire (vérifiez sa disponibilité)">🧭 بوابة التوجيه الجامعي (تحقق من توفرها ومواعيدها)</a></div>
+          <article class="card reveal"><div class="card-icon">👨‍👩‍👧‍👦</div><h3 data-ar="دليل للأولياء" data-fr="Guide des familles">دليل للأولياء</h3><p data-ar="يمكن إضافة دليل المؤسسة، النظام الداخلي، قائمة الوثائق، طرق التواصل مع الإدارة، وروابط المنصات الرسمية هنا بعد التأكد من صحتها." data-fr="Le règlement intérieur, les documents nécessaires, les coordonnées de l’administration et les plateformes officielles peuvent être ajoutés ici après vérification.">يمكن إضافة دليل المؤسسة، النظام الداخلي، قائمة الوثائق، طرق التواصل مع الإدارة، وروابط المنصات الرسمية هنا بعد التأكد من صحتها.</p><span class="tag" data-ar="قسم قابل للتحديث" data-fr="Rubrique à mettre à jour">قسم قابل للتحديث</span></article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="assistant">
-    <div class="container">
-      <div class="section-heading reveal">
-        <div class="eyebrow-small" data-ar="مساعدك الدراسي" data-fr="VOTRE ASSISTANT SCOLAIRE">مساعدك الدراسي</div>
-        <h2 data-ar="اسأل مساعد الذكاء الاصطناعي" data-fr="Posez vos questions à l’assistant IA">اسأل مساعد الذكاء الاصطناعي</h2>
-        <div class="title-line"></div>
-        <p data-ar="أسئلة حول الدراسة في الجزائر، البكالوريا، التخصصات والجامعات."
-           data-fr="Questions sur les études en Algérie, le bac, les filières et les universités.">
-          أسئلة حول الدراسة في الجزائر، البكالوريا، التخصصات والجامعات.
-        </p>
+    <section class="soft-section" id="faq">
+      <div class="container"><div class="section-heading reveal"><div class="section-kicker" data-ar="أسئلة متكررة" data-fr="QUESTIONS FRÉQUENTES">أسئلة متكررة</div><h2 data-ar="كيف أستفيد من الموقع؟" data-fr="Comment utiliser le site ?">كيف أستفيد من الموقع؟</h2><div class="title-line"></div></div>
+        <div class="faq">
+          <details><summary data-ar="هل الموارد الدراسية صادرة عن الثانوية؟" data-fr="Les ressources scolaires viennent-elles du lycée ?">هل الموارد الدراسية صادرة عن الثانوية؟</summary><p data-ar="روابط السنوات الثلاث تفتح موقعًا تعليميًا خارجيًا. أضف الملفات الرسمية للمؤسسة بصورة منفصلة عند توفرها." data-fr="Les liens des trois niveaux ouvrent un site éducatif externe. Ajoutez séparément les documents officiels du lycée lorsqu’ils sont disponibles.">روابط السنوات الثلاث تفتح موقعًا تعليميًا خارجيًا. أضف الملفات الرسمية للمؤسسة بصورة منفصلة عند توفرها.</p></details>
+          <details><summary data-ar="كيف أضيف خبرًا أو موعدًا؟" data-fr="Comment ajouter une actualité ou une date ?">كيف أضيف خبرًا أو موعدًا؟</summary><p data-ar="عدّل بطاقات قسم الأخبار أو التقويم داخل ملف index.html، ثم احفظ التغييرات وارفعها إلى مستودع GitHub." data-fr="Modifiez les cartes des actualités ou du calendrier dans index.html, puis enregistrez et envoyez les changements sur GitHub.">عدّل بطاقات قسم الأخبار أو التقويم داخل ملف index.html، ثم احفظ التغييرات وارفعها إلى مستودع GitHub.</p></details>
+          <details><summary data-ar="هل يعمل المساعد الذكي تلقائيًا؟" data-fr="L’assistant IA fonctionne-t-il automatiquement ?">هل يعمل المساعد الذكي تلقائيًا؟</summary><p data-ar="تحتاج الواجهة إلى رابط خادم ذكاء اصطناعي فعّال. لا تضع مفتاح API في HTML؛ استخدم خادمًا وسيطًا يحفظ المفتاح بأمان." data-fr="L’interface nécessite l’URL d’un serveur IA actif. Ne placez jamais la clé API dans le HTML ; utilisez un serveur intermédiaire sécurisé.">تحتاج الواجهة إلى رابط خادم ذكاء اصطناعي فعّال. لا تضع مفتاح API في HTML؛ استخدم خادمًا وسيطًا يحفظ المفتاح بأمان.</p></details>
+        </div>
       </div>
-      <div class="intro-card" style="text-align:center">
-        <div style="font-size:42px">🤖</div>
-        <h3 data-ar="مساعد التوجيه والتعليم" data-fr="Assistant scolaire et d’orientation">مساعد التوجيه والتعليم</h3>
-        <p data-ar="اضغط على الزر لفتح نافذة المحادثة. يمكنك السؤال عن التخصصات الجامعية أو شروط القبول أو طلب مساعدة في فهم المسار الدراسي."
-           data-fr="Ouvrez la conversation pour poser vos questions sur les études, les filières et les admissions.">
-          اضغط على الزر لفتح نافذة المحادثة. يمكنك السؤال عن التخصصات الجامعية أو شروط القبول أو طلب مساعدة في فهم المسار الدراسي.
-        </p>
-        <button class="btn btn-gold" onclick="toggleAssistant(true)"
-          data-ar="ابدأ المحادثة ↗" data-fr="Commencer la conversation ↗">ابدأ المحادثة ↗</button>
+    </section>
+
+    <section id="assistant">
+      <div class="container"><div class="section-heading reveal"><div class="section-kicker" data-ar="مساعدة تعليمية" data-fr="AIDE PÉDAGOGIQUE">مساعدة تعليمية</div><h2 data-ar="المساعد الدراسي الذكي" data-fr="Assistant scolaire intelligent">المساعد الدراسي الذكي</h2><div class="title-line"></div><p data-ar="يمكن للمساعد أن يجيب عن أسئلة الدراسة والتوجيه عند ربطه بخدمة ذكاء اصطناعي من خلال خادم آمن." data-fr="L’assistant pourra répondre aux questions sur les études et l’orientation lorsqu’il sera relié à un service IA via un serveur sécurisé.">يمكن للمساعد أن يجيب عن أسئلة الدراسة والتوجيه عند ربطه بخدمة ذكاء اصطناعي من خلال خادم آمن.</p></div>
+        <article class="card reveal" style="text-align:center"><div class="card-icon">🤖</div><h3 data-ar="اسأل عن الدراسة في الجزائر" data-fr="Posez vos questions sur les études en Algérie">اسأل عن الدراسة في الجزائر</h3><p data-ar="اسأل عن الشعب الدراسية، التحضير للبكالوريا، التخصصات الجامعية أو طرق المراجعة. تحقّق من شروط القبول من المصادر الرسمية لأنها قد تتغير." data-fr="Posez vos questions sur les filières, le baccalauréat, les études universitaires ou les méthodes de révision. Vérifiez les conditions d’admission auprès des sources officielles.">اسأل عن الشعب الدراسية، التحضير للبكالوريا، التخصصات الجامعية أو طرق المراجعة. تحقّق من شروط القبول من المصادر الرسمية لأنها قد تتغير.</p><button class="btn btn-gold" id="openAssistant" type="button" data-ar="فتح المساعد ↗" data-fr="Ouvrir l’assistant ↗">فتح المساعد ↗</button></article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="section-heading reveal">
-        <h2 data-ar="اتصل بنا" data-fr="Contactez-nous">اتصل بنا</h2>
-        <div class="title-line"></div>
+    <section class="contact" id="contact" style="background:#e8f0eb">
+      <div class="container"><div class="section-heading reveal"><div class="section-kicker" data-ar="نحن في خدمتكم" data-fr="NOUS CONTACTER">نحن في خدمتكم</div><h2 data-ar="اتصل بنا" data-fr="Contactez-nous">اتصل بنا</h2><div class="title-line"></div><p data-ar="أضف البريد الإلكتروني أو الهاتف الرسمي للمؤسسة قبل نشر الموقع. النموذج أدناه يفتح تطبيق البريد الإلكتروني لديك ولا يخزن الرسائل في الموقع." data-fr="Ajoutez l’adresse e-mail ou le téléphone officiel de l’établissement avant publication. Le formulaire ouvre votre application de messagerie et ne stocke pas les messages.">أضف البريد الإلكتروني أو الهاتف الرسمي للمؤسسة قبل نشر الموقع. النموذج أدناه يفتح تطبيق البريد الإلكتروني لديك ولا يخزن الرسائل في الموقع.</p></div>
+        <div class="grid two">
+          <article class="card reveal"><h3 data-ar="معلومات المؤسسة" data-fr="Informations de l’établissement">معلومات المؤسسة</h3><p data-ar="اسم المؤسسة: ثانوية مسغوني" data-fr="Établissement : Lycée Mesgouni">اسم المؤسسة: ثانوية مسغوني</p><p data-ar="العنوان: يُضاف بعد التحقق" data-fr="Adresse : à ajouter après vérification">العنوان: يُضاف بعد التحقق</p><p data-ar="البريد الإلكتروني: يُضاف البريد الرسمي" data-fr="E-mail : adresse officielle à ajouter">البريد الإلكتروني: يُضاف البريد الرسمي</p><p class="form-note" data-ar="لا تنشر بيانات اتصال شخصية؛ استخدم معلومات التواصل المعتمدة من المؤسسة." data-fr="N’affichez pas de coordonnées personnelles ; utilisez celles validées par l’établissement.">لا تنشر بيانات اتصال شخصية؛ استخدم معلومات التواصل المعتمدة من المؤسسة.</p></article>
+          <article class="card reveal"><h3 data-ar="إرسال رسالة" data-fr="Envoyer un message">إرسال رسالة</h3><form class="contact-form" id="contactForm"><label><span data-ar="الاسم (اختياري)" data-fr="Nom (facultatif)">الاسم (اختياري)</span><input name="name" autocomplete="name" maxlength="80"></label><label><span data-ar="موضوع الرسالة" data-fr="Sujet du message">موضوع الرسالة</span><input name="subject" required maxlength="120"></label><label><span data-ar="الرسالة" data-fr="Message">الرسالة</span><textarea name="message" required maxlength="2000"></textarea></label><button class="btn btn-green" type="submit" data-ar="فتح البريد لإرسال الرسالة" data-fr="Ouvrir l’e-mail pour envoyer">فتح البريد لإرسال الرسالة</button><p class="form-note" data-ar="قبل الاستخدام، استبدل عنوان البريد التجريبي في JavaScript بعنوان المؤسسة الرسمي." data-fr="Avant utilisation, remplacez l’adresse e-mail de démonstration dans le JavaScript par celle de l’établissement.">قبل الاستخدام، استبدل عنوان البريد التجريبي في JavaScript بعنوان المؤسسة الرسمي.</p></form></article>
+        </div>
       </div>
-      <p data-ar="مرحبًا بكم في الموقع الإلكتروني لثانوية مسغوني."
-         data-fr="Bienvenue sur le site du lycée Mesgouni.">مرحبًا بكم في الموقع الإلكتروني لثانوية مسغوني.</p>
-      <p data-ar="يمكن إضافة معلومات الاتصال الرسمية للمؤسسة هنا."
-         data-fr="Les coordonnées officielles de l’établissement peuvent être ajoutées ici.">
-        يمكن إضافة معلومات الاتصال الرسمية للمؤسسة هنا.
-      </p>
-    </div>
-  </section>
-</main>
+    </section>
+  </main>
 
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-title">🎓 ثانوية مسغوني</div>
-      <div class="footer-note" data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail, clés de la réussite">العلم والعمل أساس النجاح</div>
-    </div>
-    <a class="btn btn-outline" href="about.html" data-ar="اكتشف ثانويتنا" data-fr="Découvrir notre lycée">اكتشف ثانويتنا</a>
-  </div>
-  <div class="copyright">
-    <p>© 2026 ثانوية مسغوني — جميع الحقوق محفوظة</p>
-    <p>صنع بواسطة <strong> مجد بن حرزالله</strong> و<strong>أيوب شبيرات قسم 1 ج ع ت2 </strong></p>
-  </div>
-</footer>
+  <footer>
+    <div class="footer-inner"><div><div class="footer-title">🎓 <span data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</span></div><div class="footer-note" data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail, clés de la réussite">العلم والعمل أساس النجاح</div></div><div class="footer-links"><a href="#about" data-ar="عن الثانوية" data-fr="Notre lycée">عن الثانوية</a><a href="#resources" data-ar="الموارد الدراسية" data-fr="Ressources">الموارد الدراسية</a><a href="#contact" data-ar="اتصل بنا" data-fr="Contact">اتصل بنا</a></div></div>
+    <div class="copyright"><p>© <span id="currentYear">2026</span> <span data-ar="ثانوية مسغوني — جميع الحقوق محفوظة" data-fr="Lycée Mesgouni — Tous droits réservés">ثانوية مسغوني — جميع الحقوق محفوظة</span></p><p><span data-ar="صنع بواسطة" data-fr="Créé par">صنع بواسطة</span> <strong>مجد بن حرزالله</strong> <span data-ar="و" data-fr="et">و</span> <strong>أيوب شبيرات — قسم 1 ج ع ت2</strong></p></div>
+  </footer>
 
-<!-- نافذة مساعد الذكاء الاصطناعي -->
-<button class="ai-launcher" onclick="toggleAssistant()" aria-label="فتح مساعد الذكاء الاصطناعي">🤖</button>
+  <button class="back-top" id="backTop" type="button" aria-label="العودة إلى الأعلى">↑</button>
+  <button class="ai-launcher" id="aiLauncher" type="button" aria-label="فتح المساعد الدراسي" aria-expanded="false">🤖</button>
+  <aside class="ai-panel" id="aiPanel" aria-label="المساعد الدراسي" aria-hidden="true">
+    <div class="ai-header"><div><h3 data-ar="المساعد الدراسي الذكي" data-fr="Assistant scolaire intelligent">المساعد الدراسي الذكي</h3><p data-ar="الدراسة والتوجيه في الجزائر" data-fr="Études et orientation en Algérie">الدراسة والتوجيه في الجزائر</p></div><button class="ai-close" id="closeAssistant" type="button" aria-label="إغلاق">×</button></div>
+    <div class="ai-notice" data-ar="تحقق من المعلومات الرسمية، خاصة معدلات القبول والمواعيد التي قد تتغير." data-fr="Vérifiez les informations officielles, notamment les seuils d’admission et les dates qui peuvent changer.">تحقق من المعلومات الرسمية، خاصة معدلات القبول والمواعيد التي قد تتغير.</div>
+    <div class="ai-messages" id="aiMessages" aria-live="polite"><div class="message bot" data-ar="مرحبًا! يمكنني مساعدتك في الدراسة والتوجيه. بعد ربط الخادم، أرسل سؤالك هنا." data-fr="Bonjour ! Je peux vous aider pour les études et l’orientation. Après la connexion du serveur, posez votre question ici.">مرحبًا! يمكنني مساعدتك في الدراسة والتوجيه. بعد ربط الخادم، أرسل سؤالك هنا.</div></div>
+    <div class="ai-suggestions"><button type="button" data-question="ما هي تخصصات الإعلام الآلي في الجزائر؟" data-question-fr="Quelles sont les filières informatiques en Algérie ?" data-ar="تخصصات الإعلام الآلي" data-fr="Filières informatiques">تخصصات الإعلام الآلي</button><button type="button" data-question="كيف أستعد للبكالوريا؟" data-question-fr="Comment préparer le baccalauréat ?" data-ar="التحضير للبكالوريا" data-fr="Préparer le bac">التحضير للبكالوريا</button><button type="button" data-question="كيف أختار تخصصي الجامعي؟" data-question-fr="Comment choisir une filière universitaire ?" data-ar="اختيار التخصص" data-fr="Choisir une filière">اختيار التخصص</button></div>
+    <form class="ai-form" id="aiForm"><textarea id="aiInput" rows="1" maxlength="1500" placeholder="اكتب سؤالك هنا..." aria-label="اكتب سؤالك"></textarea><button id="aiSend" type="submit" data-ar="إرسال" data-fr="Envoyer">إرسال</button></form>
+  </aside>
 
-<aside class="ai-panel" id="aiPanel" aria-label="مساعد الذكاء الاصطناعي">
-  <div class="ai-header">
-    <div>
-      <h3 data-ar="المساعد الدراسي الذكي" data-fr="Assistant scolaire intelligent">المساعد الدراسي الذكي</h3>
-      <p data-ar="الدراسة والجامعات في الجزائر" data-fr="Études et universités en Algérie">الدراسة والجامعات في الجزائر</p>
-    </div>
-    <button class="ai-close" onclick="toggleAssistant(false)" aria-label="إغلاق">×</button>
-  </div>
+  <script>
+    'use strict';
+    let currentLanguage = 'ar';
+    const AI_ENDPOINT = 'PASTE_YOUR_CLOUDFLARE_WORKER_URL_HERE'; // مثال: https://school-assistant.your-subdomain.workers.dev
+    const OFFICIAL_SCHOOL_EMAIL = 'REPLACE_WITH_OFFICIAL_SCHOOL_EMAIL'; // لا تترك هذا النص؛ ضع البريد الرسمي عند توفره.
+    const $ = (selector, root = document) => root.querySelector(selector);
+    const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
-  <div class="ai-notice" data-ar="تحقق من شروط القبول والمعدلات من المنشورات الرسمية لوزارة التعليم العالي؛ فقد تتغير سنويًا."
-       data-fr="Vérifiez les conditions d’admission dans les publications officielles, car elles peuvent changer chaque année.">
-    تحقق من شروط القبول والمعدلات من المنشورات الرسمية لوزارة التعليم العالي؛ فقد تتغير سنويًا.
-  </div>
+    function changeLanguage() {
+      currentLanguage = currentLanguage === 'ar' ? 'fr' : 'ar';
+      document.documentElement.lang = currentLanguage;
+      document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+      $$('[data-ar][data-fr]').forEach((el) => {
+        // لا نغيّر عناصر الإدخال أو الأزرار ذات المحتوى التفاعلي إلا عبر نصوصها.
+        el.textContent = el.getAttribute('data-' + currentLanguage);
+      });
+      $('#languageButton').textContent = currentLanguage === 'ar' ? 'Français' : 'العربية';
+      $('#aiInput').placeholder = currentLanguage === 'ar' ? 'اكتب سؤالك هنا...' : 'Écrivez votre question...';
+      $('#aiInput').setAttribute('aria-label', currentLanguage === 'ar' ? 'اكتب سؤالك' : 'Écrivez votre question');
+      $('#resourceSearch').placeholder = $('#resourceSearch').getAttribute('data-placeholder-' + currentLanguage);
+      document.title = currentLanguage === 'ar' ? 'ثانوية مسغوني | الموقع المدرسي' : 'Lycée Mesgouni | Site scolaire';
+    }
+    $('#languageButton').addEventListener('click', changeLanguage);
 
-  <div class="ai-messages" id="aiMessages" aria-live="polite">
-    <div class="message bot" data-ar="مرحبًا! يمكنني مساعدتك في معرفة التخصصات الجامعية في الجزائر، ومسارات ما بعد البكالوريا، ومعلومات الدراسة. ما سؤالك؟"
-         data-fr="Bonjour ! Je peux vous aider sur les filières universitaires en Algérie et les parcours après le bac. Quelle est votre question ?">
-      مرحبًا! يمكنني مساعدتك في معرفة التخصصات الجامعية في الجزائر، ومسارات ما بعد البكالوريا، ومعلومات الدراسة. ما سؤالك؟
-    </div>
-  </div>
-
-  <div class="ai-suggestions">
-    <button onclick="askSuggestion('ما هي تخصصات الإعلام الآلي في الجزائر؟')" data-ar="تخصصات الإعلام الآلي" data-fr="Filières informatique">تخصصات الإعلام الآلي</button>
-    <button onclick="askSuggestion('كيف أعرف معدل القبول الجامعي؟')" data-ar="معدلات القبول" data-fr="Moyennes d’admission">معدلات القبول</button>
-    <button onclick="askSuggestion('ما هي خطوات التسجيل الجامعي بعد البكالوريا في الجزائر؟')" data-ar="التسجيل الجامعي" data-fr="Inscription universitaire">التسجيل الجامعي</button>
-  </div>
-
-  <form class="ai-form" id="aiForm">
-    <textarea id="aiInput" rows="1" maxlength="1500"
-      placeholder="اكتب سؤالك هنا..." aria-label="اكتب سؤالك"></textarea>
-    <button id="aiSend" type="submit">إرسال</button>
-  </form>
-</aside>
-
-<script>
-let currentLanguage = "ar";
-
-function changeLanguage() {
-  currentLanguage = currentLanguage === "ar" ? "fr" : "ar";
-  document.documentElement.lang = currentLanguage;
-  document.documentElement.dir = currentLanguage === "ar" ? "rtl" : "ltr";
-
-  document.querySelectorAll("[data-ar][data-fr]").forEach(function(el) {
-    el.textContent = el.getAttribute("data-" + currentLanguage);
-  });
-
-  document.getElementById("languageButton").textContent =
-    currentLanguage === "ar" ? "Français" : "العربية";
-
-  document.getElementById("aiInput").placeholder =
-    currentLanguage === "ar" ? "اكتب سؤالك هنا..." : "Écrivez votre question...";
-  document.getElementById("aiSend").textContent =
-    currentLanguage === "ar" ? "إرسال" : "Envoyer";
-}
-
-function toggleMenu() {
-  document.getElementById("navigation").classList.toggle("open");
-}
-
-document.querySelectorAll("#navigation a").forEach(function(link) {
-  link.addEventListener("click", function() {
-    document.getElementById("navigation").classList.remove("open");
-  });
-});
-
-function toggleAssistant(forceOpen) {
-  const panel = document.getElementById("aiPanel");
-  const shouldOpen = typeof forceOpen === "boolean"
-    ? forceOpen
-    : !panel.classList.contains("open");
-
-  panel.classList.toggle("open", shouldOpen);
-
-  if (shouldOpen) {
-    document.getElementById("aiInput").focus();
-  }
-}
-
-function addMessage(text, type) {
-  const messages = document.getElementById("aiMessages");
-  const item = document.createElement("div");
-  item.className = "message " + type;
-  item.textContent = text;
-  messages.appendChild(item);
-  messages.scrollTop = messages.scrollHeight;
-  return item;
-}
-
-function askSuggestion(question) {
-  document.getElementById("aiInput").value = question;
-  toggleAssistant(true);
-  document.getElementById("aiForm").requestSubmit();
-}
-
-document.getElementById("aiForm").addEventListener("submit", async function(event) {
-  event.preventDefault();
-
-  const input = document.getElementById("aiInput");
-  const send = document.getElementById("aiSend");
-  const question = input.value.trim();
-
-  if (!question || send.disabled) return;
-
-  addMessage(question, "user");
-  input.value = "";
-  send.disabled = true;
-
-  const typing = addMessage(
-    currentLanguage === "ar" ? "جارٍ إعداد الإجابة..." : "Préparation de la réponse...",
-    "bot"
-  );
-  typing.classList.add("typing");
-
-  try {
-    /*
-      اربط الواجهة بخادمك الآمن عبر POST /api/chat.
-      يجب أن يستقبل الخادم:
-      { "message": "...", "language": "ar" }
-      ويعيد:
-      { "reply": "..." }
-
-      لا تضع مفتاح API داخل هذا الملف.
-    */
-    const response = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        message: question,
-        language: currentLanguage
-      })
+    const nav = $('#navigation');
+    $('#menuButton').addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      $('#menuButton').setAttribute('aria-expanded', String(isOpen));
     });
+    $$('#navigation a').forEach((link) => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      $('#menuButton').setAttribute('aria-expanded', 'false');
+    }));
 
-    if (!response.ok) {
-      throw new Error("AI_SERVICE_UNAVAILABLE");
+    function toggleAssistant(forceOpen) {
+      const panel = $('#aiPanel');
+      const open = typeof forceOpen === 'boolean' ? forceOpen : !panel.classList.contains('open');
+      panel.classList.toggle('open', open);
+      panel.setAttribute('aria-hidden', String(!open));
+      $('#aiLauncher').setAttribute('aria-expanded', String(open));
+      if (open) $('#aiInput').focus();
     }
+    $('#aiLauncher').addEventListener('click', () => toggleAssistant());
+    $('#openAssistant').addEventListener('click', () => toggleAssistant(true));
+    $('#closeAssistant').addEventListener('click', () => toggleAssistant(false));
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') toggleAssistant(false); });
 
-    const data = await response.json();
-
-    if (!data || typeof data.reply !== "string" || !data.reply.trim()) {
-      throw new Error("INVALID_RESPONSE");
+    function addMessage(text, type) {
+      const item = document.createElement('div');
+      item.className = 'message ' + type;
+      item.textContent = text;
+      $('#aiMessages').appendChild(item);
+      $('#aiMessages').scrollTop = $('#aiMessages').scrollHeight;
+      return item;
     }
+    $$('.ai-suggestions button').forEach((button) => button.addEventListener('click', () => {
+      $('#aiInput').value = currentLanguage === 'ar' ? button.dataset.question : button.dataset.questionFr;
+      toggleAssistant(true);
+      $('#aiForm').requestSubmit();
+    }));
 
-    typing.remove();
-    addMessage(data.reply, "bot");
-
-  } catch (error) {
-    typing.remove();
-
-    addMessage(
-      currentLanguage === "ar"
-        ? "المساعد الذكي غير متصل بالخادم حاليًا. هذه الواجهة جاهزة، لكن يلزم إعداد خدمة الذكاء الاصطناعي على الخادم قبل الحصول على إجابات مولّدة. لا تعتمد على معدلات قبول قديمة؛ راجع منشورات وزارة التعليم العالي والجامعة المعنية."
-        : "L’assistant n’est pas encore relié à son serveur. L’interface est prête, mais un service d’IA doit être configuré pour générer des réponses. Consultez les publications officielles pour les seuils d’admission.",
-      "bot"
-    );
-  } finally {
-    send.disabled = false;
-    input.focus();
-  }
-});
-
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
+    $('#aiForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const input = $('#aiInput');
+      const send = $('#aiSend');
+      const question = input.value.trim();
+      if (!question || send.disabled) return;
+      addMessage(question, 'user');
+      input.value = '';
+      send.disabled = true;
+      const typing = addMessage(currentLanguage === 'ar' ? 'جارٍ إعداد الإجابة...' : 'Préparation de la réponse...', 'bot');
+      typing.classList.add('typing');
+      try {
+        if (!AI_ENDPOINT.startsWith('https://') || AI_ENDPOINT.includes('PASTE_YOUR_')) {
+          throw new Error('AI_ENDPOINT_NOT_CONFIGURED');
+        }
+        const response = await fetch(AI_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: question, language: currentLanguage })
+        });
+        if (!response.ok) throw new Error('AI_REQUEST_FAILED');
+        const data = await response.json();
+        const reply = typeof data.reply === 'string' ? data.reply : (typeof data.response === 'string' ? data.response : '');
+        if (!reply.trim()) throw new Error('AI_EMPTY_RESPONSE');
+        typing.remove();
+        addMessage(reply, 'bot');
+      } catch (error) {
+        typing.remove();
+        let message;
+        if (error.message === 'AI_ENDPOINT_NOT_CONFIGURED') {
+          message = currentLanguage === 'ar'
+            ? 'المساعد غير مربوط بالخادم بعد. انشر خادم الذكاء الاصطناعي أولًا، ثم ضع رابط HTTPS الخاص به في المتغير AI_ENDPOINT أعلى كود JavaScript. لا تضع مفتاح API في هذا الملف.'
+            : 'L’assistant n’est pas encore relié au serveur. Déployez d’abord le serveur IA, puis placez son URL HTTPS dans AI_ENDPOINT. Ne mettez jamais la clé API dans ce fichier.';
+        } else {
+          message = currentLanguage === 'ar'
+            ? 'تعذر الاتصال بالمساعد الآن. تحقق من رابط الخادم وإعدادات CORS، ثم حاول مجددًا. لا تعتمد على إجابات غير مؤكدة بخصوص القبول الجامعي.'
+            : 'Impossible de joindre l’assistant. Vérifiez l’URL du serveur et la configuration CORS, puis réessayez. Vérifiez les informations d’admission auprès des sources officielles.';
+        }
+        addMessage(message, 'bot');
+      } finally {
+        send.disabled = false;
+        input.focus();
       }
     });
-  }, { threshold: 0.12 });
 
-  document.querySelectorAll(".reveal").forEach(function(el) {
-    observer.observe(el);
-  });
-} else {
-  document.querySelectorAll(".reveal").forEach(function(el) {
-    el.classList.add("visible");
-  });
-}
-</script>
+    // البحث داخل بطاقات الموارد.
+    $('#resourceSearch').addEventListener('input', () => {
+      const query = $('#resourceSearch').value.trim().toLocaleLowerCase();
+      let visibleCount = 0;
+      $$('#resourceGrid .resource-card').forEach((card) => {
+        const haystack = (card.dataset.search + ' ' + card.textContent).toLocaleLowerCase();
+        const visible = haystack.includes(query);
+        card.hidden = !visible;
+        if (visible) visibleCount++;
+      });
+      $('#resourceEmpty').style.display = visibleCount ? 'none' : 'block';
+    });
 
+    // نموذج التواصل يفتح تطبيق البريد فقط ولا يخزن البيانات في GitHub Pages.
+    $('#contactForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!OFFICIAL_SCHOOL_EMAIL.includes('@') || OFFICIAL_SCHOOL_EMAIL.includes('REPLACE_WITH_')) {
+        alert(currentLanguage === 'ar'
+          ? 'لم يُضبط البريد الرسمي بعد. عدّل المتغير OFFICIAL_SCHOOL_EMAIL في الكود قبل استخدام النموذج.'
+          : 'L’adresse officielle n’est pas configurée. Modifiez OFFICIAL_SCHOOL_EMAIL dans le code avant d’utiliser le formulaire.');
+        return;
+      }
+      const formData = new FormData(event.currentTarget);
+      const name = String(formData.get('name') || '').trim();
+      const subject = String(formData.get('subject') || '').trim();
+      const message = String(formData.get('message') || '').trim();
+      const body = (name ? (currentLanguage === 'ar' ? 'الاسم: ' : 'Nom : ') + name + '\n\n' : '') + message;
+      window.location.href = 'mailto:' + encodeURIComponent(OFFICIAL_SCHOOL_EMAIL) + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    });
+
+    $('#currentYear').textContent = new Date().getFullYear();
+    const backTop = $('#backTop');
+    window.addEventListener('scroll', () => backTop.classList.toggle('show', window.scrollY > 500), { passive: true });
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      }), { threshold: 0.1 });
+      $$('.reveal').forEach((element) => observer.observe(element));
+    } else {
+      $$('.reveal').forEach((element) => element.classList.add('visible'));
+    }
+  </script>
 </body>
 </html>
