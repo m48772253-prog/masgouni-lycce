@@ -1,1314 +1,851 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0c3d2d">
+<title>ثانوية مسغوني | الموقع الرسمي</title>
+<meta name="description" content="الموقع الرسمي لثانوية المجاهد مسغوني محمد الصالح. الإعلانات والموارد التعليمية والتواصل المدرسي.">
+<meta name="robots" content="index, follow">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<title>ثانوية مسغوني | الموقع الرسمي</title>
-
-<meta name="description" content="الموقع الرسمي لثانوية المجاهد مسغوني محمد الصالح. فضاء التلاميذ، الإعلانات، الموارد التعليمية والتوجيه الجامعي.">
-<meta name="robots" content="index, follow">
-
-<meta property="og:title" content="ثانوية مسغوني | الموقع الرسمي">
-<meta property="og:description" content="العلم والعمل أساس النجاح">
-<meta property="og:type" content="website">
-
 <style>
-:root {
-  --green:#145c43;
-  --dark:#0c3d2d;
-  --gold:#d9b45b;
-  --bg:#f4f8f5;
-  --card:#ffffff;
-  --text:#24352d;
-  --muted:#75847b;
-  --border:#e2eae4;
-  --shadow:0 5px 25px #173e2c10;
-}
-
-body.dark {
-  --bg:#101a16;
-  --card:#1c2b24;
-  --text:#edf5ef;
-  --muted:#aab9ae;
-  --border:#34483c;
-  --shadow:0 5px 25px #00000030;
-}
-
-* {
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-body {
-  font-family:Tahoma,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.8;
-  transition:.3s;
-}
-
-button,input,textarea,select {
-  font:inherit;
-}
-
-button {
-  cursor:pointer;
-  border:0;
-}
-
-a {
-  color:inherit;
-  text-decoration:none;
-}
-
-.container {
-  width:min(1150px,92%);
-  margin:auto;
-}
-
-header {
-  background:var(--dark);
-  color:white;
-  position:sticky;
-  top:0;
-  z-index:100;
-  box-shadow:0 3px 15px #0002;
-}
-
-.nav {
-  min-height:75px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-}
-
-.brand {
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.logo {
-  width:48px;
-  height:48px;
-  border-radius:12px;
-  background:#ffffff18;
-  display:grid;
-  place-items:center;
-  color:var(--gold);
-  font-size:26px;
-  overflow:hidden;
-}
-
-.logo img {
-  width:100%;
-  height:100%;
-  object-fit:contain;
-}
-
-.brand h2 {
-  color:var(--gold);
-  font-size:19px;
-}
-
-.brand small {
-  color:#d5e3d9;
-  font-size:11px;
-}
-
-.nav-links {
-  display:flex;
-  align-items:center;
-  gap:20px;
-}
-
-.nav-links a {
-  font-size:13px;
-  color:white;
-  transition:.2s;
-}
-
-.nav-links a:hover {
-  color:var(--gold);
-}
-
-.actions {
-  display:flex;
-  gap:8px;
-}
-
-.icon-btn {
-  background:#ffffff18;
-  color:white;
-  border-radius:9px;
-  padding:9px 12px;
-}
-
-.menu-btn {
-  display:none;
-  background:transparent;
-  color:white;
-  font-size:24px;
-}
-
-.hero {
-  min-height:440px;
-  display:flex;
-  align-items:center;
-  color:white;
-  background:
-  linear-gradient(90deg,#062d21dd,#0c3d2d99),
-  url("facade.jpg") center/cover;
-}
-
-.hero-content {
-  max-width:700px;
-  padding:70px 0;
-  animation:appear .8s ease;
-}
-
-.hero h1 {
-  font-size:clamp(30px,5vw,49px);
-  line-height:1.4;
-  margin-bottom:15px;
-}
-
-.hero h1 span {
-  color:var(--gold);
-}
-
-.hero p {
-  color:#e0e9e3;
-  margin-bottom:25px;
-}
-
-.btn {
-  display:inline-block;
-  padding:11px 23px;
-  border-radius:9px;
-  background:var(--gold);
-  color:#183b2b;
-  font-weight:bold;
-  transition:.25s;
-}
-
-.btn:hover {
-  transform:translateY(-3px);
-  filter:brightness(1.05);
-}
-
-.btn-outline {
-  background:transparent;
-  color:white;
-  border:1px solid #ffffff80;
-  margin-right:8px;
-}
-
-section {
-  padding:65px 0;
-}
-
-.section-title {
-  text-align:center;
-  margin-bottom:35px;
-}
-
-.section-title h2 {
-  color:var(--green);
-  font-size:27px;
-}
-
-.dark .section-title h2 {
-  color:var(--gold);
-}
-
-.section-title p {
-  color:var(--muted);
-  font-size:14px;
-}
-
-.grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.card {
-  background:var(--card);
-  border:1px solid var(--border);
-  padding:24px;
-  border-radius:15px;
-  box-shadow:var(--shadow);
-  transition:.3s;
-}
-
-.card:hover {
-  transform:translateY(-5px);
-}
-
-.card-icon {
-  font-size:32px;
-  margin-bottom:10px;
-}
-
-.card h3 {
-  margin-bottom:8px;
-  color:var(--green);
-}
-
-.dark .card h3 {
-  color:var(--gold);
-}
-
-.card p {
-  color:var(--muted);
-  font-size:13px;
-  margin-bottom:15px;
-}
-
-.text-btn {
-  color:var(--green);
-  font-weight:bold;
-  background:none;
-}
-
-.dark .text-btn {
-  color:var(--gold);
-}
-
-.announcement {
-  border-right:4px solid var(--gold);
-  margin-bottom:13px;
-}
-
-.announcement time {
-  color:var(--muted);
-  font-size:11px;
-}
-
-.empty {
-  text-align:center;
-  color:var(--muted);
-  padding:25px;
-}
-
-.resource-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-}
-
-.resource {
-  background:var(--card);
-  border:1px solid var(--border);
-  padding:20px;
-  text-align:center;
-  border-radius:12px;
-}
-
-.resource a {
-  color:var(--green);
-  font-weight:bold;
-}
-
-.dark .resource a {
-  color:var(--gold);
-}
-
-.form-box {
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:15px;
-  padding:25px;
-  max-width:650px;
-  margin:auto;
-}
-
-.field {
-  margin-bottom:15px;
-}
-
-.field label {
-  display:block;
-  margin-bottom:6px;
-  font-weight:bold;
-  font-size:13px;
-}
-
-.field input,
-.field textarea,
-.field select {
-  width:100%;
-  padding:12px;
-  border:1px solid var(--border);
-  background:var(--bg);
-  color:var(--text);
-  border-radius:8px;
-  outline:none;
-}
-
-.field input:focus,
-.field textarea:focus {
-  border-color:var(--green);
-}
-
-footer {
-  background:var(--dark);
-  color:white;
-  padding:35px 0;
-  text-align:center;
-}
-
-footer h3 {
-  color:var(--gold);
-}
-
-footer p {
-  font-size:13px;
-  margin:7px;
-  color:#d5e3d9;
-}
-
-/* Dashboard */
-
-#dashboard {
-  display:none;
-  padding:40px 0;
-  min-height:75vh;
-}
-
-.dashboard-head {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:15px;
-  margin-bottom:25px;
-}
-
-.dashboard-grid {
-  display:grid;
-  grid-template-columns:230px 1fr;
-  gap:20px;
-}
-
-.sidebar {
-  background:var(--dark);
-  color:white;
-  border-radius:14px;
-  padding:20px;
-  height:max-content;
-}
-
-.sidebar button {
-  display:block;
-  width:100%;
-  text-align:right;
-  color:white;
-  background:transparent;
-  padding:12px;
-  border-radius:8px;
-  margin:5px 0;
-}
-
-.sidebar button:hover,
-.sidebar button.active {
-  background:#ffffff20;
-  color:var(--gold);
-}
-
-.admin-content {
-  min-width:0;
-}
-
-.stats {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin-bottom:20px;
-}
-
-.stat {
-  background:var(--card);
-  padding:20px;
-  border-radius:12px;
-  border:1px solid var(--border);
-}
-
-.stat strong {
-  display:block;
-  color:var(--green);
-  font-size:25px;
-}
-
-.dark .stat strong {
-  color:var(--gold);
-}
-
-.admin-panel {
-  display:none;
-}
-
-.admin-panel.active {
-  display:block;
-  animation:appear .3s ease;
-}
-
-.admin-panel h3 {
-  margin-bottom:15px;
-}
-
-.admin-actions {
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
-.small-btn {
-  padding:7px 12px;
-  background:var(--green);
-  color:white;
-  border-radius:7px;
-  font-size:12px;
-}
-
-.danger {
-  background:#b53d3d;
-  color:white;
-}
-
-.file-item {
-  padding:12px;
-  border-bottom:1px solid var(--border);
-}
-
-.hidden {
-  display:none!important;
-}
-
-.notice {
-  padding:12px;
-  background:#e4f4e8;
-  color:#145c43;
-  border-radius:8px;
-  margin:12px 0;
-  font-size:13px;
-}
-
-.dark .notice {
-  background:#203b2b;
-  color:#c9e8d0;
-}
-
-@keyframes appear {
-  from {opacity:0;transform:translateY(12px)}
-  to {opacity:1;transform:translateY(0)}
-}
-
-@media(max-width:850px) {
-  .nav-links {
-    display:none;
-    position:absolute;
-    top:75px;
-    right:0;
-    left:0;
-    background:var(--dark);
-    flex-direction:column;
-    padding:20px;
-  }
-
-  .nav-links.open {
-    display:flex;
-  }
-
-  .menu-btn {
-    display:block;
-  }
-
-  .grid {
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .dashboard-grid {
-    grid-template-columns:1fr;
-  }
-
-  .sidebar {
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-  }
-}
-
-@media(max-width:550px) {
-  .grid,.resource-grid {
-    grid-template-columns:1fr;
-  }
-
-  .stats {
-    grid-template-columns:1fr;
-  }
-
-  .hero {
-    min-height:380px;
-  }
-
-  section {
-    padding:45px 0;
-  }
-
-  .brand h2 {
-    font-size:15px;
-  }
-
-  .brand small {
-    font-size:9px;
-  }
+:root{--green:#145c43;--dark:#0c3d2d;--gold:#d9b45b;--bg:#f4f8f5;--card:#fff;--text:#24352d;--muted:#75847b;--border:#e2eae4;--shadow:0 5px 25px #173e2c10}
+body.dark{--bg:#101a16;--card:#1c2b24;--text:#edf5ef;--muted:#aab9ae;--border:#34483c;--shadow:0 5px 25px #0003}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.8;transition:.25s}
+button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}a{color:inherit;text-decoration:none}
+.container{width:min(1150px,92%);margin:auto}
+header{background:var(--dark);color:#fff;position:sticky;top:0;z-index:10;box-shadow:0 3px 15px #0002}
+.nav{min-height:75px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:48px;height:48px;border-radius:12px;background:#ffffff18;display:grid;place-items:center;color:var(--gold);font-size:26px}
+.brand h2{color:var(--gold);font-size:19px}.brand small{color:#d5e3d9;font-size:11px}
+.nav-links{display:flex;gap:20px}.nav-links a{font-size:13px;color:#fff}.nav-links a:hover{color:var(--gold)}
+.actions{display:flex;gap:8px}.icon-btn{background:#ffffff18;color:#fff;border-radius:9px;padding:9px 12px}.menu-btn{display:none;background:transparent;color:#fff;font-size:24px}
+.hero{min-height:430px;display:flex;align-items:center;color:#fff;background:linear-gradient(90deg,#062d21dd,#0c3d2d99),url("facade.jpg") center/cover}
+.hero-content{max-width:700px;padding:65px 0;animation:appear .7s}
+.hero h1{font-size:clamp(30px,5vw,49px);line-height:1.4;margin-bottom:15px}.hero h1 span{color:var(--gold)}
+.hero p{color:#e0e9e3;margin-bottom:25px}
+.btn{display:inline-block;padding:11px 23px;border-radius:9px;background:var(--gold);color:#183b2b;font-weight:bold;transition:.2s}.btn:hover{transform:translateY(-2px)}
+.btn-outline{background:transparent;color:#fff;border:1px solid #ffffff80;margin-right:8px}
+section{padding:60px 0}.section-title{text-align:center;margin-bottom:30px}
+.section-title h2{color:var(--green);font-size:27px}.dark .section-title h2{color:var(--gold)}
+.section-title p{color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--border);padding:23px;border-radius:15px;box-shadow:var(--shadow);transition:.25s}
+.card:hover{transform:translateY(-3px)}
+.card-icon{font-size:32px;margin-bottom:8px}.card h3{margin-bottom:8px;color:var(--green)}
+.dark .card h3{color:var(--gold)}.card p{color:var(--muted);font-size:13px;margin-bottom:12px}
+.text-btn{color:var(--green);font-weight:bold;background:none}.dark .text-btn{color:var(--gold)}
+.announcement{border-right:4px solid var(--gold)}.announcement time{color:var(--muted);font-size:11px}
+.empty{text-align:center;color:var(--muted);padding:24px}
+.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.resource{background:var(--card);border:1px solid var(--border);padding:20px;text-align:center;border-radius:12px}
+.resource a{color:var(--green);font-weight:bold}.dark .resource a{color:var(--gold)}
+.form-box{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:25px;max-width:650px;margin:auto}
+.field{margin-bottom:15px}.field label{display:block;margin-bottom:6px;font-weight:bold;font-size:13px}
+.field input,.field textarea,.field select{width:100%;padding:12px;border:1px solid var(--border);background:var(--bg);color:var(--text);border-radius:8px;outline:none}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--green)}
+footer{background:var(--dark);color:#fff;padding:32px 0;text-align:center}
+footer h3{color:var(--gold)}footer p{font-size:13px;margin:7px;color:#d5e3d9}
+.notice{padding:12px;background:#e4f4e8;color:#145c43;border-radius:8px;margin:12px 0;font-size:13px}
+.dark .notice{background:#203b2b;color:#c9e8d0}
+.error{background:#fde8e8;color:#8c2525}.dark .error{background:#4b2929;color:#ffdada}
+#adminArea{display:none;min-height:70vh}
+.dashboard-grid{display:grid;grid-template-columns:220px 1fr;gap:18px}
+.sidebar{background:var(--dark);color:#fff;border-radius:14px;padding:15px;height:max-content}
+.sidebar button{display:block;width:100%;text-align:right;color:#fff;background:transparent;padding:11px;border-radius:8px;margin:4px 0}
+.sidebar button.active,.sidebar button:hover{background:#ffffff20;color:var(--gold)}
+.admin-panel{display:none}.admin-panel.active{display:block;animation:appear .25s}
+.small-btn{padding:7px 12px;background:var(--green);color:#fff;border-radius:7px;font-size:12px;margin:4px 0}
+.danger{background:#b53d3d}.hidden{display:none!important}
+.admin-login-link{font-size:12px;color:#d5e3d9;text-decoration:underline}
+@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:850px){
+.nav-links{display:none;position:absolute;top:75px;right:0;left:0;background:var(--dark);flex-direction:column;padding:18px}
+.nav-links.open{display:flex}.menu-btn{display:block}.grid{grid-template-columns:repeat(2,1fr)}
+.dashboard-grid{grid-template-columns:1fr}.sidebar{display:grid;grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:550px){
+.grid,.resource-grid{grid-template-columns:1fr}.hero{min-height:370px}
+section{padding:42px 0}.brand h2{font-size:15px}.brand small{font-size:9px}
 }
 </style>
 </head>
 
 <body>
-
 <header>
 <div class="container nav">
-
-  <div class="brand">
-    <div class="logo" id="siteLogo">🎓</div>
-    <div>
-      <h2>ثانوية مسغوني</h2>
-      <small>العلم والعمل أساس النجاح</small>
-    </div>
-  </div>
-
-  <button class="menu-btn" onclick="toggleMenu()">☰</button>
-
-  <nav class="nav-links" id="navLinks">
-    <a href="#home" onclick="closeMenu()">الرئيسية</a>
-    <a href="#about" onclick="closeMenu()">عن الثانوية</a>
-    <a href="#services" onclick="closeMenu()">الخدمات</a>
-    <a href="#announcements" onclick="closeMenu()">الإعلانات</a>
-    <a href="#resources" onclick="closeMenu()">الموارد</a>
-    <a href="#contact" onclick="closeMenu()">تواصل معنا</a>
-  </nav>
-
-  <div class="actions">
-    <button class="icon-btn" onclick="toggleDark()" title="الوضع الليلي">◐</button>
-    <button class="icon-btn" onclick="toggleLanguage()">FR</button>
-  </div>
-
+<div class="brand">
+<div class="logo" id="siteLogo">🎓</div>
+<div><h2>ثانوية مسغوني</h2><small>العلم والعمل أساس النجاح</small></div>
+</div>
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+<nav class="nav-links" id="navLinks">
+<a href="#home" onclick="closeMenu()">الرئيسية</a>
+<a href="#about" onclick="closeMenu()">عن الثانوية</a>
+<a href="#services" onclick="closeMenu()">الخدمات</a>
+<a href="#announcements" onclick="closeMenu()">الإعلانات</a>
+<a href="#resources" onclick="closeMenu()">الموارد</a>
+<a href="#contact" onclick="closeMenu()">تواصل معنا</a>
+</nav>
+<div class="actions">
+<button class="icon-btn" onclick="toggleDark()">◐</button>
+<button class="icon-btn" onclick="toggleLanguage()">FR</button>
+</div>
 </div>
 </header>
 
 <main id="publicSite">
-
 <section class="hero" id="home">
-<div class="container">
-  <div class="hero-content">
-    <h1>مرحباً بكم في <span>ثانوية مسغوني</span></h1>
-    <p>
-      العلم والعمل أساس النجاح.
-      بوابتكم التعليمية للتعلم والمعرفة والتواصل المدرسي.
-    </p>
-    <a href="#services" class="btn">اكتشف خدماتنا</a>
-    <a href="#about" class="btn btn-outline">عن الثانوية</a>
-  </div>
-</div>
+<div class="container"><div class="hero-content">
+<h1>مرحباً بكم في <span>ثانوية مسغوني</span></h1>
+<p>العلم والعمل أساس النجاح. بوابتكم التعليمية للتعلم والمعرفة والتواصل المدرسي.</p>
+<a href="#services" class="btn">اكتشف خدماتنا</a>
+<a href="#about" class="btn btn-outline">عن الثانوية</a>
+</div></div>
 </section>
 
-<section id="about">
-<div class="container">
-  <div class="section-title">
-    <h2>عن ثانويتنا</h2>
-    <p>ثانوية المجاهد مسغوني محمد الصالح</p>
-  </div>
+<section id="about"><div class="container">
+<div class="section-title"><h2>عن ثانويتنا</h2><p>ثانوية المجاهد مسغوني محمد الصالح</p></div>
+<div class="card"><h3>رسالتنا التعليمية</h3>
+<p>نسعى إلى توفير بيئة تعليمية محفزة تساعد التلاميذ على اكتساب المعرفة وتنمية مهاراتهم وتحقيق طموحاتهم.</p></div>
+</div></section>
 
-  <div class="card">
-    <h3>رسالتنا التعليمية</h3>
-    <p>
-      نسعى إلى توفير بيئة تعليمية محفزة تساعد التلاميذ
-      على اكتساب المعرفة وتنمية مهاراتهم وتحقيق طموحاتهم.
-    </p>
-  </div>
-</div>
-</section>
+<section id="services"><div class="container">
+<div class="section-title"><h2>خدماتنا التعليمية</h2><p>كل ما يحتاجه التلميذ في مكان واحد</p></div>
+<div class="grid">
+<div class="card"><div class="card-icon">📚</div><h3>فضاء التلميذ</h3><p>الوصول إلى الموارد والخدمات التعليمية.</p><a class="text-btn" href="#resources">استكشف ←</a></div>
+<div class="card"><div class="card-icon">📢</div><h3>الإعلانات المدرسية</h3><p>متابعة آخر الإعلانات والأخبار المدرسية.</p><a class="text-btn" href="#announcements">عرض الإعلانات ←</a></div>
+<div class="card"><div class="card-icon">🎓</div><h3>التوجيه الجامعي</h3><p>معلومات تساعد التلاميذ في اختيار مسارهم الجامعي.</p><a class="text-btn" href="https://www.orientation-esi.dz/" target="_blank" rel="noopener">اكتشف ←</a></div>
+<div class="card"><div class="card-icon">🤖</div><h3>مساعد الذكاء الاصطناعي</h3><p>مساعد تعليمي للإجابة عن الأسئلة الدراسية.</p><a class="text-btn" href="https://chatgpt.com/" target="_blank" rel="noopener">ابدأ ←</a></div>
+<div class="card"><div class="card-icon">💡</div><h3>الاقتراحات والشكاوى</h3><p>شاركنا أفكارك وملاحظاتك لتحسين المؤسسة.</p><a class="text-btn" href="#contact">إرسال ←</a></div>
+<div class="card"><div class="card-icon">🔐</div><h3>إدارة الموقع</h3><p>دخول مخصص لحساب مدير الموقع.</p><button class="text-btn" onclick="showAdminLogin()">دخول المدير ←</button></div>
+</div></div></section>
 
-<section id="services">
-<div class="container">
-  <div class="section-title">
-    <h2>خدماتنا التعليمية</h2>
-    <p>كل ما يحتاجه التلميذ في مكان واحد</p>
-  </div>
+<section id="announcements"><div class="container">
+<div class="section-title"><h2>الإعلانات المدرسية</h2><p>آخر مستجدات المؤسسة</p></div>
+<div id="publicAnnouncements" class="grid"><div class="empty">جارٍ تحميل الإعلانات...</div></div>
+</div></section>
 
-  <div class="grid">
+<section id="resources"><div class="container">
+<div class="section-title"><h2>المكتبة التعليمية</h2><p>موارد دراسية حسب المستوى</p></div>
+<div class="resource-grid">
+<div class="resource"><h3>السنة الأولى ثانوي</h3><p>الدروس والاختبارات</p><a href="https://www.dzexams.com/ar/1as" target="_blank" rel="noopener">الدخول ←</a></div>
+<div class="resource"><h3>السنة الثانية ثانوي</h3><p>الدروس والاختبارات</p><a href="https://www.dzexams.com/ar/2as" target="_blank" rel="noopener">الدخول ←</a></div>
+<div class="resource"><h3>السنة الثالثة ثانوي</h3><p>الدروس والاختبارات</p><a href="https://www.dzexams.com/ar/3as" target="_blank" rel="noopener">الدخول ←</a></div>
+</div></div></section>
 
-    <div class="card">
-      <div class="card-icon">📚</div>
-      <h3>فضاء التلميذ</h3>
-      <p>الوصول إلى الموارد والخدمات التعليمية.</p>
-      <a class="text-btn" href="#resources">استكشف ←</a>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">📢</div>
-      <h3>الإعلانات المدرسية</h3>
-      <p>متابعة آخر الإعلانات والأخبار المدرسية.</p>
-      <a class="text-btn" href="#announcements">عرض الإعلانات ←</a>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🎓</div>
-      <h3>التوجيه الجامعي</h3>
-      <p>معلومات تساعد التلاميذ في اختيار مسارهم الجامعي.</p>
-      <a class="text-btn" href="https://www.orientation-esi.dz/">اكتشف ←</a>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🤖</div>
-      <h3>مساعد الذكاء الاصطناعي</h3>
-      <p>مساعد تعليمي للإجابة عن الأسئلة الدراسية.</p>
-      <a class="text-btn" href="https://chatgpt.com/">ابدأ ←</a>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">💡</div>
-      <h3>الاقتراحات والشكاوى</h3>
-      <p>شاركنا أفكارك وملاحظاتك لتحسين المؤسسة.</p>
-      <a class="text-btn" href="#contact">إرسال ←</a>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">👨‍🎓</div>
-      <h3>حساب التلميذ</h3>
-      <p>واجهة مخصصة لخدمات التلاميذ.</p>
-      <button class="text-btn" onclick="showLogin()">دخول ←</button>
-    </div>
-
-  </div>
-</div>
-</section>
-
-<section id="announcements">
-<div class="container">
-  <div class="section-title">
-    <h2>الإعلانات المدرسية</h2>
-    <p>آخر مستجدات المؤسسة</p>
-  </div>
-  <div id="publicAnnouncements" class="grid">
-    <div class="empty">لا توجد إعلانات منشورة حالياً.</div>
-  </div>
-</div>
-</section>
-
-<section id="resources">
-<div class="container">
-  <div class="section-title">
-    <h2>المكتبة التعليمية</h2>
-    <p>موارد دراسية حسب المستوى</p>
-  </div>
-
-  <div class="resource-grid">
-    <div class="resource">
-      <h3>السنة الأولى ثانوي</h3>
-      <p>الدروس والاختبارات</p>
-      <a href="https://www.dzexams.com/ar/1as">الدخول ←</a>
-    </div>
-
-    <div class="resource">
-      <h3>السنة الثانية ثانوي</h3>
-      <p>الدروس والاختبارات</p>
-      <a href="https://www.dzexams.com/ar/2as">الدخول ←</a>
-    </div>
-
-    <div class="resource">
-      <h3>السنة الثالثة ثانوي</h3>
-      <p>الدروس والاختبارات</p>
-      <a href="https://www.dzexams.com/ar/3as">الدخول ←</a>
-    </div>
-  </div>
-</div>
-</section>
-
-<section id="contact">
-<div class="container">
-  <div class="section-title">
-    <h2>الاقتراحات والشكاوى</h2>
-    <p>نرحب بملاحظاتكم وأفكاركم</p>
-  </div>
-
-  <form class="form-box" id="suggestionForm">
-    <div class="field">
-      <label>الاسم (اختياري)</label>
-      <input id="suggestName" placeholder="اسمك">
-    </div>
-
-    <div class="field">
-      <label>نوع الرسالة</label>
-      <select id="suggestType">
-        <option>اقتراح</option>
-        <option>شكوى</option>
-        <option>ملاحظة</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label>الرسالة</label>
-      <textarea id="suggestMessage" rows="5" required placeholder="اكتب رسالتك هنا..."></textarea>
-    </div>
-
-    <button class="btn" type="submit">إرسال الرسالة</button>
-    <p id="suggestStatus" class="notice hidden"></p>
-  </form>
-</div>
-</section>
-
+<section id="contact"><div class="container">
+<div class="section-title"><h2>الاقتراحات والشكاوى</h2><p>لا تكتب معلومات شخصية حساسة في الرسالة</p></div>
+<form class="form-box" id="suggestionForm">
+<div class="field"><label for="suggestType">نوع الرسالة</label>
+<select id="suggestType"><option>اقتراح</option><option>شكوى</option><option>ملاحظة</option></select></div>
+<div class="field"><label for="suggestMessage">الرسالة</label>
+<textarea id="suggestMessage" rows="5" required minlength="5" maxlength="3000" placeholder="اكتب رسالتك هنا..."></textarea></div>
+<button class="btn" type="submit" id="suggestSubmit">إرسال الرسالة</button>
+<p id="suggestStatus" class="notice hidden" role="status"></p>
+</form></div></section>
 </main>
 
-<!-- Student login interface -->
+<section id="adminLogin" class="hidden"><div class="container">
+<div class="section-title"><h2>دخول مدير الموقع</h2><p>هذه الصفحة مخصصة للحساب الإداري المعتمد</p></div>
+<form class="form-box" id="adminLoginForm">
+<div class="field"><label for="adminEmail">البريد الإلكتروني</label><input id="adminEmail" type="email" autocomplete="username" required></div>
+<div class="field"><label for="adminPassword">كلمة المرور</label><input id="adminPassword" type="password" autocomplete="current-password" required></div>
+<button class="btn" type="submit" id="loginButton">تسجيل الدخول</button>
+<button type="button" class="small-btn" onclick="showPublic()">رجوع</button>
+<p id="loginStatus" class="notice hidden" role="status"></p>
+</form></div></section>
 
-<section id="studentLogin" class="hidden">
-<div class="container">
-  <div class="section-title">
-    <h2>فضاء التلميذ</h2>
-    <p>تسجيل الدخول إلى الحساب المدرسي</p>
-  </div>
-
-  <div class="form-box">
-    <div class="field">
-      <label>اسم المستخدم</label>
-      <input id="studentUser" placeholder="اسم المستخدم">
-    </div>
-    <div class="field">
-      <label>كلمة المرور</label>
-      <input id="studentPass" type="password" placeholder="كلمة المرور">
-    </div>
-    <button class="btn" onclick="studentLogin()">دخول</button>
-    <button class="small-btn" onclick="showPublic()">عودة</button>
-    <p id="studentStatus" class="notice hidden"></p>
-  </div>
+<section id="adminArea"><div class="container">
+<div class="section-title"><h2>لوحة تحكم مسغوني</h2><p>إدارة الإعلانات والرسائل</p>
+<button class="small-btn danger" onclick="logoutAdmin()">تسجيل الخروج</button></div>
+<div class="dashboard-grid">
+<aside class="sidebar">
+<button class="active" onclick="adminTab('adminNewsPanel',this)">📢 الإعلانات</button>
+<button onclick="adminTab('adminMessagesPanel',this)">💬 الرسائل</button>
+</aside>
+<div>
+<div class="admin-panel active" id="adminNewsPanel">
+<div class="card"><h3>إضافة إعلان جديد</h3>
+<div class="field"><label for="newsTitle">عنوان الإعلان</label><input id="newsTitle" maxlength="150"></div>
+<div class="field"><label for="newsText">محتوى الإعلان</label><textarea id="newsText" rows="4" maxlength="5000"></textarea></div>
+<button class="btn" onclick="addNews()">نشر الإعلان</button>
+<p id="newsStatus" class="notice hidden"></p>
 </div>
-</section>
-
-<!-- Admin Dashboard -->
-
-<section id="dashboard">
-<div class="container">
-
-  <div class="dashboard-head">
-    <div>
-      <h2>لوحة تحكم مسغوني</h2>
-      <p>إدارة الموقع المدرسي</p>
-    </div>
-    <button class="btn" onclick="logout()">تسجيل الخروج</button>
-  </div>
-
-  <div class="dashboard-grid">
-
-    <aside class="sidebar">
-      <button class="active" onclick="adminTab('overview',this)">📊 الرئيسية</button>
-      <button onclick="adminTab('news',this)">📢 الإعلانات</button>
-      <button onclick="adminTab('messages',this)">💬 الرسائل</button>
-      <button onclick="adminTab('files',this)">📁 الملفات</button>
-      <button onclick="adminTab('identity',this)">🎓 الهوية والشعار</button>
-      <button onclick="adminTab('backup',this)">💾 النسخ الاحتياطي</button>
-    </aside>
-
-    <div class="admin-content">
-
-      <div class="admin-panel active" id="overview">
-        <h3>نظرة عامة</h3>
-        <div class="stats">
-          <div class="stat">
-            <span>الإعلانات</span>
-            <strong id="statNews">0</strong>
-          </div>
-          <div class="stat">
-            <span>الرسائل</span>
-            <strong id="statMessages">0</strong>
-          </div>
-          <div class="stat">
-            <span>الملفات</span>
-            <strong id="statFiles">0</strong>
-          </div>
-        </div>
-        <div class="card">
-          <h3>مرحباً بك في لوحة الإدارة</h3>
-          <p>يمكنك إدارة محتوى الموقع من الأقسام الموجودة في القائمة.</p>
-        </div>
-      </div>
-
-      <div class="admin-panel" id="news">
-        <div class="card">
-          <h3>إضافة إعلان جديد</h3>
-          <div class="field">
-            <label>عنوان الإعلان</label>
-            <input id="newsTitle" placeholder="عنوان الإعلان">
-          </div>
-          <div class="field">
-            <label>محتوى الإعلان</label>
-            <textarea id="newsText" rows="4" placeholder="تفاصيل الإعلان"></textarea>
-          </div>
-          <button class="btn" onclick="addNews()">نشر الإعلان</button>
-        </div>
-
-        <h3 style="margin-top:25px">إدارة الإعلانات</h3>
-        <div id="adminNews"></div>
-      </div>
-
-      <div class="admin-panel" id="messages">
-        <h3>الاقتراحات والشكاوى الواردة</h3>
-        <div id="adminMessages"></div>
-      </div>
-
-      <div class="admin-panel" id="files">
-        <div class="card">
-          <h3>إضافة ملف دراسي</h3>
-          <div class="field">
-            <label>اختر الملف</label>
-            <input type="file" id="fileInput">
-          </div>
-          <button class="btn" onclick="addFile()">إضافة الملف</button>
-          <p class="notice">الملفات في هذه النسخة تجريبية ومحلية، وليست مرفوعة إلى خادم.</p>
-        </div>
-        <div id="adminFiles"></div>
-      </div>
-
-      <div class="admin-panel" id="identity">
-        <div class="card">
-          <h3>تخصيص شعار الثانوية</h3>
-          <div class="field">
-            <label>اختر صورة الشعار</label>
-            <input type="file" id="logoInput" accept="image/*">
-          </div>
-          <button class="btn" onclick="changeLogo()">تحديث الشعار</button>
-        </div>
-      </div>
-
-      <div class="admin-panel" id="backup">
-        <div class="card">
-          <h3>النسخ الاحتياطي</h3>
-          <p>حفظ نسخة JSON من بيانات الموقع المحلية.</p>
-          <button class="btn" onclick="backupData()">تنزيل نسخة احتياطية</button>
-          <div class="field" style="margin-top:20px">
-            <label>استعادة نسخة JSON</label>
-            <input type="file" id="restoreInput" accept=".json">
-          </div>
-          <button class="small-btn" onclick="restoreData()">استعادة البيانات</button>
-          <p class="notice">هذه النسخة لا تشمل الملفات المرفوعة أو بيانات الخادم.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
+<h3 style="margin:20px 0">الإعلانات الحالية</h3><div id="adminNews"></div>
 </div>
-</section>
+<div class="admin-panel" id="adminMessagesPanel"><h3>الاقتراحات والشكاوى</h3><div id="adminMessages"></div></div>
+</div></div></div></section>
 
-<footer>
-<div class="container">
-  <h3>ثانوية مسغوني</h3>
-  <p>العلم والعمل أساس النجاح</p>
-  <p>ثانوية المجاهد مسغوني محمد الصالح</p>
-  <p dir="ltr">© 2026 Lycée Mesgouni</p>
-  <p dir="ltr">Made by Developer Majd</p>
-</div>
-</footer>
+<footer><div class="container">
+<h3>ثانوية مسغوني</h3><p>العلم والعمل أساس النجاح</p>
+<p>ثانوية المجاهد مسغوني محمد الصالح</p>
+<p dir="ltr">© 2026 Lycée Mesgouni</p>
+<p dir="ltr">Made by Developer Majd</p>
+<p><button class="admin-login-link" onclick="showAdminLogin()">دخول الإدارة</button></p>
+</div></footer>
 
 <script>
+// ضع بيانات مشروعك هنا
+const SUPABASE_URL = "ضع_هنا_Project_URL";
+const SUPABASE_KEY = "ضع_هنا_Publishable_Key";
 
-/* Local demo storage */
+// إنشاء اتصال Supabase
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-const read = (key, fallback=[]) => {
-  try {
-    const value=JSON.parse(localStorage.getItem(key));
-    return value ?? fallback;
-  } catch {
-    return fallback;
-  }
-};
+const $ = id => document.getElementById(id);
+let isAdmin = false;
 
-const save = (key,value) => {
-  localStorage.setItem(key,JSON.stringify(value));
-};
+function toggleMenu(){ $("navLinks").classList.toggle("open"); }
+function closeMenu(){ $("navLinks").classList.remove("open"); }
+function toggleDark(){
+ document.body.classList.toggle("dark");
+ localStorage.setItem("mesgouni_dark",document.body.classList.contains("dark"));
+}
+if(localStorage.getItem("mesgouni_dark")==="true") document.body.classList.add("dark");
+function toggleLanguage(){ alert("الواجهة الفرنسية قيد التطوير."); }
 
-let announcements=read("mesgouni_news");
-let messages=read("mesgouni_messages");
-let files=read("mesgouni_files");
-
-function toggleMenu() {
-  document.getElementById("navLinks").classList.toggle("open");
+function hideMainSections(){
+ $("publicSite").classList.add("hidden");
+ $("adminLogin").classList.add("hidden");
+ $("adminArea").style.display="none";
+}
+function showPublic(){
+ $("adminLogin").classList.add("hidden");
+ $("adminArea").style.display="none";
+ $("publicSite").classList.remove("hidden");
+ window.scrollTo(0,0);
+}
+function showAdminLogin(){
+ hideMainSections();
+ $("adminLogin").classList.remove("hidden");
+ window.scrollTo(0,0);
+}
+function showAdminDashboard(){
+ hideMainSections();
+ $("adminArea").style.display="block";
+ window.scrollTo(0,0);
+ loadAdminData();
+}
+function showStatus(id,message,isError=false){
+ const el=$(id);
+ el.textContent=message;
+ el.classList.remove("hidden","error");
+ if(isError) el.classList.add("error");
 }
 
-function closeMenu() {
-  document.getElementById("navLinks").classList.remove("open");
+// تحميل الإعلانات المنشورة
+async function loadAnnouncements(){
+ const box=$("publicAnnouncements");
+ box.innerHTML='<div class="empty">جارٍ تحميل الإعلانات...</div>';
+ const {data,error}=await db.from("announcements")
+  .select("id,title,content,created_at")
+  .eq("published",true)
+  .order("created_at",{ascending:false});
+ if(error){
+  box.innerHTML='<div class="empty">تعذر تحميل الإعلانات حاليًا.</div>';
+  console.error("Announcements:",error.message);
+  return;
+ }
+ if(!data || data.length===0){
+  box.innerHTML='<div class="empty">لا توجد إعلانات منشورة حاليًا.</div>';
+  return;
+ }
+ box.innerHTML=data.map(n=>`
+  <article class="card announcement">
+   <h3>${escapeHTML(n.title)}</h3>
+   <p>${escapeHTML(n.content)}</p>
+   <time>${escapeHTML(new Date(n.created_at).toLocaleDateString("ar-DZ"))}</time>
+  </article>`).join("");
 }
 
-function toggleDark() {
-  document.body.classList.toggle("dark");
-  localStorage.setItem(
-    "mesgouni_dark",
-    document.body.classList.contains("dark")
-  );
+// إرسال الاقتراحات والشكاوى
+$("suggestionForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+ const button=$("suggestSubmit");
+ button.disabled=true;
+ button.textContent="جارٍ الإرسال...";
+ const subject=$("suggestType").value;
+ const message=$("suggestMessage").value.trim();
+ const {error}=await db.from("suggestions").insert([{subject,message}]);
+ button.disabled=false;
+ button.textContent="إرسال الرسالة";
+ if(error){
+  showStatus("suggestStatus","تعذر إرسال الرسالة. حاول لاحقًا.",true);
+  console.error("Suggestion:",error.message);
+  return;
+ }
+ $("suggestionForm").reset();
+ showStatus("suggestStatus","تم إرسال رسالتك إلى قاعدة بيانات الموقع.");
+});
+
+// تسجيل دخول المدير
+$("adminLoginForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+ const button=$("loginButton");
+ button.disabled=true;
+ button.textContent="جارٍ التحقق...";
+ const email=$("adminEmail").value.trim();
+ const password=$("adminPassword").value;
+ const {error}=await db.auth.signInWithPassword({email,password});
+ button.disabled=false;
+ button.textContent="تسجيل الدخول";
+ if(error){
+  showStatus("loginStatus","تعذر تسجيل الدخول. تحقق من البريد وكلمة المرور.",true);
+  return;
+ }
+ const {data:allowed,error:roleError}=await db.rpc("is_site_admin");
+ if(roleError || allowed!==true){
+  await db.auth.signOut();
+  showStatus("loginStatus","هذا الحساب ليس ضمن قائمة مديري الموقع.",true);
+  return;
+ }
+ isAdmin=true;
+ $("adminPassword").value="";
+ showAdminDashboard();
+});
+
+// التحقق من الجلسة السابقة
+async function checkExistingSession(){
+ const {data:{session}}=await db.auth.getSession();
+ if(!session) return;
+ const {data:allowed,error}=await db.rpc("is_site_admin");
+ if(!error && allowed===true){
+  isAdmin=true;
+  showAdminDashboard();
+ }
+}
+async function logoutAdmin(){
+ isAdmin=false;
+ await db.auth.signOut();
+ showPublic();
 }
 
-if(localStorage.getItem("mesgouni_dark")==="true") {
-  document.body.classList.add("dark");
+// التبديل بين أقسام لوحة الإدارة
+function adminTab(id,button){
+ document.querySelectorAll(".admin-panel").forEach(p=>p.classList.remove("active"));
+ document.querySelectorAll(".sidebar button").forEach(b=>b.classList.remove("active"));
+ $(id).classList.add("active");
+ button.classList.add("active");
 }
 
-function toggleLanguage() {
-  alert("الواجهة الفرنسية قيد التطوير.");
+// نشر إعلان جديد
+async function addNews(){
+ if(!isAdmin){alert("يجب تسجيل دخول المدير.");return;}
+ const title=$("newsTitle").value.trim();
+ const content=$("newsText").value.trim();
+ if(title.length<2 || content.length<5){
+  showStatus("newsStatus","أدخل عنوانًا ومحتوى صحيحين.",true);
+  return;
+ }
+ const {error}=await db.from("announcements").insert([{title,content,published:true}]);
+ if(error){
+  showStatus("newsStatus","تعذر نشر الإعلان. تحقق من صلاحيات المدير.",true);
+  console.error(error.message);
+  return;
+ }
+ $("newsTitle").value="";
+ $("newsText").value="";
+ showStatus("newsStatus","تم نشر الإعلان بنجاح.");
+ await loadAnnouncements();
+ await loadAdminData();
 }
 
-function showLogin() {
-  document.getElementById("publicSite").classList.add("hidden");
-  document.getElementById("studentLogin").classList.remove("hidden");
-  document.getElementById("studentLogin").scrollIntoView();
+// حذف إعلان
+async function deleteNews(id){
+ if(!isAdmin || !confirm("هل تريد حذف هذا الإعلان؟")) return;
+ const {error}=await db.from("announcements").delete().eq("id",id);
+ if(error){
+  alert("تعذر حذف الإعلان.");
+  console.error(error.message);
+  return;
+ }
+ await loadAnnouncements();
+ await loadAdminData();
 }
 
-function showPublic() {
-  document.getElementById("studentLogin").classList.add("hidden");
-  document.getElementById("publicSite").classList.remove("hidden");
+// تحميل بيانات لوحة المدير
+async function loadAdminData(){
+ if(!isAdmin) return;
+ const {data:news,error:newsError}=await db.from("announcements")
+  .select("id,title,content,published,created_at")
+  .order("created_at",{ascending:false});
+ if(newsError){
+  $("adminNews").textContent="تعذر تحميل الإعلانات.";
+  console.error(newsError.message);
+ }else if(!news || news.length===0){
+  $("adminNews").innerHTML='<div class="empty">لا توجد إعلانات.</div>';
+ }else{
+  $("adminNews").innerHTML=news.map(n=>`
+   <div class="card" style="margin:10px 0">
+    <h3>${escapeHTML(n.title)}</h3><p>${escapeHTML(n.content)}</p>
+    <small>${n.published?"منشور":"غير منشور"}</small><br>
+    <button class="small-btn danger" onclick="deleteNews(${Number(n.id)})">حذف</button>
+   </div>`).join("");
+ }
+ const {data:messages,error:msgError}=await db.from("suggestions")
+  .select("id,subject,message,created_at")
+  .order("created_at",{ascending:false});
+ if(msgError){
+  $("adminMessages").textContent="تعذر تحميل الرسائل.";
+  console.error(msgError.message);
+ }else if(!messages || messages.length===0){
+  $("adminMessages").innerHTML='<div class="empty">لا توجد رسائل.</div>';
+ }else{
+  $("adminMessages").innerHTML=messages.map(m=>`
+   <div class="card" style="margin:10px 0">
+    <strong>${escapeHTML(m.subject)}</strong><p>${escapeHTML(m.message)}</p>
+    <small>${escapeHTML(new Date(m.created_at).toLocaleString("ar-DZ"))}</small>
+   </div>`).join("");
+ }
 }
 
-function studentLogin() {
-  document.getElementById("studentStatus").textContent =
-  "تسجيل الدخول الحقيقي سيتاح بعد ربط قاعدة البيانات.";
-  document.getElementById("studentStatus").classList.remove("hidden");
+// منع إدخال HTML ضار داخل الإعلانات والرسائل
+function escapeHTML(value){
+ return String(value??"").replace(/[&<>"']/g,c=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
 }
 
-/* Demo admin access */
-
-function adminAccess() {
-  const key=prompt("أدخل رمز واجهة الإدارة التجريبية:");
-  if(key!=="MESGOUNI-DEMO") {
-    alert("الرمز غير صحيح.");
-    return;
-  }
-
-  document.getElementById("publicSite").classList.add("hidden");
-  document.getElementById("studentLogin").classList.add("hidden");
-  document.getElementById("dashboard").style.display="block";
-  renderAll();
-  window.scrollTo(0,0);
-}
-
-function logout() {
-  document.getElementById("dashboard").style.display="none";
-  document.getElementById("publicSite").classList.remove("hidden");
-  window.scrollTo(0,0);
-}
-
-function adminTab(id,button) {
-  document.querySelectorAll(".admin-panel").forEach(
-    p=>p.classList.remove("active")
-  );
-
-  document.querySelectorAll(".sidebar button").forEach(
-    b=>b.classList.remove("active")
-  );
-
-  document.getElementById(id).classList.add("active");
-  button.classList.add("active");
-}
-
-/* Announcements */
-
-function addNews() {
-  const title=document.getElementById("newsTitle").value.trim();
-  const text=document.getElementById("newsText").value.trim();
-
-  if(!title || !text) {
-    alert("يرجى ملء جميع الحقول.");
-    return;
-  }
-
-  announcements.unshift({
-    id:Date.now(),
-    title,
-    text,
-    date:new Date().toLocaleDateString("ar-DZ")
-  });
-
-  save("mesgouni_news",announcements);
-
-  document.getElementById("newsTitle").value="";
-  document.getElementById("newsText").value="";
-
-  renderAll();
-  alert("تمت إضافة الإعلان في هذا المتصفح.");
-}
-
-function deleteNews(id) {
-  if(!confirm("هل تريد حذف هذا الإعلان؟")) return;
-
-  announcements=announcements.filter(n=>n.id!==id);
-  save("mesgouni_news",announcements);
-  renderAll();
-}
-
-function renderNews() {
-  const publicBox=document.getElementById("publicAnnouncements");
-  const adminBox=document.getElementById("adminNews");
-
-  publicBox.innerHTML=announcements.length
-    ? announcements.map(n=>`
-      <article class="card announcement">
-        <h3>${escapeHTML(n.title)}</h3>
-        <p>${escapeHTML(n.text)}</p>
-        <time>${escapeHTML(n.date)}</time>
-      </article>
-    `).join("")
-    : '<div class="empty">لا توجد إعلانات منشورة حالياً.</div>';
-
-  adminBox.innerHTML=announcements.length
-    ? announcements.map(n=>`
-      <div class="card file-item">
-        <strong>${escapeHTML(n.title)}</strong>
-        <p>${escapeHTML(n.text)}</p>
-        <button class="small-btn danger" onclick="deleteNews(${n.id})">حذف</button>
-      </div>
-    `).join("")
-    : '<div class="empty">لا توجد إعلانات.</div>';
-}
-
-/* Suggestions */
-
-document.getElementById("suggestionForm").addEventListener(
-  "submit",function(e) {
-    e.preventDefault();
-
-    messages.unshift({
-      id:Date.now(),
-      name:document.getElementById("suggestName").value.trim(),
-      type:document.getElementById("suggestType").value,
-      message:document.getElementById("suggestMessage").value.trim(),
-      date:new Date().toLocaleDateString("ar-DZ")
-    });
-
-    save("mesgouni_messages",messages);
-
-    this.reset();
-
-    const status=document.getElementById("suggestStatus");
-    status.textContent="تم حفظ رسالتك محلياً في هذا المتصفح. لم تصل إلى إدارة الثانوية بعد.";
-    status.classList.remove("hidden");
-
-    renderAll();
-  }
-);
-
-function renderMessages() {
-  const box=document.getElementById("adminMessages");
-
-  box.innerHTML=messages.length
-    ? messages.map(m=>`
-      <div class="card file-item">
-        <strong>${escapeHTML(m.type)}</strong>
-        <p>${escapeHTML(m.message)}</p>
-        <small>${escapeHTML(m.name || "بدون اسم")} - ${escapeHTML(m.date)}</small>
-        <br>
-        <button class="small-btn danger" onclick="deleteMessage(${m.id})">حذف</button>
-      </div>
-    `).join("")
-    : '<div class="empty">لا توجد رسائل.</div>';
-}
-
-function deleteMessage(id) {
-  messages=messages.filter(m=>m.id!==id);
-  save("mesgouni_messages",messages);
-  renderAll();
-}
-
-/* Files */
-
-function addFile() {
-  const input=document.getElementById("fileInput");
-  const file=input.files[0];
-
-  if(!file) {
-    alert("اختر ملفاً أولاً.");
-    return;
-  }
-
-  files.push({
-    id:Date.now(),
-    name:file.name,
-    size:file.size,
-    type:file.type
-  });
-
-  save("mesgouni_files",files);
-  input.value="";
-  renderAll();
-
-  alert("تم تسجيل اسم الملف محلياً. لم يتم رفع محتواه.");
-}
-
-function renderFiles() {
-  document.getElementById("adminFiles").innerHTML=
-  files.length
-    ? files.map(f=>`
-      <div class="card file-item">
-        📄 ${escapeHTML(f.name)}
-        <br>
-        <small>${(f.size/1024).toFixed(1)} KB</small>
-      </div>
-    `).join("")
-    : '<div class="empty">لا توجد ملفات.</div>';
-}
-
-/* Logo */
-
-function changeLogo() {
-  const input=document.getElementById("logoInput");
-  const file=input.files[0];
-
-  if(!file) {
-    alert("اختر صورة الشعار.");
-    return;
-  }
-
-  if(!file.type.startsWith("image/")) {
-    alert("اختر صورة صحيحة.");
-    return;
-  }
-
-  const reader=new FileReader();
-
-  reader.onload=()=>{
-    const img=document.createElement("img");
-    img.src=reader.result;
-
-    const logo=document.getElementById("siteLogo");
-    logo.innerHTML="";
-    logo.appendChild(img);
-
-    alert("تم تحديث الشعار في هذه الجلسة.");
-  };
-
-  reader.readAsDataURL(file);
-}
-
-/* Backup */
-
-function backupData() {
-  const data={
-    announcements,
-    messages,
-    files,
-    backupDate:new Date().toISOString()
-  };
-
-  const blob=new Blob(
-    [JSON.stringify(data,null,2)],
-    {type:"application/json"}
-  );
-
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement("a");
-
-  a.href=url;
-  a.download="mesgouni-backup.json";
-  a.click();
-
-  URL.revokeObjectURL(url);
-}
-
-function restoreData() {
-  const input=document.getElementById("restoreInput");
-  const file=input.files[0];
-
-  if(!file) {
-    alert("اختر ملف النسخة الاحتياطية.");
-    return;
-  }
-
-  const reader=new FileReader();
-
-  reader.onload=()=>{
-    try {
-      const data=JSON.parse(reader.result);
-
-      if(!Array.isArray(data.announcements) ||
-         !Array.isArray(data.messages) ||
-         !Array.isArray(data.files)) {
-        throw new Error("Invalid backup");
-      }
-
-      announcements=data.announcements;
-      messages=data.messages;
-      files=data.files;
-
-      save("mesgouni_news",announcements);
-      save("mesgouni_messages",messages);
-      save("mesgouni_files",files);
-
-      renderAll();
-      alert("تم استعادة البيانات المحلية.");
-    } catch {
-      alert("ملف النسخة الاحتياطية غير صالح.");
-    }
-  };
-
-  reader.readAsText(file);
-}
-
-/* Security helper for displayed text */
-
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g,c=>({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
-  })[c]);
-}
-
-/* Dashboard */
-
-function renderAll() {
-  renderNews();
-  renderMessages();
-  renderFiles();
-
-  document.getElementById("statNews").textContent=announcements.length;
-  document.getElementById("statMessages").textContent=messages.length;
-  document.getElementById("statFiles").textContent=files.length;
-}
-
-renderAll();
-
+// تشغيل الموقع
+(async function init(){
+ if(SUPABASE_URL.includes("ضع_هنا") || SUPABASE_KEY.includes("ضع_هنا")){
+  $("publicAnnouncements").innerHTML='<div class="empty">يجب إدخال بيانات مشروع Supabase في إعدادات الكود.</div>';
+  return;
+ }
+ await loadAnnouncements();
+ await checkExistingSession();
+})();
 </script>
-// Supabase connection
-const SUPABASE_URL = "https://zsimfeaqoemfkzuylswd.supabase.co/rest/v1/";
-const SUPABASE_KEY = "sb_publishable_fkcnF_gn-Zq_rrEpWd23yg_8e7oi4Oq";
-
-const db = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-  );
-// اختبار الاتصال بقاعدة البيانات
-async function testSupabaseConnection() {
-  const { data, error } = await db
-    .from("announcements")
-    .select("id")
-    .limit(1);
-
-  if (error) {
-    console.error("Supabase connection error:", error.message);
-    alert("فشل الاتصال: " + error.message);
-    return;
-  }
-
-  console.log("Supabase connected successfully!");
-  console.log(data);
-}
-
-testSupabaseConnection();
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0c3d2d">
+<title>ثانوية مسغوني | الموقع الرسمي</title>
+<meta name="description" content="الموقع الرسمي لثانوية المجاهد مسغوني محمد الصالح. الإعلانات والموارد التعليمية والتواصل المدرسي.">
+<meta name="robots" content="index, follow">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+:root{--green:#145c43;--dark:#0c3d2d;--gold:#d9b45b;--bg:#f4f8f5;--card:#fff;--text:#24352d;--muted:#75847b;--border:#e2eae4;--shadow:0 5px 25px #173e2c10}
+body.dark{--bg:#101a16;--card:#1c2b24;--text:#edf5ef;--muted:#aab9ae;--border:#34483c;--shadow:0 5px 25px #0003}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.8;transition:.25s}
+button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}a{color:inherit;text-decoration:none}
+.container{width:min(1150px,92%);margin:auto}
+header{background:var(--dark);color:#fff;position:sticky;top:0;z-index:10;box-shadow:0 3px 15px #0002}
+.nav{min-height:75px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:48px;height:48px;border-radius:12px;background:#ffffff18;display:grid;place-items:center;color:var(--gold);font-size:26px}
+.brand h2{color:var(--gold);font-size:19px}.brand small{color:#d5e3d9;font-size:11px}
+.nav-links{display:flex;gap:20px}.nav-links a{font-size:13px;color:#fff}.nav-links a:hover{color:var(--gold)}
+.actions{display:flex;gap:8px}.icon-btn{background:#ffffff18;color:#fff;border-radius:9px;padding:9px 12px}.menu-btn{display:none;background:transparent;color:#fff;font-size:24px}
+.hero{min-height:430px;display:flex;align-items:center;color:#fff;background:linear-gradient(90deg,#062d21dd,#0c3d2d99),url("facade.jpg") center/cover}
+.hero-content{max-width:700px;padding:65px 0;animation:appear .7s}
+.hero h1{font-size:clamp(30px,5vw,49px);line-height:1.4;margin-bottom:15px}.hero h1 span{color:var(--gold)}
+.hero p{color:#e0e9e3;margin-bottom:25px}
+.btn{display:inline-block;padding:11px 23px;border-radius:9px;background:var(--gold);color:#183b2b;font-weight:bold;transition:.2s}.btn:hover{transform:translateY(-2px)}
+.btn-outline{background:transparent;color:#fff;border:1px solid #ffffff80;margin-right:8px}
+section{padding:60px 0}.section-title{text-align:center;margin-bottom:30px}
+.section-title h2{color:var(--green);font-size:27px}.dark .section-title h2{color:var(--gold)}
+.section-title p{color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--border);padding:23px;border-radius:15px;box-shadow:var(--shadow);transition:.25s}
+.card:hover{transform:translateY(-3px)}
+.card-icon{font-size:32px;margin-bottom:8px}.card h3{margin-bottom:8px;color:var(--green)}
+.dark .card h3{color:var(--gold)}.card p{color:var(--muted);font-size:13px;margin-bottom:12px}
+.text-btn{color:var(--green);font-weight:bold;background:none}.dark .text-btn{color:var(--gold)}
+.announcement{border-right:4px solid var(--gold)}.announcement time{color:var(--muted);font-size:11px}
+.empty{text-align:center;color:var(--muted);padding:24px}
+.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.resource{background:var(--card);border:1px solid var(--border);padding:20px;text-align:center;border-radius:12px}
+.resource a{color:var(--green);font-weight:bold}.dark .resource a{color:var(--gold)}
+.form-box{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:25px;max-width:650px;margin:auto}
+.field{margin-bottom:15px}.field label{display:block;margin-bottom:6px;font-weight:bold;font-size:13px}
+.field input,.field textarea,.field select{width:100%;padding:12px;border:1px solid var(--border);background:var(--bg);color:var(--text);border-radius:8px;outline:none}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--green)}
+footer{background:var(--dark);color:#fff;padding:32px 0;text-align:center}
+footer h3{color:var(--gold)}footer p{font-size:13px;margin:7px;color:#d5e3d9}
+.notice{padding:12px;background:#e4f4e8;color:#145c43;border-radius:8px;margin:12px 0;font-size:13px}
+.dark .notice{background:#203b2b;color:#c9e8d0}
+.error{background:#fde8e8;color:#8c2525}.dark .error{background:#4b2929;color:#ffdada}
+#adminArea{display:none;min-height:70vh}
+.dashboard-grid{display:grid;grid-template-columns:220px 1fr;gap:18px}
+.sidebar{background:var(--dark);color:#fff;border-radius:14px;padding:15px;height:max-content}
+.sidebar button{display:block;width:100%;text-align:right;color:#fff;background:transparent;padding:11px;border-radius:8px;margin:4px 0}
+.sidebar button.active,.sidebar button:hover{background:#ffffff20;color:var(--gold)}
+.admin-panel{display:none}.admin-panel.active{display:block;animation:appear .25s}
+.small-btn{padding:7px 12px;background:var(--green);color:#fff;border-radius:7px;font-size:12px;margin:4px 0}
+.danger{background:#b53d3d}.hidden{display:none!important}
+.admin-login-link{font-size:12px;color:#d5e3d9;text-decoration:underline}
+@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:850px){
+.nav-links{display:none;position:absolute;top:75px;right:0;left:0;background:var(--dark);flex-direction:column;padding:18px}
+.nav-links.open{display:flex}.menu-btn{display:block}.grid{grid-template-columns:repeat(2,1fr)}
+.dashboard-grid{grid-template-columns:1fr}.sidebar{display:grid;grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:550px){
+.grid,.resource-grid{grid-template-columns:1fr}.hero{min-height:370px}
+section{padding:42px 0}.brand h2{font-size:15px}.brand small{font-size:9px}
+}
+</style>
+</head>
+
+<body>
+<header>
+<div class="container nav">
+<div class="brand">
+<div class="logo" id="siteLogo">🎓</div>
+<div><h2>ثانوية مسغوني</h2><small>العلم والعمل أساس النجاح</small></div>
+</div>
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+<nav class="nav-links" id="navLinks">
+<a href="#home" onclick="closeMenu()">الرئيسية</a>
+<a href="#about" onclick="closeMenu()">عن الثانوية</a>
+<a href="#services" onclick="closeMenu()">الخدمات</a>
+<a href="#announcements" onclick="closeMenu()">الإعلانات</a>
+<a href="#resources" onclick="closeMenu()">الموارد</a>
+<a href="#contact" onclick="closeMenu()">تواصل معنا</a>
+</nav>
+<div class="actions">
+<button class="icon-btn" onclick="toggleDark()">◐</button>
+<button class="icon-btn" onclick="toggleLanguage()">FR</button>
+</div>
+</div>
+</header>
+
+<main id="publicSite">
+<section class="hero" id="home">
+<div class="container"><div class="hero-content">
+<h1>مرحباً بكم في <span>ثانوية مسغوني</span></h1>
+<p>العلم والعمل أساس النجاح. بوابتكم التعليمية للتعلم والمعرفة والتواصل المدرسي.</p>
+<a href="#services" class="btn">اكتشف خدماتنا</a>
+<a href="#about" class="btn btn-outline">عن الثانوية</a>
+</div></div>
+</section>
+
+<section id="about"><div class="container">
+<div class="section-title"><h2>عن ثانويتنا</h2><p>ثانوية المجاهد مسغوني محمد الصالح</p></div>
+<div class="card"><h3>رسالتنا التعليمية</h3>
+<p>نسعى إلى توفير بيئة تعليمية محفزة تساعد التلاميذ على اكتساب المعرفة وتنمية مهاراتهم وتحقيق طموحاتهم.</p></div>
+</div></section>
+
+<section id="services"><div class="container">
+<div class="section-title"><h2>خدماتنا التعليمية</h2><p>كل ما يحتاجه التلميذ في مكان واحد</p></div>
+<div class="grid">
+<div class="card"><div class="card-icon">📚</div><h3>فضاء التلميذ</h3><p>الوصول إلى الموارد والخدمات التعليمية.</p><a class="text-btn" href="#resources">استكشف ←</a></div>
+<div class="card"><div class="card-icon">📢</div><h3>الإعلانات المدرسية</h3><p>متابعة آخر الإعلانات والأخبار المدرسية.</p><a class="text-btn" href="#announcements">عرض الإعلانات ←</a></div>
+<div class="card"><div class="card-icon">🎓</div><h3>التوجيه الجامعي</h3><p>معلومات تساعد التلاميذ في اختيار مسارهم الجامعي.</p><a class="text-btn" href="https://www.orientation-esi.dz/" target="_blank" rel="noopener">اكتشف ←</a></div>
+<div class="card"><div class="card-icon">🤖</div><h3>مساعد الذكاء الاصطناعي</h3><p>مساعد تعليمي للإجابة عن الأسئلة الدراسية.</p><a class="text-btn" href="https://chatgpt.com/" target="_blank" rel="noopener">ابدأ ←</a></div>
+<div class="card"><div class="card-icon">💡</div><h3>الاقتراحات والشكاوى</h3><p>شاركنا أفكارك وملاحظاتك لتحسين المؤسسة.</p><a class="text-btn" href="#contact">إرسال ←</a></div>
+<div class="card"><div class="card-icon">🔐</div><h3>إدارة الموقع</h3><p>دخول مخصص لحساب مدير الموقع.</p><button class="text-btn" onclick="showAdminLogin()">دخول المدير ←</button></div>
+</div></div></section>
+
+<section id="announcements"><div class="container">
+<div class="section-title"><h2>الإعلانات المدرسية</h2><p>آخر مستجدات المؤسسة</p></div>
+<div id="publicAnnouncements" class="grid"><div class="empty">جارٍ تحميل الإعلانات...</div></div>
+</div></section>
+
+<section id="resources"><div class="container">
+<div class="section-title"><h2>المكتبة التعليمية</h2><p>موارد دراسية حسب المستوى</p></div>
+<div class="resource-grid">
+<div class="resource"><h3>السنة الأولى ثانوي</h3><p>الدروس والاختبارات</p><a href="https://www.dzexams.com/ar/1as" target="_blank" rel="noopener">الدخول ←</a></div>
+<div class="resource"><h3>السنة الثانية ثانوي</h3><p>الدروس والاختبارات</p><a href="https://www.dzexams.com/ar/2as" target="_blank" rel="noopener">الدخول ←</a></div>
+<div class="resource"><h3>السنة الثالثة ثانوي</h3><p>الدروس والاختبارات</p><a href="https://www.dzexams.com/ar/3as" target="_blank" rel="noopener">الدخول ←</a></div>
+</div></div></section>
+
+<section id="contact"><div class="container">
+<div class="section-title"><h2>الاقتراحات والشكاوى</h2><p>لا تكتب معلومات شخصية حساسة في الرسالة</p></div>
+<form class="form-box" id="suggestionForm">
+<div class="field"><label for="suggestType">نوع الرسالة</label>
+<select id="suggestType"><option>اقتراح</option><option>شكوى</option><option>ملاحظة</option></select></div>
+<div class="field"><label for="suggestMessage">الرسالة</label>
+<textarea id="suggestMessage" rows="5" required minlength="5" maxlength="3000" placeholder="اكتب رسالتك هنا..."></textarea></div>
+<button class="btn" type="submit" id="suggestSubmit">إرسال الرسالة</button>
+<p id="suggestStatus" class="notice hidden" role="status"></p>
+</form></div></section>
+</main>
+
+<section id="adminLogin" class="hidden"><div class="container">
+<div class="section-title"><h2>دخول مدير الموقع</h2><p>هذه الصفحة مخصصة للحساب الإداري المعتمد</p></div>
+<form class="form-box" id="adminLoginForm">
+<div class="field"><label for="adminEmail">البريد الإلكتروني</label><input id="adminEmail" type="email" autocomplete="username" required></div>
+<div class="field"><label for="adminPassword">كلمة المرور</label><input id="adminPassword" type="password" autocomplete="current-password" required></div>
+<button class="btn" type="submit" id="loginButton">تسجيل الدخول</button>
+<button type="button" class="small-btn" onclick="showPublic()">رجوع</button>
+<p id="loginStatus" class="notice hidden" role="status"></p>
+</form></div></section>
+
+<section id="adminArea"><div class="container">
+<div class="section-title"><h2>لوحة تحكم مسغوني</h2><p>إدارة الإعلانات والرسائل</p>
+<button class="small-btn danger" onclick="logoutAdmin()">تسجيل الخروج</button></div>
+<div class="dashboard-grid">
+<aside class="sidebar">
+<button class="active" onclick="adminTab('adminNewsPanel',this)">📢 الإعلانات</button>
+<button onclick="adminTab('adminMessagesPanel',this)">💬 الرسائل</button>
+</aside>
+<div>
+<div class="admin-panel active" id="adminNewsPanel">
+<div class="card"><h3>إضافة إعلان جديد</h3>
+<div class="field"><label for="newsTitle">عنوان الإعلان</label><input id="newsTitle" maxlength="150"></div>
+<div class="field"><label for="newsText">محتوى الإعلان</label><textarea id="newsText" rows="4" maxlength="5000"></textarea></div>
+<button class="btn" onclick="addNews()">نشر الإعلان</button>
+<p id="newsStatus" class="notice hidden"></p>
+</div>
+<h3 style="margin:20px 0">الإعلانات الحالية</h3><div id="adminNews"></div>
+</div>
+<div class="admin-panel" id="adminMessagesPanel"><h3>الاقتراحات والشكاوى</h3><div id="adminMessages"></div></div>
+</div></div></div></section>
+
+<footer><div class="container">
+<h3>ثانوية مسغوني</h3><p>العلم والعمل أساس النجاح</p>
+<p>ثانوية المجاهد مسغوني محمد الصالح</p>
+<p dir="ltr">© 2026 Lycée Mesgouni</p>
+<p dir="ltr">Made by Developer Majd</p>
+<p><button class="admin-login-link" onclick="showAdminLogin()">دخول الإدارة</button></p>
+</div></footer>
+
+<script>
+// ضع بيانات مشروعك هنا
+const SUPABASE_URL = "ضع_هنا_Project_URL";
+const SUPABASE_KEY = "ضع_هنا_Publishable_Key";
+
+// إنشاء اتصال Supabase
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const $ = id => document.getElementById(id);
+let isAdmin = false;
+
+function toggleMenu(){ $("navLinks").classList.toggle("open"); }
+function closeMenu(){ $("navLinks").classList.remove("open"); }
+function toggleDark(){
+ document.body.classList.toggle("dark");
+ localStorage.setItem("mesgouni_dark",document.body.classList.contains("dark"));
+}
+if(localStorage.getItem("mesgouni_dark")==="true") document.body.classList.add("dark");
+function toggleLanguage(){ alert("الواجهة الفرنسية قيد التطوير."); }
+
+function hideMainSections(){
+ $("publicSite").classList.add("hidden");
+ $("adminLogin").classList.add("hidden");
+ $("adminArea").style.display="none";
+}
+function showPublic(){
+ $("adminLogin").classList.add("hidden");
+ $("adminArea").style.display="none";
+ $("publicSite").classList.remove("hidden");
+ window.scrollTo(0,0);
+}
+function showAdminLogin(){
+ hideMainSections();
+ $("adminLogin").classList.remove("hidden");
+ window.scrollTo(0,0);
+}
+function showAdminDashboard(){
+ hideMainSections();
+ $("adminArea").style.display="block";
+ window.scrollTo(0,0);
+ loadAdminData();
+}
+function showStatus(id,message,isError=false){
+ const el=$(id);
+ el.textContent=message;
+ el.classList.remove("hidden","error");
+ if(isError) el.classList.add("error");
+}
+
+// تحميل الإعلانات المنشورة
+async function loadAnnouncements(){
+ const box=$("publicAnnouncements");
+ box.innerHTML='<div class="empty">جارٍ تحميل الإعلانات...</div>';
+ const {data,error}=await db.from("announcements")
+  .select("id,title,content,created_at")
+  .eq("published",true)
+  .order("created_at",{ascending:false});
+ if(error){
+  box.innerHTML='<div class="empty">تعذر تحميل الإعلانات حاليًا.</div>';
+  console.error("Announcements:",error.message);
+  return;
+ }
+ if(!data || data.length===0){
+  box.innerHTML='<div class="empty">لا توجد إعلانات منشورة حاليًا.</div>';
+  return;
+ }
+ box.innerHTML=data.map(n=>`
+  <article class="card announcement">
+   <h3>${escapeHTML(n.title)}</h3>
+   <p>${escapeHTML(n.content)}</p>
+   <time>${escapeHTML(new Date(n.created_at).toLocaleDateString("ar-DZ"))}</time>
+  </article>`).join("");
+}
+
+// إرسال الاقتراحات والشكاوى
+$("suggestionForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+ const button=$("suggestSubmit");
+ button.disabled=true;
+ button.textContent="جارٍ الإرسال...";
+ const subject=$("suggestType").value;
+ const message=$("suggestMessage").value.trim();
+ const {error}=await db.from("suggestions").insert([{subject,message}]);
+ button.disabled=false;
+ button.textContent="إرسال الرسالة";
+ if(error){
+  showStatus("suggestStatus","تعذر إرسال الرسالة. حاول لاحقًا.",true);
+  console.error("Suggestion:",error.message);
+  return;
+ }
+ $("suggestionForm").reset();
+ showStatus("suggestStatus","تم إرسال رسالتك إلى قاعدة بيانات الموقع.");
+});
+
+// تسجيل دخول المدير
+$("adminLoginForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+ const button=$("loginButton");
+ button.disabled=true;
+ button.textContent="جارٍ التحقق...";
+ const email=$("adminEmail").value.trim();
+ const password=$("adminPassword").value;
+ const {error}=await db.auth.signInWithPassword({email,password});
+ button.disabled=false;
+ button.textContent="تسجيل الدخول";
+ if(error){
+  showStatus("loginStatus","تعذر تسجيل الدخول. تحقق من البريد وكلمة المرور.",true);
+  return;
+ }
+ const {data:allowed,error:roleError}=await db.rpc("is_site_admin");
+ if(roleError || allowed!==true){
+  await db.auth.signOut();
+  showStatus("loginStatus","هذا الحساب ليس ضمن قائمة مديري الموقع.",true);
+  return;
+ }
+ isAdmin=true;
+ $("adminPassword").value="";
+ showAdminDashboard();
+});
+
+// التحقق من الجلسة السابقة
+async function checkExistingSession(){
+ const {data:{session}}=await db.auth.getSession();
+ if(!session) return;
+ const {data:allowed,error}=await db.rpc("is_site_admin");
+ if(!error && allowed===true){
+  isAdmin=true;
+  showAdminDashboard();
+ }
+}
+async function logoutAdmin(){
+ isAdmin=false;
+ await db.auth.signOut();
+ showPublic();
+}
+
+// التبديل بين أقسام لوحة الإدارة
+function adminTab(id,button){
+ document.querySelectorAll(".admin-panel").forEach(p=>p.classList.remove("active"));
+ document.querySelectorAll(".sidebar button").forEach(b=>b.classList.remove("active"));
+ $(id).classList.add("active");
+ button.classList.add("active");
+}
+
+// نشر إعلان جديد
+async function addNews(){
+ if(!isAdmin){alert("يجب تسجيل دخول المدير.");return;}
+ const title=$("newsTitle").value.trim();
+ const content=$("newsText").value.trim();
+ if(title.length<2 || content.length<5){
+  showStatus("newsStatus","أدخل عنوانًا ومحتوى صحيحين.",true);
+  return;
+ }
+ const {error}=await db.from("announcements").insert([{title,content,published:true}]);
+ if(error){
+  showStatus("newsStatus","تعذر نشر الإعلان. تحقق من صلاحيات المدير.",true);
+  console.error(error.message);
+  return;
+ }
+ $("newsTitle").value="";
+ $("newsText").value="";
+ showStatus("newsStatus","تم نشر الإعلان بنجاح.");
+ await loadAnnouncements();
+ await loadAdminData();
+}
+
+// حذف إعلان
+async function deleteNews(id){
+ if(!isAdmin || !confirm("هل تريد حذف هذا الإعلان؟")) return;
+ const {error}=await db.from("announcements").delete().eq("id",id);
+ if(error){
+  alert("تعذر حذف الإعلان.");
+  console.error(error.message);
+  return;
+ }
+ await loadAnnouncements();
+ await loadAdminData();
+}
+
+// تحميل بيانات لوحة المدير
+async function loadAdminData(){
+ if(!isAdmin) return;
+ const {data:news,error:newsError}=await db.from("announcements")
+  .select("id,title,content,published,created_at")
+  .order("created_at",{ascending:false});
+ if(newsError){
+  $("adminNews").textContent="تعذر تحميل الإعلانات.";
+  console.error(newsError.message);
+ }else if(!news || news.length===0){
+  $("adminNews").innerHTML='<div class="empty">لا توجد إعلانات.</div>';
+ }else{
+  $("adminNews").innerHTML=news.map(n=>`
+   <div class="card" style="margin:10px 0">
+    <h3>${escapeHTML(n.title)}</h3><p>${escapeHTML(n.content)}</p>
+    <small>${n.published?"منشور":"غير منشور"}</small><br>
+    <button class="small-btn danger" onclick="deleteNews(${Number(n.id)})">حذف</button>
+   </div>`).join("");
+ }
+ const {data:messages,error:msgError}=await db.from("suggestions")
+  .select("id,subject,message,created_at")
+  .order("created_at",{ascending:false});
+ if(msgError){
+  $("adminMessages").textContent="تعذر تحميل الرسائل.";
+  console.error(msgError.message);
+ }else if(!messages || messages.length===0){
+  $("adminMessages").innerHTML='<div class="empty">لا توجد رسائل.</div>';
+ }else{
+  $("adminMessages").innerHTML=messages.map(m=>`
+   <div class="card" style="margin:10px 0">
+    <strong>${escapeHTML(m.subject)}</strong><p>${escapeHTML(m.message)}</p>
+    <small>${escapeHTML(new Date(m.created_at).toLocaleString("ar-DZ"))}</small>
+   </div>`).join("");
+ }
+}
+
+// منع إدخال HTML ضار داخل الإعلانات والرسائل
+function escapeHTML(value){
+ return String(value??"").replace(/[&<>"']/g,c=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
+}
+
+// تشغيل الموقع
+(async function init(){
+ if(SUPABASE_URL.includes("ضع_هنا") || SUPABASE_KEY.includes("ضع_هنا")){
+  $("publicAnnouncements").innerHTML='<div class="empty">يجب إدخال بيانات مشروع Supabase في إعدادات الكود.</div>';
+  return;
+ }
+ await loadAnnouncements();
+ await checkExistingSession();
+})();
+</script>
+</body>
+</html
