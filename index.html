@@ -1291,6 +1291,24 @@ const SUPABASE_KEY = "sb_publishable_fkcnF_gn-Zq_rrEpWd23yg_8e7oi4Oq";
 const db = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_KEY
-);
+  );
+// اختبار الاتصال بقاعدة البيانات
+async function testSupabaseConnection() {
+  const { data, error } = await db
+    .from("announcements")
+    .select("id")
+    .limit(1);
+
+  if (error) {
+    console.error("Supabase connection error:", error.message);
+    alert("فشل الاتصال: " + error.message);
+    return;
+  }
+
+  console.log("Supabase connected successfully!");
+  console.log(data);
+}
+
+testSupabaseConnection();
 </body>
 </html>
