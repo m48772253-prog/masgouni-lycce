@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://m48772253-prog.github.io/masgouni-lycce/sitemap.xml
