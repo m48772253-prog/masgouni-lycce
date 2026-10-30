@@ -1284,6 +1284,13 @@ function renderAll() {
 renderAll();
 
 </script>
+// Supabase connection
+const SUPABASE_URL = "ضع_هنا_Project_URL";
+const SUPABASE_KEY = "ضع_هنا_Publishable_Key";
 
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 </body>
 </html>
