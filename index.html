@@ -431,35 +431,34 @@ button:disabled {opacity:.6;cursor:not-allowed}
      <div id="adminNews"></div>
     </div>
 
-    <div class="admin-panel" id="adminMessagesPanel">
-     <h3>الاقتراحات والشكاوى</h3>
-     <div id="adminMessages"></div>
-    </div>
-   </div>
-  </div>
- </div>
-</section>
+function initializeSupabase() {
+  if (!window.supabase) {
+    $("publicAnnouncements").innerHTML =
+      '<div class="empty">تعذر تحميل مكتبة الاتصال. أعد تحميل الصفحة.</div>';
+    return false;
+  }
 
-<footer dir="rtl">
- <div class="container">
-  <h3>ثانوية مسغوني</h3>
-  <p class="footer-gold">العلم والعمل أساس النجاح</p>
-  <p>ثانوية المجاهد مسغوني محمد الصالح</p>
-  <p>القسم: [أضف اسم قسمك هنا]</p>
-  <p dir="ltr">© 2026 Lycée Mesgouni</p>
-  <p class="footer-developers">صنع بواسطة مجد بن حرزالله وأيوب شبيرات</p>
-  <p><button class="admin-login-link" onclick="showAdminLogin()">دخول الإدارة</button></p>
- </div>
-</footer>
+  if (
+    !SUPABASE_URL.startsWith("https://") ||
+    SUPABASE_URL.includes("ضع_هنا") ||
+    SUPABASE_KEY.includes("ضع_هنا")
+  ) {
+    $("publicAnnouncements").innerHTML =
+      '<div class="empty">تحقق من بيانات Supabase.</div>';
+    return false;
+  }
 
-<script>
-// ضع Project URL و Publishable Key الخاصين بك هنا
-const SUPABASE_URL = "https://zsimfeaqoemfkzuylswd.supabase.co";
-const SUPABASE_KEY = "sb_publishable_fkcnF_gn-Zq_rrEpWd23yg_8e7oi4Oq";
-
-const $ = id => document.getElementById(id);
-let db = null;
-let isAdmin = false;
+  try {
+    db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    return true;
+  } catch (error) {
+    console.error(error);
+    $("publicAnnouncements").innerHTML =
+      '<div class="empty">تعذر إنشاء الاتصال بقاعدة البيانات.</div>';
+    return false;
+  }
+}
+;
 
 // تهيئة Supabase بأمان
 function initializeSupabase() {
