@@ -469,11 +469,16 @@ function initializeSupabase() {
   return false;
  }
 
- if (
+
+if (
   !SUPABASE_URL.startsWith("https://") ||
   SUPABASE_URL.includes("https://zsimfeaqoemfkzuylswd.supabase.co") ||
   SUPABASE_KEY.includes("sb_publishable_fkcnF_gn-Zq_rrEpWd23yg_8e7oi4Oq")
- ) {
+) {
+  alert("تحقق من إعدادات Supabase");
+  return false;
+}
+
   $("publicAnnouncements").innerHTML =
    '<div class="empty">أدخل بيانات Supabase الصحيحة داخل الكود.</div>';
   return false;
