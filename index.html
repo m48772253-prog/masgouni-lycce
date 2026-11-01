@@ -1,195 +1,470 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0c3d2d">
-<meta name="description" content="الموقع الرسمي لثانوية المجاهد مسغوني محمد الصالح">
+<meta name="description" content="الموقع الإلكتروني لثانوية المجاهد مسغوني محمد الصالح">
 <title>ثانوية مسغوني | الموقع الرسمي</title>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 :root{
  --green:#145c43;
  --dark:#0c3d2d;
  --gold:#d9b45b;
- --bg:#f4f8f5;
- --card:#fff;
+ --bg:#f3f8f4;
+ --card:#ffffff;
  --text:#24352d;
  --muted:#75847b;
- --border:#e2eae4;
- --red:#b53d3d;
+ --border:#e1eae3;
+ --danger:#c43d3d;
+ --shadow:0 10px 35px rgba(12,61,45,.08);
 }
 body.dark{
  --bg:#101a16;
- --card:#1c2b24;
+ --card:#1b2a23;
  --text:#edf5ef;
  --muted:#aab9ae;
  --border:#34483c;
+ --shadow:0 10px 35px rgba(0,0,0,.2);
 }
 *{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{
  font-family:Tahoma,Arial,sans-serif;
- background:var(--bg);color:var(--text);line-height:1.8;
+ background:var(--bg);
+ color:var(--text);
+ line-height:1.8;
+ transition:background .3s,color .3s;
 }
 button,input,textarea,select{font:inherit}
 button{cursor:pointer;border:0}
-a{color:inherit;text-decoration:none}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
 .container{width:min(1150px,92%);margin:auto}
+.hidden{display:none!important}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.center{text-align:center}
+
+/* Header */
 header{
- background:var(--dark);color:white;
- position:sticky;top:0;z-index:50;
+ background:var(--dark);
+ color:white;
+ position:sticky;
+ top:0;
+ z-index:100;
+ box-shadow:0 3px 18px #0002;
 }
 .nav{
- min-height:75px;display:flex;align-items:center;
- justify-content:space-between;gap:14px;
+ min-height:82px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:15px;
 }
 .brand{display:flex;align-items:center;gap:12px}
-.logo{font-size:27px;color:var(--gold)}
-.brand h2{font-size:19px;color:var(--gold)}
+.logo{font-size:35px}
+.brand h2{font-size:20px;color:var(--gold)}
 .brand small{font-size:11px;color:#d5e3d9}
-.nav-links{display:flex;gap:17px}
-.nav-links a{font-size:13px}
-.actions{display:flex;gap:7px}
+.nav-links{display:flex;align-items:center;gap:17px}
+.nav-links a{
+ font-size:13px;
+ transition:color .2s;
+}
+.nav-links a:hover{color:var(--gold)}
+.actions{display:flex;align-items:center;gap:8px}
 .icon-btn,.menu-btn{
- background:#ffffff18;color:white;padding:9px;border-radius:8px;
+ background:#ffffff18;
+ color:white;
+ border-radius:10px;
+ padding:10px 13px;
+ transition:.2s;
 }
-.menu-btn{display:none;font-size:22px}
-.hero{
- min-height:420px;display:flex;align-items:center;color:white;
- background:linear-gradient(90deg,#062d21dd,#0c3d2d99),
- url("facade.jpg") center/cover;
-}
-.hero-content{padding:65px 0;max-width:700px}
-.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.4}
-.hero h1 span{color:var(--gold)}
-.hero p{margin:15px 0 24px;color:#e0e9e3}
+.icon-btn:hover,.menu-btn:hover{background:#ffffff30}
+.menu-btn{display:none;font-size:23px}
+
+/* General */
 .btn{
- display:inline-block;background:var(--gold);color:#183b2b;
- padding:10px 21px;border-radius:9px;font-weight:bold;
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:7px;
+ background:var(--gold);
+ color:#183b2b;
+ padding:11px 22px;
+ border-radius:10px;
+ font-weight:bold;
+ transition:transform .2s,box-shadow .2s;
 }
-.outline{background:transparent;color:white;border:1px solid #fff8;margin-inline-start:8px}
-section{padding:52px 0}
-.section-title{text-align:center;margin-bottom:27px}
-.section-title h2{color:var(--green);font-size:27px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 7px 18px #d9b45b55}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.btn-outline{
+ background:transparent;
+ color:inherit;
+ border:1px solid var(--border);
+}
+.btn-danger{background:var(--danger);color:white}
+.btn-green{background:var(--green);color:white}
+.btn-small{padding:7px 12px;font-size:12px;border-radius:7px}
+.section{padding:65px 0}
+.section-title{text-align:center;margin-bottom:32px}
+.section-title h2{font-size:30px;color:var(--green)}
 .dark .section-title h2{color:var(--gold)}
-.section-title p{color:var(--muted);font-size:14px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
-.card,.resource,.form-box{
- background:var(--card);border:1px solid var(--border);
- border-radius:14px;padding:22px;
+.section-title p{color:var(--muted);margin-top:5px}
+.card{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:17px;
+ padding:23px;
+ box-shadow:var(--shadow);
+ transition:transform .25s,box-shadow .25s;
 }
-.card h3{color:var(--green);margin-bottom:7px}
+.card:hover{transform:translateY(-3px)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card h3{color:var(--green);margin-bottom:8px}
 .dark .card h3{color:var(--gold)}
-.card p{color:var(--muted);font-size:13px;white-space:pre-wrap}
-.card-icon{font-size:30px}
-.text-btn{background:none;color:var(--green);font-weight:bold}
-.dark .text-btn{color:var(--gold)}
-.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.resource{text-align:center}
-.resource a{color:var(--green);font-weight:bold}
-.form-box{max-width:650px;margin:auto}
-.field{margin-bottom:14px}
-.field label{display:block;font-weight:bold;font-size:13px;margin-bottom:5px}
+.card p{color:var(--muted);font-size:14px}
+.card-icon{font-size:34px;margin-bottom:8px}
+.text-link{color:var(--green);font-weight:bold}
+.dark .text-link{color:var(--gold)}
+.text-link:hover{text-decoration:underline}
+
+/* Hero */
+.hero{
+ min-height:470px;
+ display:flex;
+ align-items:center;
+ color:white;
+ background:
+ linear-gradient(90deg,#062d21e8,#0c3d2d99),
+ url("facade.jpg") center/cover no-repeat;
+}
+.hero-content{max-width:720px;padding:70px 0}
+.hero h1{font-size:clamp(32px,5vw,51px);line-height:1.45}
+.hero h1 span{color:var(--gold)}
+.hero p{margin:15px 0 25px;color:#e1ebe4;font-size:16px}
+.hero-buttons{display:flex;gap:10px;flex-wrap:wrap}
+
+/* Services */
+.service-card{min-height:190px}
+.service-card .text-link{display:inline-block;margin-top:14px}
+
+/* Resources */
+.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.resource{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:14px;
+ padding:25px;
+ text-align:center;
+ transition:.2s;
+}
+.resource:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.resource h3{color:var(--green)}
+.dark .resource h3{color:var(--gold)}
+.resource a{display:inline-block;margin-top:12px;color:var(--green);font-weight:bold}
+.dark .resource a{color:var(--gold)}
+
+/* Forms */
+.form-box{
+ max-width:700px;
+ margin:auto;
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:18px;
+ padding:25px;
+ box-shadow:var(--shadow);
+}
+.field{margin-bottom:17px}
+.field label{display:block;font-weight:bold;font-size:14px;margin-bottom:7px}
 .field input,.field textarea,.field select{
- width:100%;padding:11px;border:1px solid var(--border);
- border-radius:8px;background:var(--bg);color:var(--text);
+ width:100%;
+ padding:12px 13px;
+ border:1px solid var(--border);
+ border-radius:10px;
+ background:var(--bg);
+ color:var(--text);
+ outline:none;
+ transition:border .2s,box-shadow .2s;
 }
-.field input[type=checkbox]{width:auto}
+.field input:focus,.field textarea:focus,.field select:focus{
+ border-color:var(--green);
+ box-shadow:0 0 0 3px #145c4318;
+}
+.field textarea{resize:vertical;min-height:110px}
+.field input[type=file]{padding:10px}
+.notice{
+ padding:12px 15px;
+ border-radius:9px;
+ background:#e3f4e8;
+ color:#145c43;
+ margin:12px 0;
+ font-size:13px;
+}
+.notice.error{background:#fde8e8;color:#962c2c}
+.notice.info{background:#e7effb;color:#28518c}
+.dark .notice{background:#203d2b;color:#bde5c9}
+.dark .notice.error{background:#482626;color:#ffc1c1}
+.dark .notice.info{background:#20334d;color:#c2d9ff}
+
+/* Announcements */
+.announcement-card{overflow:hidden}
+.announcement-image{
+ width:100%;
+ height:220px;
+ object-fit:cover;
+ border-radius:12px;
+ margin-bottom:14px;
+ background:var(--bg);
+}
+.announcement-date{font-size:11px;color:var(--muted);margin-top:12px}
+.empty{
+ grid-column:1/-1;
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:15px;
+ padding:28px;
+ text-align:center;
+ color:var(--muted);
+}
+
+/* Footer */
 footer{
- background:var(--dark);color:white;text-align:center;
- padding:30px 12px;margin-top:35px;
+ background:var(--dark);
+ color:white;
+ text-align:center;
+ padding:40px 15px;
+ margin-top:35px;
 }
-footer h3{color:var(--gold)}
+footer h2{color:var(--gold);margin-bottom:8px}
 footer p{font-size:13px;margin:7px;color:#d5e3d9}
 .footer-gold{color:#f1d17a}
 .footer-developers{font-size:14px}
-.notice{
- padding:11px;background:#e4f4e8;color:#145c43;
- border-radius:8px;margin:12px 0;font-size:13px;
-}
-.error{background:#fde8e8;color:#8c2525}
-.hidden{display:none!important}
+
+/* Modal */
 .modal-backdrop{
- position:fixed;inset:0;background:#0009;z-index:100;
- display:flex;align-items:center;justify-content:center;padding:15px;
+ position:fixed;
+ inset:0;
+ background:#0009;
+ z-index:300;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:15px;
+ backdrop-filter:blur(4px);
+ animation:fadeIn .25s ease;
 }
 .modal{
- width:min(520px,100%);max-height:90vh;overflow:auto;
- background:var(--bg);border-radius:15px;padding:22px;
+ width:min(500px,100%);
+ max-height:90vh;
+ overflow:auto;
+ background:var(--card);
+ border-radius:18px;
+ padding:25px;
+ box-shadow:0 20px 70px #0003;
+ animation:modalIn .3s ease;
 }
-.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.close-btn{font-size:25px;background:none;color:var(--text)}
-#adminArea{display:none;min-height:70vh;padding:35px 0}
-.dashboard-grid{display:grid;grid-template-columns:210px 1fr;gap:18px}
-.sidebar{background:var(--dark);padding:13px;border-radius:12px}
+.modal-head{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:18px;
+}
+.close-btn{background:none;color:var(--text);font-size:27px}
+
+/* Admin page transitions */
+#publicSite,#adminArea{
+ transition:opacity .3s ease,transform .3s ease;
+}
+.page-exit{
+ opacity:0!important;
+ transform:translateY(18px) scale(.99)!important;
+ pointer-events:none;
+}
+.page-enter{animation:pageEnter .45s ease both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes modalIn{
+ from{opacity:0;transform:translateY(20px) scale(.97)}
+ to{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes pageEnter{
+ from{opacity:0;transform:translateY(20px)}
+ to{opacity:1;transform:translateY(0)}
+}
+
+/* Admin */
+#adminArea{display:none;min-height:75vh;padding:35px 0}
+.admin-topbar{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:15px;
+ padding:17px 20px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ flex-wrap:wrap;
+ gap:12px;
+ margin-bottom:20px;
+}
+.admin-topbar h2{color:var(--green)}
+.dark .admin-topbar h2{color:var(--gold)}
+.admin-layout{
+ display:grid;
+ grid-template-columns:230px 1fr;
+ gap:18px;
+ align-items:start;
+}
+.sidebar{
+ background:var(--dark);
+ color:white;
+ border-radius:15px;
+ padding:13px;
+ position:sticky;
+ top:100px;
+}
 .sidebar button{
- display:block;width:100%;padding:10px;text-align:start;
- background:transparent;color:white;border-radius:8px;
+ display:flex;
+ align-items:center;
+ gap:10px;
+ width:100%;
+ padding:12px;
+ text-align:right;
+ background:transparent;
+ color:white;
+ border-radius:9px;
+ margin:3px 0;
+ transition:.2s;
 }
-.sidebar button.active{background:#ffffff25;color:var(--gold)}
-.admin-panel{display:none}
+.sidebar button:hover,.sidebar button.active{
+ background:#ffffff20;
+ color:var(--gold);
+}
+.admin-content{min-width:0}
+.admin-panel{display:none;animation:pageEnter .3s ease}
 .admin-panel.active{display:block}
-.small-btn{
- padding:7px 12px;background:var(--green);color:white;
- border-radius:7px;margin:4px;
+.stats-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:13px;
+ margin-bottom:20px;
 }
-.danger{background:var(--red)}
-.gray-btn{background:#64746b}
-.admin-login-link{background:none;color:#d5e3d9;text-decoration:underline}
-.stats{
- display:grid;grid-template-columns:repeat(3,1fr);
- gap:12px;margin-bottom:20px;
+.stat-card{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:14px;
+ padding:18px;
 }
-.stat{
- background:var(--card);border:1px solid var(--border);
- border-radius:12px;padding:17px;text-align:center;
+.stat-card span{font-size:12px;color:var(--muted)}
+.stat-card strong{display:block;font-size:27px;color:var(--green);margin-top:5px}
+.dark .stat-card strong{color:var(--gold)}
+.panel-heading{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ flex-wrap:wrap;
+ gap:12px;
+ margin-bottom:18px;
 }
-.stat strong{display:block;font-size:27px;color:var(--green)}
-.dark .stat strong{color:var(--gold)}
-.stat span{font-size:13px;color:var(--muted)}
-.news-image{
- width:100%;max-height:260px;object-fit:cover;
- border-radius:10px;margin-bottom:12px;
+.panel-heading h3{color:var(--green)}
+.dark .panel-heading h3{color:var(--gold)}
+.admin-list{display:grid;gap:12px}
+.admin-item{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:13px;
+ padding:17px;
 }
-.preview{
- max-width:100%;max-height:220px;object-fit:contain;
- display:block;margin:10px 0;border-radius:9px;
+.admin-item h4{margin-bottom:5px}
+.admin-item p{color:var(--muted);font-size:13px;white-space:pre-wrap}
+.admin-item-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+.badge{
+ display:inline-block;
+ padding:3px 9px;
+ border-radius:20px;
+ background:#e3f4e8;
+ color:#145c43;
+ font-size:11px;
 }
-.news-actions{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
-.status-label{
- display:inline-block;padding:3px 9px;border-radius:20px;
- font-size:11px;background:#e4f4e8;color:#145c43;
+.badge.off{background:#fde8e8;color:#962c2c}
+.search-box{margin-bottom:15px}
+.search-box input{
+ width:100%;
+ padding:11px;
+ border-radius:9px;
+ border:1px solid var(--border);
+ background:var(--bg);
+ color:var(--text);
 }
-.status-hidden{background:#fce9e9;color:#9b3434}
-.empty{
- background:var(--card);padding:20px;border-radius:10px;
- text-align:center;color:var(--muted);
+.preview-box{
+ border:1px dashed var(--border);
+ padding:12px;
+ border-radius:10px;
+ margin:10px 0;
+ text-align:center;
 }
-.admin-heading{margin:18px 0}
-.admin-top{
- display:flex;align-items:center;justify-content:space-between;
- flex-wrap:wrap;gap:12px;margin-bottom:20px;
+.preview-box img{max-height:200px;border-radius:9px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap}
+.admin-footer-note{font-size:12px;color:var(--muted);margin-top:20px}
+
+/* Toast */
+#toastArea{
+ position:fixed;
+ bottom:20px;
+ left:20px;
+ z-index:500;
+ display:grid;
+ gap:9px;
+ width:min(350px,calc(100% - 40px));
 }
-.file-note{font-size:12px;color:var(--muted)}
-@media(max-width:850px){
+.toast{
+ background:var(--dark);
+ color:white;
+ padding:13px 17px;
+ border-radius:10px;
+ box-shadow:var(--shadow);
+ animation:pageEnter .25s ease;
+ font-size:13px;
+}
+.toast.error{background:#9d3030}
+
+/* Responsive */
+@media(max-width:900px){
  .menu-btn{display:block}
  .nav-links{
-  display:none;position:absolute;top:75px;right:0;left:0;
-  background:var(--dark);padding:16px;flex-direction:column;
+  display:none;
+  position:absolute;
+  top:82px;
+  right:0;
+  left:0;
+  background:var(--dark);
+  padding:18px 5%;
+  flex-direction:column;
+  align-items:stretch;
+  box-shadow:0 12px 20px #0002;
  }
  .nav-links.open{display:flex}
+ .nav-links a{padding:7px}
  .grid{grid-template-columns:repeat(2,1fr)}
- .dashboard-grid{grid-template-columns:1fr}
- .sidebar{display:grid;grid-template-columns:repeat(2,1fr)}
+ .admin-layout{grid-template-columns:1fr}
+ .sidebar{position:static;display:grid;grid-template-columns:repeat(2,1fr)}
 }
-@media(max-width:550px){
- .grid,.resource-grid{grid-template-columns:1fr}
- .stats{grid-template-columns:1fr 1fr}
- .hero{min-height:360px}
+@media(max-width:600px){
+ .nav{min-height:75px}
  .brand h2{font-size:15px}
  .brand small{font-size:9px}
+ .logo{font-size:27px}
+ .icon-btn{padding:9px}
+ .grid,.resource-grid{grid-template-columns:1fr}
+ .hero{min-height:380px}
+ .hero-content{padding:50px 0}
+ .hero h1{font-size:33px}
+ .section{padding:45px 0}
+ .section-title h2{font-size:25px}
+ .form-box{padding:17px}
+ .stats-grid{grid-template-columns:repeat(2,1fr)}
+ .sidebar{grid-template-columns:1fr 1fr}
+ .admin-topbar{align-items:flex-start}
 }
 </style>
 </head>
@@ -197,1122 +472,1076 @@ footer p{font-size:13px;margin:7px;color:#d5e3d9}
 <body>
 
 <header>
-<div class="container nav">
- <div class="brand">
-  <div class="logo">🎓</div>
-  <div>
-   <h2>ثانوية مسغوني</h2>
-   <small data-i18n="motto">العلم والعمل أساس النجاح</small>
+ <div class="container nav">
+  <div class="brand">
+   <div class="logo">🎓</div>
+   <div>
+    <h2 data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</h2>
+    <small data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail, clés de la réussite">العلم والعمل أساس النجاح</small>
+   </div>
+  </div>
+
+  <button class="menu-btn" onclick="toggleMenu()" aria-label="القائمة">☰</button>
+
+  <nav class="nav-links" id="navLinks">
+   <a href="#home" onclick="closeMenu()" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a>
+   <a href="#about" onclick="closeMenu()" data-ar="عن الثانوية" data-fr="À propos">عن الثانوية</a>
+   <a href="#services" onclick="closeMenu()" data-ar="الخدمات" data-fr="Services">الخدمات</a>
+   <a href="#announcements" onclick="closeMenu()" data-ar="الإعلانات" data-fr="Annonces">الإعلانات</a>
+   <a href="#resources" onclick="closeMenu()" data-ar="الموارد" data-fr="Ressources">الموارد</a>
+   <a href="#contact" onclick="closeMenu()" data-ar="تواصل معنا" data-fr="Contact">تواصل معنا</a>
+  </nav>
+
+  <div class="actions">
+   <button class="icon-btn" onclick="toggleDark()" title="الوضع الليلي">◐</button>
+   <button class="icon-btn" onclick="toggleLanguage()" id="languageButton">FR</button>
   </div>
  </div>
-
- <button class="menu-btn" onclick="toggleMenu()">☰</button>
-
- <nav class="nav-links" id="navLinks">
-  <a href="#home" data-i18n="home" onclick="closeMenu()">الرئيسية</a>
-  <a href="#about" data-i18n="about" onclick="closeMenu()">عن الثانوية</a>
-  <a href="#services" data-i18n="services" onclick="closeMenu()">الخدمات</a>
-  <a href="#announcements" data-i18n="announcements" onclick="closeMenu()">الإعلانات</a>
-  <a href="#resources" data-i18n="resources" onclick="closeMenu()">الموارد</a>
-  <a href="#contact" data-i18n="contact" onclick="closeMenu()">تواصل معنا</a>
- </nav>
-
- <div class="actions">
-  <button class="icon-btn" onclick="toggleDark()" title="الوضع الليلي">◐</button>
-  <button class="icon-btn" onclick="toggleLanguage()" id="languageButton">FR</button>
- </div>
-</div>
 </header>
 
 <main id="publicSite">
 
-<section class="hero" id="home">
- <div class="container hero-content">
-  <h1 data-i18n="welcome">مرحباً بكم في <span>ثانوية مسغوني</span></h1>
-  <p data-i18n="heroText">
-   العلم والعمل أساس النجاح. بوابتكم التعليمية للتعلم والمعرفة والتواصل المدرسي.
-  </p>
-  <a class="btn" href="#services" data-i18n="discover">اكتشف خدماتنا</a>
-  <a class="btn outline" href="#about" data-i18n="about">عن الثانوية</a>
- </div>
-</section>
-
-<section id="about">
- <div class="container">
-  <div class="section-title">
-   <h2 data-i18n="aboutTitle">عن ثانويتنا</h2>
-   <p data-i18n="schoolName">ثانوية المجاهد مسغوني محمد الصالح</p>
-  </div>
-  <div class="card">
-   <h3 data-i18n="mission">رسالتنا التعليمية</h3>
-   <p data-i18n="missionText">
-    نسعى إلى توفير بيئة تعليمية محفزة تساعد التلاميذ على اكتساب المعرفة وتنمية مهاراتهم وتحقيق طموحاتهم.
+ <section class="hero" id="home">
+  <div class="container hero-content">
+   <h1 data-ar="مرحباً بكم في ثانوية <span>مسغوني</span>" data-fr="Bienvenue au <span>Lycée Mesgouni</span>">
+    مرحباً بكم في ثانوية <span>مسغوني</span>
+   </h1>
+   <p data-ar="العلم والعمل أساس النجاح. بوابتكم التعليمية للتعلم والمعرفة والتواصل المدرسي." data-fr="Le savoir et le travail sont les clés de la réussite. Votre portail éducatif pour apprendre et communiquer.">
+    العلم والعمل أساس النجاح. بوابتكم التعليمية للتعلم والمعرفة والتواصل المدرسي.
    </p>
+   <div class="hero-buttons">
+    <a class="btn" href="#services" data-ar="اكتشف خدماتنا" data-fr="Découvrir nos services">اكتشف خدماتنا</a>
+    <a class="btn btn-outline" href="#about" data-ar="عن الثانوية" data-fr="À propos">عن الثانوية</a>
+   </div>
   </div>
- </div>
-</section>
+ </section>
 
-<section id="services">
- <div class="container">
-  <div class="section-title">
-   <h2 data-i18n="servicesTitle">خدماتنا التعليمية</h2>
-   <p data-i18n="servicesSubtitle">كل ما يحتاجه التلميذ في مكان واحد</p>
-  </div>
-
-  <div class="grid">
+ <section class="section" id="about">
+  <div class="container">
+   <div class="section-title">
+    <h2 data-ar="عن ثانويتنا" data-fr="À propos de notre lycée">عن ثانويتنا</h2>
+    <p data-ar="ثانوية المجاهد مسغوني محمد الصالح" data-fr="Lycée du moudjahid Mesgouni Mohamed Salah">ثانوية المجاهد مسغوني محمد الصالح</p>
+   </div>
    <div class="card">
-    <div class="card-icon">📚</div>
-    <h3 data-i18n="studentSpace">فضاء التلميذ</h3>
-    <p data-i18n="studentText">الموارد والخدمات التعليمية.</p>
-    <a class="text-btn" href="#resources" data-i18n="explore">استكشف ←</a>
-   </div>
-
-   <div class="card">
-    <div class="card-icon">📢</div>
-    <h3 data-i18n="schoolNews">الإعلانات المدرسية</h3>
-    <p data-i18n="schoolNewsText">آخر الإعلانات والأخبار المدرسية.</p>
-    <a class="text-btn" href="#announcements" data-i18n="viewNews">عرض الإعلانات ←</a>
-   </div>
-
-   <div class="card">
-    <div class="card-icon">🎓</div>
-    <h3 data-i18n="orientation">التوجيه الجامعي</h3>
-    <p data-i18n="orientationText">معلومات اختيار المسار الجامعي.</p>
-    <a class="text-btn" href="https://www.orientation-esi.dz/" target="_blank" rel="noopener" data-i18n="discover">اكتشف ←</a>
-   </div>
-
-   <div class="card">
-    <div class="card-icon">🤖</div>
-    <h3 data-i18n="assistant">مساعد الذكاء الاصطناعي</h3>
-    <p data-i18n="assistantText">مساعد تعليمي للإجابة عن الأسئلة.</p>
-    <a class="text-btn" href="https://chatgpt.com/" target="_blank" rel="noopener" data-i18n="start">ابدأ ←</a>
-   </div>
-
-   <div class="card">
-    <div class="card-icon">💡</div>
-    <h3 data-i18n="suggestions">الاقتراحات والشكاوى</h3>
-    <p data-i18n="suggestionsText">شاركنا أفكارك وملاحظاتك.</p>
-    <a class="text-btn" href="#contact" data-i18n="send">إرسال ←</a>
-   </div>
-
-   <div class="card">
-    <div class="card-icon">🔐</div>
-    <h3 data-i18n="admin">إدارة الموقع</h3>
-    <p data-i18n="adminText">دخول مخصص لمدير الموقع.</p>
-    <button class="text-btn" onclick="showAdminLogin()" data-i18n="adminLogin">دخول المدير ←</button>
+    <h3 data-ar="رسالتنا التعليمية" data-fr="Notre mission éducative">رسالتنا التعليمية</h3>
+    <p data-ar="نسعى إلى توفير بيئة تعليمية محفزة تساعد التلاميذ على اكتساب المعرفة وتنمية مهاراتهم وتحقيق طموحاتهم." data-fr="Nous cherchons à offrir un environnement éducatif stimulant qui aide les élèves à acquérir des connaissances, développer leurs compétences et réaliser leurs ambitions.">
+     نسعى إلى توفير بيئة تعليمية محفزة تساعد التلاميذ على اكتساب المعرفة وتنمية مهاراتهم وتحقيق طموحاتهم.
+    </p>
    </div>
   </div>
- </div>
-</section>
+ </section>
 
-<section id="announcements">
- <div class="container">
-  <div class="section-title">
-   <h2 data-i18n="announcements">الإعلانات المدرسية</h2>
-   <p data-i18n="latestNews">آخر مستجدات المؤسسة</p>
-  </div>
-  <div id="publicAnnouncements" class="grid">
-   <div class="empty" data-i18n="loading">جارٍ تحميل الإعلانات...</div>
-  </div>
- </div>
-</section>
-
-<section id="resources">
- <div class="container">
-  <div class="section-title">
-   <h2 data-i18n="library">المكتبة التعليمية</h2>
-   <p data-i18n="libraryText">موارد دراسية حسب المستوى</p>
-  </div>
-  <div class="resource-grid">
-   <div class="resource">
-    <h3 data-i18n="firstYear">السنة الأولى ثانوي</h3>
-    <p data-i18n="lessons">الدروس والاختبارات</p>
-    <a href="https://www.dzexams.com/ar/1as" target="_blank" data-i18n="enter">الدخول ←</a>
-   </div>
-   <div class="resource">
-    <h3 data-i18n="secondYear">السنة الثانية ثانوي</h3>
-    <p data-i18n="lessons">الدروس والاختبارات</p>
-    <a href="https://www.dzexams.com/ar/2as" target="_blank" data-i18n="enter">الدخول ←</a>
-   </div>
-   <div class="resource">
-    <h3 data-i18n="thirdYear">السنة الثالثة ثانوي</h3>
-    <p data-i18n="lessons">الدروس والاختبارات</p>
-    <a href="https://www.dzexams.com/ar/3as" target="_blank" data-i18n="enter">الدخول ←</a>
-   </div>
-  </div>
- </div>
-</section>
-
-<section id="contact">
- <div class="container">
-  <div class="section-title">
-   <h2 data-i18n="suggestions">الاقتراحات والشكاوى</h2>
-   <p data-i18n="privacyNote">لا تكتب معلومات شخصية حساسة في الرسالة</p>
-  </div>
-
-  <form class="form-box" id="suggestionForm">
-   <div class="field">
-    <label for="suggestType" data-i18n="messageType">نوع الرسالة</label>
-    <select id="suggestType">
-     <option value="اقتراح" data-i18n="suggestion">اقتراح</option>
-     <option value="شكوى" data-i18n="complaint">شكوى</option>
-     <option value="ملاحظة" data-i18n="note">ملاحظة</option>
-    </select>
+ <section class="section" id="services">
+  <div class="container">
+   <div class="section-title">
+    <h2 data-ar="خدماتنا التعليمية" data-fr="Nos services éducatifs">خدماتنا التعليمية</h2>
+    <p data-ar="كل ما يحتاجه التلميذ في مكان واحد" data-fr="Tout ce dont l'élève a besoin en un seul endroit">كل ما يحتاجه التلميذ في مكان واحد</p>
    </div>
 
-   <div class="field">
-    <label for="suggestMessage" data-i18n="message">الرسالة</label>
-    <textarea id="suggestMessage" rows="5" required minlength="5" maxlength="3000" placeholder="اكتب رسالتك هنا..."></textarea>
+   <div class="grid">
+    <article class="card service-card">
+     <div class="card-icon">📚</div>
+     <h3 data-ar="فضاء التلميذ" data-fr="Espace élève">فضاء التلميذ</h3>
+     <p data-ar="الموارد والخدمات التعليمية." data-fr="Ressources et services éducatifs.">الموارد والخدمات التعليمية.</p>
+     <a class="text-link" href="#resources" data-ar="استكشف ←" data-fr="Explorer ←">استكشف ←</a>
+    </article>
+
+    <article class="card service-card">
+     <div class="card-icon">📢</div>
+     <h3 data-ar="الإعلانات المدرسية" data-fr="Annonces scolaires">الإعلانات المدرسية</h3>
+     <p data-ar="آخر الإعلانات والأخبار المدرسية." data-fr="Les dernières annonces et actualités scolaires.">آخر الإعلانات والأخبار المدرسية.</p>
+     <a class="text-link" href="#announcements" data-ar="عرض الإعلانات ←" data-fr="Voir les annonces ←">عرض الإعلانات ←</a>
+    </article>
+
+    <article class="card service-card">
+     <div class="card-icon">🎓</div>
+     <h3 data-ar="التوجيه الجامعي" data-fr="Orientation universitaire">التوجيه الجامعي</h3>
+     <p data-ar="معلومات اختيار المسار الجامعي." data-fr="Informations sur le choix du parcours universitaire.">معلومات اختيار المسار الجامعي.</p>
+     <a class="text-link" href="https://www.orientation-esi.dz/" target="_blank" rel="noopener" data-ar="اكتشف ←" data-fr="Découvrir ←">اكتشف ←</a>
+    </article>
+
+    <article class="card service-card">
+     <div class="card-icon">🤖</div>
+     <h3 data-ar="مساعد الذكاء الاصطناعي" data-fr="Assistant d'intelligence artificielle">مساعد الذكاء الاصطناعي</h3>
+     <p data-ar="مساعد تعليمي للإجابة عن الأسئلة." data-fr="Un assistant éducatif pour répondre aux questions.">مساعد تعليمي للإجابة عن الأسئلة.</p>
+     <a class="text-link" href="https://chatgpt.com/" target="_blank" rel="noopener" data-ar="ابدأ ←" data-fr="Commencer ←">ابدأ ←</a>
+    </article>
+
+    <article class="card service-card">
+     <div class="card-icon">💡</div>
+     <h3 data-ar="الاقتراحات والشكاوى" data-fr="Suggestions et réclamations">الاقتراحات والشكاوى</h3>
+     <p data-ar="شاركنا أفكارك وملاحظاتك." data-fr="Partagez vos idées et remarques.">شاركنا أفكارك وملاحظاتك.</p>
+     <a class="text-link" href="#contact" data-ar="إرسال ←" data-fr="Envoyer ←">إرسال ←</a>
+    </article>
+
+    <article class="card service-card">
+     <div class="card-icon">🔐</div>
+     <h3 data-ar="إدارة الموقع" data-fr="Administration du site">إدارة الموقع</h3>
+     <p data-ar="دخول مخصص لمدير الموقع." data-fr="Accès réservé à l'administrateur du site.">دخول مخصص لمدير الموقع.</p>
+     <button class="text-link" onclick="showAdminLogin()" data-ar="دخول المدير ←" data-fr="Connexion ←">دخول المدير ←</button>
+    </article>
+   </div>
+  </div>
+ </section>
+
+ <section class="section" id="announcements">
+  <div class="container">
+   <div class="section-title">
+    <h2 data-ar="الإعلانات المدرسية" data-fr="Annonces scolaires">الإعلانات المدرسية</h2>
+    <p data-ar="آخر مستجدات المؤسسة" data-fr="Les dernières actualités de l'établissement">آخر مستجدات المؤسسة</p>
+   </div>
+   <div id="publicAnnouncements" class="grid">
+    <div class="empty" data-ar="جارٍ تحميل الإعلانات..." data-fr="Chargement des annonces...">جارٍ تحميل الإعلانات...</div>
+   </div>
+  </div>
+ </section>
+
+ <section class="section" id="resources">
+  <div class="container">
+   <div class="section-title">
+    <h2 data-ar="المكتبة التعليمية" data-fr="Bibliothèque éducative">المكتبة التعليمية</h2>
+    <p data-ar="موارد دراسية حسب المستوى" data-fr="Ressources scolaires par niveau">موارد دراسية حسب المستوى</p>
    </div>
 
-   <button class="btn" id="suggestSubmit" data-i18n="sendMessage">إرسال الرسالة</button>
-   <p id="suggestStatus" class="notice hidden"></p>
-  </form>
- </div>
-</section>
+   <div class="resource-grid">
+    <div class="resource">
+     <h3 data-ar="السنة الأولى ثانوي" data-fr="1ère année secondaire">السنة الأولى ثانوي</h3>
+     <p class="muted" data-ar="الدروس والاختبارات" data-fr="Cours et examens">الدروس والاختبارات</p>
+     <a href="https://www.dzexams.com/ar/1as" target="_blank" rel="noopener" data-ar="الدخول ←" data-fr="Accéder ←">الدخول ←</a>
+    </div>
+    <div class="resource">
+     <h3 data-ar="السنة الثانية ثانوي" data-fr="2ème année secondaire">السنة الثانية ثانوي</h3>
+     <p class="muted" data-ar="الدروس والاختبارات" data-fr="Cours et examens">الدروس والاختبارات</p>
+     <a href="https://www.dzexams.com/ar/2as" target="_blank" rel="noopener" data-ar="الدخول ←" data-fr="Accéder ←">الدخول ←</a>
+    </div>
+    <div class="resource">
+     <h3 data-ar="السنة الثالثة ثانوي" data-fr="3ème année secondaire">السنة الثالثة ثانوي</h3>
+     <p class="muted" data-ar="الدروس والاختبارات" data-fr="Cours et examens">الدروس والاختبارات</p>
+     <a href="https://www.dzexams.com/ar/3as" target="_blank" rel="noopener" data-ar="الدخول ←" data-fr="Accéder ←">الدخول ←</a>
+    </div>
+   </div>
+  </div>
+ </section>
 
+ <section class="section" id="contact">
+  <div class="container">
+   <div class="section-title">
+    <h2 data-ar="الاقتراحات والشكاوى" data-fr="Suggestions et réclamations">الاقتراحات والشكاوى</h2>
+    <p data-ar="شاركنا رأيك للمساهمة في تطوير الموقع" data-fr="Partagez votre avis pour améliorer le site">شاركنا رأيك للمساهمة في تطوير الموقع</p>
+   </div>
+
+   <form class="form-box" id="suggestionForm">
+    <div class="field">
+     <label for="suggestType" data-ar="نوع الرسالة" data-fr="Type de message">نوع الرسالة</label>
+     <select id="suggestType">
+      <option value="اقتراح">اقتراح</option>
+      <option value="شكوى">شكوى</option>
+      <option value="ملاحظة">ملاحظة</option>
+     </select>
+    </div>
+    <div class="field">
+     <label for="suggestMessage" data-ar="الرسالة" data-fr="Message">الرسالة</label>
+     <textarea id="suggestMessage" required minlength="5" maxlength="3000" placeholder="اكتب رسالتك هنا..."></textarea>
+    </div>
+    <p class="muted small" data-ar="لا تكتب معلومات شخصية حساسة في الرسالة." data-fr="N'incluez pas d'informations personnelles sensibles dans votre message.">لا تكتب معلومات شخصية حساسة في الرسالة.</p>
+    <button class="btn" id="suggestSubmit" type="submit" data-ar="إرسال الرسالة" data-fr="Envoyer le message">إرسال الرسالة</button>
+    <p id="suggestStatus" class="notice hidden" role="status"></p>
+   </form>
+  </div>
+ </section>
 </main>
 
-<!-- نافذة الدخول -->
+<!-- Admin login -->
 <div id="adminLogin" class="modal-backdrop hidden" role="dialog" aria-modal="true">
  <div class="modal">
   <div class="modal-head">
-   <h2 data-i18n="adminLoginTitle">دخول مدير الموقع</h2>
+   <h2 data-ar="دخول مدير الموقع" data-fr="Connexion administrateur">دخول مدير الموقع</h2>
    <button class="close-btn" onclick="showPublic()">×</button>
   </div>
+  <p class="muted small" data-ar="هذه النافذة مخصصة للحساب الإداري المعتمد." data-fr="Cette fenêtre est réservée au compte administrateur autorisé.">هذه النافذة مخصصة للحساب الإداري المعتمد.</p>
 
   <form id="adminLoginForm">
    <div class="field">
-    <label for="adminEmail" data-i18n="email">البريد الإلكتروني</label>
+    <label for="adminEmail" data-ar="البريد الإلكتروني" data-fr="Adresse e-mail">البريد الإلكتروني</label>
     <input id="adminEmail" type="email" autocomplete="username" required>
    </div>
    <div class="field">
-    <label for="adminPassword" data-i18n="password">كلمة المرور</label>
+    <label for="adminPassword" data-ar="كلمة المرور" data-fr="Mot de passe">كلمة المرور</label>
     <input id="adminPassword" type="password" autocomplete="current-password" required>
    </div>
-   <button class="btn" id="loginButton" data-i18n="login">تسجيل الدخول</button>
-   <button class="small-btn gray-btn" type="button" onclick="showPublic()" data-i18n="back">رجوع</button>
-   <p id="loginStatus" class="notice hidden"></p>
+   <button class="btn" id="loginButton" type="submit" data-ar="تسجيل الدخول" data-fr="Se connecter">تسجيل الدخول</button>
+   <button class="btn btn-outline" type="button" onclick="showPublic()" data-ar="رجوع" data-fr="Retour">رجوع</button>
+   <p id="loginStatus" class="notice hidden" role="status"></p>
   </form>
  </div>
 </div>
 
-<!-- لوحة الإدارة -->
+<!-- Admin dashboard -->
 <section id="adminArea">
-<div class="container">
+ <div class="container">
 
- <div class="admin-top">
-  <div>
-   <h2 data-i18n="dashboard">لوحة تحكم مسغوني</h2>
-   <p style="color:var(--muted)" data-i18n="dashboardText">إدارة الموقع والمحتوى</p>
+  <div class="admin-topbar">
+   <div>
+    <h2 data-ar="لوحة تحكم مسغوني" data-fr="Tableau de bord Mesgouni">لوحة تحكم مسغوني</h2>
+    <p class="muted small" data-ar="إدارة الموقع والمحتوى المدرسي" data-fr="Gestion du site et du contenu scolaire">إدارة الموقع والمحتوى المدرسي</p>
+   </div>
+   <div class="toolbar">
+    <button class="btn btn-outline btn-small" onclick="showPublic()" data-ar="عرض الموقع" data-fr="Voir le site">عرض الموقع</button>
+    <button class="btn btn-danger btn-small" onclick="logoutAdmin()" data-ar="تسجيل الخروج" data-fr="Déconnexion">تسجيل الخروج</button>
+   </div>
   </div>
-  <div>
-   <button class="small-btn gray-btn" onclick="showPublic()" data-i18n="viewSite">عرض الموقع</button>
-   <button class="small-btn danger" onclick="logoutAdmin()" data-i18n="logout">تسجيل الخروج</button>
+
+  <div class="admin-layout">
+   <aside class="sidebar">
+    <button class="active" onclick="adminTab('dashboardPanel',this)">📊 <span data-ar="الرئيسية" data-fr="Accueil">الرئيسية</span></button>
+    <button onclick="adminTab('newsPanel',this)">📢 <span data-ar="الإعلانات" data-fr="Annonces">الإعلانات</span></button>
+    <button onclick="adminTab('messagesPanel',this)">💬 <span data-ar="الرسائل" data-fr="Messages">الرسائل</span></button>
+    <button onclick="adminTab('settingsPanel',this)">⚙️ <span data-ar="الإعدادات" data-fr="Paramètres">الإعدادات</span></button>
+   </aside>
+
+   <div class="admin-content">
+
+    <!-- Dashboard -->
+    <div id="dashboardPanel" class="admin-panel active">
+     <div class="stats-grid">
+      <div class="stat-card"><span data-ar="إجمالي الإعلانات" data-fr="Total des annonces">إجمالي الإعلانات</span><strong id="statNews">—</strong></div>
+      <div class="stat-card"><span data-ar="الإعلانات المنشورة" data-fr="Annonces publiées">الإعلانات المنشورة</span><strong id="statPublished">—</strong></div>
+      <div class="stat-card"><span data-ar="الرسائل الواردة" data-fr="Messages reçus">الرسائل الواردة</span><strong id="statMessages">—</strong></div>
+     </div>
+
+     <div class="card">
+      <div class="panel-heading">
+       <h3 data-ar="مرحباً بك في لوحة الإدارة" data-fr="Bienvenue dans l'administration">مرحباً بك في لوحة الإدارة</h3>
+       <button class="btn btn-small" onclick="refreshAdminData()" data-ar="تحديث البيانات ↻" data-fr="Actualiser ↻">تحديث البيانات ↻</button>
+      </div>
+      <p data-ar="من هنا يمكنك إدارة الإعلانات والرسائل الواردة والتحكم في محتوى الموقع." data-fr="Vous pouvez gérer les annonces, les messages reçus et le contenu du site depuis cet espace.">من هنا يمكنك إدارة الإعلانات والرسائل الواردة والتحكم في محتوى الموقع.</p>
+      <div class="toolbar" style="margin-top:17px">
+       <button class="btn btn-small" onclick="adminTab('newsPanel',document.querySelectorAll('.sidebar button')[1])" data-ar="إضافة إعلان جديد" data-fr="Ajouter une annonce">إضافة إعلان جديد</button>
+       <button class="btn btn-outline btn-small" onclick="exportBackup()" data-ar="تصدير نسخة احتياطية" data-fr="Exporter une sauvegarde">تصدير نسخة احتياطية</button>
+      </div>
+     </div>
+     <p class="admin-footer-note" data-ar="يتم حفظ البيانات في قاعدة بيانات الموقع." data-fr="Les données sont enregistrées dans la base de données du site.">يتم حفظ البيانات في قاعدة بيانات الموقع.</p>
+    </div>
+
+    <!-- News -->
+    <div id="newsPanel" class="admin-panel">
+     <div class="card" style="margin-bottom:18px">
+      <div class="panel-heading">
+       <h3 id="newsFormHeading" data-ar="إضافة إعلان جديد" data-fr="Ajouter une annonce">إضافة إعلان جديد</h3>
+       <button class="btn btn-outline btn-small hidden" id="cancelEditButton" onclick="resetNewsForm()" data-ar="إلغاء التعديل" data-fr="Annuler">إلغاء التعديل</button>
+      </div>
+
+      <form id="newsForm">
+       <input type="hidden" id="editNewsId">
+
+       <div class="field">
+        <label for="newsTitle" data-ar="عنوان الإعلان" data-fr="Titre de l'annonce">عنوان الإعلان</label>
+        <input id="newsTitle" maxlength="150" required placeholder="عنوان الإعلان">
+       </div>
+
+       <div class="field">
+        <label for="newsText" data-ar="تفاصيل الإعلان" data-fr="Détails de l'annonce">تفاصيل الإعلان</label>
+        <textarea id="newsText" rows="5" maxlength="5000" required placeholder="اكتب تفاصيل الإعلان..."></textarea>
+       </div>
+
+       <div class="field">
+        <label for="newsImage" data-ar="صورة الإعلان" data-fr="Image de l'annonce">صورة الإعلان</label>
+        <input id="newsImage" type="file" accept="image/png,image/jpeg,image/webp">
+        <p class="muted small" data-ar="الصيغ المدعومة PNG وJPG وWEBP، الحد الأقصى 5 ميغابايت." data-fr="Formats PNG, JPG et WEBP. Taille maximale : 5 Mo.">الصيغ المدعومة PNG وJPG وWEBP، الحد الأقصى 5 ميغابايت.</p>
+        <div id="imagePreview" class="preview-box hidden"></div>
+       </div>
+
+       <div class="field">
+        <label>
+         <input type="checkbox" id="newsPublished" checked style="width:auto">
+         <span data-ar="نشر الإعلان مباشرة" data-fr="Publier immédiatement">نشر الإعلان مباشرة</span>
+        </label>
+       </div>
+
+       <button class="btn" id="newsSubmit" type="submit" data-ar="نشر الإعلان" data-fr="Publier l'annonce">نشر الإعلان</button>
+       <p id="newsStatus" class="notice hidden" role="status"></p>
+      </form>
+     </div>
+
+     <div class="panel-heading">
+      <h3 data-ar="الإعلانات الحالية" data-fr="Annonces actuelles">الإعلانات الحالية</h3>
+      <button class="btn btn-outline btn-small" onclick="loadAdminNews()" data-ar="تحديث ↻" data-fr="Actualiser ↻">تحديث ↻</button>
+     </div>
+     <div class="search-box">
+      <input id="newsSearch" type="search" placeholder="ابحث في الإعلانات..." oninput="filterNews()">
+     </div>
+     <div id="adminNews" class="admin-list"></div>
+    </div>
+
+    <!-- Messages -->
+    <div id="messagesPanel" class="admin-panel">
+     <div class="panel-heading">
+      <h3 data-ar="الاقتراحات والشكاوى" data-fr="Suggestions et réclamations">الاقتراحات والشكاوى</h3>
+      <div class="toolbar">
+       <button class="btn btn-outline btn-small" onclick="loadAdminMessages()" data-ar="تحديث" data-fr="Actualiser">تحديث</button>
+       <button class="btn btn-small" onclick="exportMessages()" data-ar="تصدير الرسائل" data-fr="Exporter les messages">تصدير الرسائل</button>
+      </div>
+     </div>
+     <div class="search-box">
+      <input id="messageSearch" type="search" placeholder="ابحث في الرسائل..." oninput="filterMessages()">
+     </div>
+     <div id="adminMessages" class="admin-list"></div>
+    </div>
+
+    <!-- Settings -->
+    <div id="settingsPanel" class="admin-panel">
+     <div class="card">
+      <h3 data-ar="إعدادات الموقع" data-fr="Paramètres du site">إعدادات الموقع</h3>
+      <div class="field" style="margin-top:15px">
+       <label data-ar="مظهر الموقع" data-fr="Apparence du site">مظهر الموقع</label>
+       <button class="btn btn-outline btn-small" onclick="toggleDark()" data-ar="تبديل الوضع الليلي" data-fr="Changer le thème">تبديل الوضع الليلي</button>
+      </div>
+      <div class="field">
+       <label data-ar="لغة الموقع" data-fr="Langue du site">لغة الموقع</label>
+       <button class="btn btn-outline btn-small" onclick="toggleLanguage()" data-ar="التبديل بين العربية والفرنسية" data-fr="Basculer entre arabe et français">التبديل بين العربية والفرنسية</button>
+      </div>
+      <hr style="border:0;border-top:1px solid var(--border);margin:20px 0">
+      <h3 data-ar="النسخ الاحتياطي" data-fr="Sauvegarde">النسخ الاحتياطي</h3>
+      <p class="muted small" style="margin:8px 0 14px" data-ar="يمكنك تصدير بيانات الإعلانات والرسائل للاحتفاظ بنسخة محلية." data-fr="Vous pouvez exporter les annonces et les messages pour conserver une copie locale.">يمكنك تصدير بيانات الإعلانات والرسائل للاحتفاظ بنسخة محلية.</p>
+      <button class="btn" onclick="exportBackup()" data-ar="تحميل النسخة الاحتياطية" data-fr="Télécharger la sauvegarde">تحميل النسخة الاحتياطية</button>
+     </div>
+     <div class="card" style="margin-top:17px">
+      <h3 data-ar="معلومات النظام" data-fr="Informations système">معلومات النظام</h3>
+      <p class="muted small">Lycée Mesgouni · 2026</p>
+      <p class="muted small" data-ar="إدارة الموقع محمية بتسجيل الدخول وصلاحيات قاعدة البيانات." data-fr="L'administration est protégée par connexion et permissions de la base de données.">إدارة الموقع محمية بتسجيل الدخول وصلاحيات قاعدة البيانات.</p>
+     </div>
+    </div>
+
+   </div>
   </div>
  </div>
-
- <div class="stats">
-  <div class="stat">
-   <strong id="statNews">0</strong>
-   <span data-i18n="totalNews">إجمالي الإعلانات</span>
-  </div>
-  <div class="stat">
-   <strong id="statMessages">0</strong>
-   <span data-i18n="totalMessages">إجمالي الرسائل</span>
-  </div>
-  <div class="stat">
-   <strong id="statPublished">0</strong>
-   <span data-i18n="publishedNews">الإعلانات المنشورة</span>
-  </div>
- </div>
-
- <div class="dashboard-grid">
-
-  <aside class="sidebar">
-   <button class="active" onclick="adminTab('overviewPanel',this)" data-i18n="overview">📊 الرئيسية</button>
-   <button onclick="adminTab('adminNewsPanel',this)" data-i18n="manageNews">📢 الإعلانات</button>
-   <button onclick="adminTab('adminMessagesPanel',this)" data-i18n="manageMessages">💬 الرسائل</button>
-   <button onclick="adminTab('backupPanel',this)" data-i18n="backup">💾 النسخ الاحتياطي</button>
-  </aside>
-
-  <div>
-
-   <!-- الرئيسية -->
-   <div id="overviewPanel" class="admin-panel active">
-    <div class="card">
-     <h3 data-i18n="welcomeAdmin">مرحباً بك في لوحة الإدارة</h3>
-     <p data-i18n="welcomeAdminText">
-      يمكنك من هنا إدارة الإعلانات والصور والرسائل ومتابعة محتوى الموقع.
-     </p>
-     <br>
-     <button class="small-btn" onclick="refreshDashboard()" data-i18n="refresh">تحديث البيانات</button>
-    </div>
-   </div>
-
-   <!-- إدارة الإعلانات -->
-   <div id="adminNewsPanel" class="admin-panel">
-
-    <div class="card">
-     <h3 id="newsFormTitle" data-i18n="addNews">إضافة إعلان جديد</h3>
-
-     <div class="field">
-      <label data-i18n="newsTitle">عنوان الإعلان</label>
-      <input id="newsTitle" maxlength="150" placeholder="عنوان الإعلان">
-     </div>
-
-     <div class="field">
-      <label data-i18n="newsContent">محتوى الإعلان</label>
-      <textarea id="newsText" rows="4" maxlength="5000" placeholder="اكتب تفاصيل الإعلان"></textarea>
-     </div>
-
-     <div class="field">
-      <label data-i18n="newsImage">صورة الإعلان</label>
-      <input id="newsImage" type="file" accept="image/jpeg,image/png,image/webp">
-      <p class="file-note" data-i18n="imageNote">PNG أو JPG أو WEBP، الحد الأقصى 5 ميغابايت.</p>
-      <img id="imagePreview" class="preview hidden" alt="معاينة الصورة">
-     </div>
-
-     <div class="field">
-      <label>
-       <input type="checkbox" id="newsPublished" checked>
-       <span data-i18n="publishNow">نشر الإعلان مباشرة</span>
-      </label>
-     </div>
-
-     <button class="btn" id="saveNewsButton" onclick="saveNews()" data-i18n="publishNews">نشر الإعلان</button>
-     <button class="small-btn gray-btn hidden" id="cancelEditButton" onclick="cancelEdit()" data-i18n="cancel">إلغاء التعديل</button>
-     <p id="newsStatus" class="notice hidden"></p>
-    </div>
-
-    <h3 class="admin-heading" data-i18n="currentNews">الإعلانات الحالية</h3>
-    <div id="adminNews"></div>
-   </div>
-
-   <!-- الرسائل -->
-   <div id="adminMessagesPanel" class="admin-panel">
-    <div class="admin-top">
-     <h3 data-i18n="messagesTitle">الاقتراحات والشكاوى</h3>
-     <button class="small-btn" onclick="loadMessages()" data-i18n="refresh">تحديث</button>
-    </div>
-    <div id="adminMessages"></div>
-   </div>
-
-   <!-- النسخ الاحتياطي -->
-   <div id="backupPanel" class="admin-panel">
-    <div class="card">
-     <h3 data-i18n="backupTitle">النسخ الاحتياطي</h3>
-     <p data-i18n="backupText">
-      يمكنك تصدير نسخة JSON تحتوي على الإعلانات والرسائل المحفوظة في قاعدة البيانات.
-     </p>
-     <br>
-     <button class="btn" onclick="exportBackup()" data-i18n="exportBackup">تصدير نسخة احتياطية</button>
-     <p id="backupStatus" class="notice hidden"></p>
-     <p class="file-note" data-i18n="backupWarning">
-      هذه نسخة تصدير فقط، ولا تقوم تلقائياً باسترجاع البيانات إلى قاعدة البيانات.
-     </p>
-    </div>
-   </div>
-
-  </div>
- </div>
-</div>
 </section>
 
 <footer>
-<div class="container">
- <h3>ثانوية مسغوني</h3>
- <p class="footer-gold" data-i18n="motto">العلم والعمل أساس النجاح</p>
- <p data-i18n="schoolName">ثانوية المجاهد مسغوني محمد الصالح</p>
- <p>القسم: 1ج ع ت 2</p>
- <p dir="ltr">© 2026 Lycée Mesgouni</p>
- <p class="footer-developers">صنع بواسطة مجد بن حرزالله وأيوب شبيرات</p>
- <p><button class="admin-login-link" onclick="showAdminLogin()" data-i18n="adminLogin">دخول الإدارة</button></p>
-</div>
+ <div class="container">
+  <h2 data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</h2>
+  <p class="footer-gold" data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail, clés de la réussite">العلم والعمل أساس النجاح</p>
+  <p data-ar="ثانوية المجاهد مسغوني محمد الصالح" data-fr="Lycée du moudjahid Mesgouni Mohamed Salah">ثانوية المجاهد مسغوني محمد الصالح</p>
+  <p data-ar="القسم: 1ج ع ت 2" data-fr="Classe : 1G ST 2">القسم: 1ج ع ت 2</p>
+  <p dir="ltr">© 2026 Lycée Mesgouni</p>
+  <p class="footer-developers" data-ar="صنع بواسطة مجد بن حرزالله وأيوب شبيرات" data-fr="Réalisé par Majd Ben Harzallah et Ayoub Chibirat">صنع بواسطة مجد بن حرزالله وأيوب شبيرات</p>
+  <p><button class="icon-btn" onclick="showAdminLogin()" data-ar="دخول الإدارة" data-fr="Administration">دخول الإدارة</button></p>
+ </div>
 </footer>
+
+<div id="toastArea" aria-live="polite"></div>
 
 <script>
 "use strict";
 
-/* إعدادات Supabase */
-const SUPABASE_URL="https://zsimfeaqoemfkzuylswd.supabase.co";
-const SUPABASE_KEY="sb_publishable_fkcnF_gn-Zq_rrEpWd23yg_8e7oi4Oq";
-const STORAGE_BUCKET="announcements";
+/* Supabase configuration */
+const SUPABASE_URL = "https://zsimfeaqoemfkzuylswd.supabase.co";
+const SUPABASE_KEY = "sb_publishable_fkcnF_gn-Zq_rrEpWd23yg_8e7oi4Oq";
 
-const $=id=>document.getElementById(id);
+const $ = id => document.getElementById(id);
 
-let db=null;
-let isAdmin=false;
-let currentLanguage="ar";
-let editingNewsId=null;
-let oldImageUrl=null;
+let db = null;
+let isAdmin = false;
+let currentLanguage = "ar";
+let allNews = [];
+let allMessages = [];
+let selectedImage = null;
+let editingImageUrl = "";
+let connectionReady = false;
 
-const translations={
- ar:{
-  motto:"العلم والعمل أساس النجاح",
-  home:"الرئيسية",about:"عن الثانوية",services:"الخدمات",
-  announcements:"الإعلانات المدرسية",resources:"الموارد",
-  contact:"تواصل معنا",
-  welcome:'مرحباً بكم في <span>ثانوية مسغوني</span>',
-  heroText:"العلم والعمل أساس النجاح. بوابتكم التعليمية للتعلم والمعرفة والتواصل المدرسي.",
-  discover:"اكتشف خدماتنا",aboutTitle:"عن ثانويتنا",
-  schoolName:"ثانوية المجاهد مسغوني محمد الصالح",
-  mission:"رسالتنا التعليمية",
-  missionText:"نسعى إلى توفير بيئة تعليمية محفزة تساعد التلاميذ على اكتساب المعرفة وتنمية مهاراتهم وتحقيق طموحاتهم.",
-  servicesTitle:"خدماتنا التعليمية",
-  servicesSubtitle:"كل ما يحتاجه التلميذ في مكان واحد",
-  studentSpace:"فضاء التلميذ",studentText:"الموارد والخدمات التعليمية.",
-  explore:"استكشف ←",schoolNews:"الإعلانات المدرسية",
-  schoolNewsText:"آخر الإعلانات والأخبار المدرسية.",
-  viewNews:"عرض الإعلانات ←",orientation:"التوجيه الجامعي",
-  orientationText:"معلومات اختيار المسار الجامعي.",
-  assistant:"مساعد الذكاء الاصطناعي",
-  assistantText:"مساعد تعليمي للإجابة عن الأسئلة.",
-  start:"ابدأ ←",suggestions:"الاقتراحات والشكاوى",
-  suggestionsText:"شاركنا أفكارك وملاحظاتك.",
-  send:"إرسال ←",admin:"إدارة الموقع",
-  adminText:"دخول مخصص لمدير الموقع.",
-  adminLogin:"دخول المدير ←",latestNews:"آخر مستجدات المؤسسة",
-  loading:"جارٍ تحميل الإعلانات...",library:"المكتبة التعليمية",
-  libraryText:"موارد دراسية حسب المستوى",
-  firstYear:"السنة الأولى ثانوي",secondYear:"السنة الثانية ثانوي",
-  thirdYear:"السنة الثالثة ثانوي",lessons:"الدروس والاختبارات",
-  enter:"الدخول ←",privacyNote:"لا تكتب معلومات شخصية حساسة في الرسالة",
-  messageType:"نوع الرسالة",suggestion:"اقتراح",
-  complaint:"شكوى",note:"ملاحظة",message:"الرسالة",
-  sendMessage:"إرسال الرسالة",adminLoginTitle:"دخول مدير الموقع",
-  email:"البريد الإلكتروني",password:"كلمة المرور",
-  login:"تسجيل الدخول",back:"رجوع",dashboard:"لوحة تحكم مسغوني",
-  dashboardText:"إدارة الموقع والمحتوى",viewSite:"عرض الموقع",
-  logout:"تسجيل الخروج",totalNews:"إجمالي الإعلانات",
-  totalMessages:"إجمالي الرسائل",publishedNews:"الإعلانات المنشورة",
-  overview:"📊 الرئيسية",manageNews:"📢 الإعلانات",
-  manageMessages:"💬 الرسائل",backup:"💾 النسخ الاحتياطي",
-  welcomeAdmin:"مرحباً بك في لوحة الإدارة",
-  welcomeAdminText:"يمكنك من هنا إدارة الإعلانات والصور والرسائل ومتابعة محتوى الموقع.",
-  refresh:"تحديث البيانات",addNews:"إضافة إعلان جديد",
-  newsTitle:"عنوان الإعلان",newsContent:"محتوى الإعلان",
-  newsImage:"صورة الإعلان",
-  imageNote:"PNG أو JPG أو WEBP، الحد الأقصى 5 ميغابايت.",
-  publishNow:"نشر الإعلان مباشرة",publishNews:"نشر الإعلان",
-  cancel:"إلغاء التعديل",currentNews:"الإعلانات الحالية",
-  messagesTitle:"الاقتراحات والشكاوى",
-  backupTitle:"النسخ الاحتياطي",
-  backupText:"يمكنك تصدير نسخة JSON تحتوي على الإعلانات والرسائل المحفوظة في قاعدة البيانات.",
-  exportBackup:"تصدير نسخة احتياطية",
-  backupWarning:"هذه نسخة تصدير فقط، ولا تقوم تلقائياً باسترجاع البيانات إلى قاعدة البيانات.",
-  noNews:"لا توجد إعلانات حالياً.",
-  noMessages:"لا توجد رسائل.",
-  delete:"حذف",edit:"تعديل",hide:"إخفاء",show:"نشر",
-  published:"منشور",hiddenStatus:"مخفي",
-  confirmDelete:"هل تريد حذف هذا الإعلان؟",
-  confirmMessageDelete:"هل تريد حذف هذه الرسالة؟",
-  saved:"تم حفظ الإعلان بنجاح.",
-  deleted:"تم الحذف بنجاح.",
-  updated:"تم تحديث الإعلان بنجاح.",
-  imageError:"تعذر رفع الصورة. تحقق من إعدادات التخزين.",
-  loginError:"تعذر تسجيل الدخول.",
-  unauthorized:"هذا الحساب ليس ضمن مديري الموقع.",
-  dbError:"تعذر الاتصال بقاعدة البيانات.",
-  emptyTitle:"يرجى إدخال عنوان الإعلان والمحتوى.",
-  imageSize:"حجم الصورة يجب ألا يتجاوز 5 ميغابايت.",
-  noImage:"بدون صورة",
-  backupDone:"تم إنشاء النسخة الاحتياطية.",
-  backupError:"تعذر إنشاء النسخة الاحتياطية.",
-  sent:"تم إرسال رسالتك بنجاح.",
-  sendError:"تعذر إرسال الرسالة. تحقق من اتصال قاعدة البيانات.",
-  imageUpload:"جارٍ رفع الصورة...",
-  saving:"جارٍ الحفظ...",
-  editing:"تعديل الإعلان",
-  saveChanges:"حفظ التعديلات",
-  publishedDate:"تاريخ النشر",
-  emptyMessage:"لا يوجد محتوى."
- },
- fr:{
-  motto:"Le savoir et le travail, clés de la réussite",
-  home:"Accueil",about:"Notre lycée",services:"Services",
-  announcements:"Annonces",resources:"Ressources",
-  contact:"Contact",
-  welcome:'Bienvenue au <span>Lycée Mesgouni</span>',
-  heroText:"Le savoir et le travail sont les clés de la réussite. Votre portail éducatif pour apprendre et communiquer.",
-  discover:"Découvrir nos services",aboutTitle:"À propos du lycée",
-  schoolName:"Lycée du moudjahid Mesgouni Mohamed Salah",
-  mission:"Notre mission éducative",
-  missionText:"Nous cherchons à offrir un environnement éducatif stimulant qui aide les élèves à acquérir des connaissances, développer leurs compétences et réaliser leurs ambitions.",
-  servicesTitle:"Nos services éducatifs",
-  servicesSubtitle:"Tout ce dont l'élève a besoin au même endroit",
-  studentSpace:"Espace élève",studentText:"Ressources et services éducatifs.",
-  explore:"Découvrir ←",schoolNews:"Annonces scolaires",
-  schoolNewsText:"Les dernières annonces et actualités.",
-  viewNews:"Voir les annonces ←",orientation:"Orientation universitaire",
-  orientationText:"Informations sur le choix du parcours universitaire.",
-  assistant:"Assistant d'intelligence artificielle",
-  assistantText:"Assistant éducatif pour répondre aux questions.",
-  start:"Commencer ←",suggestions:"Suggestions et réclamations",
-  suggestionsText:"Partagez vos idées et remarques.",
-  send:"Envoyer ←",admin:"Administration",
-  adminText:"Accès réservé à l'administrateur.",
-  adminLogin:"Accès administrateur ←",latestNews:"Les dernières actualités",
-  loading:"Chargement des annonces...",library:"Bibliothèque éducative",
-  libraryText:"Ressources scolaires par niveau",
-  firstYear:"Première année secondaire",
-  secondYear:"Deuxième année secondaire",
-  thirdYear:"Troisième année secondaire",
-  lessons:"Cours et examens",enter:"Accéder ←",
-  privacyNote:"Ne saisissez pas d'informations personnelles sensibles.",
-  messageType:"Type de message",suggestion:"Suggestion",
-  complaint:"Réclamation",note:"Remarque",message:"Message",
-  sendMessage:"Envoyer le message",
-  adminLoginTitle:"Connexion administrateur",
-  email:"Adresse e-mail",password:"Mot de passe",
-  login:"Se connecter",back:"Retour",
-  dashboard:"Tableau de bord Mesgouni",
-  dashboardText:"Gestion du site et du contenu",
-  viewSite:"Voir le site",logout:"Déconnexion",
-  totalNews:"Total des annonces",
-  totalMessages:"Total des messages",
-  publishedNews:"Annonces publiées",
-  overview:"📊 Accueil",manageNews:"📢 Annonces",
-  manageMessages:"💬 Messages",backup:"💾 Sauvegarde",
-  welcomeAdmin:"Bienvenue dans le panneau d'administration",
-  welcomeAdminText:"Gérez ici les annonces, les images et les messages du site.",
-  refresh:"Actualiser",addNews:"Ajouter une annonce",
-  newsTitle:"Titre de l'annonce",
-  newsContent:"Contenu de l'annonce",
-  newsImage:"Image de l'annonce",
-  imageNote:"PNG, JPG ou WEBP, taille maximale 5 Mo.",
-  publishNow:"Publier immédiatement",
-  publishNews:"Publier l'annonce",
-  cancel:"Annuler la modification",
-  currentNews:"Annonces actuelles",
-  messagesTitle:"Suggestions et réclamations",
-  backupTitle:"Sauvegarde",
-  backupText:"Exporter un fichier JSON contenant les annonces et les messages enregistrés.",
-  exportBackup:"Exporter une sauvegarde",
-  backupWarning:"Cette fonction exporte les données, sans les restaurer automatiquement.",
-  noNews:"Aucune annonce pour le moment.",
-  noMessages:"Aucun message.",
-  delete:"Supprimer",edit:"Modifier",
-  hide:"Masquer",show:"Publier",
-  published:"Publié",hiddenStatus:"Masqué",
-  confirmDelete:"Voulez-vous supprimer cette annonce ?",
-  confirmMessageDelete:"Voulez-vous supprimer ce message ?",
-  saved:"Annonce enregistrée avec succès.",
-  deleted:"Suppression effectuée.",
-  updated:"Annonce modifiée avec succès.",
-  imageError:"Impossible de téléverser l'image. Vérifiez le stockage.",
-  loginError:"Connexion impossible.",
-  unauthorized:"Ce compte n'est pas administrateur.",
-  dbError:"Connexion à la base de données impossible.",
-  emptyTitle:"Veuillez saisir le titre et le contenu.",
-  imageSize:"L'image ne doit pas dépasser 5 Mo.",
-  noImage:"Sans image",
-  backupDone:"Sauvegarde créée.",
-  backupError:"Impossible de créer la sauvegarde.",
-  sent:"Votre message a été envoyé.",
-  sendError:"Impossible d'envoyer le message.",
-  imageUpload:"Téléversement de l'image...",
-  saving:"Enregistrement...",
-  editing:"Modifier l'annonce",
-  saveChanges:"Enregistrer les modifications",
-  publishedDate:"Date de publication",
-  emptyMessage:"Aucun contenu."
- }
-};
+const IMAGE_BUCKET = "announcements";
+const IMAGE_MARKER = "[[MESGOUNI_IMAGE:";
+const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
 
-function t(key){
- return translations[currentLanguage][key]||translations.ar[key]||key;
+/* Language */
+function toggleLanguage(){
+ currentLanguage = currentLanguage === "ar" ? "fr" : "ar";
+ applyLanguage();
+ try{localStorage.setItem("mesgouni_language",currentLanguage)}catch(e){}
 }
 
 function applyLanguage(){
- document.documentElement.lang=currentLanguage;
- document.documentElement.dir=currentLanguage==="ar"?"rtl":"ltr";
+ document.documentElement.lang = currentLanguage;
+ document.documentElement.dir = currentLanguage === "ar" ? "rtl" : "ltr";
+ $("languageButton").textContent = currentLanguage === "ar" ? "FR" : "AR";
 
- document.querySelectorAll("[data-i18n]").forEach(el=>{
-  const key=el.getAttribute("data-i18n");
-  if(translations[currentLanguage][key]){
-   el.innerHTML=translations[currentLanguage][key];
-  }
+ document.querySelectorAll("[data-ar][data-fr]").forEach(el=>{
+  const value = el.getAttribute("data-" + currentLanguage);
+  if(value !== null) el.innerHTML = value;
  });
 
- $("languageButton").textContent=currentLanguage==="ar"?"FR":"AR";
- document.title=currentLanguage==="ar"?
-  "ثانوية مسغوني | الموقع الرسمي":
-  "Lycée Mesgouni | Site officiel";
-
- $("suggestMessage").placeholder=currentLanguage==="ar"?
-  "اكتب رسالتك هنا...":"Écrivez votre message ici...";
-
- if(isAdmin)loadAdminData();
+ $("newsSearch").placeholder = currentLanguage === "ar" ? "ابحث في الإعلانات..." : "Rechercher des annonces...";
+ $("messageSearch").placeholder = currentLanguage === "ar" ? "ابحث في الرسائل..." : "Rechercher des messages...";
 }
 
-function toggleLanguage(){
- currentLanguage=currentLanguage==="ar"?"fr":"ar";
- try{localStorage.setItem("mesgouni_language",currentLanguage)}catch(e){}
- applyLanguage();
- loadAnnouncements();
-}
-
-function toggleMenu(){$("navLinks").classList.toggle("open")}
-function closeMenu(){$("navLinks").classList.remove("open")}
-
-document.addEventListener("click",e=>{
- const n=$("navLinks"),m=document.querySelector(".menu-btn");
- if(n&&m&&!n.contains(e.target)&&!m.contains(e.target))closeMenu();
-});
-
-/* الوضع الليلي */
-function toggleDark(){
- document.body.classList.toggle("dark");
- try{
-  localStorage.setItem("mesgouni_dark",document.body.classList.contains("dark"));
- }catch(e){}
-}
 try{
- if(localStorage.getItem("mesgouni_dark")==="true")
-  document.body.classList.add("dark");
- if(localStorage.getItem("mesgouni_language")==="fr")
-  currentLanguage="fr";
+ const savedLanguage = localStorage.getItem("mesgouni_language");
+ if(savedLanguage === "fr") currentLanguage = "fr";
 }catch(e){}
 
-/* رسائل الحالة */
-function showStatus(id,msg,isError=false){
- const el=$(id);
- el.textContent=msg;
- el.classList.remove("hidden","error");
- if(isError)el.classList.add("error");
+/* Notifications */
+function toast(message,type="success"){
+ const item = document.createElement("div");
+ item.className = "toast" + (type === "error" ? " error" : "");
+ item.textContent = message;
+ $("toastArea").appendChild(item);
+ setTimeout(()=>item.remove(),3500);
 }
 
-/* الاتصال بقاعدة البيانات */
-function initializeSupabase(){
- if(!window.supabase)return false;
+function showStatus(id,message,isError=false){
+ const element = $(id);
+ element.textContent = message;
+ element.classList.remove("hidden","error");
+ if(isError) element.classList.add("error");
+}
+
+/* Supabase library loading with fallback */
+function loadScript(src){
+ return new Promise((resolve,reject)=>{
+  const script = document.createElement("script");
+  script.src = src;
+  script.onload = ()=>resolve(true);
+  script.onerror = ()=>reject(new Error("تعذر تحميل مكتبة Supabase"));
+  document.head.appendChild(script);
+ });
+}
+
+async function loadSupabaseLibrary(){
+ if(window.supabase?.createClient) return true;
+
+ const sources = [
+  "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2",
+  "https://unpkg.com/@supabase/supabase-js@2"
+ ];
+
+ for(const source of sources){
+  try{
+   await loadScript(source);
+   if(window.supabase?.createClient) return true;
+  }catch(error){
+   console.warn("Supabase CDN failed:",source,error);
+  }
+ }
+ return false;
+}
+
+async function initializeSupabase(){
  try{
-  db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+  const loaded = await loadSupabaseLibrary();
+
+  if(!loaded){
+   console.error("Supabase library unavailable");
+   return false;
+  }
+
+  db = window.supabase.createClient(
+   SUPABASE_URL,
+   SUPABASE_KEY,
+   {
+    auth:{
+     persistSession:true,
+     autoRefreshToken:true,
+     detectSessionInUrl:true
+    }
+   }
+  );
+
+  connectionReady = true;
+  console.log("Supabase client initialized");
   return true;
- }catch(e){
-  console.error(e);
+
+ }catch(error){
+  console.error("Supabase initialization error:",error);
+  db = null;
+  connectionReady = false;
   return false;
  }
 }
 
-/* التنقل */
+/* Helpers */
+function escapeHTML(value){
+ return String(value ?? "").replace(/[&<>"']/g,char=>({
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#39;"
+ }[char]));
+}
+
+function formatDate(value){
+ if(!value) return "";
+ const date = new Date(value);
+ if(Number.isNaN(date.getTime())) return "";
+ return date.toLocaleString(currentLanguage === "ar" ? "ar-DZ" : "fr-FR");
+}
+
+function makeFileName(file){
+ const extension = file.name.split(".").pop().toLowerCase().replace(/[^a-z0-9]/g,"");
+ return Date.now() + "_" + Math.random().toString(36).slice(2,10) + "." + extension;
+}
+
+/*
+ Image URL is stored inside the existing content column.
+ This avoids requiring an image_url database column.
+ Storage bucket and its upload permissions must already exist.
+*/
+function extractImage(content){
+ const text = String(content || "");
+ const match = text.match(/\[\[MESGOUNI_IMAGE:([^\]]+)\]\]/);
+ return match ? match[1] : "";
+}
+
+function cleanContent(content){
+ return String(content || "").replace(/\n?\[\[MESGOUNI_IMAGE:[^\]]+\]\]/,"").trim();
+}
+
+function contentWithImage(content,imageUrl){
+ return imageUrl ? content.trim() + "\n\n" + IMAGE_MARKER + imageUrl + "]]" : content.trim();
+}
+
+function makeAnnouncementCard(news){
+ const imageUrl = extractImage(news.content);
+ const content = cleanContent(news.content);
+
+ return `
+ <article class="card announcement-card">
+  ${imageUrl ? `<img class="announcement-image" src="${escapeHTML(imageUrl)}" alt="صورة الإعلان" loading="lazy" onerror="this.style.display='none'">` : ""}
+  <h3>${escapeHTML(news.title)}</h3>
+  <p>${escapeHTML(content)}</p>
+  <div class="announcement-date">${escapeHTML(formatDate(news.created_at))}</div>
+ </article>`;
+}
+
+/* Menu and appearance */
+function toggleMenu(){
+ $("navLinks").classList.toggle("open");
+}
+function closeMenu(){
+ $("navLinks").classList.remove("open");
+}
+document.addEventListener("click",event=>{
+ const nav = $("navLinks");
+ const menu = document.querySelector(".menu-btn");
+ if(nav && menu && !nav.contains(event.target) && !menu.contains(event.target)) closeMenu();
+});
+
+function toggleDark(){
+ document.body.classList.toggle("dark");
+ try{
+  localStorage.setItem("mesgouni_dark",document.body.classList.contains("dark") ? "1" : "0");
+ }catch(e){}
+}
+
+try{
+ if(localStorage.getItem("mesgouni_dark") === "1") document.body.classList.add("dark");
+}catch(e){}
+
+/* Animated page navigation */
+function animateSwitch(from,to,callback){
+ from.classList.add("page-exit");
+
+ setTimeout(()=>{
+  from.classList.add("hidden");
+  from.classList.remove("page-exit");
+
+  if(to === $("adminArea")) to.style.display = "block";
+  else to.classList.remove("hidden");
+
+  to.classList.remove("page-exit");
+  to.classList.add("page-enter");
+
+  window.scrollTo({top:0,behavior:"instant"});
+
+  if(callback) callback();
+
+  setTimeout(()=>to.classList.remove("page-enter"),500);
+ },280);
+}
+
 function showAdminLogin(){
- $("publicSite").classList.add("hidden");
- $("adminArea").style.display="none";
  $("adminLogin").classList.remove("hidden");
- window.scrollTo(0,0);
+ $("adminEmail").focus();
+}
+
+function closeAdminLogin(){
+ $("adminLogin").classList.add("hidden");
 }
 
 function showPublic(){
- $("adminLogin").classList.add("hidden");
- $("adminArea").style.display="none";
- $("publicSite").classList.remove("hidden");
- window.scrollTo(0,0);
+ closeAdminLogin();
+
+ if(!$("publicSite").classList.contains("hidden")){
+  $("adminArea").style.display = "none";
+  return;
+ }
+
+ animateSwitch($("adminArea"),$("publicSite"));
 }
 
 function showAdminDashboard(){
- $("adminLogin").classList.add("hidden");
- $("publicSite").classList.add("hidden");
- $("adminArea").style.display="block";
- window.scrollTo(0,0);
- loadAdminData();
-}
+ closeAdminLogin();
 
-function adminTab(id,button){
- document.querySelectorAll(".admin-panel").forEach(x=>x.classList.remove("active"));
- document.querySelectorAll(".sidebar button").forEach(x=>x.classList.remove("active"));
- $(id).classList.add("active");
- button.classList.add("active");
-}
-
-function escapeHTML(v){
- return String(v??"").replace(/[&<>"']/g,c=>({
-  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- }[c]));
-}
-
-/* تحميل الإعلانات العامة */
-async function loadAnnouncements(){
- const box=$("publicAnnouncements");
- if(!db){
-  box.innerHTML=`<div class="empty">${t("dbError")}</div>`;
+ if($("adminArea").style.display === "block"){
+  refreshAdminData();
   return;
  }
+
+ animateSwitch($("publicSite"),$("adminArea"),()=>{
+  refreshAdminData();
+ });
+}
+
+/* Public announcements */
+async function loadAnnouncements(){
+ const box = $("publicAnnouncements");
+
+ if(!db){
+  box.innerHTML = `<div class="empty">${currentLanguage === "ar" ? "تعذر الاتصال بقاعدة البيانات." : "Impossible de se connecter à la base de données."}</div>`;
+  return;
+ }
+
+ box.innerHTML = `<div class="empty">${currentLanguage === "ar" ? "جارٍ تحميل الإعلانات..." : "Chargement des annonces..."}</div>`;
+
  try{
-  const {data,error}=await db.from("announcements")
-   .select("id,title,content,created_at,image_url")
+  const {data,error} = await db
+   .from("announcements")
+   .select("id,title,content,created_at")
    .eq("published",true)
    .order("created_at",{ascending:false});
 
-  if(error)throw error;
+  if(error) throw error;
 
-  if(!data?.length){
-   box.innerHTML=`<div class="empty">${t("noNews")}</div>`;
+  if(!data || data.length === 0){
+   box.innerHTML = `<div class="empty">${currentLanguage === "ar" ? "لا توجد إعلانات منشورة حاليًا." : "Aucune annonce publiée pour le moment."}</div>`;
    return;
   }
 
-  box.innerHTML=data.map(n=>`
-   <article class="card">
-    ${n.image_url?`<img class="news-image" src="${escapeHTML(n.image_url)}" alt="${escapeHTML(n.title)}" loading="lazy">`:""}
-    <h3>${escapeHTML(n.title)}</h3>
-    <p>${escapeHTML(n.content)}</p>
-    <small>${escapeHTML(n.created_at?new Date(n.created_at).toLocaleDateString(currentLanguage==="ar"?"ar-DZ":"fr-FR"):"")}</small>
-   </article>
-  `).join("");
- }catch(e){
-  console.error(e);
-  box.innerHTML=`<div class="empty">${t("dbError")}</div>`;
+  box.innerHTML = data.map(makeAnnouncementCard).join("");
+
+ }catch(error){
+  console.error("Load announcements error:",error);
+  box.innerHTML = `<div class="empty">${currentLanguage === "ar" ? "تعذر تحميل الإعلانات. تحقق من صلاحيات قراءة جدول announcements." : "Impossible de charger les annonces. Vérifiez les autorisations de lecture."}</div>`;
  }
 }
 
-/* إرسال اقتراح أو شكوى */
-$("suggestionForm").addEventListener("submit",async e=>{
- e.preventDefault();
+/* Suggestions */
+$("suggestionForm").addEventListener("submit",async event=>{
+ event.preventDefault();
+
  if(!db){
-  showStatus("suggestStatus",t("dbError"),true);
+  showStatus("suggestStatus","الاتصال بقاعدة البيانات غير جاهز.",true);
   return;
  }
 
- const b=$("suggestSubmit");
- b.disabled=true;
- b.textContent=t("saving");
+ const button = $("suggestSubmit");
+ const subject = $("suggestType").value;
+ const message = $("suggestMessage").value.trim();
+
+ if(message.length < 5){
+  showStatus("suggestStatus","الرسالة قصيرة جدًا.",true);
+  return;
+ }
+
+ button.disabled = true;
 
  try{
-  const subject=$("suggestType").value;
-  const message=$("suggestMessage").value.trim();
+  const {error} = await db
+   .from("suggestions")
+   .insert([{subject,message}]);
 
-  const {error}=await db.from("suggestions").insert([{subject,message}]);
-  if(error)throw error;
+  if(error) throw error;
 
   $("suggestionForm").reset();
-  showStatus("suggestStatus",t("sent"));
- }catch(err){
-  console.error(err);
-  showStatus("suggestStatus",t("sendError"),true);
+  showStatus("suggestStatus",currentLanguage === "ar" ? "تم إرسال رسالتك بنجاح." : "Votre message a été envoyé avec succès.");
+  toast(currentLanguage === "ar" ? "تم إرسال الرسالة" : "Message envoyé");
+
+ }catch(error){
+  console.error("Suggestion error:",error);
+  showStatus("suggestStatus",currentLanguage === "ar" ? "تعذر إرسال الرسالة. تحقق من صلاحيات جدول suggestions." : "Impossible d'envoyer le message. Vérifiez les autorisations.",true);
  }finally{
-  b.disabled=false;
-  b.textContent=t("sendMessage");
+  button.disabled = false;
  }
 });
 
-/* تسجيل الدخول */
-$("adminLoginForm").addEventListener("submit",async e=>{
- e.preventDefault();
+/* Admin authentication */
+$("adminLoginForm").addEventListener("submit",async event=>{
+ event.preventDefault();
 
  if(!db){
-  showStatus("loginStatus",t("dbError"),true);
+  showStatus("loginStatus","تعذر تهيئة الاتصال بقاعدة البيانات.",true);
   return;
  }
 
- const b=$("loginButton");
- b.disabled=true;
- b.textContent=t("saving");
+ const button = $("loginButton");
+ button.disabled = true;
 
  try{
-  const email=$("adminEmail").value.trim();
-  const password=$("adminPassword").value;
+  const email = $("adminEmail").value.trim();
+  const password = $("adminPassword").value;
 
-  const {error}=await db.auth.signInWithPassword({email,password});
-  if(error)throw error;
+  const {error} = await db.auth.signInWithPassword({email,password});
+  if(error) throw error;
 
-  const {data:allowed,error:roleError}=await db.rpc("is_site_admin");
-  if(roleError)throw roleError;
+  const {data:allowed,error:roleError} = await db.rpc("is_site_admin");
+  if(roleError) throw roleError;
 
-  if(allowed!==true){
+  if(allowed !== true){
    await db.auth.signOut();
-   showStatus("loginStatus",t("unauthorized"),true);
+   showStatus("loginStatus","هذا الحساب غير مصرح له بإدارة الموقع.",true);
    return;
   }
 
-  isAdmin=true;
-  $("adminPassword").value="";
+  isAdmin = true;
+  $("adminPassword").value = "";
+  toast("تم تسجيل الدخول بنجاح");
   showAdminDashboard();
 
- }catch(err){
-  console.error(err);
-  showStatus("loginStatus",err.message||t("loginError"),true);
+ }catch(error){
+  console.error("Login error:",error);
+  showStatus("loginStatus",error.message || "تعذر تسجيل الدخول. تحقق من بيانات الحساب.",true);
  }finally{
-  b.disabled=false;
-  b.textContent=t("login");
+  button.disabled = false;
  }
 });
 
-/* استعادة الجلسة */
 async function checkSession(){
- if(!db)return;
- try{
-  const {data:{session}}=await db.auth.getSession();
-  if(!session)return;
+ if(!db) return;
 
-  const {data:allowed,error}=await db.rpc("is_site_admin");
-  if(!error&&allowed===true){
-   isAdmin=true;
+ try{
+  const {data:{session},error:sessionError} = await db.auth.getSession();
+  if(sessionError) throw sessionError;
+  if(!session) return;
+
+  const {data:allowed,error} = await db.rpc("is_site_admin");
+
+  if(!error && allowed === true){
+   isAdmin = true;
    showAdminDashboard();
+  }else{
+   await db.auth.signOut();
   }
- }catch(e){
-  console.error(e);
+ }catch(error){
+  console.error("Session check:",error);
  }
 }
 
-/* تسجيل الخروج */
 async function logoutAdmin(){
- isAdmin=false;
- if(db)await db.auth.signOut();
+ if(!db) return;
+
+ try{
+  await db.auth.signOut();
+ }catch(error){
+  console.error(error);
+ }
+
+ isAdmin = false;
+ resetNewsForm();
+ toast("تم تسجيل الخروج");
  showPublic();
 }
 
-/* معاينة الصورة */
-$("newsImage").addEventListener("change",()=>{
- const file=$("newsImage").files[0];
- const preview=$("imagePreview");
+/* Admin tabs */
+function adminTab(id,button){
+ if(!isAdmin) return;
+
+ document.querySelectorAll(".admin-panel").forEach(panel=>panel.classList.remove("active"));
+ document.querySelectorAll(".sidebar button").forEach(item=>item.classList.remove("active"));
+
+ $(id).classList.add("active");
+ button.classList.add("active");
+
+ if(id === "newsPanel") loadAdminNews();
+ if(id === "messagesPanel") loadAdminMessages();
+ if(id === "dashboardPanel") refreshAdminData();
+}
+
+/* Admin data */
+async function refreshAdminData(){
+ if(!isAdmin || !db) return;
+
+ await Promise.all([
+  loadAdminNews(),
+  loadAdminMessages()
+ ]);
+}
+
+async function loadAdminNews(){
+ if(!isAdmin || !db) return;
+
+ const box = $("adminNews");
+ box.innerHTML = `<div class="empty">جارٍ تحميل الإعلانات...</div>`;
+
+ try{
+  const {data,error} = await db
+   .from("announcements")
+   .select("id,title,content,published,created_at")
+   .order("created_at",{ascending:false});
+
+  if(error) throw error;
+
+  allNews = data || [];
+
+  $("statNews").textContent = allNews.length;
+  $("statPublished").textContent = allNews.filter(n=>n.published).length;
+
+  renderAdminNews(allNews);
+
+ }catch(error){
+  console.error("Admin news:",error);
+  box.innerHTML = `<div class="empty">تعذر تحميل الإعلانات. تحقق من صلاحيات المدير.</div>`;
+ }
+}
+
+function renderAdminNews(items){
+ const box = $("adminNews");
+
+ if(!items.length){
+  box.innerHTML = `<div class="empty">لا توجد إعلانات.</div>`;
+  return;
+ }
+
+ box.innerHTML = items.map(news=>{
+  const imageUrl = extractImage(news.content);
+
+  return `
+  <article class="admin-item">
+   <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+    <h4>${escapeHTML(news.title)}</h4>
+    <span class="badge ${news.published ? "" : "off"}">${news.published ? "منشور" : "مخفي"}</span>
+   </div>
+   ${imageUrl ? `<img src="${escapeHTML(imageUrl)}" alt="" style="width:100%;max-height:150px;object-fit:cover;border-radius:9px;margin:10px 0">` : ""}
+   <p>${escapeHTML(cleanContent(news.content))}</p>
+   <small class="muted">${escapeHTML(formatDate(news.created_at))}</small>
+   <div class="admin-item-actions">
+    <button class="btn btn-small" onclick="editNews('${escapeHTML(news.id)}')">تعديل</button>
+    <button class="btn btn-outline btn-small" onclick="togglePublish('${escapeHTML(news.id)}',${!news.published})">${news.published ? "إخفاء" : "نشر"}</button>
+    <button class="btn btn-danger btn-small" onclick="deleteNews('${escapeHTML(news.id)}')">حذف</button>
+   </div>
+  </article>`;
+ }).join("");
+}
+
+function filterNews(){
+ const query = $("newsSearch").value.trim().toLowerCase();
+ const filtered = allNews.filter(item=>
+  String(item.title || "").toLowerCase().includes(query) ||
+  cleanContent(item.content).toLowerCase().includes(query)
+ );
+ renderAdminNews(filtered);
+}
+
+/* Image selection */
+$("newsImage").addEventListener("change",event=>{
+ const file = event.target.files[0];
+ selectedImage = null;
 
  if(!file){
-  preview.classList.add("hidden");
+  $("imagePreview").classList.add("hidden");
   return;
  }
 
- if(!["image/jpeg","image/png","image/webp"].includes(file.type)){
-  alert(t("imageError"));
-  $("newsImage").value="";
-  preview.classList.add("hidden");
+ const validTypes = ["image/jpeg","image/png","image/webp"];
+
+ if(!validTypes.includes(file.type)){
+  event.target.value = "";
+  toast("نوع الصورة غير مدعوم. اختر PNG أو JPG أو WEBP.", "error");
   return;
  }
 
- if(file.size>5*1024*1024){
-  alert(t("imageSize"));
-  $("newsImage").value="";
-  preview.classList.add("hidden");
+ if(file.size > MAX_IMAGE_SIZE){
+  event.target.value = "";
+  toast("حجم الصورة أكبر من 5 ميغابايت.", "error");
   return;
  }
 
- preview.src=URL.createObjectURL(file);
- preview.classList.remove("hidden");
+ selectedImage = file;
+
+ const reader = new FileReader();
+ reader.onload = ()=>{
+  $("imagePreview").innerHTML = `<img src="${reader.result}" alt="معاينة الصورة"><p class="muted small">${escapeHTML(file.name)}</p>`;
+  $("imagePreview").classList.remove("hidden");
+ };
+ reader.readAsDataURL(file);
 });
 
-/* رفع الصور إلى Supabase Storage */
-async function uploadNewsImage(file){
- if(!file)return oldImageUrl;
+/* Upload image to Supabase Storage */
+async function uploadAnnouncementImage(file){
+ if(!db) throw new Error("الاتصال بقاعدة البيانات غير جاهز.");
 
- if(!["image/jpeg","image/png","image/webp"].includes(file.type))
-  throw new Error(t("imageError"));
+ const fileName = makeFileName(file);
+ const path = fileName;
 
- if(file.size>5*1024*1024)
-  throw new Error(t("imageSize"));
-
- const ext=file.type==="image/png"?"png":
-  file.type==="image/webp"?"webp":"jpg";
-
- const path=`${Date.now()}-${crypto.randomUUID()}.${ext}`;
-
- const {error}=await db.storage.from(STORAGE_BUCKET)
+ const {error} = await db.storage
+  .from(IMAGE_BUCKET)
   .upload(path,file,{
-   contentType:file.type,
-   upsert:false
+   cacheControl:"3600",
+   upsert:false,
+   contentType:file.type
   });
 
- if(error)throw error;
+ if(error){
+  console.error("Image upload error:",error);
+  throw new Error("تعذر رفع الصورة. قد تكون مساحة التخزين أو صلاحيات الرفع غير مهيأة.");
+ }
 
- const {data}=db.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+ const {data} = db.storage
+  .from(IMAGE_BUCKET)
+  .getPublicUrl(path);
+
+ if(!data?.publicUrl) throw new Error("تعذر الحصول على رابط الصورة.");
+
  return data.publicUrl;
 }
 
-/* حفظ إعلان جديد أو تعديل إعلان */
-async function saveNews(){
- if(!isAdmin||!db)return;
+/* News create and edit */
+$("newsForm").addEventListener("submit",async event=>{
+ event.preventDefault();
 
- const title=$("newsTitle").value.trim();
- const content=$("newsText").value.trim();
- const published=$("newsPublished").checked;
- const file=$("newsImage").files[0];
-
- if(title.length<2||content.length<5){
-  showStatus("newsStatus",t("emptyTitle"),true);
+ if(!isAdmin || !db){
+  showStatus("newsStatus","يجب تسجيل دخول المدير أولًا.",true);
   return;
  }
 
- if(file&&file.size>5*1024*1024){
-  showStatus("newsStatus",t("imageSize"),true);
+ const id = $("editNewsId").value;
+ const title = $("newsTitle").value.trim();
+ const text = $("newsText").value.trim();
+ const published = $("newsPublished").checked;
+ const button = $("newsSubmit");
+
+ if(title.length < 2 || text.length < 5){
+  showStatus("newsStatus","يرجى إدخال عنوان ومحتوى صحيحين.",true);
   return;
  }
 
- const button=$("saveNewsButton");
- button.disabled=true;
- button.textContent=t("saving");
+ button.disabled = true;
+ button.textContent = "جارٍ الحفظ...";
 
  try{
-  let image_url=oldImageUrl;
+  let imageUrl = editingImageUrl;
 
-  if(file){
-   showStatus("newsStatus",t("imageUpload"));
-   image_url=await uploadNewsImage(file);
+  if(selectedImage){
+   imageUrl = await uploadAnnouncementImage(selectedImage);
   }
 
-  const values={title,content,published,image_url};
+  const content = contentWithImage(text,imageUrl);
+  const record = {title,content,published};
 
   let result;
 
-  if(editingNewsId){
-   result=await db.from("announcements")
-    .update(values)
-    .eq("id",editingNewsId);
+  if(id){
+   result = await db.from("announcements").update(record).eq("id",id);
   }else{
-   result=await db.from("announcements")
-    .insert([values]);
+   result = await db.from("announcements").insert([record]);
   }
 
-  if(result.error)throw result.error;
+  if(result.error) throw result.error;
 
-  showStatus("newsStatus",editingNewsId?t("updated"):t("saved"));
-  cancelEdit();
-  await refreshDashboard();
+  resetNewsForm();
+  showStatus("newsStatus",id ? "تم تحديث الإعلان بنجاح." : "تم نشر الإعلان بنجاح.");
+  toast(id ? "تم تحديث الإعلان" : "تم نشر الإعلان");
 
- }catch(e){
-  console.error(e);
-  showStatus("newsStatus",e.message||t("imageError"),true);
+  await loadAdminNews();
+  await loadAnnouncements();
+
+ }catch(error){
+  console.error("Save news error:",error);
+  showStatus("newsStatus",error.message || "تعذر حفظ الإعلان.",true);
  }finally{
-  button.disabled=false;
-  button.textContent=editingNewsId?t("saveChanges"):t("publishNews");
+  button.disabled = false;
+  button.textContent = $("editNewsId").value ? "حفظ التعديلات" : "نشر الإعلان";
  }
-}
+});
 
-/* تعبئة نموذج التعديل */
-function editNews(id,title,content,published,imageUrl){
- editingNewsId=id;
- oldImageUrl=imageUrl||null;
+function editNews(id){
+ if(!isAdmin) return;
 
- $("newsTitle").value=title;
- $("newsText").value=content;
- $("newsPublished").checked=published;
- $("newsImage").value="";
+ const news = allNews.find(item=>String(item.id) === String(id));
+ if(!news) return;
 
- const preview=$("imagePreview");
- if(imageUrl){
-  preview.src=imageUrl;
-  preview.classList.remove("hidden");
+ $("editNewsId").value = news.id;
+ $("newsTitle").value = news.title || "";
+ $("newsText").value = cleanContent(news.content);
+ $("newsPublished").checked = !!news.published;
+
+ editingImageUrl = extractImage(news.content);
+ selectedImage = null;
+ $("newsImage").value = "";
+
+ if(editingImageUrl){
+  $("imagePreview").innerHTML = `<img src="${escapeHTML(editingImageUrl)}" alt="الصورة الحالية"><p class="muted small">الصورة الحالية</p>`;
+  $("imagePreview").classList.remove("hidden");
  }else{
-  preview.classList.add("hidden");
+  $("imagePreview").classList.add("hidden");
  }
 
- $("newsFormTitle").textContent=t("editing");
- $("saveNewsButton").textContent=t("saveChanges");
+ $("newsFormHeading").textContent = "تعديل الإعلان";
+ $("newsSubmit").textContent = "حفظ التعديلات";
  $("cancelEditButton").classList.remove("hidden");
 
- adminTab("adminNewsPanel",document.querySelectorAll(".sidebar button")[1]);
- $("newsTitle").scrollIntoView({behavior:"smooth",block:"center"});
+ $("newsForm").scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-function cancelEdit(){
- editingNewsId=null;
- oldImageUrl=null;
-
- $("newsTitle").value="";
- $("newsText").value="";
- $("newsImage").value="";
- $("newsPublished").checked=true;
+function resetNewsForm(){
+ $("newsForm").reset();
+ $("editNewsId").value = "";
+ selectedImage = null;
+ editingImageUrl = "";
+ $("imagePreview").innerHTML = "";
  $("imagePreview").classList.add("hidden");
-
- $("newsFormTitle").textContent=t("addNews");
- $("saveNewsButton").textContent=t("publishNews");
+ $("newsFormHeading").textContent = "إضافة إعلان جديد";
+ $("newsSubmit").textContent = "نشر الإعلان";
  $("cancelEditButton").classList.add("hidden");
 }
 
-/* حذف إعلان */
-async function deleteNews(id){
- if(!isAdmin||!db||!confirm(t("confirmDelete")))return;
+/* Publish / hide */
+async function togglePublish(id,published){
+ if(!isAdmin || !db) return;
 
  try{
-  const {error}=await db.from("announcements").delete().eq("id",id);
-  if(error)throw error;
-  await refreshDashboard();
-  alert(t("deleted"));
- }catch(e){
-  console.error(e);
-  alert(t("dbError"));
- }
-}
+  const {error} = await db
+   .from("announcements")
+   .update({published})
+   .eq("id",id);
 
-/* تغيير حالة النشر */
-async function toggleNewsPublished(id,current){
- if(!isAdmin||!db)return;
+  if(error) throw error;
 
- try{
-  const {error}=await db.from("announcements")
-   .update({published:!current}).eq("id",id);
-
-  if(error)throw error;
-  await refreshDashboard();
- }catch(e){
-  console.error(e);
-  alert(t("dbError"));
- }
-}
-
-/* تحميل إعلانات لوحة الإدارة */
-async function loadAdminNews(){
- try{
-  const {data,error}=await db.from("announcements")
-   .select("id,title,content,published,created_at,image_url")
-   .order("created_at",{ascending:false});
-
-  if(error)throw error;
-
-  $("statNews").textContent=data.length;
-  $("statPublished").textContent=data.filter(x=>x.published).length;
-
-  $("adminNews").innerHTML=data.length?data.map(n=>`
-   <div class="card" style="margin:12px 0">
-    ${n.image_url?`<img class="news-image" src="${escapeHTML(n.image_url)}" alt="">`:""}
-    <h3>${escapeHTML(n.title)}</h3>
-    <p>${escapeHTML(n.content)}</p>
-    <small>${escapeHTML(n.created_at?new Date(n.created_at).toLocaleString(currentLanguage==="ar"?"ar-DZ":"fr-FR"):"")}</small>
-    <br>
-    <span class="status-label ${n.published?"":"status-hidden"}">
-     ${n.published?t("published"):t("hiddenStatus")}
-    </span>
-    <div class="news-actions">
-     <button class="small-btn" data-edit="${escapeHTML(n.id)}">${t("edit")}</button>
-     <button class="small-btn gray-btn" data-toggle="${escapeHTML(n.id)}" data-published="${n.published}">
-      ${n.published?t("hide"):t("show")}
-     </button>
-     <button class="small-btn danger" data-delete="${escapeHTML(n.id)}">${t("delete")}</button>
-    </div>
-   </div>
-  `).join(""):`<div class="empty">${t("noNews")}</div>`;
-
-  window.cachedNews=data;
-
- }catch(e){
-  console.error(e);
-  $("adminNews").textContent=t("dbError");
- }
-}
-
-/* أحداث أزرار الإعلانات */
-$("adminNews").addEventListener("click",e=>{
- const edit=e.target.closest("[data-edit]");
- const del=e.target.closest("[data-delete]");
- const toggle=e.target.closest("[data-toggle]");
-
- if(edit){
-  const n=window.cachedNews?.find(x=>String(x.id)===edit.dataset.edit);
-  if(n)editNews(n.id,n.title,n.content,n.published,n.image_url);
- }
-
- if(del)deleteNews(del.dataset.delete);
-
- if(toggle){
-  toggleNewsPublished(toggle.dataset.toggle,toggle.dataset.published==="true");
- }
-});
-
-/* تحميل الرسائل */
-async function loadMessages(){
- if(!isAdmin||!db)return;
-
- try{
-  const {data,error}=await db.from("suggestions")
-   .select("id,subject,message,created_at")
-   .order("created_at",{ascending:false});
-
-  if(error)throw error;
-
-  $("statMessages").textContent=data.length;
-
-  $("adminMessages").innerHTML=data.length?data.map(m=>`
-   <div class="card" style="margin:12px 0">
-    <h3>${escapeHTML(m.subject)}</h3>
-    <p>${escapeHTML(m.message)}</p>
-    <small>${escapeHTML(m.created_at?new Date(m.created_at).toLocaleString(currentLanguage==="ar"?"ar-DZ":"fr-FR"):"")}</small>
-    <br>
-    <button class="small-btn danger" data-message-delete="${escapeHTML(m.id)}">${t("delete")}</button>
-   </div>
-  `).join(""):`<div class="empty">${t("noMessages")}</div>`;
-
-  window.cachedMessages=data;
-
- }catch(e){
-  console.error(e);
-  $("adminMessages").textContent=t("dbError");
- }
-}
-
-/* حذف الرسائل */
-$("adminMessages").addEventListener("click",async e=>{
- const b=e.target.closest("[data-message-delete]");
- if(!b||!isAdmin||!confirm(t("confirmMessageDelete")))return;
-
- try{
-  const {error}=await db.from("suggestions").delete().eq("id",b.dataset.messageDelete);
-  if(error)throw error;
-  await loadMessages();
- }catch(e){
-  console.error(e);
-  alert(t("dbError"));
- }
-});
-
-/* تحديث لوحة الإدارة */
-async function loadAdminData(){
- if(!isAdmin||!db)return;
- await Promise.all([loadAdminNews(),loadMessages()]);
-}
-
-async function refreshDashboard(){
- await loadAnnouncements();
- await loadAdminData();
-}
-
-/* تصدير النسخة الاحتياطية */
-async function exportBackup(){
- if(!isAdmin||!db)return;
-
- try{
-  const [news,messages]=await Promise.all([
-   db.from("announcements").select("*"),
-   db.from("suggestions").select("*")
-  ]);
-
-  if(news.error)throw news.error;
-  if(messages.error)throw messages.error;
-
-  const backup={
-   school:"Lycée Mesgouni",
-   exported_at:new Date().toISOString(),
-   announcements:news.data,
-   suggestions:messages.data
-  };
-
-  const blob=new Blob(
-   [JSON.stringify(backup,null,2)],
-   {type:"application/json"}
-  );
-
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement("a");
-  a.href=url;
-  a.download="mesgouni-backup-"+new Date().toISOString().slice(0,10)+".json";
-  a.click();
-  URL.revokeObjectURL(url);
-
-  showStatus("backupStatus",t("backupDone"));
-
- }catch(e){
-  console.error(e);
-  showStatus("backupStatus",t("backupError"),true);
- }
-}
-
-/* بداية تشغيل الموقع */
-(async()=>{
- applyLanguage();
-
- if(initializeSupabase()){
+  toast(published ? "تم نشر الإعلان" : "تم إخفاء الإعلان");
+  await loadAdminNews();
   await loadAnnouncements();
-  await checkSession();
- }else{
-  $("publicAnnouncements").innerHTML=`<div class="empty">${t("dbError")}</div>`;
+
+ }catch(error){
+  console.error(error);
+  toast("تعذر تغيير حالة الإعلان.", "error");
  }
-})();
-</script>
-</body>
-   </html>
+}
+
+/* Delete */
+async function deleteNews(id){
+ if(!isAdmin || !db) return;
+
+ if(!confirm("هل تريد حذف هذا الإعلان نهائيًا؟")) return;
+
+ try{
+  const {error} = await db
+   .from("announcements")
+   .delete()
+   .eq("id",id);
+
+  if(error) throw error;
+
+  toast("تم حذف الإعلان");
+  await loadAdminNews();
+  await loadAnnouncements();
+
+ }catch(error){
+  console.error(error);
+  toast("تعذر حذف الإعلان. تحقق من صلاحيات الحذف.", "error");
+ }
+}
+
+/* Messages */
+async function loadAdminMessages(){
+ if(!isAdmin || !db) return;
+
+ const bo
