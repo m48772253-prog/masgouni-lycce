@@ -1544,4 +1544,181 @@ async function deleteNews(id){
 async function loadAdminMessages(){
  if(!isAdmin || !db) return;
 
- const bo
+ const box = $("adminMessages");
+ box.innerHTML = `<div class="empty">جارٍ تحميل الرسائل...</div>`;
+
+ try{
+  const {data,error} = await db
+   .from("suggestions")
+   .select("id,subject,message,created_at")
+   .order("created_at",{ascending:false});
+
+  if(error) throw error;
+
+  allMessages = data || [];
+  $("statMessages").textContent = allMessages.length;
+
+  renderAdminMessages(allMessages);
+
+ }catch(error){
+  console.error("Messages error:",error);
+  box.innerHTML = `<div class="empty">تعذر تحميل الرسائل. تحقق من صلاحيات جدول suggestions.</div>`;
+ }
+}
+
+function renderAdminMessages(items){
+ const box = $("adminMessages");
+
+ if(!items.length){
+  box.innerHTML = `<div class="empty">لا توجد رسائل واردة.</div>`;
+  return;
+ }
+
+ box.innerHTML = items.map(message=>`
+  <article class="admin-item">
+   <h4>${escapeHTML(message.subject)}</h4>
+   <p>${escapeHTML(message.message)}</p>
+   <small class="muted">${escapeHTML(formatDate(message.created_at))}</small>
+   <div class="admin-item-actions">
+    <button class="btn btn-danger btn-small" onclick="deleteMessage('${escapeHTML(message.id)}')">حذف الرسالة</button>
+   </div>
+  </article>
+ `).join("");
+}
+
+function filterMessages(){
+ const query = $("messageSearch").value.trim().toLowerCase();
+ const filtered = allMessages.filter(message=>
+  String(message.subject || "").toLowerCase().includes(query) ||
+  String(message.message || "").toLowerCase().includes(query)
+ );
+ renderAdminMessages(filtered);
+}
+
+async function deleteMessage(id){
+ if(!isAdmin || !db) return;
+ if(!confirm("هل تريد حذف هذه الرسالة؟")) return;
+
+ try{
+  const {error} = await db.from("suggestions").delete().eq("id",id);
+  if(error) throw error;
+
+  toast("تم حذف الرسالة");
+  await loadAdminMessages();
+
+ }catch(error){
+  console.error(error);
+  toast("تعذر حذف الرسالة. تحقق من الصلاحيات.", "error");
+ }
+}
+
+/* Export data */
+function downloadFile(fileName,content,type){
+ const blob = new Blob([content],{type});
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement("a");
+ link.href = url;
+ link.download = fileName;
+ document.body.appendChild(link);
+ link.click();
+ link.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+async function exportBackup(){
+ if(!isAdmin || !db) return;
+
+ try{
+  const [newsResult,messagesResult] = await Promise.all([
+   db.from("announcements").select("*"),
+   db.from("suggestions").select("*")
+  ]);
+
+  if(newsResult.error) throw newsResult.error;
+  if(messagesResult.error) throw messagesResult.error;
+
+  const backup = {
+   exportedAt:new Date().toISOString(),
+   project:"Lycée Mesgouni",
+   announcements:newsResult.data || [],
+   suggestions:messagesResult.data || []
+  };
+
+  downloadFile(
+   "mesgouni-backup-" + new Date().toISOString().slice(0,10) + ".json",
+   JSON.stringify(backup,null,2),
+   "application/json;charset=utf-8"
+  );
+
+  toast("تم إنشاء النسخة الاحتياطية");
+
+ }catch(error){
+  console.error(error);
+  toast("تعذر تصدير البيانات.", "error");
+ }
+}
+
+async function exportMessages(){
+ if(!isAdmin || !db) return;
+
+ try{
+  const {data,error} = await db
+   .from("suggestions")
+   .select("id,subject,message,created_at")
+   .order("created_at",{ascending:false});
+
+  if(error) throw error;
+
+  const rows = [
+   ["ID","Subject","Message","Date"],
+   ...(data || []).map(item=>[
+    item.id,item.subject,item.message,item.created_at
+   ])
+  ];
+
+  const csv = "\uFEFF" + rows.map(row=>
+   row.map(value=>'"' + String(value ?? "").replace(/"/g,'""') + '"').join(",")
+  ).join("\n");
+
+  downloadFile("mesgouni-messages.csv",csv,"text/csv;charset=utf-8");
+  toast("تم تصدير الرسائل");
+
+ }catch(error){
+  console.error(error);
+  toast("تعذر تصدير الرسائل.", "error");
+ }
+}
+
+/* Close modal with Escape */
+document.addEventListener("keydown",event=>{
+ if(event.key === "Escape"){
+  closeAdminLogin();
+  closeMenu();
+ }
+});
+
+/* Start */
+async function startWebsite(){
+ applyLanguage();
+
+ const initialized = await initializeSupabase();
+
+ if(!initialized){
+  $("publicAnnouncements").innerHTML = `
+   <div class="empty">
+    تعذر تحميل مكتبة الاتصال بقاعدة البيانات.
+    تحقق من اتصال الإنترنت ثم أعد تحميل الصفحة.
+   </div>`;
+  console.error("Supabase initialization failed");
+  return;
+ }
+
+ await loadAnnouncements();
+ await checkSession();
+}
+
+startWebsite();
+</script>
+
+</body>
+</html>
