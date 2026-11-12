@@ -1,247 +1,672 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#145c43">
-  <title>فضاء التلاميذ | ثانوية مسغوني</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #f3f7f4;
-      color: #193b2e;
-    }
-
-    header {
-      background: #145c43;
-      color: white;
-      padding: 18px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    header h2 {
-      font-size: 21px;
-    }
-
-    header a {
-      color: white;
-      text-decoration: none;
-      border: 1px solid #ffffff70;
-      padding: 9px 15px;
-      border-radius: 9px;
-    }
-
-    .hero {
-      background: linear-gradient(120deg, #145c43, #0c3d2d);
-      color: white;
-      padding: 55px 7%;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 32px;
-      margin-bottom: 12px;
-    }
-
-    .hero p {
-      color: #dcebe2;
-      line-height: 1.8;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: 30px auto;
-    }
-
-    .section-title {
-      margin-bottom: 18px;
-      font-size: 22px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 17px;
-    }
-
-    .card {
-      background: white;
-      padding: 23px;
-      border-radius: 14px;
-      border: 1px solid #e2ebe5;
-      box-shadow: 0 4px 15px #173b2d0b;
-    }
-
-    .card .emoji {
-      font-size: 30px;
-      margin-bottom: 12px;
-    }
-
-    .card h3 {
-      margin-bottom: 9px;
-      color: #145c43;
-    }
-
-    .card p {
-      color: #65766d;
-      line-height: 1.7;
-      font-size: 14px;
-    }
-
-    .card button {
-      margin-top: 17px;
-      background: #145c43;
-      color: white;
-      border: 0;
-      padding: 10px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .notice {
-      background: #fff9e9;
-      border-right: 4px solid #d9b45b;
-      padding: 18px;
-      border-radius: 9px;
-      margin-bottom: 25px;
-      line-height: 1.8;
-    }
-
-    .login {
-      background: white;
-      padding: 25px;
-      border-radius: 14px;
-      margin-top: 30px;
-      border: 1px solid #e2ebe5;
-    }
-
-    .login h2 {
-      margin-bottom: 15px;
-    }
-
-    .login p {
-      color: #65766d;
-      line-height: 1.8;
-    }
-
-    footer {
-      background: #0c3d2d;
-      color: white;
-      text-align: center;
-      padding: 22px;
-      margin-top: 50px;
-      line-height: 1.8;
-    }
-
-    @media(max-width:600px) {
-      .hero h1 { font-size: 25px; }
-      header { padding: 16px 5%; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f7f5">
+<meta name="description" content="مجتمع تلاميذ ثانوية مسغوني: ملخصات ومناقشات واقتراحات">
+<title>مجتمع التلاميذ | ثانوية مسغوني</title>
+<style>
+:root{
+ --brand:#176347;--brand-dark:#104b36;--brand-soft:#e8f2ec;--gold:#c9a64e;
+ --page:#f1f4f2;--surface:#fff;--surface-2:#f7f9f7;--ink:#24332b;--muted:#758078;
+ --line:#e4eae5;--blue:#2876d2;--red:#d34c4c;--shadow:0 3px 14px rgba(22,54,37,.06);
+}
+body.dark{
+ --page:#111a15;--surface:#1b2921;--surface-2:#223229;--ink:#edf4ef;--muted:#a6b4aa;
+ --line:#34463a;--brand-soft:#263d30;--shadow:0 3px 14px rgba(0,0,0,.18);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.65}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.topbar{height:64px;position:sticky;top:0;z-index:40;background:var(--surface);border-bottom:1px solid var(--line);display:flex;align-items:center}
+.top-inner{width:min(1380px,96%);margin:auto;display:grid;grid-template-columns:250px minmax(180px,1fr) 250px;align-items:center;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand-logo{height:39px;width:39px;border-radius:12px;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:21px}
+.brand-title{font-weight:800;color:var(--brand);font-size:16px;line-height:1.3}
+.brand-sub{font-size:10px;color:var(--muted)}
+.searchbox{height:39px;background:var(--surface-2);border:1px solid var(--line);border-radius:22px;display:flex;align-items:center;gap:8px;padding:0 14px}
+.searchbox span{color:var(--muted)}
+.searchbox input{border:0;outline:0;background:transparent;color:var(--ink);width:100%;font-size:13px}
+.top-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px}
+.circle-btn{height:38px;min-width:38px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);border-radius:50%;display:grid;place-items:center;font-size:16px}
+.circle-btn:hover{border-color:var(--brand);color:var(--brand)}
+.profile-chip{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface-2);padding:5px 10px;border-radius:22px;font-size:12px}
+.avatar{width:35px;height:35px;border-radius:50%;background:#dcebe1;color:var(--brand-dark);display:grid;place-items:center;font-weight:800;flex:none}
+.layout{width:min(1380px,96%);margin:20px auto;display:grid;grid-template-columns:235px minmax(0,650px) 265px;gap:18px;align-items:start}
+.sidebar,.rightbar{position:sticky;top:82px;display:grid;gap:13px}
+.panel,.post,.composer,.welcome{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+.panel{padding:14px}
+.side-heading{font-size:11px;color:var(--muted);font-weight:700;margin:2px 8px 9px}
+.side-link{width:100%;display:flex;align-items:center;gap:11px;padding:10px;border-radius:9px;color:var(--ink);font-size:13px;border:0;background:transparent;text-align:right}
+.side-link:hover,.side-link.active{background:var(--brand-soft);color:var(--brand);font-weight:700}
+.side-icon{width:23px;text-align:center;font-size:17px}
+.side-note{font-size:11px;color:var(--muted);padding:8px 9px 0;line-height:1.8}
+.welcome{padding:16px;background:linear-gradient(135deg,var(--brand-dark),#1c7451);color:white;border:0}
+.welcome .mini{font-size:11px;color:#d6e9dd}
+.welcome h2{font-size:18px;margin:6px 0}
+.welcome p{font-size:11px;color:#e1eee5;margin:0}
+.welcome .welcome-mark{font-size:26px}
+.feed-head{display:flex;align-items:center;justify-content:space-between;margin:0 1px 12px}
+.feed-head h2{font-size:18px;margin:0}
+.feed-head span{font-size:11px;color:var(--muted)}
+.composer{padding:15px;margin-bottom:14px}
+.composer-top{display:flex;gap:10px;align-items:flex-start}
+.composer textarea{width:100%;min-height:75px;resize:vertical;border:0;outline:0;background:transparent;color:var(--ink);font-size:13px;padding:5px 0}
+.composer textarea::placeholder{color:var(--muted)}
+.composer-tools{border-top:1px solid var(--line);padding-top:11px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tool-group{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.tool-btn{border:1px solid var(--line);background:var(--surface-2);color:var(--muted);border-radius:8px;padding:7px 10px;font-size:11px}
+.tool-btn:hover{border-color:var(--brand);color:var(--brand)}
+.select-type{border:1px solid var(--line);border-radius:8px;padding:7px 9px;background:var(--surface-2);color:var(--ink);font-size:11px}
+.publish{border:0;border-radius:8px;padding:8px 17px;background:var(--brand);color:white;font-weight:700;font-size:12px}
+.publish:hover{background:var(--brand-dark)}
+.image-preview{display:none;margin:10px 0 0 45px;position:relative;width:max-content;max-width:calc(100% - 45px)}
+.image-preview.show{display:block}
+.image-preview img{display:block;max-width:100%;max-height:220px;border-radius:10px;border:1px solid var(--line)}
+.remove-image{position:absolute;top:6px;left:6px;border:0;border-radius:50%;width:27px;height:27px;background:#17231ddd;color:#fff}
+.feed-tabs{display:flex;gap:5px;padding:5px;background:var(--surface);border:1px solid var(--line);border-radius:11px;margin-bottom:13px;overflow:auto}
+.feed-tab{flex:1;white-space:nowrap;border:0;background:transparent;color:var(--muted);border-radius:8px;padding:9px 12px;font-size:12px}
+.feed-tab.active{background:var(--brand-soft);color:var(--brand);font-weight:700}
+.post{padding:15px;margin-bottom:13px}
+.post-head{display:flex;align-items:center;gap:9px}
+.post-meta{min-width:0;flex:1}
+.post-name{font-weight:700;font-size:12px}
+.post-time{font-size:10px;color:var(--muted)}
+.post-type{font-size:10px;color:var(--brand);background:var(--brand-soft);padding:3px 8px;border-radius:20px}
+.post-menu{border:0;background:transparent;color:var(--muted);font-size:19px}
+.post-text{font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere;margin:13px 0 10px}
+.post-image{width:100%;max-height:390px;object-fit:contain;background:var(--surface-2);border-radius:10px;border:1px solid var(--line)}
+.post-stats{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;padding:9px 2px;border-bottom:1px solid var(--line)}
+.post-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding-top:8px}
+.post-action{border:0;background:transparent;color:var(--muted);padding:8px 3px;border-radius:8px;font-size:11px}
+.post-action:hover{background:var(--surface-2);color:var(--brand)}
+.post-action.liked{color:var(--blue);font-weight:700}
+.comment-area{display:none;padding-top:10px}
+.comment-area.open{display:block}
+.comment-list{display:grid;gap:7px;margin-bottom:9px}
+.comment{background:var(--surface-2);border-radius:9px;padding:8px 10px;font-size:11px}
+.comment strong{color:var(--brand);margin-left:5px}
+.comment-form{display:flex;gap:7px}
+.comment-form input{min-width:0;flex:1;border:1px solid var(--line);border-radius:20px;padding:8px 12px;background:var(--surface-2);color:var(--ink);font-size:11px;outline:0}
+.comment-form button{border:0;background:var(--brand);color:#fff;border-radius:20px;padding:0 13px;font-size:11px}
+.right-title{font-size:13px;font-weight:800;margin:0 0 10px}
+.suggestion{padding:9px 0;border-bottom:1px solid var(--line)}
+.suggestion:last-child{border:0;padding-bottom:0}
+.suggestion strong{font-size:11px;display:block}
+.suggestion p{font-size:10px;color:var(--muted);margin:3px 0 7px}
+.suggestion a{font-size:10px;color:var(--brand);font-weight:700}
+.topic{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:11px}
+.topic:last-child{border:0}
+.topic small{color:var(--muted);white-space:nowrap}
+.rules{font-size:10px;color:var(--muted);line-height:1.9}
+.rules strong{color:var(--brand)}
+.future-panel{width:min(900px,96%);margin:0 auto 18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:15px;box-shadow:var(--shadow)}
+.future-panel h3{margin:0 0 5px;font-size:15px}
+.future-intro{margin:0 0 12px;color:var(--muted);font-size:11px}
+.future-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.future-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2)}
+.future-item strong{display:block;font-size:11px}
+.future-item small{display:block;color:var(--muted);font-size:10px;margin-top:2px}
+.not-ready{flex:none;background:#fff2d8;color:#815b13;border:1px solid #ecd9ae;border-radius:20px;padding:3px 8px;font-size:9px;font-weight:800}
+@media(max-width:600px){.future-grid{grid-template-columns:1fr}.future-panel{width:94%}}
+.empty{padding:30px 15px;text-align:center;color:var(--muted);font-size:12px}
+.footer{width:min(1380px,96%);margin:0 auto 25px;text-align:center;color:var(--muted);font-size:10px}
+.toast{position:fixed;bottom:18px;right:50%;transform:translate(50%,20px);opacity:0;visibility:hidden;transition:.2s;z-index:100;background:#183e2c;color:white;border-radius:10px;padding:10px 15px;font-size:12px;max-width:90%;box-shadow:0 6px 20px #0002}
+.toast.show{opacity:1;visibility:visible;transform:translate(50%,0)}
+@media(max-width:1080px){.layout{grid-template-columns:205px minmax(0,1fr)}.rightbar{display:none}.top-inner{grid-template-columns:220px minmax(120px,1fr) 190px}}
+@media(max-width:700px){
+ .topbar{height:58px}.top-inner{grid-template-columns:1fr auto;gap:8px;width:94%}
+ .brand-title{font-size:14px}.brand-sub{display:none}.brand-logo{width:35px;height:35px}
+ .searchbox{display:none}.top-actions{gap:5px}.profile-chip{padding:3px 7px}.profile-chip span:last-child{display:none}
+ .layout{width:94%;display:block;margin:12px auto}.sidebar{position:static;display:block;margin-bottom:12px}
+ .sidebar .panel{padding:7px;display:flex;overflow:auto;gap:4px}
+ .side-heading,.side-note,.sidebar .welcome{display:none}
+ .side-link{width:auto;white-space:nowrap;padding:8px 10px;font-size:11px;gap:6px}
+ .side-icon{font-size:15px}.feed-head{margin-top:10px}
+ .composer,.post{padding:12px}.post-text{font-size:12px}
+ .feed-tab{padding:8px 10px;font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+</style>
 </head>
-
 <body>
-
-<header>
-  <h2>🎓 ثانوية مسغوني</h2>
-  <a href="index.html">العودة إلى الموقع</a>
+<header class="topbar">
+ <div class="top-inner">
+  <a class="brand" href="index.html">
+   <span class="brand-logo">🎓</span>
+   <span><span class="brand-title">مجتمع مسغوني</span><span class="brand-sub">فضاء التلاميذ والتبادل المعرفي</span></span>
+  </a>
+  <label class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="ابحث في الملخصات والمناقشات..." aria-label="البحث في المنشورات"></label>
+  <div class="top-actions">
+   <button class="circle-btn" id="themeBtn" title="تغيير المظهر" aria-label="تغيير المظهر">◐</button>
+   <a class="profile-chip" href="#composer"><span class="avatar">ت</span><span>مساحة التلميذ</span></a>
+  </div>
+ </div>
 </header>
 
-<section class="hero">
-  <h1>فضاء التلاميذ</h1>
-  <p>مساحتك التعليمية للتعلم والتواصل ومشاركة المعرفة.</p>
-</section>
-
-<main class="container">
-
-  <div class="notice">
-    📢 <strong>مرحباً بك في فضاء التلاميذ!</strong>
-    <br>
-    ستجد هنا الخدمات التعليمية والموارد التي تساعدك على النجاح والتفوق.
+<div class="layout">
+ <aside class="sidebar">
+  <div class="welcome">
+   <div class="welcome-mark">📘</div><div class="mini">ثانوية المجاهد مسغوني محمد الصالح</div>
+   <h2>تعلّم، شارك، وناقش</h2><p>مجتمع مدرسي لتبادل المعرفة ومساعدة الزملاء.</p>
   </div>
-
-  <h2 class="section-title">الخدمات التعليمية</h2>
-
-  <div class="cards">
-
-    <div class="card">
-      <div class="emoji">📚</div>
-      <h3>المكتبة التعليمية</h3>
-      <p>ملخصات ودروس وتمارين لمختلف المستويات والمواد الدراسية.</p>
-      <button onclick="comingSoon()">استكشاف المكتبة</button>
-    </div>
-
-    <div class="card">
-      <div class="emoji">📝</div>
-      <h3>الفروض والاختبارات</h3>
-      <p>نماذج فروض واختبارات للمراجعة والتحضير الجيد.</p>
-      <button onclick="comingSoon()">عرض الاختبارات</button>
-    </div>
-
-    <div class="card">
-      <div class="emoji">🤝</div>
-      <h3>مشاركة الملخصات</h3>
-      <p>شارك ملخصاتك وملاحظاتك ليستفيد منها زملاؤك.</p>
-      <button onclick="comingSoon()">المشاركة</button>
-    </div>
-
-    <div class="card">
-      <div class="emoji">💬</div>
-      <h3>التواصل مع الإدارة</h3>
-      <p>إرسال اقتراحات أو استفسارات إلى إدارة المؤسسة.</p>
-      <button onclick="comingSoon()">تواصل معنا</button>
-    </div>
-
-    <div class="card">
-      <div class="emoji">📢</div>
-      <h3>إعلانات المؤسسة</h3>
-      <p>تابع آخر الأخبار والإعلانات والمستجدات المدرسية.</p>
-      <button onclick="comingSoon()">عرض الإعلانات</button>
-    </div>
-
-    <div class="card">
-      <div class="emoji">👤</div>
-      <h3>حساب التلميذ</h3>
-      <p>مساحة شخصية للتلميذ بعد إنشاء الحساب والموافقة عليه.</p>
-      <button onclick="comingSoon()">تسجيل الدخول</button>
-    </div>
-
+  <div class="panel">
+   <div class="side-heading">القائمة الرئيسية</div>
+   <button class="side-link active" data-filter="all"><span class="side-icon">🏠</span>آخر المنشورات</button>
+   <button class="side-link" data-filter="summary"><span class="side-icon">📚</span>الملخصات</button>
+   <button class="side-link" data-filter="discussion"><span class="side-icon">💬</span>المناقشات</button>
+   <button class="side-link" data-filter="suggestion"><span class="side-icon">💡</span>الاقتراحات</button>
+   <button class="side-link" data-filter="question"><span class="side-icon">❓</span>أسئلة التلاميذ</button>
+   <div class="side-heading" style="margin-top:13px">روابط المؤسسة</div>
+   <a class="side-link" href="index.html"><span class="side-icon">🌐</span>الموقع الرئيسي</a>
+   <a class="side-link" href="about.html"><span class="side-icon">🏫</span>عن الثانوية</a>
   </div>
+  <div class="panel">
+   <div class="side-heading">تنبيه الخصوصية</div>
+   <p class="side-note">لا تنشر رقم هاتفك أو عنوانك أو معلوماتك الشخصية. شارك محتوى دراسياً مناسباً فقط.</p>
+  </div>
+ </aside>
 
-  <section class="login">
-    <h2>🔐 نظام حسابات التلاميذ</h2>
-    <p>
-      سيتمكن التلاميذ من إنشاء حساباتهم أو الدخول بواسطة اسم المستخدم
-      وكلمة المرور. كما ستتمكن الإدارة من إدارة الحسابات والموافقة
-      على طلبات التسجيل.
-    </p>
+ <main>
+  <div class="feed-head"><h2>المنشورات</h2><span id="postCount">منشورات المجتمع</span></div>
+  <section class="composer" id="composer">
+   <div class="composer-top">
+    <div class="avatar">ت</div>
+    <textarea id="postText" maxlength="2000" placeholder="ماذا تريد أن تشارك مع زملائك؟ ملخص، سؤال، فكرة أو اقتراح..."></textarea>
+   </div>
+   <div class="image-preview" id="imagePreview">
+    <img id="previewImg" alt="معاينة الصورة المختارة">
+    <button class="remove-image" id="removeImage" type="button" aria-label="إزالة الصورة">×</button>
+   </div>
+   <div class="composer-tools">
+    <div class="tool-group">
+     <label class="tool-btn" for="imageInput">🖼️ إضافة صورة</label>
+     <input id="imageInput" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+     <select class="select-type" id="postType" aria-label="نوع المنشور">
+      <option value="summary">📚 ملخص دراسي</option>
+      <option value="discussion">💬 مناقشة</option>
+      <option value="suggestion">💡 اقتراح</option>
+      <option value="question">❓ سؤال</option>
+     </select>
+    </div>
+    <button class="publish" id="publishBtn" type="button">نشر المنشور</button>
+   </div>
+   <div style="font-size:10px;color:var(--muted);margin-top:8px">يمكنك الكتابة فقط أو إرفاق صورة. في هذه النسخة، النشر تجريبي ومحلي على جهازك فقط؛ الحفظ الدائم والمشاركة مع بقية التلاميذ غير جاهزين بعد.</div>
   </section>
 
-</main>
+  <nav class="feed-tabs" aria-label="تصنيف المنشورات">
+   <button class="feed-tab active" data-filter="all">الكل</button>
+   <button class="feed-tab" data-filter="summary">📚 ملخصات</button>
+   <button class="feed-tab" data-filter="discussion">💬 مناقشات</button>
+   <button class="feed-tab" data-filter="suggestion">💡 اقتراحات</button>
+   <button class="feed-tab" data-filter="question">❓ أسئلة</button>
+  </nav>
+  <section id="feed" aria-live="polite"></section>
+ </main>
 
-<footer>
-  <p>العلم والعمل أساس النجاح</p>
-  <p>© 2026 Lycée Mesgouni</p>
-</footer>
+ <aside class="rightbar">
+  <div class="panel">
+   <h3 class="right-title">💡 اقتراحات للمجتمع</h3>
+   <div class="suggestion"><strong>مجموعة مراجعة جماعية</strong><p>تنظيم مراجعة مشتركة قبل الفروض.</p><a href="#composer" data-prefill="أقترح إنشاء مجموعة مراجعة جماعية قبل الفروض.">ناقش الاقتراح ←</a></div>
+   <div class="suggestion"><strong>مكتبة ملخصات منظمة</strong><p>ترتيب الملخصات حسب المستوى والمادة.</p><a href="#composer" data-prefill="أقترح تنظيم مكتبة الملخصات حسب المستوى والمادة.">ناقش الاقتراح ←</a></div>
+   <div class="suggestion"><strong>سؤال الأسبوع</strong><p>اختيار سؤال دراسي ومشاركة الحلول.</p><a href="#composer" data-prefill="أقترح إطلاق سؤال دراسي كل أسبوع.">ناقش الاقتراح ←</a></div>
+  </div>
+  <div class="panel">
+   <h3 class="right-title">📌 مواضيع للنقاش</h3>
+   <div class="topic"><span>طرق تنظيم المراجعة</span><small>دراسة</small></div>
+   <div class="topic"><span>أفضل طريقة لحفظ الدروس</span><small>نصائح</small></div>
+   <div class="topic"><span>تبادل الملخصات</span><small>موارد</small></div>
+   <div class="topic"><span>اقتراحات لتطوير الثانوية</span><small>أفكار</small></div>
+  </div>
+  <div class="panel">
+   <h3 class="right-title">🛡️ قواعد المجتمع</h3>
+   <p class="rules"><strong>كن محترماً.</strong> ناقش الأفكار دون الإساءة للأشخاص.<br><strong>احمِ خصوصيتك.</strong> لا تنشر بياناتك الشخصية.<br><strong>تحقق قبل المشاركة.</strong> انشر محتوى دراسياً مفيداً.<br><strong>أبلغ عن المحتوى</strong> غير المناسب عند تفعيل الإشراف.</p>
+  </div>
+ </aside>
+</div>
 
-<script>
-  function comingSoon() {
-    alert("هذه الخدمة قيد التجهيز وستكون متاحة قريباً.");
+<section class="future-panel" aria-labelledby="futureTitle">
+ <h3 id="futureTitle">خدمات قيد التجهيز</h3>
+ <p class="future-intro">هذه الميزات جزء من خطة تطوير فضاء التلاميذ، لكنها غير مفعّلة حالياً لأنها تحتاج إلى ربط آمن بقاعدة البيانات وخدمات الخادم.</p>
+ <div class="future-grid">
+  <div class="future-item"><div><strong>👤 حسابات التلاميذ وتسجيل الدخول</strong><small>تسجيل ذاتي أو حساب تنشئه الإدارة باسم مستخدم.</small></div><span class="not-ready">غير جاهز بعد</span></div>
+  <div class="future-item"><div><strong>🪪 الملف الشخصي والصورة الشخصية</strong><small>الاسم والمستوى والقسم والصورة وفق صلاحيات الخصوصية.</small></div><span class="not-ready">غير جاهز بعد</span></div>
+  <div class="future-item"><div><strong>📝 حفظ المنشورات والتعليقات</strong><small>ستبقى المنشورات بعد تسجيل الخروج أو تغيير الجهاز.</small></div><span class="not-ready">غير جاهز بعد</span></div>
+  <div class="future-item"><div><strong>🖼️ رفع الصور والملفات</strong><small>تخزين آمن للصور مع تحديد النوع والحجم.</small></div><span class="not-ready">غير جاهز بعد</span></div>
+  <div class="future-item"><div><strong>🤝 متابعة الحسابات</strong><small>متابعة الزملاء وإظهار منشوراتهم.</small></div><span class="not-ready">غير جاهز بعد</span></div>
+  <div class="future-item"><div><strong>🔔 الإشعارات</strong><small>تنبيه عند وصول تعليق أو تفاعل أو إعلان.</small></div><span class="not-ready">غير جاهز بعد</span></div>
+  <div class="future-item"><div><strong>🚩 التبليغ عن منشور أو تعليق</strong><small>إرسال بلاغات للمراجعة من طرف الإدارة.</small></div><span class="not-ready">غير جاهز بعد</span></div>
+  <div class="future-item"><div><strong>🛡️ لوحة الإشراف والإدارة</strong><small>مراجعة المحتوى وإخفاؤه وإدارة الحسابات.</small></div><span class="not-ready">غير جاهز بعد</span></div>
+  <div class="future-item"><div><strong>🔎 البحث المتقدم والتصنيف حسب المستوى والمادة</strong><small>فلترة الملخصات حسب السنة والشعبة والمادة.</small></div><span class="not-ready">غير جاهز بعد</span></div>
+  <div class="future-item"><div><strong>📌 حفظ المنشورات والمفضلة</strong><small>حفظ الملخصات للرجوع إليها لاحقاً.</small></div><span class="not-ready">غير جاهز بعد</span></div>
+ </div>
+</section>
+<footer class="footer">© 2026 Lycée Mesgouni · مجتمع التلاميذ التعليمي · <a href="index.html">العودة إلى الموقع الرئيسي</a></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div><script>
+"use strict";
+
+const $=id=>document.getElementById(id);
+
+const typeNames={
+ summary:"ملخص دراسي",
+ discussion:"مناقشة",
+ suggestion:"اقتراح",
+ question:"سؤال"
+};
+
+const typeIcons={
+ summary:"📚",
+ discussion:"💬",
+ suggestion:"💡",
+ question:"❓"
+};
+
+let activeFilter="all";
+let selectedImage=null;
+let searchTerm="";
+
+const demoPosts=[
+ {
+  id:1,
+  name:"فريق فضاء التلاميذ",
+  initial:"ف",
+  type:"summary",
+  time:"منشور تجريبي",
+  text:"📘 مرحباً بكم في مجتمع تلاميذ ثانوية مسغوني!\n\nهنا يمكنكم تبادل الملخصات الدراسية، طرح الأسئلة، مناقشة الأفكار واقتراح مبادرات مفيدة للمؤسسة.\n\nهذه منشورات توضيحية للتصميم فقط، وليست منشورات حقيقية من التلاميذ. ستُحمّل المنشورات الحقيقية بعد ربط قاعدة البيانات.",
+  likes:4,
+  comments:[
+   {name:"إدارة الفضاء",text:"احرصوا على احترام قواعد المجتمع."}
+  ],
+  liked:false
+ },
+ {
+  id:2,
+  name:"تلميذ",
+  initial:"ت",
+  type:"discussion",
+  time:"منشور تجريبي",
+  text:"ما الطريقة التي تعتمدونها لتنظيم المراجعة قبل الفروض؟ شاركونا أفكاركم وتجاربكم الدراسية.",
+  likes:2,
+  comments:[],
+  liked:false
+ },
+ {
+  id:3,
+  name:"تلميذة",
+  initial:"ت",
+  type:"suggestion",
+  time:"منشور تجريبي",
+  text:"اقتراح: إنشاء مكتبة رقمية تجمع ملخصات السنوات الأولى والثانية والثالثة ثانوي، مع تصنيفها حسب المواد.",
+  likes:6,
+  comments:[],
+  liked:false
+ },
+ {
+  id:4,
+  name:"تلميذ",
+  initial:"ت",
+  type:"question",
+  time:"منشور تجريبي",
+  text:"هل يمكن تخصيص موضوع أسبوعي يشارك فيه التلاميذ أسئلتهم وإجاباتهم ليستفيد الجميع؟",
+  likes:1,
+  comments:[],
+  liked:false
+ }
+];
+
+let posts=[...demoPosts];
+let nextId=10;
+let toastTimer;
+
+function toast(message){
+ const el=$("toast");
+ el.textContent=message;
+ el.classList.add("show");
+
+ clearTimeout(toastTimer);
+
+ toastTimer=setTimeout(()=>{
+  el.classList.remove("show");
+ },3000);
+}
+
+function escapeHTML(value){
+ return String(value).replace(/[&<>"']/g,ch=>({
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#39;"
+ }[ch]));
+}
+
+function render(){
+
+ const filtered=posts.filter(p=>
+  (activeFilter==="all"||p.type===activeFilter)&&
+  (p.text.toLowerCase().includes(searchTerm)||
+   p.name.toLowerCase().includes(searchTerm))
+ );
+
+ $("postCount").textContent=filtered.length+" منشور";
+
+ if(!filtered.length){
+  $("feed").innerHTML=
+   '<div class="panel empty">لا توجد منشورات مطابقة حالياً. كن أول من يشارك فكرة أو ملخصاً!</div>';
+  return;
+ }
+
+ $("feed").innerHTML=filtered.map(p=>`
+ <article class="post" data-id="${p.id}">
+
+  <div class="post-head">
+   <div class="avatar">${escapeHTML(p.initial)}</div>
+
+   <div class="post-meta">
+    <div class="post-name">${escapeHTML(p.name)}</div>
+    <div class="post-time">${escapeHTML(p.time)}</div>
+   </div>
+
+   <span class="post-type">
+    ${typeIcons[p.type]} ${typeNames[p.type]}
+   </span>
+
+   <button class="post-menu"
+    type="button"
+    aria-label="خيارات المنشور"
+    title="خيارات">⋯</button>
+  </div>
+
+  <div class="post-text">${escapeHTML(p.text)}</div>
+
+  ${p.image?
+   `<img class="post-image" src="${p.image}" alt="صورة مرفقة بالمنشور">`
+   :""
   }
-</script>
 
+  <div class="post-stats">
+   <span>👍 ${p.likes} إعجاب</span>
+   <span>${p.comments.length} تعليق</span>
+  </div>
+
+  <div class="post-actions">
+   <button class="post-action ${p.liked?"liked":""}"
+    data-action="like"
+    type="button">
+    ${p.liked?"👍 أعجبني":"👍 إعجاب"}
+   </button>
+
+   <button class="post-action"
+    data-action="comment"
+    type="button">💬 تعليق</button>
+
+   <button class="post-action"
+    data-action="share"
+    type="button">↗ مشاركة</button>
+  </div>
+
+  <div class="comment-area" id="comments-${p.id}">
+
+   <div class="comment-list">
+    ${p.comments.map(c=>`
+     <div class="comment">
+      <strong>${escapeHTML(c.name)}</strong>
+      ${escapeHTML(c.text)}
+     </div>
+    `).join("")}
+   </div>
+
+   <form class="comment-form">
+    <input
+     name="comment"
+     maxlength="400"
+     placeholder="اكتب تعليقاً..."
+     aria-label="اكتب تعليقاً"
+     required>
+
+    <button type="submit">إرسال</button>
+   </form>
+
+  </div>
+ </article>
+ `).join("");
+}
+
+function setFilter(filter){
+
+ activeFilter=filter;
+
+ document.querySelectorAll("[data-filter]").forEach(el=>{
+  el.classList.toggle("active",el.dataset.filter===filter);
+ });
+
+ render();
+}
+
+document.querySelectorAll("[data-filter]").forEach(el=>{
+ el.addEventListener("click",()=>{
+  setFilter(el.dataset.filter);
+ });
+});
+
+$("searchInput").addEventListener("input",e=>{
+ searchTerm=e.target.value.trim().toLowerCase();
+ render();
+});
+
+$("imageInput").addEventListener("change",e=>{
+
+ const file=e.target.files&&e.target.files[0];
+
+ if(!file)return;
+
+ if(!["image/jpeg","image/png","image/webp"].includes(file.type)){
+  toast("اختر صورة بصيغة JPG أو PNG أو WebP.");
+  e.target.value="";
+  return;
+ }
+
+ if(file.size>5*1024*1024){
+  toast("حجم الصورة يجب ألا يتجاوز 5 ميغابايت.");
+  e.target.value="";
+  return;
+ }
+
+ const reader=new FileReader();
+
+ reader.onload=()=>{
+  selectedImage=reader.result;
+  $("previewImg").src=selectedImage;
+  $("imagePreview").classList.add("show");
+ };
+
+ reader.readAsDataURL(file);
+});
+
+function clearImage(){
+
+ selectedImage=null;
+
+ $("imageInput").value="";
+ $("previewImg").removeAttribute("src");
+ $("imagePreview").classList.remove("show");
+}
+
+$("removeImage").addEventListener("click",clearImage);
+
+$("publishBtn").addEventListener("click",()=>{
+
+ const text=$("postText").value.trim();
+ const type=$("postType").value;
+
+ if(!text&&!selectedImage){
+  toast("اكتب شيئاً أو أرفق صورة قبل النشر.");
+  return;
+ }
+
+ posts.unshift({
+  id:nextId++,
+  name:"منشور تجريبي",
+  initial:"ت",
+  type,
+  time:"الآن · محلي",
+  text,
+  image:selectedImage,
+  likes:0,
+  comments:[],
+  liked:false
+ });
+
+ $("postText").value="";
+
+ clearImage();
+
+ setFilter("all");
+
+ toast("أُضيف المنشور إلى المعاينة المحلية على هذا الجهاز.");
+});
+
+$("feed").addEventListener("click",async e=>{
+
+ const btn=e.target.closest("[data-action]");
+
+ if(!btn)return;
+
+ const article=btn.closest(".post");
+
+ const post=posts.find(p=>
+  p.id===Number(article.dataset.id)
+ );
+
+ if(!post)return;
+
+ const action=btn.dataset.action;
+
+ if(action==="like"){
+
+  post.liked=!post.liked;
+
+  post.likes+=post.liked?1:-1;
+
+  render();
+ }
+
+ if(action==="comment"){
+
+  const area=article.querySelector(".comment-area");
+
+  area.classList.toggle("open");
+
+  if(area.classList.contains("open")){
+   area.querySelector("input").focus();
+  }
+ }
+
+ if(action==="share"){
+
+  const shareText=post.text;
+
+  if(navigator.share){
+
+   try{
+    await navigator.share({
+     title:"من مجتمع تلاميذ مسغوني",
+     text:shareText
+    });
+   }catch(err){}
+
+  }else if(navigator.clipboard?.writeText){
+
+   try{
+    await navigator.clipboard.writeText(shareText);
+    toast("تم نسخ نص المنشور.");
+   }catch(err){
+    toast("تعذر النسخ من هذا المتصفح.");
+   }
+
+  }else{
+
+   toast("المشاركة ستتوفر بعد تفعيل النظام.");
+
+  }
+ }
+
+});
+
+$("feed").addEventListener("submit",e=>{
+
+ if(!e.target.matches(".comment-form"))return;
+
+ e.preventDefault();
+
+ const article=e.target.closest(".post");
+
+ const post=posts.find(p=>
+  p.id===Number(article.dataset.id)
+ );
+
+ const input=e.target.elements.comment;
+ const text=input.value.trim();
+
+ if(!text)return;
+
+ post.comments.push({
+  name:"تلميذ",
+  text
+ });
+
+ render();
+
+ const area=$("comments-"+post.id);
+
+ if(area)area.classList.add("open");
+
+});
+
+document.querySelectorAll("[data-prefill]").forEach(a=>{
+
+ a.addEventListener("click",()=>{
+
+  $("postText").value=a.dataset.prefill;
+  $("postType").value="suggestion";
+
+  setTimeout(()=>{
+   $("postText").focus();
+  },50);
+
+ });
+
+});
+
+try{
+
+ if(localStorage.getItem("mesgouni-community-theme")==="dark"){
+  document.body.classList.add("dark");
+ }
+
+}catch(e){}
+
+$("themeBtn").addEventListener("click",()=>{
+
+ document.body.classList.toggle("dark");
+
+ try{
+
+  localStorage.setItem(
+   "mesgouni-community-theme",
+   document.body.classList.contains("dark")?"dark":"light"
+  );
+
+ }catch(e){}
+
+});
+
+render();
+
+</script>
 </body>
 </html>
