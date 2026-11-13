@@ -2101,4 +2101,376 @@ img{display:block;max-width:100%}
 
     <div class="field">
      <label for="messageText" data-ar="رسالتك" data-fr="Votre message">رسالتك</label>
-     <textarea id="messageText" minlength="5" maxlength="2000" required placehold
+     <textarea id="messageText" minlength="5" maxlength="2000" required placeholder="اكتب رسالتك هنا..."></textarea>
+    </div>
+
+    <button class="btn btn-primary" type="submit" data-ar="إرسال الرسالة ←" data-fr="Envoyer le message ←">إرسال الرسالة ←</button>
+
+    <p class="form-note" data-ar="واجهة النموذج جاهزة، لكن إرسال الرسائل وحفظها لن يعمل حتى يتم ربط النموذج بقاعدة البيانات."
+       data-fr="Le formulaire est prêt visuellement, mais l’envoi et l’enregistrement nécessitent une connexion à la base de données.">
+     واجهة النموذج جاهزة، لكن إرسال الرسائل وحفظها لن يعمل حتى يتم ربط النموذج بقاعدة البيانات.
+    </p>
+
+   </form>
+
+  </div>
+ </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+ <div class="container">
+
+  <div class="footer-top">
+
+   <div>
+    <div class="footer-brand">
+     <span>✦</span>
+     <b data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</b>
+    </div>
+    <p data-ar="الموقع الرسمي لثانوية المجاهد مسغوني محمد الصالح. العلم والعمل أساس النجاح."
+       data-fr="Site officiel du Lycée du moudjahid Mesgouni Mohamed Salah. Le savoir et le travail, clés de la réussite.">
+     الموقع الرسمي لثانوية المجاهد مسغوني محمد الصالح. العلم والعمل أساس النجاح.
+    </p>
+   </div>
+
+   <div>
+    <h4 data-ar="روابط الموقع" data-fr="Navigation">روابط الموقع</h4>
+    <div class="footer-links">
+     <a href="#top" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a>
+     <a href="about.html" data-ar="عن المؤسسة" data-fr="Notre lycée">عن المؤسسة</a>
+     <a href="students.html" data-ar="فضاء التلاميذ" data-fr="Espace élèves">فضاء التلاميذ</a>
+    </div>
+   </div>
+
+   <div>
+    <h4 data-ar="اكتشف المزيد" data-fr="Découvrir">اكتشف المزيد</h4>
+    <div class="footer-links">
+     <a href="#services" data-ar="الخدمات" data-fr="Services">الخدمات</a>
+     <a href="#announcements" data-ar="الإعلانات" data-fr="Annonces">الإعلانات</a>
+     <a href="#resources" data-ar="الموارد" data-fr="Ressources">الموارد</a>
+     <a href="#contact" data-ar="تواصل معنا" data-fr="Contact">تواصل معنا</a>
+    </div>
+   </div>
+
+  </div>
+
+  <div class="footer-bottom">
+   <span>© 2026 Lycée Mesgouni</span>
+   <span data-ar="القسم: 1ج ع ت 2" data-fr="Classe : 1AS">القسم: 1ج ع ت 2</span>
+   <span data-ar="تطوير: مجد بن حرزالله وأيوب شبيرات" data-fr="Développement : Madjd Ben Harzallah et Ayoub Chibirat">تطوير: مجد بن حرزالله وأيوب شبيرات</span>
+  </div>
+
+ </div>
+</footer>
+
+<!-- BACK TO TOP -->
+
+<button class="backtop" id="backTop" aria-label="العودة إلى الأعلى">↑</button>
+
+<!-- NOTIFICATION -->
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+ <span class="toast-icon">✦</span>
+ <div>
+  <strong id="toastTitle">تنبيه</strong>
+  <p id="toastText">هذه الميزة قيد التجهيز.</p>
+ </div>
+</div>
+
+<!-- SEARCH -->
+
+<div class="search-overlay" id="searchOverlay">
+ <div class="search-box" role="dialog" aria-modal="true" aria-label="البحث في الموقع">
+  <h3 data-ar="ابحث في البوابة" data-fr="Rechercher sur le portail">ابحث في البوابة</h3>
+
+  <div class="search-input-wrap">
+   <span>⌕</span>
+   <input type="search" id="searchInput" placeholder="ابحث عن خدمة أو قسم..." autocomplete="off">
+  </div>
+
+  <div class="search-results" id="searchResults"></div>
+  <p class="search-hint" data-ar="اضغط على نتيجة للانتقال مباشرة إلى القسم المطلوب. اضغط Esc للإغلاق."
+     data-fr="Sélectionnez un résultat pour accéder directement à la rubrique. Appuyez sur Échap pour fermer.">
+   اضغط على نتيجة للانتقال مباشرة إلى القسم المطلوب. اضغط Esc للإغلاق.
+  </p>
+ </div>
+</div>
+
+<script>
+"use strict";
+
+/* ELEMENTS */
+
+const $ = id => document.getElementById(id);
+
+let lang = "ar";
+let toastTimer = null;
+
+/* THEME AND LANGUAGE */
+
+try{
+ if(localStorage.getItem("mesgouni-theme")==="dark"){
+  document.body.classList.add("dark");
+ }
+
+ if(localStorage.getItem("mesgouni-lang")==="fr"){
+  lang="fr";
+ }
+}catch(error){}
+
+function applyLanguage(){
+ document.documentElement.lang=lang;
+ document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+
+ document.querySelectorAll("[data-ar][data-fr]").forEach(element=>{
+  element.innerHTML=element.dataset[lang];
+ });
+
+ $("langBtn").textContent=lang==="ar"?"FR":"AR";
+
+ $("searchInput").placeholder=lang==="ar"
+  ?"ابحث عن خدمة أو قسم..."
+  :"Rechercher un service ou une rubrique...";
+}
+
+$("langBtn").addEventListener("click",()=>{
+ lang=lang==="ar"?"fr":"ar";
+
+ try{
+  localStorage.setItem("mesgouni-lang",lang);
+ }catch(error){}
+
+ applyLanguage();
+});
+
+/* DARK MODE */
+
+$("themeBtn").addEventListener("click",()=>{
+ document.body.classList.toggle("dark");
+
+ try{
+  localStorage.setItem(
+   "mesgouni-theme",
+   document.body.classList.contains("dark")?"dark":"light"
+  );
+ }catch(error){}
+});
+
+/* MOBILE MENU */
+
+$("menuBtn").addEventListener("click",()=>{
+ $("navLinks").classList.toggle("open");
+});
+
+$("navLinks").querySelectorAll("a").forEach(link=>{
+ link.addEventListener("click",()=>{
+  $("navLinks").classList.remove("open");
+ });
+});
+
+/* NAVBAR SCROLL */
+
+const navbar=$("navbar");
+
+function updateNavbar(){
+ navbar.classList.toggle("scrolled",window.scrollY>35);
+}
+
+window.addEventListener("scroll",updateNavbar,{passive:true});
+updateNavbar();
+
+/* TOAST */
+
+function showToast(title,message){
+ $("toastTitle").textContent=title;
+ $("toastText").textContent=message;
+
+ $("toast").classList.add("show");
+
+ clearTimeout(toastTimer);
+
+ toastTimer=setTimeout(()=>{
+  $("toast").classList.remove("show");
+ },4000);
+}
+
+/* SEARCH SYSTEM */
+
+const searchItems=[
+ {title:"فضاء التلاميذ",keywords:"تلاميذ ملخصات مناقشات الطلاب fiches élèves",url:"students.html"},
+ {title:"عن المؤسسة",keywords:"المؤسسة الثانوية المدرسة معلومات lycée établissement",url:"about.html"},
+ {title:"الخدمات",keywords:"الخدمات الرقمية أدوات خدمات services",url:"#services"},
+ {title:"الإعلانات المدرسية",keywords:"إعلانات أخبار مواعيد مستجدات annonces actualités",url:"#announcements"},
+ {title:"الموارد التعليمية",keywords:"موارد دروس تمارين اختبارات bibliothèque ressources",url:"#resources"},
+ {title:"السنة الأولى ثانوي",keywords:"1as الأولى ثانوي dzexams",url:"https://www.dzexams.com/ar/1as"},
+ {title:"السنة الثانية ثانوي",keywords:"2as الثانية ثانوي dzexams",url:"https://www.dzexams.com/ar/2as"},
+ {title:"السنة الثالثة ثانوي",keywords:"3as الثالثة ثانوي بكالوريا dzexams",url:"https://www.dzexams.com/ar/3as"},
+ {title:"الاقتراحات والملاحظات",keywords:"اقتراحات شكاوى ملاحظات تواصل contact",url:"#contact"},
+ {title:"التوجيه الجامعي",keywords:"توجيه جامعة orientation",url:"https://www.orientation-esi.dz/"}
+];
+
+function renderSearch(query=""){
+ const results=$("searchResults");
+ const normalized=query.trim().toLowerCase();
+
+ if(!normalized){
+  results.innerHTML='<div class="search-empty">اكتب كلمة للبحث في أقسام الموقع.</div>';
+  return;
+ }
+
+ const matches=searchItems.filter(item=>
+  (item.title+" "+item.keywords).toLowerCase().includes(normalized)
+ );
+
+ if(matches.length===0){
+  results.innerHTML='<div class="search-empty">لم يتم العثور على نتائج مطابقة.</div>';
+  return;
+ }
+
+ results.innerHTML="";
+
+ matches.forEach(item=>{
+  const link=document.createElement("a");
+  link.className="search-result";
+  link.href=item.url;
+
+  const title=document.createElement("span");
+  title.textContent=item.title;
+
+  const arrow=document.createElement("span");
+  arrow.textContent="←";
+
+  link.append(title,arrow);
+
+  link.addEventListener("click",()=>{
+   $("searchOverlay").classList.remove("open");
+   $("searchInput").value="";
+  });
+
+  results.appendChild(link);
+ });
+}
+
+function openSearch(){
+ $("searchOverlay").classList.add("open");
+ renderSearch("");
+ $("searchInput").focus();
+}
+
+$("searchBtn").addEventListener("click",openSearch);
+
+$("searchInput").addEventListener("input",event=>{
+ renderSearch(event.target.value);
+});
+
+$("searchOverlay").addEventListener("click",event=>{
+ if(event.target===$("searchOverlay")){
+  $("searchOverlay").classList.remove("open");
+ }
+});
+
+document.addEventListener("keydown",event=>{
+ if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==="k"){
+  event.preventDefault();
+  openSearch();
+ }
+
+ if(event.key==="Escape"){
+  $("searchOverlay").classList.remove("open");
+  $("navLinks").classList.remove("open");
+ }
+});
+
+/* CONTACT FORM NOTICE */
+
+$("suggestionForm").addEventListener("submit",event=>{
+ event.preventDefault();
+
+ showToast(
+  lang==="ar"?"النموذج غير مفعّل بعد":"Formulaire non activé",
+  lang==="ar"
+   ?"تم تجهيز الواجهة فقط. لن يتم إرسال رسالتك أو حفظها حتى يتم ربط النموذج بقاعدة البيانات."
+   :"L’interface est prête. Le message ne sera pas envoyé ni enregistré avant la connexion à la base de données."
+ );
+});
+
+/* BACK TO TOP */
+
+$("backTop").addEventListener("click",()=>{
+ window.scrollTo({top:0,behavior:"smooth"});
+});
+
+/* SCROLL PROGRESS */
+
+window.addEventListener("scroll",()=>{
+ const documentHeight=document.documentElement.scrollHeight-window.innerHeight;
+
+ const progress=documentHeight>0
+  ?(window.scrollY/documentHeight)*100
+  :0;
+
+ $("progress").style.width=progress+"%";
+
+ $("backTop").classList.toggle("show",window.scrollY>450);
+},{passive:true});
+
+/* REVEAL ANIMATIONS */
+
+if("IntersectionObserver" in window){
+
+ const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+   if(entry.isIntersecting){
+    entry.target.classList.add("visible");
+    observer.unobserve(entry.target);
+   }
+  });
+ },{threshold:.12});
+
+ document.querySelectorAll(".reveal").forEach(element=>{
+  observer.observe(element);
+ });
+
+}else{
+ document.querySelectorAll(".reveal").forEach(element=>{
+  element.classList.add("visible");
+ });
+}
+
+/* ACTIVE NAVIGATION */
+
+const sections=document.querySelectorAll("main section[id]");
+const navLinks=document.querySelectorAll(".nav-links a[href^='#']");
+
+if("IntersectionObserver" in window){
+ const sectionObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+   if(entry.isIntersecting){
+    navLinks.forEach(link=>{
+     link.classList.toggle(
+      "active",
+      link.getAttribute("href")==="#"+entry.target.id
+     );
+    });
+   }
+  });
+ },{rootMargin:"-30% 0px -60% 0px"});
+
+ sections.forEach(section=>{
+  sectionObserver.observe(section);
+ });
+}
+
+/* INITIALIZE */
+
+applyLanguage();
+renderSearch("");
+
+</script>
+
+</body>
+</html>
