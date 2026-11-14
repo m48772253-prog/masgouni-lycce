@@ -2,1271 +2,2246 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0c3d2d">
-  <meta name="description" content="تعرف على ثانوية المجاهد مسغوني محمد الصالح، رسالتها التعليمية ومرافقها وقيمها ورؤيتها.">
-  <meta property="og:title" content="من نحن | ثانوية مسغوني">
-  <meta property="og:description" content="العلم والعمل أساس النجاح">
-  <meta property="og:type" content="website">
-  <title>من نحن | ثانوية مسغوني</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --green: #145c43;
-      --deep: #0c3d2d;
-      --gold: #d9b45b;
-      --bg: #f4f8f5;
-      --surface: #ffffff;
-      --surface-2: #eaf2ec;
-      --text: #18352a;
-      --muted: #718078;
-      --border: rgba(20,92,67,.12);
-      --shadow: 0 18px 50px rgba(12,61,45,.09);
-      --nav-height: 78px;
-      --radius: 22px;
-    }
-
-    body.dark {
-      --bg: #101a16;
-      --surface: #17251e;
-      --surface-2: #203329;
-      --text: #edf5ef;
-      --muted: #a6b8ad;
-      --border: rgba(255,255,255,.09);
-      --shadow: 0 18px 50px rgba(0,0,0,.22);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 100px;
-    }
-
-    body {
-      font-family: 'Cairo', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.8;
-      overflow-x: hidden;
-      transition: background .25s ease, color .25s ease;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    img { display: block; max-width: 100%; }
-
-    button:focus-visible, a:focus-visible {
-      outline: 3px solid var(--gold);
-      outline-offset: 4px;
-    }
-
-    .skip-link {
-      position: absolute;
-      top: -60px;
-      right: 15px;
-      z-index: 9999;
-      background: var(--gold);
-      color: #17251e;
-      padding: 10px 18px;
-      border-radius: 10px;
-    }
-
-    .skip-link:focus { top: 10px; }
-
-    .reading-progress {
-      position: fixed;
-      top: 0;
-      right: 0;
-      height: 3px;
-      width: 0;
-      background: var(--gold);
-      z-index: 2000;
-      transition: width .08s linear;
-    }
-
-    /* Navigation */
-    .navbar {
-      height: var(--nav-height);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: color-mix(in srgb, var(--surface) 91%, transparent);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-    }
-
-    .nav-inner {
-      max-width: 1200px;
-      height: 100%;
-      margin: auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      min-width: max-content;
-    }
-
-    .brand-logo {
-      width: 46px;
-      height: 46px;
-      display: grid;
-      place-items: center;
-      border-radius: 15px;
-      background: var(--deep);
-      color: var(--gold);
-      font-size: 23px;
-    }
-
-    .brand-name {
-      font-size: 16px;
-      font-weight: 900;
-      color: var(--text);
-      line-height: 1.4;
-    }
-
-    .brand-name small {
-      display: block;
-      font-size: 10px;
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      padding: 10px 14px;
-      border-radius: 12px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-      transition: .2s ease;
-      white-space: nowrap;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--green);
-      background: var(--surface-2);
-    }
-
-    body.dark .nav-links a:hover,
-    body.dark .nav-links a.active { color: var(--gold); }
-
-    .nav-links .nav-cta {
-      background: var(--green);
-      color: white;
-      padding-inline: 18px;
-    }
-
-    .nav-links .nav-cta:hover {
-      background: var(--deep);
-      color: white;
-      transform: translateY(-2px);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .icon-btn {
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      border-radius: 12px;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      transition: .2s ease;
-    }
-
-    .icon-btn:hover {
-      border-color: var(--gold);
-      transform: translateY(-2px);
-    }
-
-    .menu-toggle { display: none; }
-
-    /* General */
-    .container {
-      width: min(1160px, calc(100% - 40px));
-      margin-inline: auto;
-    }
-
-    .section { padding: 90px 0; }
-
-    .section-heading {
-      max-width: 650px;
-      margin: 0 auto 42px;
-      text-align: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--green);
-      font-weight: 800;
-      font-size: 13px;
-      margin-bottom: 12px;
-    }
-
-    body.dark .eyebrow { color: var(--gold); }
-
-    .eyebrow::before {
-      content: "";
-      width: 22px;
-      height: 2px;
-      background: var(--gold);
-    }
-
-    .section-heading h2 {
-      font-size: clamp(25px, 4vw, 38px);
-      font-weight: 900;
-      line-height: 1.4;
-      margin-bottom: 12px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* Hero */
-    .hero {
-      position: relative;
-      min-height: 480px;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      background: var(--deep);
-      color: white;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(5,35,25,.78), rgba(5,35,25,.94)),
-        url('facade.jpg') center 45% / cover no-repeat;
-      transform: scale(1.01);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 1200px;
-      width: 100%;
-      margin: auto;
-      padding: 90px 24px;
-    }
-
-    .hero-tag {
-      display: inline-block;
-      color: var(--gold);
-      border: 1px solid rgba(217,180,91,.45);
-      padding: 6px 15px;
-      border-radius: 30px;
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 {
-      max-width: 760px;
-      font-size: clamp(32px, 5vw, 55px);
-      font-weight: 900;
-      line-height: 1.4;
-      margin-bottom: 18px;
-    }
-
-    .hero p {
-      max-width: 650px;
-      color: rgba(255,255,255,.78);
-      font-size: 16px;
-      margin-bottom: 28px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      padding: 12px 23px;
-      border-radius: 13px;
-      font-weight: 800;
-      font-size: 13px;
-      transition: .22s ease;
-      cursor: pointer;
-      border: 1px solid transparent;
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: #17251e;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(217,180,91,.22);
-    }
-
-    .btn-outline {
-      border-color: rgba(255,255,255,.45);
-      color: white;
-    }
-
-    .btn-outline:hover {
-      background: white;
-      color: var(--deep);
-    }
-
-    /* Intro */
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 55px;
-      align-items: center;
-    }
-
-    .intro-image {
-      position: relative;
-      min-height: 380px;
-    }
-
-    .intro-image img {
-      width: 100%;
-      height: 390px;
-      object-fit: cover;
-      border-radius: 26px;
-      box-shadow: var(--shadow);
-    }
-
-    .image-label {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      background: var(--surface);
-      color: var(--text);
-      padding: 13px 19px;
-      border-radius: 14px;
-      box-shadow: var(--shadow);
-      font-weight: 800;
-      font-size: 13px;
-    }
-
-    .intro-text h2 {
-      font-size: clamp(25px, 3vw, 35px);
-      font-weight: 900;
-      line-height: 1.5;
-      margin-bottom: 18px;
-    }
-
-    .intro-text p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
-
-    .intro-note {
-      border-right: 4px solid var(--gold);
-      padding: 13px 17px;
-      margin-top: 24px;
-      background: var(--surface-2);
-      border-radius: 0 13px 13px 0;
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    /* Values */
-    .values-section { background: var(--surface-2); }
-
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .value-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 28px 24px;
-      border-radius: var(--radius);
-      transition: transform .22s ease, box-shadow .22s ease;
-    }
-
-    .value-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow);
-    }
-
-    .value-icon {
-      width: 55px;
-      height: 55px;
-      display: grid;
-      place-items: center;
-      border-radius: 17px;
-      background: var(--surface-2);
-      color: var(--green);
-      font-size: 25px;
-      margin-bottom: 18px;
-    }
-
-    body.dark .value-icon { color: var(--gold); }
-
-    .value-card h3 {
-      font-size: 18px;
-      font-weight: 900;
-      margin-bottom: 9px;
-    }
-
-    .value-card p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* Vision */
-    .vision-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
-    }
-
-    .vision-card {
-      padding: 32px;
-      border-radius: var(--radius);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-
-    .vision-card .symbol {
-      font-size: 32px;
-      margin-bottom: 12px;
-    }
-
-    .vision-card h3 {
-      font-size: 21px;
-      margin-bottom: 10px;
-      font-weight: 900;
-    }
-
-    .vision-card p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* Gallery */
-    .gallery-section { background: var(--surface-2); }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr 1fr;
-      grid-template-rows: 210px 210px;
-      gap: 14px;
-    }
-
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 18px;
-      background: var(--surface);
-      cursor: pointer;
-      border: 0;
-      padding: 0;
-      text-align: inherit;
-    }
-
-    .gallery-item:first-child { grid-row: span 2; }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .4s ease;
-    }
-
-    .gallery-item:hover img { transform: scale(1.055); }
-
-    .gallery-item::after {
-      content: "عرض الصورة";
-      position: absolute;
-      inset: auto 0 0;
-      padding: 25px 15px 13px;
-      background: linear-gradient(transparent, rgba(0,0,0,.72));
-      color: white;
-      font-size: 12px;
-      font-weight: 800;
-      opacity: 0;
-      transition: opacity .2s ease;
-    }
-
-    .gallery-item:hover::after,
-    .gallery-item:focus-visible::after { opacity: 1; }
-
-    .gallery-placeholder {
-      display: grid;
-      place-items: center;
-      height: 100%;
-      color: var(--muted);
-      font-size: 13px;
-      padding: 20px;
-      background: var(--surface);
-    }
-
-    /* Modal */
-    .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 3000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      background: rgba(0,0,0,.88);
-    }
-
-    .modal.open { display: flex; }
-
-    .modal img {
-      max-width: min(100%, 1000px);
-      max-height: 82vh;
-      object-fit: contain;
-      border-radius: 12px;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 45px;
-      height: 45px;
-      border: 1px solid rgba(255,255,255,.4);
-      border-radius: 50%;
-      background: rgba(255,255,255,.12);
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    /* Closing banner */
-    .closing {
-      padding: 65px 24px;
-      background: var(--deep);
-      color: white;
-      text-align: center;
-    }
-
-    .closing h2 {
-      font-size: clamp(24px, 4vw, 35px);
-      font-weight: 900;
-      margin-bottom: 12px;
-    }
-
-    .closing p {
-      color: rgba(255,255,255,.72);
-      margin-bottom: 24px;
-      font-size: 14px;
-    }
-
-    /* Footer */
-    footer {
-      background: #092c20;
-      color: white;
-      padding: 45px 0 20px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      gap: 35px;
-      padding-bottom: 30px;
-    }
-
-    .footer-brand {
-      font-size: 20px;
-      font-weight: 900;
-      margin-bottom: 12px;
-    }
-
-    .footer-about {
-      color: rgba(255,255,255,.65);
-      font-size: 13px;
-      max-width: 340px;
-    }
-
-    .footer-col h3 {
-      font-size: 15px;
-      color: var(--gold);
-      margin-bottom: 14px;
-    }
-
-    .footer-col a {
-      display: block;
-      color: rgba(255,255,255,.7);
-      font-size: 13px;
-      margin: 8px 0;
-      transition: color .2s;
-    }
-
-    .footer-col a:hover { color: var(--gold); }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,.12);
-      padding-top: 18px;
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      color: rgba(255,255,255,.55);
-      font-size: 11px;
-    }
-
-    /* Utilities */
-    .back-top {
-      position: fixed;
-      bottom: 22px;
-      left: 22px;
-      width: 46px;
-      height: 46px;
-      border: 0;
-      border-radius: 15px;
-      background: var(--green);
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(10px);
-      transition: .2s ease;
-      z-index: 900;
-    }
-
-    .back-top.visible {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .toast {
-      position: fixed;
-      bottom: 25px;
-      right: 50%;
-      transform: translate(50%, 20px);
-      background: var(--deep);
-      color: white;
-      padding: 12px 22px;
-      border-radius: 12px;
-      font-size: 13px;
-      opacity: 0;
-      visibility: hidden;
-      transition: .25s ease;
-      z-index: 4000;
-      box-shadow: var(--shadow);
-      max-width: calc(100% - 30px);
-      text-align: center;
-    }
-
-    .toast.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translate(50%, 0);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity .55s ease, transform .55s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 950px) {
-      .nav-links {
-        position: absolute;
-        top: calc(100% + 8px);
-        right: 20px;
-        left: 20px;
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        padding: 14px;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        box-shadow: var(--shadow);
-      }
-
-      .nav-links.open { display: flex; }
-      .nav-links a { display: block; }
-      .menu-toggle { display: grid; }
-      .intro-grid { gap: 30px; }
-    }
-
-    @media (max-width: 700px) {
-      :root { --nav-height: 68px; }
-
-      .nav-inner { padding: 0 15px; gap: 10px; }
-      .brand-logo { width: 41px; height: 41px; }
-      .brand-name { font-size: 14px; }
-      .brand-name small { font-size: 9px; }
-      .nav-actions { gap: 5px; }
-      .icon-btn { width: 37px; height: 37px; }
-
-      .container { width: min(100% - 30px, 1160px); }
-      .section { padding: 65px 0; }
-      .hero { min-height: 440px; }
-      .hero-content { padding: 70px 22px; }
-      .hero p { font-size: 14px; }
-
-      .intro-grid,
-      .vision-grid { grid-template-columns: 1fr; }
-
-      .intro-image { min-height: auto; }
-      .intro-image img { height: 280px; }
-
-      .values-grid { grid-template-columns: 1fr; }
-      .value-card { padding: 23px; }
-
-      .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 220px 150px 150px;
-      }
-
-      .gallery-item:first-child {
-        grid-column: span 2;
-        grid-row: auto;
-      }
-
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .footer-grid > :first-child { grid-column: span 2; }
-    }
-
-    @media (max-width: 400px) {
-      .brand-name { max-width: 125px; white-space: normal; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-grid > :first-child { grid-column: auto; }
-      .gallery-grid { grid-template-rows: 190px 130px 130px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-      }
-
-      .reveal { opacity: 1; transform: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b211b">
+<meta name="description" content="اكتشف ثانوية المجاهد مسغوني محمد الصالح، رسالتها التربوية وقيمها ومرافقها ورؤيتها التعليمية.">
+<meta name="keywords" content="ثانوية مسغوني, ثانوية المجاهد مسغوني محمد الصالح, التعليم, الجزائر">
+<title>عن الثانوية | ثانوية مسغوني</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root{
+ --green:#145c43;
+ --green2:#0c3d2d;
+ --green3:#08291f;
+ --gold:#d9b45b;
+ --gold2:#f0d58c;
+ --bg:#f4f8f5;
+ --surface:#ffffff;
+ --surface2:#edf3ef;
+ --text:#172c24;
+ --muted:#718078;
+ --border:rgba(20,92,67,.12);
+ --shadow:0 15px 45px rgba(13,55,39,.09);
+ --radius:25px;
+ --transition:.35s cubic-bezier(.2,.8,.2,1);
+}
+
+[data-theme="dark"]{
+ --bg:#081b14;
+ --surface:#10271e;
+ --surface2:#163329;
+ --text:#edf5ef;
+ --muted:#a5b8ad;
+ --border:rgba(255,255,255,.09);
+ --shadow:0 15px 45px rgba(0,0,0,.25);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{
+ scroll-behavior:smooth;
+ scroll-padding-top:100px;
+}
+
+body{
+ background:var(--bg);
+ color:var(--text);
+ font-family:'Cairo',sans-serif;
+ overflow-x:hidden;
+ transition:background .4s,color .4s;
+}
+
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+img{max-width:100%;display:block}
+
+::selection{background:var(--gold);color:#14251c}
+
+.container{
+ width:min(1200px,92%);
+ margin:auto;
+}
+
+.section{
+ padding:110px 0;
+ position:relative;
+}
+
+.section-heading{
+ text-align:center;
+ max-width:720px;
+ margin:0 auto 55px;
+}
+
+.eyebrow{
+ display:inline-flex;
+ align-items:center;
+ gap:9px;
+ color:var(--green);
+ background:rgba(20,92,67,.08);
+ border:1px solid var(--border);
+ border-radius:50px;
+ padding:8px 17px;
+ font-size:12px;
+ font-weight:800;
+ margin-bottom:18px;
+}
+
+[data-theme="dark"] .eyebrow{color:var(--gold)}
+
+.section-heading h2{
+ font-size:clamp(27px,4vw,43px);
+ font-weight:900;
+ line-height:1.5;
+ margin-bottom:15px;
+}
+
+.section-heading h2 span{color:var(--green)}
+[data-theme="dark"] .section-heading h2 span{color:var(--gold)}
+
+.section-heading p{
+ color:var(--muted);
+ line-height:2.1;
+ font-size:14px;
+}
+
+/* LOADER */
+
+.loader{
+ position:fixed;
+ inset:0;
+ z-index:99999;
+ background:#0b211b;
+ display:grid;
+ place-items:center;
+ transition:.6s;
+}
+
+.loader.hide{
+ opacity:0;
+ visibility:hidden;
+}
+
+.loader-inner{text-align:center;color:white}
+
+.loader-logo{
+ width:65px;
+ height:65px;
+ margin:auto auto 18px;
+ border:1px solid rgba(217,180,91,.6);
+ border-radius:20px;
+ display:grid;
+ place-items:center;
+ color:var(--gold);
+ font-size:28px;
+ animation:loaderPulse 1.5s infinite;
+}
+
+.loader-line{
+ width:150px;
+ height:3px;
+ background:#29493b;
+ margin:20px auto;
+ overflow:hidden;
+ border-radius:20px;
+}
+
+.loader-line:after{
+ content:"";
+ display:block;
+ width:45%;
+ height:100%;
+ background:var(--gold);
+ animation:load 1.1s infinite;
+}
+
+@keyframes load{
+ from{transform:translateX(180%)}
+ to{transform:translateX(-300%)}
+}
+
+@keyframes loaderPulse{
+ 50%{transform:scale(1.08);box-shadow:0 0 30px #d9b45b44}
+}
+
+/* READING PROGRESS */
+
+.reading-progress{
+ position:fixed;
+ top:0;
+ right:0;
+ height:3px;
+ width:0;
+ background:linear-gradient(90deg,var(--gold),#fff0b5);
+ z-index:10001;
+ box-shadow:0 0 12px var(--gold);
+}
+
+/* NAVBAR */
+
+.navbar{
+ position:fixed;
+ top:0;
+ right:0;
+ left:0;
+ z-index:1000;
+ height:82px;
+ transition:var(--transition);
+}
+
+.navbar.scrolled{
+ background:rgba(8,33,24,.94);
+ backdrop-filter:blur(18px);
+ border-bottom:1px solid rgba(255,255,255,.09);
+ height:72px;
+}
+
+.nav-inner{
+ height:100%;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:20px;
+}
+
+.brand{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ color:white;
+ flex-shrink:0;
+}
+
+.brand-logo{
+ width:46px;
+ height:46px;
+ border:1px solid rgba(217,180,91,.6);
+ border-radius:15px;
+ display:grid;
+ place-items:center;
+ color:var(--gold);
+ font-size:20px;
+ background:rgba(217,180,91,.08);
+}
+
+.brand-text strong{
+ display:block;
+ font-size:15px;
+ font-weight:900;
+}
+
+.brand-text small{
+ font-family:'Outfit',sans-serif;
+ color:#c7d5cc;
+ font-size:10px;
+ letter-spacing:1px;
+}
+
+.nav-links{
+ display:flex;
+ align-items:center;
+ gap:24px;
+ list-style:none;
+}
+
+.nav-links a{
+ color:#e0eae3;
+ font-size:12px;
+ font-weight:700;
+ transition:.3s;
+}
+
+.nav-links a:hover{color:var(--gold)}
+
+.nav-actions{
+ display:flex;
+ align-items:center;
+ gap:9px;
+}
+
+.icon-btn{
+ width:40px;
+ height:40px;
+ border:1px solid rgba(255,255,255,.17);
+ border-radius:13px;
+ background:rgba(255,255,255,.07);
+ color:white;
+ cursor:pointer;
+ transition:.3s;
+}
+
+.icon-btn:hover{
+ background:var(--gold);
+ color:#13281e;
+ transform:translateY(-3px);
+}
+
+.menu-btn{display:none}
+
+.home-top{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:12px;
+ width:100%;
+ min-height:52px;
+ background:linear-gradient(110deg,#d9b45b,#f0d58c);
+ color:#173326;
+ border:0;
+ border-radius:13px;
+ font-size:14px;
+ font-weight:900;
+ margin-top:105px;
+ margin-bottom:20px;
+ cursor:pointer;
+ transition:var(--transition);
+ box-shadow:0 8px 25px rgba(217,180,91,.18);
+}
+
+.home-top:hover{
+ transform:translateY(-4px);
+ box-shadow:0 15px 35px rgba(217,180,91,.3);
+}
+
+/* HERO */
+
+.hero{
+ min-height:670px;
+ position:relative;
+ display:flex;
+ align-items:center;
+ overflow:hidden;
+ background:#0b211b;
+ color:white;
+}
+
+.hero-bg{
+ position:absolute;
+ inset:0;
+ background:
+ linear-gradient(90deg,rgba(5,25,18,.88),rgba(5,25,18,.48)),
+ linear-gradient(0deg,rgba(5,25,18,.85),transparent 70%),
+ url("facade.jpg") center/cover no-repeat;
+ transform:scale(1.03);
+ animation:heroZoom 18s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom{
+ to{transform:scale(1.12)}
+}
+
+.hero:after{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:radial-gradient(circle at 15% 40%,rgba(217,180,91,.16),transparent 35%);
+ pointer-events:none;
+}
+
+.hero-content{
+ position:relative;
+ z-index:2;
+ padding:80px 0 100px;
+ max-width:800px;
+}
+
+.hero-label{
+ display:inline-flex;
+ align-items:center;
+ gap:10px;
+ padding:9px 17px;
+ border:1px solid rgba(217,180,91,.5);
+ background:rgba(217,180,91,.09);
+ border-radius:50px;
+ color:var(--gold2);
+ font-size:12px;
+ font-weight:700;
+ margin-bottom:25px;
+ backdrop-filter:blur(10px);
+}
+
+.hero-label i{font-size:9px}
+
+.hero h1{
+ font-size:clamp(35px,6vw,70px);
+ font-weight:900;
+ line-height:1.4;
+ margin-bottom:20px;
+}
+
+.hero h1 span{
+ color:var(--gold);
+ display:block;
+}
+
+.hero-desc{
+ max-width:620px;
+ line-height:2.3;
+ color:#d2ded6;
+ font-size:15px;
+ margin-bottom:32px;
+}
+
+.hero-actions{
+ display:flex;
+ flex-wrap:wrap;
+ gap:13px;
+}
+
+.btn{
+ min-height:51px;
+ padding:0 24px;
+ display:inline-flex;
+ justify-content:center;
+ align-items:center;
+ gap:11px;
+ border-radius:13px;
+ font-weight:800;
+ font-size:13px;
+ cursor:pointer;
+ transition:var(--transition);
+ border:1px solid transparent;
+}
+
+.btn-gold{
+ background:var(--gold);
+ color:#173326;
+}
+
+.btn-gold:hover{
+ transform:translateY(-5px);
+ box-shadow:0 10px 25px #d9b45b44;
+}
+
+.btn-outline{
+ color:white;
+ border-color:rgba(255,255,255,.35);
+ background:rgba(255,255,255,.07);
+ backdrop-filter:blur(10px);
+}
+
+.btn-outline:hover{
+ border-color:var(--gold);
+ color:var(--gold);
+}
+
+.hero-scroll{
+ position:absolute;
+ bottom:25px;
+ left:50%;
+ transform:translateX(-50%);
+ color:#d7e1d9;
+ font-size:11px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ gap:10px;
+ z-index:3;
+}
+
+.hero-scroll i{animation:scrollDown 1.5s infinite}
+
+@keyframes scrollDown{
+ 50%{transform:translateY(7px)}
+}
+
+/* INTRO */
+
+.intro-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:65px;
+ align-items:center;
+}
+
+.intro-visual{
+ position:relative;
+ min-height:420px;
+}
+
+.intro-image{
+ position:absolute;
+ inset:0 0 35px 35px;
+ border-radius:30px;
+ overflow:hidden;
+ background:#123d2c;
+ box-shadow:var(--shadow);
+}
+
+.intro-image img{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ transition:1s;
+}
+
+.intro-image:hover img{transform:scale(1.07)}
+
+.intro-image:after{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:linear-gradient(0deg,#0b211b77,transparent);
+}
+
+.intro-decoration{
+ position:absolute;
+ bottom:0;
+ left:0;
+ width:155px;
+ height:155px;
+ border-radius:25px;
+ border:2px solid var(--gold);
+ z-index:2;
+ pointer-events:none;
+}
+
+.intro-badge{
+ position:absolute;
+ z-index:3;
+ right:-10px;
+ bottom:65px;
+ background:var(--surface);
+ border:1px solid var(--border);
+ box-shadow:var(--shadow);
+ padding:17px 22px;
+ border-radius:17px;
+}
+
+.intro-badge strong{
+ display:block;
+ color:var(--green);
+ font-size:15px;
+}
+
+[data-theme="dark"] .intro-badge strong{color:var(--gold)}
+
+.intro-badge small{
+ color:var(--muted);
+ font-size:11px;
+}
+
+.intro-content h2{
+ font-size:clamp(26px,4vw,40px);
+ font-weight:900;
+ line-height:1.5;
+ margin-bottom:20px;
+}
+
+.intro-content h2 span{color:var(--green)}
+[data-theme="dark"] .intro-content h2 span{color:var(--gold)}
+
+.intro-content p{
+ color:var(--muted);
+ line-height:2.25;
+ font-size:14px;
+ margin-bottom:16px;
+}
+
+.intro-points{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:13px;
+ margin-top:27px;
+}
+
+.intro-point{
+ display:flex;
+ align-items:center;
+ gap:11px;
+ font-size:12px;
+ font-weight:800;
+}
+
+.intro-point i{
+ width:35px;
+ height:35px;
+ display:grid;
+ place-items:center;
+ color:var(--green);
+ background:rgba(20,92,67,.09);
+ border-radius:11px;
+}
+
+[data-theme="dark"] .intro-point i{color:var(--gold)}
+
+/* VALUES */
+
+.values-section{
+ background:var(--surface2);
+ overflow:hidden;
+}
+
+.values-grid{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:18px;
+}
+
+.value-card{
+ position:relative;
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:22px;
+ padding:29px 23px;
+ overflow:hidden;
+ transition:var(--transition);
+}
+
+.value-card:before{
+ content:"";
+ position:absolute;
+ top:0;
+ right:0;
+ width:0;
+ height:4px;
+ background:var(--gold);
+ transition:.5s;
+}
+
+.value-card:hover{
+ transform:translateY(-10px);
+ box-shadow:var(--shadow);
+}
+
+.value-card:hover:before{width:100%}
+
+.value-icon{
+ width:55px;
+ height:55px;
+ display:grid;
+ place-items:center;
+ background:rgba(20,92,67,.09);
+ color:var(--green);
+ border-radius:17px;
+ font-size:21px;
+ margin-bottom:21px;
+ transition:.4s;
+}
+
+[data-theme="dark"] .value-icon{color:var(--gold)}
+
+.value-card:hover .value-icon{
+ background:var(--green);
+ color:white;
+ transform:rotate(-8deg);
+}
+
+.value-card h3{
+ font-size:16px;
+ margin-bottom:10px;
+}
+
+.value-card p{
+ color:var(--muted);
+ font-size:12px;
+ line-height:2;
+}
+
+/* BENTO */
+
+.bento-grid{
+ display:grid;
+ grid-template-columns:1.2fr .8fr .8fr;
+ grid-template-rows:220px 220px;
+ gap:17px;
+}
+
+.bento-card{
+ position:relative;
+ overflow:hidden;
+ border-radius:23px;
+ background:#123c2b;
+ color:white;
+ isolation:isolate;
+}
+
+.bento-card:first-child{grid-row:span 2}
+
+.bento-card img{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ transition:1s;
+}
+
+.bento-card:after{
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:0;
+ background:linear-gradient(0deg,rgba(5,23,16,.95),rgba(5,23,16,.02) 80%);
+}
+
+.bento-card:hover img{
+ transform:scale(1.09);
+}
+
+.bento-info{
+ position:absolute;
+ bottom:0;
+ right:0;
+ left:0;
+ z-index:2;
+ padding:24px;
+}
+
+.bento-info small{
+ color:var(--gold);
+ font-size:10px;
+ font-weight:800;
+}
+
+.bento-info h3{
+ font-size:19px;
+ margin:7px 0;
+}
+
+.bento-info p{
+ font-size:11px;
+ color:#d5e2d9;
+ line-height:1.9;
+}
+
+.bento-arrow{
+ position:absolute;
+ top:17px;
+ left:17px;
+ width:36px;
+ height:36px;
+ display:grid;
+ place-items:center;
+ background:#ffffff25;
+ border:1px solid #ffffff55;
+ border-radius:50%;
+ z-index:3;
+ transition:.3s;
+}
+
+.bento-card:hover .bento-arrow{
+ background:var(--gold);
+ color:#183526;
+ transform:rotate(-40deg);
+}
+
+/* GALLERY */
+
+.gallery-section{
+ background:var(--surface2);
+}
+
+.gallery-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:20px;
+}
+
+.gallery-card{
+ position:relative;
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:23px;
+ overflow:hidden;
+ cursor:pointer;
+ transition:var(--transition);
+}
+
+.gallery-card:hover{
+ transform:translateY(-8px);
+ box-shadow:var(--shadow);
+}
+
+.gallery-image{
+ height:220px;
+ overflow:hidden;
+ position:relative;
+}
+
+.gallery-image img{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ transition:.7s;
+}
+
+.gallery-card:hover .gallery-image img{
+ transform:scale(1.1);
+}
+
+.gallery-image:after{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:linear-gradient(0deg,#0004,transparent);
+}
+
+.gallery-open{
+ position:absolute;
+ top:15px;
+ left:15px;
+ width:39px;
+ height:39px;
+ display:grid;
+ place-items:center;
+ border-radius:12px;
+ background:#ffffffdf;
+ color:var(--green);
+ z-index:2;
+ transition:.3s;
+}
+
+.gallery-card:hover .gallery-open{
+ background:var(--gold);
+ transform:rotate(-10deg);
+}
+
+.gallery-info{padding:21px}
+
+.gallery-info h3{
+ font-size:16px;
+ margin-bottom:8px;
+}
+
+.gallery-info p{
+ font-size:12px;
+ color:var(--muted);
+ line-height:2;
+}
+
+/* TIMELINE */
+
+.timeline{
+ max-width:850px;
+ margin:auto;
+ position:relative;
+}
+
+.timeline:before{
+ content:"";
+ position:absolute;
+ right:20px;
+ top:12px;
+ bottom:12px;
+ width:2px;
+ background:linear-gradient(var(--gold),var(--green),transparent);
+}
+
+.timeline-item{
+ position:relative;
+ padding:0 65px 40px 0;
+}
+
+.timeline-dot{
+ position:absolute;
+ right:8px;
+ top:6px;
+ width:27px;
+ height:27px;
+ display:grid;
+ place-items:center;
+ border-radius:50%;
+ background:var(--gold);
+ color:#193526;
+ border:5px solid var(--bg);
+ font-size:8px;
+ box-shadow:0 0 0 1px var(--gold);
+}
+
+.timeline-content{
+ padding:23px 25px;
+ border:1px solid var(--border);
+ border-radius:19px;
+ background:var(--surface);
+ transition:.3s;
+}
+
+.timeline-content:hover{
+ transform:translateX(-7px);
+ box-shadow:var(--shadow);
+}
+
+.timeline-content small{
+ color:var(--green);
+ font-weight:900;
+ font-size:11px;
+}
+
+[data-theme="dark"] .timeline-content small{color:var(--gold)}
+
+.timeline-content h3{
+ font-size:17px;
+ margin:8px 0;
+}
+
+.timeline-content p{
+ color:var(--muted);
+ font-size:12px;
+ line-height:2;
+}
+
+/* EDUCATION AREAS */
+
+.areas-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:17px;
+}
+
+.area-card{
+ background:var(--surface);
+ border:1px solid var(--border);
+ padding:26px;
+ border-radius:22px;
+ transition:var(--transition);
+}
+
+.area-card:hover{
+ transform:translateY(-7px);
+ border-color:var(--gold);
+ box-shadow:var(--shadow);
+}
+
+.area-top{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:17px;
+}
+
+.area-icon{
+ width:48px;
+ height:48px;
+ display:grid;
+ place-items:center;
+ background:var(--surface2);
+ color:var(--green);
+ border-radius:14px;
+ font-size:19px;
+}
+
+[data-theme="dark"] .area-icon{color:var(--gold)}
+
+.area-number{
+ font-family:'Outfit';
+ font-size:24px;
+ color:var(--gold);
+ font-weight:800;
+}
+
+.area-card h3{
+ font-size:15px;
+ margin-bottom:9px;
+}
+
+.area-card p{
+ color:var(--muted);
+ font-size:12px;
+ line-height:2;
+}
+
+/* QUOTE */
+
+.quote-section{
+ padding:85px 0;
+ background:linear-gradient(120deg,#0a3022,#145c43);
+ color:white;
+ overflow:hidden;
+ position:relative;
+}
+
+.quote-section:before{
+ content:"❝";
+ position:absolute;
+ top:-80px;
+ right:5%;
+ color:#ffffff0d;
+ font-size:300px;
+ font-family:serif;
+}
+
+.quote-inner{
+ max-width:800px;
+ margin:auto;
+ text-align:center;
+ position:relative;
+ z-index:2;
+}
+
+.quote-icon{
+ color:var(--gold);
+ font-size:34px;
+ margin-bottom:20px;
+}
+
+.quote-inner h2{
+ font-size:clamp(21px,3.5vw,34px);
+ line-height:1.9;
+ font-weight:800;
+}
+
+.quote-inner p{
+ color:#c6d8cc;
+ font-size:12px;
+ margin-top:22px;
+}
+
+/* CTA */
+
+.cta-section{padding:90px 0}
+
+.cta-box{
+ position:relative;
+ overflow:hidden;
+ padding:55px 45px;
+ border-radius:30px;
+ background:linear-gradient(120deg,#0a3022,#145c43);
+ color:white;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:30px;
+}
+
+.cta-box:after{
+ content:"";
+ position:absolute;
+ width:300px;
+ height:300px;
+ border:1px solid #ffffff20;
+ border-radius:50%;
+ left:-80px;
+ top:-140px;
+ box-shadow:0 0 0 30px #ffffff08,0 0 0 60px #ffffff05;
+}
+
+.cta-content{position:relative;z-index:2}
+
+.cta-content h2{
+ font-size:clamp(22px,3vw,34px);
+ margin-bottom:12px;
+}
+
+.cta-content p{
+ color:#c9d9ce;
+ font-size:13px;
+ line-height:2;
+ max-width:570px;
+}
+
+.cta-actions{
+ position:relative;
+ z-index:2;
+ display:flex;
+ flex-wrap:wrap;
+ gap:12px;
+}
+
+/* BACK TO HOME BOTTOM */
+
+.bottom-home-wrap{
+ display:flex;
+ justify-content:center;
+ padding:0 0 65px;
+}
+
+.bottom-home{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:10px;
+ padding:11px 25px;
+ min-width:175px;
+ border-radius:8px;
+ color:white;
+ background:#16834f;
+ border:1px solid #16834f;
+ font-size:12px;
+ font-weight:800;
+ transition:var(--transition);
+ box-shadow:0 5px 16px #16834f25;
+}
+
+.bottom-home:hover{
+ background:#0e6139;
+ transform:translateY(-4px);
+ box-shadow:0 9px 23px #16834f44;
+}
+
+/* FOOTER */
+
+.footer{
+ background:#081b14;
+ color:white;
+ padding:65px 0 25px;
+}
+
+.footer-grid{
+ display:grid;
+ grid-template-columns:1.4fr .8fr .8fr;
+ gap:50px;
+ padding-bottom:40px;
+}
+
+.footer-brand p{
+ color:#aabeb1;
+ font-size:12px;
+ line-height:2.2;
+ max-width:380px;
+ margin-top:18px;
+}
+
+.footer h3{
+ font-size:14px;
+ color:var(--gold);
+ margin-bottom:20px;
+}
+
+.footer-links{
+ list-style:none;
+ display:grid;
+ gap:12px;
+}
+
+.footer-links a{
+ color:#b5c6ba;
+ font-size:12px;
+ transition:.3s;
+}
+
+.footer-links a:hover{
+ color:var(--gold);
+ padding-right:5px;
+}
+
+.footer-bottom{
+ border-top:1px solid #ffffff17;
+ padding-top:22px;
+ display:flex;
+ justify-content:space-between;
+ flex-wrap:wrap;
+ gap:15px;
+ color:#94a89a;
+ font-size:11px;
+}
+
+/* MODAL */
+
+.modal{
+ position:fixed;
+ inset:0;
+ z-index:10010;
+ background:rgba(3,15,10,.85);
+ backdrop-filter:blur(12px);
+ display:grid;
+ place-items:center;
+ padding:20px;
+ opacity:0;
+ visibility:hidden;
+ transition:.3s;
+}
+
+.modal.show{
+ opacity:1;
+ visibility:visible;
+}
+
+.modal-box{
+ width:min(700px,100%);
+ max-height:90vh;
+ overflow:auto;
+ background:var(--surface);
+ border-radius:24px;
+ position:relative;
+ transform:translateY(30px) scale(.97);
+ transition:.4s;
+}
+
+.modal.show .modal-box{
+ transform:translateY(0) scale(1);
+}
+
+.modal-image{
+ height:310px;
+ width:100%;
+ object-fit:cover;
+}
+
+.modal-content{padding:25px}
+
+.modal-content h3{
+ font-size:22px;
+ margin-bottom:10px;
+}
+
+.modal-content p{
+ color:var(--muted);
+ font-size:13px;
+ line-height:2.2;
+}
+
+.modal-close{
+ position:absolute;
+ top:15px;
+ left:15px;
+ width:42px;
+ height:42px;
+ border:0;
+ border-radius:13px;
+ background:#ffffffeb;
+ color:#123c2b;
+ cursor:pointer;
+ z-index:3;
+ font-size:18px;
+}
+
+/* TOAST */
+
+.toast{
+ position:fixed;
+ bottom:25px;
+ right:50%;
+ transform:translate(50%,100px);
+ background:#0d3022;
+ color:white;
+ padding:13px 22px;
+ border:1px solid #d9b45b66;
+ border-radius:13px;
+ z-index:11000;
+ font-size:12px;
+ box-shadow:var(--shadow);
+ opacity:0;
+ transition:.4s;
+}
+
+.toast.show{
+ transform:translate(50%,0);
+ opacity:1;
+}
+
+/* SCROLL TOP */
+
+.scroll-top{
+ position:fixed;
+ bottom:25px;
+ left:22px;
+ width:43px;
+ height:43px;
+ border:1px solid var(--gold);
+ background:var(--green2);
+ color:var(--gold);
+ border-radius:14px;
+ cursor:pointer;
+ z-index:900;
+ opacity:0;
+ visibility:hidden;
+ transform:translateY(15px);
+ transition:.3s;
+}
+
+.scroll-top.show{
+ opacity:1;
+ visibility:visible;
+ transform:translateY(0);
+}
+
+/* REVEAL */
+
+.reveal{
+ opacity:0;
+ transform:translateY(35px);
+ transition:opacity .8s,transform .8s;
+}
+
+.reveal.visible{
+ opacity:1;
+ transform:translateY(0);
+}
+
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* CURSOR GLOW */
+
+.cursor-glow{
+ position:fixed;
+ width:240px;
+ height:240px;
+ border-radius:50%;
+ pointer-events:none;
+ z-index:0;
+ background:radial-gradient(circle,rgba(217,180,91,.065),transparent 70%);
+ transform:translate(-50%,-50%);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:950px){
+ .nav-links{
+  position:absolute;
+  top:75px;
+  right:4%;
+  left:4%;
+  background:#0c2d20;
+  border:1px solid #ffffff18;
+  border-radius:18px;
+  padding:20px;
+  display:none;
+  flex-direction:column;
+  align-items:stretch;
+  gap:0;
+  box-shadow:0 15px 40px #0005;
+ }
+ .nav-links.open{display:flex}
+ .nav-links a{
+  display:block;
+  padding:13px 10px;
+ }
+ .menu-btn{display:grid;place-items:center}
+ .intro-grid{gap:35px}
+ .values-grid{grid-template-columns:repeat(2,1fr)}
+ .bento-grid{
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:250px 210px 210px;
+ }
+ .bento-card:first-child{grid-column:span 2;grid-row:auto}
+ .gallery-grid{grid-template-columns:repeat(2,1fr)}
+ .footer-grid{gap:30px}
+}
+
+@media(max-width:650px){
+ .section{padding:75px 0}
+ .container{width:91%}
+ .hero{min-height:620px}
+ .hero-content{padding:90px 0}
+ .hero h1{font-size:37px}
+ .hero-desc{font-size:13px}
+ .home-top{margin-top:95px}
+ .intro-grid{grid-template-columns:1fr}
+ .intro-visual{min-height:330px}
+ .intro-content{padding-top:15px}
+ .values-grid{gap:12px}
+ .value-card{padding:20px 15px}
+ .value-card h3{font-size:14px}
+ .value-card p{font-size:11px}
+ .bento-grid{
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:230px 180px 180px;
+  gap:11px;
+ }
+ .bento-card:first-child{grid-column:span 2}
+ .bento-info{padding:15px}
+ .bento-info h3{font-size:15px}
+ .bento-info p{font-size:10px}
+ .gallery-grid{grid-template-columns:1fr}
+ .gallery-image{height:220px}
+ .areas-grid{grid-template-columns:1fr 1fr}
+ .area-card{padding:19px 15px}
+ .area-card h3{font-size:13px}
+ .area-card p{font-size:11px}
+ .timeline-item{padding-right:48px}
+ .timeline:before{right:12px}
+ .timeline-dot{right:0}
+ .timeline-content{padding:18px}
+ .cta-box{
+  padding:35px 23px;
+  flex-direction:column;
+  align-items:flex-start;
+ }
+ .cta-actions{width:100%}
+ .cta-actions .btn{width:100%}
+ .footer-grid{grid-template-columns:1fr 1fr;gap:30px 20px}
+ .footer-brand{grid-column:span 2}
+ .footer-bottom{flex-direction:column;text-align:center}
+ .modal-image{height:220px}
+}
+
+@media(max-width:390px){
+ .brand-text strong{font-size:12px}
+ .brand-text small{font-size:9px}
+ .brand-logo{width:39px;height:39px}
+ .areas-grid{grid-template-columns:1fr}
+ .hero h1{font-size:32px}
+ .intro-points{grid-template-columns:1fr}
+}
+
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{
+  scroll-behavior:auto!important;
+  animation-duration:.01ms!important;
+  animation-iteration-count:1!important;
+  transition-duration:.01ms!important;
+ }
+ .reveal{opacity:1;transform:none}
+}
+</style>
 </head>
 
 <body>
-  <a class="skip-link" href="#main">تجاوز إلى المحتوى</a>
-  <div class="reading-progress" id="readingProgress"></div>
 
-  <header class="navbar">
-    <nav class="nav-inner" aria-label="التنقل الرئيسي">
-      <a href="index.html" class="brand" aria-label="العودة إلى الصفحة الرئيسية">
-        <span class="brand-logo">🎓</span>
-        <span class="brand-name">
-          ثانوية مسغوني
-          <small data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail">العلم والعمل أساس النجاح</small>
-        </span>
-      </a>
+<div class="loader" id="loader">
+ <div class="loader-inner">
+  <div class="loader-logo"><i class="fa-solid fa-graduation-cap"></i></div>
+  <strong>ثانوية مسغوني</strong>
+  <div class="loader-line"></div>
+  <small>نصنع المعرفة ونبني المستقبل</small>
+ </div>
+</div>
 
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a></li>
-        <li><a href="about.html" class="active" aria-current="page" data-ar="من نحن" data-fr="À propos">من نحن</a></li>
-        <li><a href="students.html" data-ar="فضاء التلاميذ" data-fr="Espace élèves">فضاء التلاميذ</a></li>
-        <li><a href="https://www.dzexams.com/" target="_blank" rel="noopener noreferrer" data-ar="الموارد التعليمية" data-fr="Ressources">الموارد التعليمية</a></li>
-        <li><a href="index.html#contact" data-ar="اتصل بنا" data-fr="Contact">اتصل بنا</a></li>
-        <li><a href="students.html" class="nav-cta" data-ar="اكتشف الفضاء" data-fr="Découvrir">اكتشف الفضاء</a></li>
-      </ul>
+<div class="reading-progress" id="readingProgress"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
 
-      <div class="nav-actions">
-        <button class="icon-btn" id="langBtn" type="button" aria-label="تغيير اللغة">FR</button>
-        <button class="icon-btn" id="themeBtn" type="button" aria-label="تغيير المظهر">☾</button>
-        <button class="icon-btn menu-toggle" id="menuToggle" type="button"
-          aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks">☰</button>
-      </div>
-    </nav>
-  </header>
+<!-- NAVBAR -->
 
-  <main id="main">
-    <section class="hero">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="hero-content">
-        <span class="hero-tag" data-ar="اكتشف مؤسستنا" data-fr="Découvrez notre établissement">اكتشف مؤسستنا</span>
-        <h1 data-ar="ثانوية المجاهد مسغوني محمد الصالح" data-fr="Lycée Moudjahid Mesgouni Mohamed Salah">ثانوية المجاهد مسغوني محمد الصالح</h1>
-        <p data-ar="مؤسسة تربوية، فضاء للتعلم وبناء المعرفة، حيث نؤمن بأن العلم والعمل أساس النجاح وصناعة المستقبل."
-          data-fr="Un établissement éducatif, un espace d’apprentissage et de savoir, où nous croyons que le savoir et le travail sont les clés de la réussite.">
-          مؤسسة تربوية، فضاء للتعلم وبناء المعرفة، حيث نؤمن بأن العلم والعمل أساس النجاح وصناعة المستقبل.
-        </p>
-        <div class="hero-buttons">
-          <a href="#identity" class="btn btn-primary" data-ar="تعرف على المؤسسة ↓" data-fr="Découvrir l’établissement ↓">تعرف على المؤسسة ↓</a>
-          <a href="students.html" class="btn btn-outline" data-ar="فضاء التلاميذ" data-fr="Espace élèves">فضاء التلاميذ</a>
-        </div>
-      </div>
-    </section>
+<header class="navbar" id="navbar">
+ <div class="container nav-inner">
 
-    <section class="section" id="identity">
-      <div class="container intro-grid">
-        <div class="intro-image reveal">
-          <img src="facade.jpg" alt="واجهة ثانوية المجاهد مسغوني محمد الصالح" loading="lazy" decoding="async"
-            onerror="this.style.display='none'; this.parentElement.style.background='var(--surface-2)'; this.parentElement.style.borderRadius='26px';">
-          <div class="image-label" data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</div>
-        </div>
+  <a href="index.html" class="brand">
+   <div class="brand-logo"><i class="fa-solid fa-graduation-cap"></i></div>
+   <div class="brand-text">
+    <strong>ثانوية مسغوني</strong>
+    <small>LYCÉE MESGOUNI</small>
+   </div>
+  </a>
 
-        <div class="intro-text reveal">
-          <span class="eyebrow" data-ar="هويتنا" data-fr="Notre identité">هويتنا</span>
-          <h2 data-ar="بيئة تعليمية تصنع المعرفة وتفتح آفاق المستقبل"
-            data-fr="Un environnement éducatif qui construit le savoir et ouvre les horizons de l’avenir">
-            بيئة تعليمية تصنع المعرفة وتفتح آفاق المستقبل
-          </h2>
-          <p data-ar="تُعد المؤسسة التعليمية فضاءً يجمع بين التعلم والتربية وتنمية القدرات، ويساهم في إعداد التلميذ علمياً وفكرياً واجتماعياً."
-            data-fr="Un établissement éducatif est un espace qui réunit apprentissage, éducation et développement des compétences.">
-            تُعد المؤسسة التعليمية فضاءً يجمع بين التعلم والتربية وتنمية القدرات، ويساهم في إعداد التلميذ علمياً وفكرياً واجتماعياً.
-          </p>
-          <p data-ar="وتقوم رسالة الثانوية على توفير مناخ مدرسي يساعد على اكتساب المعارف، وتنمية روح المسؤولية والانضباط، وتشجيع الاجتهاد والإبداع."
-            data-fr="La mission du lycée est de favoriser l’acquisition des connaissances, la responsabilité, la discipline et la créativité.">
-            وتقوم رسالة الثانوية على توفير مناخ مدرسي يساعد على اكتساب المعارف، وتنمية روح المسؤولية والانضباط، وتشجيع الاجتهاد والإبداع.
-          </p>
-          <div class="intro-note" data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail, clés de la réussite">
-            العلم والعمل أساس النجاح
-          </div>
-        </div>
-      </div>
-    </section>
+  <ul class="nav-links" id="navLinks">
+   <li><a href="index.html">الرئيسية</a></li>
+   <li><a href="#about">عن الثانوية</a></li>
+   <li><a href="#values">قيمنا</a></li>
+   <li><a href="#gallery">فضاءات التعلم</a></li>
+   <li><a href="#journey">المسار التعليمي</a></li>
+   <li><a href="#contact">تواصل</a></li>
+  </ul>
 
-    <section class="section values-section">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow" data-ar="ما نؤمن به" data-fr="Nos valeurs">ما نؤمن به</span>
-          <h2 data-ar="قيمنا التربوية" data-fr="Nos valeurs éducatives">قيمنا التربوية</h2>
-          <p data-ar="مبادئ تشكل أساس الحياة المدرسية وتوجه مسار التعلم."
-            data-fr="Des principes qui constituent la base de la vie scolaire et guident l’apprentissage.">
-            مبادئ تشكل أساس الحياة المدرسية وتوجه مسار التعلم.
-          </p>
-        </div>
-
-        <div class="values-grid">
-          <article class="value-card reveal">
-            <div class="value-icon">📚</div>
-            <h3 data-ar="التميز العلمي" data-fr="Excellence académique">التميز العلمي</h3>
-            <p data-ar="تشجيع الاجتهاد واكتساب المعرفة وتطوير المهارات الفكرية والعلمية."
-              data-fr="Encourager l’effort, l’acquisition des connaissances et le développement des compétences.">
-              تشجيع الاجتهاد واكتساب المعرفة وتطوير المهارات الفكرية والعلمية.
-            </p>
-          </article>
-
-          <article class="value-card reveal">
-            <div class="value-icon">🤝</div>
-            <h3 data-ar="الاحترام والتعاون" data-fr="Respect et coopération">الاحترام والتعاون</h3>
-            <p data-ar="ترسيخ الاحترام المتبادل والعمل الجماعي والتواصل الإيجابي داخل المؤسسة."
-              data-fr="Promouvoir le respect mutuel, le travail d’équipe et la communication positive.">
-              ترسيخ الاحترام المتبادل والعمل الجماعي والتواصل الإيجابي داخل المؤسسة.
-            </p>
-          </article>
-
-          <article class="value-card reveal">
-            <div class="value-icon">💡</div>
-            <h3 data-ar="الإبداع والابتكار" data-fr="Créativité et innovation">الإبداع والابتكار</h3>
-            <p data-ar="فتح المجال أمام الأفكار الجديدة وتنمية التفكير النقدي وحل المشكلات."
-              data-fr="Favoriser les nouvelles idées, la pensée critique et la résolution de problèmes.">
-              فتح المجال أمام الأفكار الجديدة وتنمية التفكير النقدي وحل المشكلات.
-            </p>
-          </article>
-
-          <article class="value-card reveal">
-            <div class="value-icon">🎯</div>
-            <h3 data-ar="الانضباط والمسؤولية" data-fr="Discipline et responsabilité">الانضباط والمسؤولية</h3>
-            <p data-ar="تعزيز الالتزام وتحمل المسؤولية واحترام القواعد المدرسية."
-              data-fr="Renforcer l’engagement, la responsabilité et le respect des règles scolaires.">
-              تعزيز الالتزام وتحمل المسؤولية واحترام القواعد المدرسية.
-            </p>
-          </article>
-
-          <article class="value-card reveal">
-            <div class="value-icon">🌱</div>
-            <h3 data-ar="التطور المستمر" data-fr="Développement continu">التطور المستمر</h3>
-            <p data-ar="السعي إلى تحسين التعلم وتطوير البيئة المدرسية ومواكبة المعرفة."
-              data-fr="Améliorer l’apprentissage et développer l’environnement scolaire.">
-              السعي إلى تحسين التعلم وتطوير البيئة المدرسية ومواكبة المعرفة.
-            </p>
-          </article>
-
-          <article class="value-card reveal">
-            <div class="value-icon">🌍</div>
-            <h3 data-ar="المواطنة الإيجابية" data-fr="Citoyenneté positive">المواطنة الإيجابية</h3>
-            <p data-ar="إعداد متعلم واعٍ بحقوقه وواجباته ومساهمته في المجتمع."
-              data-fr="Former un élève conscient de ses droits, devoirs et de son rôle dans la société.">
-              إعداد متعلم واعٍ بحقوقه وواجباته ومساهمته في المجتمع.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow" data-ar="رؤيتنا ورسالتنا" data-fr="Notre vision et mission">رؤيتنا ورسالتنا</span>
-          <h2 data-ar="نحو مستقبل أفضل" data-fr="Vers un meilleur avenir">نحو مستقبل أفضل</h2>
-          <p data-ar="التعليم ليس مجرد اكتساب للمعلومات، بل بناء للإنسان وتنمية لقدراته."
-            data-fr="L’éducation ne consiste pas seulement à acquérir des informations, mais à développer l’être humain.">
-            التعليم ليس مجرد اكتساب للمعلومات، بل بناء للإنسان وتنمية لقدراته.
-          </p>
-        </div>
-
-        <div class="vision-grid">
-          <article class="vision-card reveal">
-            <div class="symbol">🔭</div>
-            <h3 data-ar="رؤيتنا" data-fr="Notre vision">رؤيتنا</h3>
-            <p data-ar="المساهمة في بناء جيل متعلم وواعٍ، يمتلك المعارف والمهارات اللازمة لمواجهة تحديات المستقبل والمشاركة الإيجابية في المجتمع."
-              data-fr="Contribuer à former une génération instruite et consciente, dotée des compétences nécessaires pour relever les défis de l’avenir.">
-              المساهمة في بناء جيل متعلم وواعٍ، يمتلك المعارف والمهارات اللازمة لمواجهة تحديات المستقبل والمشاركة الإيجابية في المجتمع.
-            </p>
-          </article>
-
-          <article class="vision-card reveal">
-            <div class="symbol">🚀</div>
-            <h3 data-ar="رسالتنا" data-fr="Notre mission">رسالتنا</h3>
-            <p data-ar="دعم المسار التعليمي والتربوي للتلميذ، وتشجيع الاجتهاد والبحث والتفكير المستقل، في بيئة يسودها الاحترام والمسؤولية."
-              data-fr="Accompagner le parcours éducatif de l’élève et encourager l’effort, la recherche et la réflexion autonome.">
-              دعم المسار التعليمي والتربوي للتلميذ، وتشجيع الاجتهاد والبحث والتفكير المستقل، في بيئة يسودها الاحترام والمسؤولية.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section gallery-section" id="gallery">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow" data-ar="من داخل المؤسسة" data-fr="Au sein de l’établissement">من داخل المؤسسة</span>
-          <h2 data-ar="معرض الصور" data-fr="Galerie photos">معرض الصور</h2>
-          <p data-ar="مساحة لعرض صور المؤسسة ومرافقها وأنشطتها المدرسية."
-            data-fr="Un espace dédié aux photos de l’établissement, de ses espaces et de ses activités.">
-            مساحة لعرض صور المؤسسة ومرافقها وأنشطتها المدرسية.
-          </p>
-        </div>
-
-        <!-- ضع صور المؤسسة داخل مجلد الصور، ثم غيّر أسماء الملفات هنا -->
-        <div class="gallery-grid">
-          <button class="gallery-item reveal" type="button" data-image="facade.jpg" aria-label="عرض صورة واجهة الثانوية">
-            <img src="facade.jpg" alt="واجهة الثانوية" loading="lazy" decoding="async">
-          </button>
-
-          <button class="gallery-item reveal" type="button" data-image="school-1.jpg" aria-label="عرض صورة المؤسسة">
-            <img src="school-1.jpg" alt="صورة من المؤسسة" loading="lazy" decoding="async"
-              onerror="this.parentElement.innerHTML='<span class=&quot;gallery-placeholder&quot;>أضف صورة school-1.jpg هنا</span>'">
-          </button>
-
-          <button class="gallery-item reveal" type="button" data-image="school-2.jpg" aria-label="عرض صورة المؤسسة">
-            <img src="school-2.jpg" alt="صورة من المؤسسة" loading="lazy" decoding="async"
-              onerror="this.parentElement.innerHTML='<span class=&quot;gallery-placeholder&quot;>أضف صورة school-2.jpg هنا</span>'">
-          </button>
-
-          <button class="gallery-item reveal" type="button" data-image="school-3.jpg" aria-label="عرض صورة المؤسسة">
-            <img src="school-3.jpg" alt="صورة من المؤسسة" loading="lazy" decoding="async"
-              onerror="this.parentElement.innerHTML='<span class=&quot;gallery-placeholder&quot;>أضف صورة school-3.jpg هنا</span>'">
-          </button>
-
-          <button class="gallery-item reveal" type="button" data-image="school-4.jpg" aria-label="عرض صورة المؤسسة">
-            <img src="school-4.jpg" alt="صورة من المؤسسة" loading="lazy" decoding="async"
-              onerror="this.parentElement.innerHTML='<span class=&quot;gallery-placeholder&quot;>أضف صورة school-4.jpg هنا</span>'">
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <section class="closing">
-      <h2 data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail, clés de la réussite">العلم والعمل أساس النجاح</h2>
-      <p data-ar="معاً من أجل بيئة تعليمية أفضل ومستقبل واعد."
-        data-fr="Ensemble pour un meilleur environnement éducatif et un avenir prometteur.">
-        معاً من أجل بيئة تعليمية أفضل ومستقبل واعد.
-      </p>
-      <a href="students.html" class="btn btn-primary" data-ar="انتقل إلى فضاء التلاميذ" data-fr="Accéder à l’espace élèves">انتقل إلى فضاء التلاميذ</a>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-brand">🎓 ثانوية مسغوني</div>
-          <p class="footer-about" data-ar="الموقع الرقمي لثانوية المجاهد مسغوني محمد الصالح. فضاء للتعريف بالمؤسسة وتقريب الخدمات والمعلومات من الأسرة التربوية."
-            data-fr="Le portail numérique du lycée Moudjahid Mesgouni Mohamed Salah.">
-            الموقع الرقمي لثانوية المجاهد مسغوني محمد الصالح. فضاء للتعريف بالمؤسسة وتقريب الخدمات والمعلومات من الأسرة التربوية.
-          </p>
-        </div>
-
-        <div class="footer-col">
-          <h3 data-ar="روابط سريعة" data-fr="Liens rapides">روابط سريعة</h3>
-          <a href="index.html" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a>
-          <a href="about.html" data-ar="من نحن" data-fr="À propos">من نحن</a>
-          <a href="students.html" data-ar="فضاء التلاميذ" data-fr="Espace élèves">فضاء التلاميذ</a>
-        </div>
-
-        <div class="footer-col">
-          <h3 data-ar="مصادر تعليمية" data-fr="Ressources éducatives">مصادر تعليمية</h3>
-          <a href="https://www.dzexams.com/" target="_blank" rel="noopener noreferrer">DzExams</a>
-          <a href="https://orientation-esi.dz/" target="_blank" rel="noopener noreferrer">Orientation ESI</a>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <span>© 2026 Lycée Mesgouni</span>
-        <span>القسم: 1ج ع ت 2</span>
-        <span>تطوير: مجد بن حرزالله وأيوب شبيرات</span>
-      </div>
-    </div>
-  </footer>
-
-  <button class="back-top" id="backTop" type="button" aria-label="العودة إلى الأعلى">↑</button>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <div class="modal" id="imageModal" role="dialog" aria-modal="true" aria-label="عرض الصورة">
-    <button class="modal-close" id="modalClose" type="button" aria-label="إغلاق">×</button>
-    <img id="modalImage" src="" alt="صورة مكبرة من معرض المؤسسة">
+  <div class="nav-actions">
+   <button class="icon-btn" id="themeToggle" aria-label="تغيير المظهر">
+    <i class="fa-solid fa-moon"></i>
+   </button>
+   <button class="icon-btn menu-btn" id="menuBtn" aria-label="فتح القائمة">
+    <i class="fa-solid fa-bars"></i>
+   </button>
   </div>
 
-  <script>
-    (() => {
-      "use strict";
+ </div>
+</header>
 
-      const $ = (selector, root = document) => root.querySelector(selector);
-      const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+<!-- LARGE HOME BUTTON -->
 
-      const body = document.body;
-      const nav = $("#navLinks");
-      const menuToggle = $("#menuToggle");
-      const themeBtn = $("#themeBtn");
-      const langBtn = $("#langBtn");
-      const progress = $("#readingProgress");
-      const backTop = $("#backTop");
-      const toast = $("#toast");
-      const modal = $("#imageModal");
-      const modalImage = $("#modalImage");
-      let toastTimer;
-      let lastFocused = null;
+<main>
+<div class="container">
+ <a href="index.html" class="home-top">
+  <i class="fa-solid fa-house"></i>
+  العودة إلى الصفحة الرئيسية
+  <i class="fa-solid fa-arrow-left"></i>
+ </a>
+</div>
 
-      // Theme
-      function applyTheme(theme) {
-        body.classList.toggle("dark", theme === "dark");
-        themeBtn.textContent = theme === "dark" ? "☀" : "☾";
-        themeBtn.setAttribute("aria-label",
-          theme === "dark" ? "تفعيل الوضع الفاتح" : "تفعيل الوضع الليلي");
-      }
+<!-- HERO -->
 
-      let savedTheme = "light";
-      try {
-        savedTheme = localStorage.getItem("mesgouni-theme") || "light";
-      } catch (_) {}
+<section class="hero">
+ <div class="hero-bg"></div>
 
-      applyTheme(savedTheme);
+ <div class="container">
+  <div class="hero-content reveal visible">
 
-      themeBtn.addEventListener("click", () => {
-        const next = body.classList.contains("dark") ? "light" : "dark";
-        applyTheme(next);
-        try { localStorage.setItem("mesgouni-theme", next); } catch (_) {}
-      });
+   <div class="hero-label">
+    <i class="fa-solid fa-circle"></i>
+    اكتشف عالم ثانوية مسغوني
+   </div>
 
-      // Language
-      function applyLanguage(language) {
-        const isFrench = language === "fr";
-        document.documentElement.lang = isFrench ? "fr" : "ar";
-        document.documentElement.dir = isFrench ? "ltr" : "rtl";
+   <h1>
+    حيث تبدأ رحلة
+    <span>العلم والطموح</span>
+   </h1>
 
-        $$("[data-ar][data-fr]").forEach(element => {
-          element.textContent = isFrench
-            ? element.dataset.fr
-            : element.dataset.ar;
-        });
+   <p class="hero-desc">
+    ثانوية المجاهد مسغوني محمد الصالح، فضاء تربوي يجمع بين المعرفة
+    وتنمية القدرات، ويؤمن بأن التعليم ليس مجرد اكتساب للمعلومات،
+    بل رحلة لبناء الإنسان وصناعة المستقبل.
+   </p>
 
-        langBtn.textContent = isFrench ? "AR" : "FR";
-        langBtn.setAttribute("aria-label",
-          isFrench ? "Changer la langue en arabe" : "تغيير اللغة إلى الفرنسية");
+   <div class="hero-actions">
+    <a href="#about" class="btn btn-gold">
+     اكتشف الثانوية
+     <i class="fa-solid fa-arrow-down"></i>
+    </a>
 
-        try { localStorage.setItem("mesgouni-language", language); } catch (_) {}
-      }
+    <a href="#values" class="btn btn-outline">
+     مبادئنا وقيمنا
+     <i class="fa-solid fa-compass"></i>
+    </a>
+   </div>
 
-      let savedLanguage = "ar";
-      try {
-        savedLanguage = localStorage.getItem("mesgouni-language") || "ar";
-      } catch (_) {}
+  </div>
+ </div>
 
-      applyLanguage(savedLanguage);
+ <a href="#about" class="hero-scroll">
+  اكتشف المزيد
+  <i class="fa-solid fa-chevron-down"></i>
+ </a>
+</section>
 
-      langBtn.addEventListener("click", () => {
-        const next = document.documentElement.lang === "ar" ? "fr" : "ar";
-        applyLanguage(next);
-      });
+<!-- INTRO -->
 
-      // Mobile menu
-      function closeMenu() {
-        nav.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "فتح القائمة");
-      }
+<section class="section" id="about">
+ <div class="container intro-grid">
 
-      menuToggle.addEventListener("click", () => {
-        const isOpen = nav.classList.toggle("open");
-        menuToggle.setAttribute("aria-expanded", String(isOpen));
-        menuToggle.setAttribute("aria-label", isOpen ? "إغلاق القائمة" : "فتح القائمة");
-      });
+  <div class="intro-visual reveal">
+   <div class="intro-image">
+    <img src="facade.jpg" alt="واجهة ثانوية المجاهد مسغوني محمد الصالح"
+     onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#0b3022,#145c43)'">
+   </div>
+   <div class="intro-decoration"></div>
+   <div class="intro-badge">
+    <strong>ثانوية مسغوني</strong>
+    <small>فضاء العلم والمعرفة</small>
+   </div>
+  </div>
 
-      $$("#navLinks a").forEach(link => {
-        link.addEventListener("click", closeMenu);
-      });
+  <div class="intro-content reveal reveal-delay-1">
+   <span class="eyebrow">
+    <i class="fa-solid fa-building-columns"></i>
+    من نحن؟
+   </span>
 
-      document.addEventListener("click", event => {
-        if (!nav.contains(event.target) && !menuToggle.contains(event.target)) {
-          closeMenu();
-        }
-      });
+   <h2>
+    مؤسسة تربوية،
+    <span>ورؤية نحو المستقبل</span>
+   </h2>
 
-      document.addEventListener("keydown", event => {
-        if (event.key === "Escape") {
-          closeMenu();
-          closeModal();
-        }
-      });
+   <p>
+    تمثل الثانوية مرحلة أساسية في المسار الدراسي للتلميذ،
+    حيث تتكامل المعارف العلمية والأدبية مع الأنشطة التربوية
+    لتطوير شخصية المتعلم.
+   </p>
 
-      // Scroll progress and back-to-top
-      let ticking = false;
+   <p>
+    وتتمثل رسالة المؤسسة التعليمية في توفير بيئة مناسبة للتعلم،
+    وترسيخ قيم الاجتهاد والانضباط والمسؤولية، وتشجيع التفكير
+    والإبداع والاستعداد لمتطلبات الحياة الجامعية والمهنية.
+   </p>
 
-      function updateScrollUI() {
-        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-        const percentage = scrollable > 0
-          ? (window.scrollY / scrollable) * 100
-          : 0;
+   <div class="intro-points">
+    <div class="intro-point">
+     <i class="fa-solid fa-book-open"></i>
+     تعليم هادف
+    </div>
+    <div class="intro-point">
+     <i class="fa-solid fa-lightbulb"></i>
+     تنمية الإبداع
+    </div>
+    <div class="intro-point">
+     <i class="fa-solid fa-users"></i>
+     روح التعاون
+    </div>
+    <div class="intro-point">
+     <i class="fa-solid fa-award"></i>
+     التميز والاجتهاد
+    </div>
+   </div>
+  </div>
 
-        progress.style.width = percentage + "%";
-        backTop.classList.toggle("visible", window.scrollY > 450);
-        ticking = false;
-      }
+ </div>
+</section>
 
-      window.addEventListener("scroll", () => {
-        if (!ticking) {
-          window.requestAnimationFrame(updateScrollUI);
-          ticking = true;
-        }
-      }, { passive: true });
+<!-- VALUES -->
 
-      updateScrollUI();
+<section class="section values-section" id="values">
+ <div class="container">
 
-      backTop.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
+  <div class="section-heading reveal">
+   <span class="eyebrow">ما الذي نؤمن به؟</span>
+   <h2>قيم تصنع <span>شخصية المستقبل</span></h2>
+   <p>
+    المبادئ التي ينبغي أن ترافق كل متعلم في رحلته العلمية
+    وتساعده على بناء شخصية متوازنة وناجحة.
+   </p>
+  </div>
 
-      // Reveal animation: one observer for the page
-      const revealItems = $$(".reveal");
+  <div class="values-grid">
 
-      if ("IntersectionObserver" in window &&
-          !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
+   <article class="value-card reveal">
+    <div class="value-icon"><i class="fa-solid fa-book-open"></i></div>
+    <h3>طلب العلم</h3>
+    <p>تشجيع التعلم المستمر والبحث عن المعرفة وتطوير القدرات الفكرية.</p>
+   </article>
 
-        revealItems.forEach(item => observer.observe(item));
-      } else {
-        revealItems.forEach(item => item.classList.add("visible"));
-      }
+   <article class="value-card reveal reveal-delay-1">
+    <div class="value-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+    <h3>الانضباط</h3>
+    <p>احترام الوقت والقوانين وتحمل المسؤولية داخل المجتمع المدرسي.</p>
+   </article>
 
-      // Toast
-      function showToast(message) {
-        toast.textContent = message;
-        toast.classList.add("show");
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
-      }
+   <article class="value-card reveal reveal-delay-2">
+    <div class="value-icon"><i class="fa-solid fa-handshake"></i></div>
+    <h3>التعاون</h3>
+    <p>تعزيز العمل الجماعي والاحترام المتبادل وروح التضامن.</p>
+   </article>
 
-      // Gallery modal
-      function openModal(src, alt) {
-        if (!src) return;
-        lastFocused = document.activeElement;
-        modalImage.src = src;
-        modalImage.alt = alt || "صورة من المؤسسة";
-        modal.classList.add("open");
-        body.style.overflow = "hidden";
-        $("#modalClose").focus();
-      }
+   <article class="value-card reveal reveal-delay-3">
+    <div class="value-icon"><i class="fa-solid fa-rocket"></i></div>
+    <h3>الطموح</h3>
+    <p>تحفيز المتعلم على وضع أهداف واضحة والسعي لتحقيقها.</p>
+   </article>
 
-      function closeModal() {
-        if (!modal.classList.contains("open")) return;
-        modal.classList.remove("open");
-        modalImage.src = "";
-        body.style.overflow = "";
-        if (lastFocused) lastFocused.focus();
-      }
+  </div>
+ </div>
+</section>
 
-      $$(".gallery-item").forEach(item => {
-        item.addEventListener("click", () => {
-          const image = $("img", item);
-          if (!image || !image.complete || image.naturalWidth === 0) {
-            showToast("هذه الصورة غير متوفرة حالياً.");
-            return;
-          }
-          openModal(item.dataset.image, image.alt);
-        });
-      });
+<!-- BENTO GRID -->
 
-      $("#modalClose").addEventListener("click", closeModal);
+<section class="section">
+ <div class="container">
 
-      modal.addEventListener("click", event => {
-        if (event.target === modal) closeModal();
-      });
+  <div class="section-heading reveal">
+   <span class="eyebrow">بيئة تعليمية متكاملة</span>
+   <h2>التعليم أبعد من <span>جدران القسم</span></h2>
+   <p>
+    تتنوع مجالات التعلم بين المعرفة النظرية والتجربة
+    والأنشطة التي تساهم في تطوير مهارات التلميذ.
+   </p>
+  </div>
 
-      // Prevent empty or broken gallery links from behaving unexpectedly
-      window.addEventListener("load", () => {
-        $$("img").forEach(image => {
-          if (!image.complete || image.naturalWidth === 0) {
-            image.dataset.imageError = "true";
-          }
-        });
-      });
+  <div class="bento-grid">
 
-    })();
-  </script>
+   <article class="bento-card reveal">
+    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1000&q=85" alt="بيئة تعليمية توضيحية" loading="lazy">
+    <span class="bento-arrow"><i class="fa-solid fa-arrow-up-left"></i></span>
+    <div class="bento-info">
+     <small>01 / LEARNING</small>
+     <h3>التعلم والمعرفة</h3>
+     <p>رحلة اكتساب المعرفة وتطوير القدرات العلمية والفكرية.</p>
+    </div>
+   </article>
+
+   <article class="bento-card reveal reveal-delay-1">
+    <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800&q=85" alt="مكتبة تعليمية توضيحية" loading="lazy">
+    <span class="bento-arrow"><i class="fa-solid fa-arrow-up-left"></i></span>
+    <div class="bento-info">
+     <small>02 / KNOWLEDGE</small>
+     <h3>الثقافة والقراءة</h3>
+     <p>الكتاب نافذة نحو عوالم جديدة.</p>
+    </div>
+   </article>
+
+   <article class="bento-card reveal reveal-delay-2">
+    <img src="https://images.unsplash.com/photo-1581093458791-9d15482442f6?w=800&q=85" alt="تجارب علمية توضيحية" loading="lazy">
+    <span class="bento-arrow"><i class="fa-solid fa-arrow-up-left"></i></span>
+    <div class="bento-info">
+     <small>03 / SCIENCE</small>
+     <h3>التجربة والاستكشاف</h3>
+     <p>التفكير العلمي واكتشاف الحلول.</p>
+    </div>
+   </article>
+
+   <article class="bento-card reveal reveal-delay-1">
+    <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=800&q=85" alt="نشاط رياضي توضيحي" loading="lazy">
+    <span class="bento-arrow"><i class="fa-solid fa-arrow-up-left"></i></span>
+    <div class="bento-info">
+     <small>04 / SPORTS</small>
+     <h3>النشاط والحيوية</h3>
+     <p>أهمية النشاط البدني والعمل الجماعي.</p>
+    </div>
+   </article>
+
+   <article class="bento-card reveal reveal-delay-2">
+    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=85" alt="التكنولوجيا والإعلام الآلي" loading="lazy">
+    <span class="bento-arrow"><i class="fa-solid fa-arrow-up-left"></i></span>
+    <div class="bento-info">
+     <small>05 / TECHNOLOGY</small>
+     <h3>التكنولوجيا</h3>
+     <p>استخدام التقنية في التعلم والابتكار.</p>
+    </div>
+   </article>
+
+  </div>
+ </div>
+</section>
+
+<!-- INTERACTIVE GALLERY -->
+
+<section class="section gallery-section" id="gallery">
+ <div class="container">
+
+  <div class="section-heading reveal">
+   <span class="eyebrow">EXPLORE & DISCOVER</span>
+   <h2>اكتشف فضاءات <span>التعلم</span></h2>
+   <p>
+    صور توضيحية لمجالات ومرافق تعليمية متنوعة.
+    اضغط على أي بطاقة لاستكشاف المزيد.
+   </p>
+  </div>
+
+  <div class="gallery-grid">
+
+   <article class="gallery-card reveal"
+    data-title="فضاء التعلم"
+    data-description="تعد قاعات الدراسة فضاء أساسيا للتفاعل بين الأستاذ والتلميذ، وتبادل المعرفة وبناء المهارات العلمية والفكرية.">
+    <div class="gallery-image">
+     <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=850&q=85" alt="فضاء التعلم - صورة توضيحية" loading="lazy">
+     <span class="gallery-open"><i class="fa-solid fa-expand"></i></span>
+    </div>
+    <div class="gallery-info">
+     <h3>فضاء التعلم</h3>
+     <p>بيئة تساعد على التركيز واكتساب المعرفة والتفاعل.</p>
+    </div>
+   </article>
+
+   <article class="gallery-card reveal reveal-delay-1"
+    data-title="المكتبة المدرسية"
+    data-description="المكتبة مجال لتنمية الثقافة العامة، وتشجيع القراءة والبحث والاطلاع، وتوسيع آفاق التلميذ المعرفية.">
+    <div class="gallery-image">
+     <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=850&q=85" alt="مكتبة مدرسية - صورة توضيحية" loading="lazy">
+     <span class="gallery-open"><i class="fa-solid fa-expand"></i></span>
+    </div>
+    <div class="gallery-info">
+     <h3>المكتبة المدرسية</h3>
+     <p>مساحة للقراءة والبحث والاستكشاف.</p>
+    </div>
+   </article>
+
+   <article class="gallery-card reveal reveal-delay-2"
+    data-title="المخابر العلمية"
+    data-description="تساعد التجارب العلمية على ربط المفاهيم النظرية بالتطبيق العملي، وتنمية مهارات الملاحظة والاستنتاج والتفكير المنهجي.">
+    <div class="gallery-image">
+     <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=850&q=85" alt="مخبر علمي - صورة توضيحية" loading="lazy">
+     <span class="gallery-open"><i class="fa-solid fa-expand"></i></span>
+    </div>
+    <div class="gallery-info">
+     <h3>المخابر العلمية</h3>
+     <p>التجربة والملاحظة والتفكير العلمي.</p>
+    </div>
+   </article>
+
+   <article class="gallery-card reveal"
+    data-title="الأنشطة الرياضية"
+    data-description="تساهم الأنشطة الرياضية في تعزيز التعاون والانضباط والروح الجماعية، وتساعد على تنمية المهارات البدنية.">
+    <div class="gallery-image">
+     <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=850&q=85" alt="نشاط رياضي - صورة توضيحية" loading="lazy">
+     <span class="gallery-open"><i class="fa-solid fa-expand"></i></span>
+    </div>
+    <div class="gallery-info">
+     <h3>الأنشطة الرياضية</h3>
+     <p>الحركة والصحة وروح الفريق.</p>
+    </div>
+   </article>
+
+   <article class="gallery-card reveal reveal-delay-1"
+    data-title="التكنولوجيا والإعلام الآلي"
+    data-description="يساعد تعلم التكنولوجيا والإعلام الآلي على فهم العالم الرقمي وتطوير مهارات التفكير المنطقي والإبداع وحل المشكلات.">
+    <div class="gallery-image">
+     <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=850&q=85" alt="التكنولوجيا - صورة توضيحية" loading="lazy">
+     <span class="gallery-open"><i class="fa-solid fa-expand"></i></span>
+    </div>
+    <div class="gallery-info">
+     <h3>التكنولوجيا والإعلام الآلي</h3>
+     <p>المهارات الرقمية والابتكار.</p>
+    </div>
+   </article>
+
+   <article class="gallery-card reveal reveal-delay-2"
+    data-title="الثقافة والأنشطة"
+    data-description="تساعد الأنشطة الثقافية على اكتشاف المواهب، وتنمية التعبير والثقة بالنفس، وتعزيز المشاركة الإيجابية في الحياة المدرسية.">
+    <div class="gallery-image">
+     <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=850&q=85" alt="نشاط ثقافي - صورة توضيحية" loading="lazy">
+     <span class="gallery-open"><i class="fa-solid fa-expand"></i></span>
+    </div>
+    <div class="gallery-info">
+     <h3>الثقافة والأنشطة</h3>
+     <p>اكتشاف المواهب وتنمية الشخصية.</p>
+    </div>
+   </article>
+
+  </div>
+ </div>
+</section>
+
+<!-- MODAL -->
+
+<div class="modal" id="galleryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+ <div class="modal-box">
+  <button class="modal-close" id="modalClose" aria-label="إغلاق">
+   <i class="fa-solid fa-xmark"></i>
+  </button>
+  <img src="" id="modalImage" class="modal-image" alt="">
+  <div class="modal-content">
+   <h3 id="modalTitle"></h3>
+   <p id="modalDescription"></p>
+  </div>
+ </div>
+</div>
+
+<!-- JOURNEY -->
+
+<section class="section" id="journey">
+ <div class="container">
+
+  <div class="section-heading reveal">
+   <span class="eyebrow">THE LEARNING JOURNEY</span>
+   <h2>رحلة التلميذ <span>نحو النجاح</span></h2>
+   <p>
+    مراحل متكاملة تساعد المتعلم على بناء معارفه
+    واكتشاف قدراته والاستعداد لمستقبله.
+   </p>
+  </div>
+
+  <div class="timeline">
+
+   <div class="timeline-item reveal">
+    <div class="timeline-dot"><i class="fa-solid fa-1"></i></div>
+    <div class="timeline-content">
+     <small>المرحلة الأولى</small>
+     <h3>اكتساب الأساسيات</h3>
+     <p>ترسيخ المعارف الأولية وتطوير مهارات الفهم والتعلم والاستيعاب.</p>
+    </div>
+   </div>
+
+   <div class="timeline-item reveal">
+    <div class="timeline-dot"><i class="fa-solid fa-2"></i></div>
+    <div class="timeline-content">
+     <small>المرحلة الثانية</small>
+     <h3>تطوير القدرات</h3>
+     <p>تعميق المعارف وتنمية التفكير النقدي والاستقلالية في التعلم.</p>
+    </div>
+   </div>
+
+   <div class="timeline-item reveal">
+    <div class="timeline-dot"><i class="fa-solid fa-3"></i></div>
+    <div class="timeline-content">
+     <small>المرحلة الثالثة</small>
+     <h3>تحديد التوجهات</h3>
+     <p>اكتشاف الميول والاستعداد للاختيارات الدراسية والمهنية المستقبلية.</p>
+    </div>
+   </div>
+
+   <div class="timeline-item reveal">
+    <div class="timeline-dot"><i class="fa-solid fa-4"></i></div>
+    <div class="timeline-content">
+     <small>المرحلة الرابعة</small>
+     <h3>الاستعداد للمستقبل</h3>
+     <p>بناء مشروع شخصي ومواصلة مسار التعلم والتطور وتحمل المسؤولية.</p>
+    </div>
+   </div>
+
+  </div>
+ </div>
+</section>
+
+<!-- EDUCATIONAL AREAS -->
+
+<section class="section" style="background:var(--surface2)">
+ <div class="container">
+
+  <div class="section-heading reveal">
+   <span class="eyebrow">OUR EDUCATIONAL VISION</span>
+   <h2>مجالات تنمية <span>المتعلم</span></h2>
+   <p>
+    التعليم المتكامل يهتم بالعقل والمهارات والشخصية،
+    ولا يقتصر على التحصيل الدراسي فقط.
+   </p>
+  </div>
+
+  <div class="areas-grid">
+
+   <article class="area-card reveal">
+    <div class="area-top">
+     <div class="area-icon"><i class="fa-solid fa-brain"></i></div>
+     <span class="area-number">01</span>
+    </div>
+    <h3>التفكير والتحليل</h3>
+    <p>تطوير القدرة على فهم المشكلات وتحليل المعلومات وبناء الاستنتاجات.</p>
+   </article>
+
+   <article class="area-card reveal reveal-delay-1">
+    <div class="area-top">
+     <div class="area-icon"><i class="fa-solid fa-comments"></i></div>
+     <span class="area-number">02</span>
+    </div>
+    <h3>التواصل والتعبير</h3>
+    <p>تعزيز مهارات الحوار والتعبير عن الأفكار واحترام وجهات النظر.</p>
+   </article>
+
+   <article class="area-card reveal reveal-delay-2">
+    <div class="area-top">
+     <div class="area-icon"><i class="fa-solid fa-laptop-code"></i></div>
+     <span class="area-number">03</span>
+    </div>
+    <h3>المهارات الرقمية</h3>
+    <p>فهم التكنولوجيا واستخدام الأدوات الرقمية في التعلم والبحث.</p>
+   </article>
+
+   <article class="area-card reveal">
+    <div class="area-top">
+     <div class="area-icon"><i class="fa-solid fa-people-group"></i></div>
+     <span class="area-number">04</span>
+    </div>
+    <h3>العمل الجماعي</h3>
+    <p>تنمية روح التعاون والمشاركة وتحمل المسؤولية المشتركة.</p>
+   </article>
+
+   <article class="area-card reveal reveal-delay-1">
+    <div class="area-top">
+     <div class="area-icon"><i class="fa-solid fa-palette"></i></div>
+     <span class="area-number">05</span>
+    </div>
+    <h3>الإبداع والابتكار</h3>
+    <p>تشجيع الأفكار الجديدة والتعبير الإبداعي والبحث عن حلول مبتكرة.</p>
+   </article>
+
+   <article class="area-card reveal reveal-delay-2">
+    <div class="area-top">
+     <div class="area-icon"><i class="fa-solid fa-seedling"></i></div>
+     <span class="area-number">06</span>
+    </div>
+    <h3>النمو الشخصي</h3>
+    <p>بناء الثقة بالنفس وتنظيم الوقت وتطوير الاستقلالية والالتزام.</p>
+   </article>
+
+  </div>
+ </div>
+</section>
+
+<!-- QUOTE -->
+
+<section class="quote-section">
+ <div class="container">
+  <div class="quote-inner reveal">
+   <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+   <h2>
+    العلم والعمل أساس النجاح،
+    وبالمعرفة نبني الحاضر ونصنع المستقبل.
+   </h2>
+   <p>ثانوية المجاهد مسغوني محمد الصالح</p>
+  </div>
+ </div>
+</section>
+
+<!-- CTA -->
+
+<section class="cta-section" id="contact">
+ <div class="container">
+  <div class="cta-box reveal">
+
+   <div class="cta-content">
+    <h2>رحلتك التعليمية تبدأ من هنا</h2>
+    <p>
+     اكتشف فضاء التلاميذ، وتابع الموارد التعليمية،
+     واستفد من الخدمات الرقمية المتاحة عبر موقع الثانوية.
+    </p>
+   </div>
+
+   <div class="cta-actions">
+    <a href="students.html" class="btn btn-gold">
+     <i class="fa-solid fa-graduation-cap"></i>
+     فضاء التلاميذ
+    </a>
+
+    <a href="index.html" class="btn btn-outline">
+     <i class="fa-solid fa-house"></i>
+     الرئيسية
+    </a>
+   </div>
+
+  </div>
+ </div>
+</section>
+
+<!-- SMALL GREEN HOME BUTTON -->
+
+<div class="container bottom-home-wrap">
+ <a href="index.html" class="bottom-home">
+  <i class="fa-solid fa-house"></i>
+  العودة إلى الرئيسية
+  <i class="fa-solid fa-arrow-left"></i>
+ </a>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+ <div class="container">
+
+  <div class="footer-grid">
+
+   <div class="footer-brand">
+    <a href="index.html" class="brand">
+     <div class="brand-logo">
+      <i class="fa-solid fa-graduation-cap"></i>
+     </div>
+     <div class="brand-text">
+      <strong>ثانوية مسغوني</strong>
+      <small>LYCÉE MESGOUNI</small>
+     </div>
+    </a>
+
+    <p>
+     الموقع الرقمي لثانوية المجاهد مسغوني محمد الصالح،
+     فضاء يجمع المعرفة والخدمات المدرسية والتواصل
+     في تجربة رقمية حديثة.
+    </p>
+   </div>
+
+   <div>
+    <h3>روابط مهمة</h3>
+    <ul class="footer-links">
+     <li><a href="index.html">الصفحة الرئيسية</a></li>
+     <li><a href="students.html">فضاء التلاميذ</a></li>
+     <li><a href="#about">عن الثانوية</a></li>
+     <li><a href="#gallery">فضاءات التعلم</a></li>
+    </ul>
+   </div>
+
+   <div>
+    <h3>اكتشف المزيد</h3>
+    <ul class="footer-links">
+     <li><a href="#values">قيمنا ومبادئنا</a></li>
+     <li><a href="#journey">المسار التعليمي</a></li>
+     <li><a href="#contact">الخدمات الرقمية</a></li>
+     <li><a href="index.html">العودة للرئيسية</a></li>
+    </ul>
+   </div>
+
+  </div>
+
+  <div class="footer-bottom">
+   <span>© 2026 Lycée Mesgouni. جميع الحقوق محفوظة.</span>
+   <span>العلم والعمل أساس النجاح</span>
+   <span>تطوير: مجد بن حرزالله وأيوب شبيرات</span>
+  </div>
+
+ </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="العودة إلى الأعلى">
+ <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ======================================
+   LYCÉE MESGOUNI - ABOUT PAGE PRO MAX
+====================================== */
+
+const $ = (selector, parent=document) =>
+ parent.querySelector(selector);
+
+const $$ = (selector, parent=document) =>
+ [...parent.querySelectorAll(selector)];
+
+/* LOADER */
+
+window.addEventListener("load",()=>{
+ setTimeout(()=>{
+  $("#loader").classList.add("hide");
+ },450);
+});
+
+setTimeout(()=>{
+ $("#loader")?.classList.add("hide");
+},3500);
+
+/* THEME */
+
+const themeToggle=$("#themeToggle");
+const savedTheme=localStorage.getItem("mesgouni-theme");
+
+if(savedTheme==="dark"){
+ document.documentElement.setAttribute("data-theme","dark");
+ themeToggle.innerHTML='<i class="fa-solid fa-sun"></i>';
+}
+
+themeToggle.addEventListener("click",()=>{
+ const dark=document.documentElement.getAttribute("data-theme")==="dark";
+
+ if(dark){
+  document.documentElement.removeAttribute("data-theme");
+  localStorage.setItem("mesgouni-theme","light");
+  themeToggle.innerHTML='<i class="fa-solid fa-moon"></i>';
+  showToast("تم تفعيل الوضع النهاري");
+ }else{
+  document.documentElement.setAttribute("data-theme","dark");
+  localStorage.setItem("mesgouni-theme","dark");
+  themeToggle.innerHTML='<i class="fa-solid fa-sun"></i>';
+  showToast("تم تفعيل الوضع الليلي");
+ }
+});
+
+/* MOBILE MENU */
+
+const menuBtn=$("#menuBtn");
+const navLinks=$("#navLinks");
+
+menuBtn.addEventListener("click",()=>{
+ const opened=navLinks.classList.toggle("open");
+ menuBtn.innerHTML=opened
+  ? '<i class="fa-solid fa-xmark"></i>'
+  : '<i class="fa-solid fa-bars"></i>';
+});
+
+$$(".nav-links a").forEach(link=>{
+ link.addEventListener("click",()=>{
+  navLinks.classList.remove("open");
+  menuBtn.innerHTML='<i class="fa-solid fa-bars"></i>';
+ });
+});
+
+document.addEventListener("click",e=>{
+ if(!navLinks.contains(e.target)&&!menuBtn.contains(e.target)){
+  navLinks.classList.remove("open");
+  menuBtn.innerHTML='<i class="fa-solid fa-bars"></i>';
+ }
+});
+
+/* SCROLL EFFECTS */
+
+const navbar=$("#navbar");
+const scrollTop=$("#scrollTop");
+const progress=$("#readingProgress");
+
+function handleScroll(){
+ const y=window.scrollY;
+ const max=document.documentElement.scrollHeight-window.innerHeight;
+
+ navbar.classList.toggle("scrolled",y>40);
+ scrollTop.classList.toggle("show",y>450);
+
+ progress.style.width=(max>0?(y/max)*100:0)+"%";
+}
+
+window.addEventListener("scroll",handleScroll,{passive:true});
+handleScroll();
+
+scrollTop.addEventListener("click",()=>{
+ window.scrollTo({top:0,behavior:"smooth"});
+});
+
+/* REVEAL ANIMATION */
+
+const revealObserver=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   entry.target.classList.add("visible");
+   revealObserver.unobserve(entry.target);
+  }
+ });
+},{threshold:.12});
+
+$$(".reveal:not(.visible)").forEach(el=>{
+ revealObserver.observe(el);
+});
+
+/* GALLERY MODAL */
+
+const modal=$("#galleryModal");
+const modalImage=$("#modalImage");
+const modalTitle=$("#modalTitle");
+const modalDescription=$("#modalDescription");
+const modalClose=$("#modalClose");
+
+let lastFocused=null;
+
+$$(".gallery-card").forEach(card=>{
+ card.addEventListener("click",()=>{
+  const img=$("img",card);
+
+  lastFocused=card;
+  modalImage.src=img.src;
+  modalImage.alt=img.alt;
+  modalTitle.textContent=card.dataset.title;
+  modalDescription.textContent=card.dataset.description;
+
+  modal.classList.add("show");
+  document.body.style.overflow="hidden";
+  modalClose.focus();
+ });
+});
+
+function closeModal(){
+ modal.classList.remove("show");
+ document.body.style.overflow="";
+ modalImage.src="";
+ if(lastFocused)lastFocused.focus();
+}
+
+modalClose.addEventListener("click",closeModal);
+
+modal.addEventListener("click",e=>{
+ if(e.target===modal)closeModal();
+});
+
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape"){
+  if(modal.classList.contains("show"))closeModal();
+ }
+});
+
+/* TOAST */
+
+let toastTimer;
+
+function showToast(message){
+ const toast=$("#toast");
+ toast.textContent=message;
+ toast.classList.add("show");
+
+ clearTimeout(toastTimer);
+ toastTimer=setTimeout(()=>{
+  toast.classList.remove("show");
+ },2600);
+}
+
+/* CURSOR LIGHT - DESKTOP ONLY */
+
+const cursorGlow=$("#cursorGlow");
+
+if(window.matchMedia("(pointer:fine)").matches){
+ window.addEventListener("mousemove",e=>{
+  cursorGlow.style.left=e.clientX+"px";
+  cursorGlow.style.top=e.clientY+"px";
+ });
+}else{
+ cursorGlow.style.display="none";
+}
+
+/* SMOOTH INTERNAL NAVIGATION */
+
+$$('a[href^="#"]').forEach(link=>{
+ link.addEventListener("click",e=>{
+  const target=$(link.getAttribute("href"));
+
+  if(target){
+   e.preventDefault();
+   target.scrollIntoView({behavior:"smooth",block:"start"});
+  }
+ });
+});
+
+/* ACCESSIBILITY: MODAL KEYBOARD */
+
+modal.addEventListener("keydown",e=>{
+ if(e.key==="Tab"){
+  const focusable=$$("button",modal);
+  if(focusable.length===0)return;
+
+  if(e.shiftKey&&document.activeElement===focusable[0]){
+   e.preventDefault();
+   focusable[focusable.length-1].focus();
+  }else if(!e.shiftKey&&document.activeElement===focusable[focusable.length-1]){
+   e.preventDefault();
+   focusable[0].focus();
+  }
+ }
+});
+
+</script>
 </body>
 </html>
