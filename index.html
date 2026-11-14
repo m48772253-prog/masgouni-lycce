@@ -2,10 +2,10 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#103e32">
-<meta name="description" content="الموقع الرسمي لثانوية المجاهد مسغوني محمد الصالح. بوابة تعليمية تجمع الخدمات المدرسية والموارد والإعلانات وفضاء التلاميذ.">
-<meta name="robots" content="index, follow">
+<meta name="description" content="الموقع الرسمي لثانوية المجاهد مسغوني محمد الصالح. بوابة تعليمية للخدمات المدرسية والموارد والإعلانات وفضاء التلاميذ.">
+<meta name="robots" content="index,follow">
 <title>ثانوية مسغوني | الموقع الرسمي</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,18 +18,16 @@
  --green-dark:#0b3027;
  --green-light:#1d7054;
  --gold:#d8b66a;
- --gold-light:#f0d99d;
  --cream:#f7f7f1;
  --white:#fff;
  --ink:#172b25;
  --muted:#74827b;
  --line:rgba(18,75,59,.12);
  --soft:#eaf0e9;
- --shadow:0 20px 60px rgba(13,48,37,.09);
- --radius:25px;
- --ease:cubic-bezier(.22,.8,.25,1);
+ --shadow:0 18px 50px rgba(13,48,37,.08);
+ --radius:22px;
+ --ease:cubic-bezier(.2,.75,.25,1);
 }
-
 body.dark{
  --cream:#101b17;
  --white:#17251f;
@@ -37,1522 +35,424 @@ body.dark{
  --muted:#a4b5aa;
  --line:rgba(255,255,255,.1);
  --soft:#22352b;
- --shadow:0 20px 60px rgba(0,0,0,.22);
+ --shadow:0 18px 50px rgba(0,0,0,.2);
 }
-
-*{margin:0;padding:0;box-sizing:border-box}
-
-html{
- scroll-behavior:smooth;
- scroll-padding-top:95px;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:95px}
 body{
  font-family:'Cairo',Tahoma,Arial,sans-serif;
  background:var(--cream);
  color:var(--ink);
  line-height:1.8;
  overflow-x:hidden;
- transition:background .3s,color .3s;
+ transition:background .2s,color .2s;
 }
-
-body,button,input,textarea,select{font-family:'Cairo',Tahoma,Arial,sans-serif}
+button,input,textarea,select{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
 button{cursor:pointer}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 ::selection{background:var(--gold);color:#172b25}
-
-.container{
- width:min(1200px,calc(100% - 44px));
- margin:auto;
-}
-
+.container{width:min(1200px,calc(100% - 40px));margin:auto}
 .progress{
- position:fixed;
- top:0;
- right:0;
- height:3px;
- width:0;
- background:var(--gold);
- z-index:3000;
+ position:fixed;top:0;right:0;width:0;height:3px;
+ background:var(--gold);z-index:3000;
 }
-
 .eyebrow{
- display:inline-flex;
- align-items:center;
- gap:10px;
- color:var(--green-light);
- font-size:11px;
- font-weight:900;
- letter-spacing:.5px;
+ display:inline-flex;align-items:center;gap:10px;
+ color:var(--green-light);font-size:11px;font-weight:900;
 }
-
 .dark .eyebrow{color:var(--gold)}
-
-.eyebrow:before{
- content:"";
- width:25px;
- height:2px;
- background:var(--gold);
-}
-
-.section{
- padding:105px 0;
- position:relative;
-}
-
-.section-heading{
- max-width:680px;
- margin-bottom:42px;
-}
-
+.eyebrow:before{content:"";width:25px;height:2px;background:var(--gold)}
+.section{padding:90px 0;position:relative}
+.section-heading{max-width:680px;margin-bottom:38px}
 .section-heading h2{
- font-size:clamp(27px,4vw,44px);
- line-height:1.5;
- font-weight:900;
- margin:10px 0;
+ font-size:clamp(27px,4vw,43px);
+ line-height:1.5;font-weight:900;margin:10px 0;
 }
-
-.section-heading p{
- color:var(--muted);
- font-size:13px;
- line-height:2.2;
-}
-
-.section-heading.center{
- text-align:center;
- margin-right:auto;
- margin-left:auto;
-}
-
-.section-heading.center .eyebrow{
- justify-content:center;
-}
-
-.section-heading.center .eyebrow:after{
- content:"";
- width:25px;
- height:2px;
- background:var(--gold);
-}
-
+.section-heading p{color:var(--muted);font-size:13px;line-height:2.2}
+.section-heading.center{text-align:center;margin-inline:auto}
+.section-heading.center .eyebrow{justify-content:center}
+.section-heading.center .eyebrow:after{content:"";width:25px;height:2px;background:var(--gold)}
 .reveal{
- opacity:0;
- transform:translateY(30px);
- transition:opacity .8s var(--ease),transform .8s var(--ease);
+ opacity:0;transform:translateY(20px);
+ transition:opacity .55s var(--ease),transform .55s var(--ease);
 }
+.reveal.visible{opacity:1;transform:none}
+.delay-1{transition-delay:.08s}
+.delay-2{transition-delay:.15s}
+.delay-3{transition-delay:.22s}
 
-.reveal.visible{
- opacity:1;
- transform:translateY(0);
-}
-
-.delay-1{transition-delay:.12s}
-.delay-2{transition-delay:.22s}
-.delay-3{transition-delay:.32s}
-
-/* NAVIGATION */
-
+/* NAVBAR */
 .navbar{
- position:fixed;
- top:0;
- right:0;
- left:0;
- z-index:1000;
- height:82px;
- display:flex;
- align-items:center;
- transition:.35s var(--ease);
+ position:fixed;top:0;right:0;left:0;z-index:1000;
+ height:84px;display:flex;align-items:center;
  border-bottom:1px solid transparent;
+ transition:height .22s,background .22s,box-shadow .22s;
 }
-
 .navbar.scrolled{
- height:70px;
- background:rgba(247,247,241,.94);
- backdrop-filter:blur(18px);
- border-color:var(--line);
- box-shadow:0 7px 30px rgba(0,0,0,.05);
+ height:70px;background:rgba(247,247,241,.93);
+ border-color:var(--line);box-shadow:0 8px 28px #09251d12;
+ backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
 }
-
-.dark .navbar.scrolled{
- background:rgba(16,27,23,.94);
-}
-
-.nav-inner{
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:20px;
-}
-
-.brand{
- display:flex;
- align-items:center;
- gap:11px;
- flex:none;
-}
-
+.dark .navbar.scrolled{background:rgba(16,27,23,.93)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;flex:none}
 .brand-mark{
- width:47px;
- height:47px;
- display:grid;
- place-items:center;
- border-radius:15px;
- background:var(--green);
- color:var(--gold);
- font-size:24px;
- border:1px solid #d8b66a77;
- box-shadow:0 8px 22px #124b3b30;
+ width:46px;height:46px;border-radius:15px;
+ display:grid;place-items:center;background:var(--green);
+ color:var(--gold);font-size:24px;border:1px solid #d8b66a77;
 }
-
-.brand-text strong{
- display:block;
- color:var(--green);
- font-size:15px;
- font-weight:900;
- line-height:1.5;
-}
-
+.brand-text strong{display:block;color:var(--green);font-size:15px;font-weight:900}
 .dark .brand-text strong{color:var(--gold)}
-
-.brand-text small{
- display:block;
- color:var(--muted);
- font-size:9px;
- letter-spacing:.5px;
-}
-
-.nav-links{
- display:flex;
- align-items:center;
- gap:22px;
-}
-
+.brand-text small{display:block;color:var(--muted);font-size:9px}
+.nav-links{display:flex;align-items:center;gap:clamp(10px,1.5vw,22px)}
 .nav-links a{
- position:relative;
- color:var(--muted);
- font-size:11px;
- font-weight:800;
- transition:.25s;
+ position:relative;color:var(--muted);font-size:11px;
+ font-weight:800;white-space:nowrap;padding:10px 0;
+ transition:color .18s;
 }
-
 .nav-links a:after{
- content:"";
- position:absolute;
- bottom:-9px;
- right:0;
- width:0;
- height:2px;
- background:var(--gold);
- transition:.3s;
+ content:"";position:absolute;right:0;bottom:2px;
+ width:0;height:2px;background:var(--gold);transition:width .2s;
 }
-
-.nav-links a:hover,
-.nav-links a.active{
- color:var(--green-light);
-}
-
-.dark .nav-links a:hover,
-.dark .nav-links a.active{
- color:var(--gold);
-}
-
-.nav-links a:hover:after,
-.nav-links a.active:after{
- width:100%;
-}
-
-.nav-actions{
- display:flex;
- align-items:center;
- gap:7px;
-}
-
+.nav-links a:hover,.nav-links a.active{color:var(--green-light)}
+.dark .nav-links a:hover,.dark .nav-links a.active{color:var(--gold)}
+.nav-links a:hover:after,.nav-links a.active:after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:7px;flex:none}
 .icon-btn{
- width:39px;
- height:39px;
- border:1px solid var(--line);
- border-radius:12px;
- background:var(--white);
- color:var(--ink);
- display:grid;
- place-items:center;
- font-size:16px;
- transition:.25s;
+ width:39px;height:39px;border:1px solid var(--line);
+ border-radius:12px;background:var(--white);color:var(--ink);
+ display:grid;place-items:center;font-size:16px;
+ transition:background .18s,color .18s,transform .18s;
 }
-
-.icon-btn:hover{
- background:var(--green);
- color:white;
- transform:translateY(-3px);
-}
-
+.icon-btn:hover{background:var(--green);color:#fff;transform:translateY(-2px)}
 .menu-btn{display:none}
+.nav-links a:focus-visible,.icon-btn:focus-visible,
+.btn:focus-visible,.backtop:focus-visible{
+ outline:3px solid var(--gold);outline-offset:4px;
+}
 
 /* HERO */
-
 .hero{
- min-height:750px;
- position:relative;
- display:flex;
- align-items:center;
- overflow:hidden;
- background:var(--green-dark);
- color:white;
+ min-height:720px;position:relative;display:flex;align-items:center;
+ overflow:hidden;background:var(--green-dark);color:#fff;
 }
-
 .hero-bg{
- position:absolute;
- inset:0;
+ position:absolute;inset:0;
  background:
- linear-gradient(90deg,rgba(5,29,23,.91),rgba(5,29,23,.75) 48%,rgba(5,29,23,.38)),
+ linear-gradient(90deg,rgba(5,29,23,.92),rgba(5,29,23,.76) 50%,rgba(5,29,23,.4)),
  url("facade.jpg") center/cover no-repeat;
- transform:scale(1.03);
- animation:heroZoom 18s ease-in-out infinite alternate;
 }
-
-@keyframes heroZoom{
- to{transform:scale(1.1)}
-}
-
 .hero:after{
- content:"";
- position:absolute;
- inset:0;
- pointer-events:none;
+ content:"";position:absolute;inset:0;pointer-events:none;
  background:radial-gradient(circle at 12% 75%,#d8b66a20,transparent 35%);
 }
-
-.hero-grid{
- position:absolute;
- inset:0;
- opacity:.09;
- pointer-events:none;
- background-image:
- linear-gradient(#ffffff20 1px,transparent 1px),
- linear-gradient(90deg,#ffffff20 1px,transparent 1px);
- background-size:75px 75px;
-}
-
-.hero-circle{
- position:absolute;
- width:490px;
- height:490px;
- border:1px solid #d8b66a35;
- border-radius:50%;
- left:-230px;
- bottom:-280px;
- box-shadow:0 0 0 45px #d8b66a0a,0 0 0 90px #d8b66a08;
-}
-
-.hero-content{
- position:relative;
- z-index:2;
- width:100%;
- padding-top:125px;
- padding-bottom:75px;
-}
-
-.hero-layout{
- display:grid;
- grid-template-columns:1.15fr .85fr;
- align-items:center;
- gap:45px;
-}
-
-.hero-copy{max-width:720px}
-
+.hero-content{position:relative;z-index:2;width:100%;padding:125px 0 65px}
+.hero-layout{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:40px}
 .hero-tag{
- display:inline-flex;
- align-items:center;
- gap:10px;
- border:1px solid #ffffff45;
- background:#ffffff12;
- padding:9px 15px;
- border-radius:40px;
- font-size:11px;
- color:#f0e8d4;
- backdrop-filter:blur(10px);
- margin-bottom:25px;
- animation:fadeUp .8s both;
+ display:inline-flex;align-items:center;gap:10px;
+ border:1px solid #ffffff45;background:#ffffff12;
+ padding:9px 15px;border-radius:40px;font-size:11px;color:#f0e8d4;
+ margin-bottom:23px;
 }
-
-.hero-tag span{
- width:8px;
- height:8px;
- background:var(--gold);
- border-radius:50%;
- box-shadow:0 0 14px var(--gold);
-}
-
-.hero h1{
- max-width:760px;
- font-size:clamp(39px,5.7vw,72px);
- font-weight:900;
- line-height:1.35;
- letter-spacing:-1.5px;
- animation:fadeUp .9s .1s both;
-}
-
-.hero h1 em{
- color:var(--gold);
- font-style:normal;
-}
-
-.hero-desc{
- max-width:590px;
- color:#dce8df;
- font-size:14px;
- line-height:2.3;
- margin:22px 0 30px;
- animation:fadeUp .9s .2s both;
-}
-
-.hero-buttons{
- display:flex;
- gap:12px;
- flex-wrap:wrap;
- animation:fadeUp .9s .3s both;
-}
-
+.hero-tag span{width:8px;height:8px;background:var(--gold);border-radius:50%}
+.hero h1{font-size:clamp(38px,5.5vw,68px);font-weight:900;line-height:1.4}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero-desc{max-width:590px;color:#dce8df;font-size:13px;line-height:2.3;margin:20px 0 28px}
+.hero-buttons{display:flex;gap:11px;flex-wrap:wrap}
 .btn{
- display:inline-flex;
- align-items:center;
- justify-content:center;
- gap:9px;
- padding:13px 21px;
- border-radius:13px;
- font-size:12px;
- font-weight:900;
- border:1px solid transparent;
- transition:.3s var(--ease);
+ display:inline-flex;align-items:center;justify-content:center;gap:8px;
+ padding:12px 20px;border-radius:12px;font-size:12px;font-weight:900;
+ border:1px solid transparent;transition:transform .2s,background .2s;
 }
-
-.btn:hover{
- transform:translateY(-4px);
- box-shadow:0 13px 28px #0002;
-}
-
-.btn-primary{
- background:var(--gold);
- color:#18372c;
-}
-
-.btn-primary:hover{background:var(--gold-light)}
-
-.btn-outline{
- border-color:#ffffff65;
- color:white;
- background:#ffffff0c;
-}
-
+.btn:hover{transform:translateY(-3px)}
+.btn-primary{background:var(--gold);color:#18372c}
+.btn-primary:hover{background:#f0d99d}
+.btn-outline{border-color:#ffffff65;color:#fff;background:#ffffff0c}
 .btn-outline:hover{background:#ffffff20}
-
-.hero-visual{
- position:relative;
- min-height:390px;
- display:flex;
- align-items:center;
- justify-content:center;
- animation:fadeUp 1s .3s both;
-}
-
+.hero-visual{position:relative;min-height:360px;display:grid;place-items:center}
 .hero-photo{
- position:absolute;
- width:85%;
- height:330px;
- border-radius:30px;
- overflow:hidden;
- border:1px solid #ffffff50;
- box-shadow:0 30px 70px #0005;
- transform:rotate(-3deg);
+ width:86%;height:315px;position:relative;overflow:hidden;
+ border-radius:28px;border:1px solid #ffffff55;
+ box-shadow:0 25px 60px #0005;transform:rotate(-2deg);
 }
-
-.hero-photo img{
- width:100%;
- height:100%;
- object-fit:cover;
-}
-
+.hero-photo img{width:100%;height:100%;object-fit:cover}
 .hero-photo:after{
- content:"";
- position:absolute;
- inset:0;
+ content:"";position:absolute;inset:0;
  background:linear-gradient(0deg,#0b302780,transparent 70%);
 }
-
-.hero-photo-label{
- position:absolute;
- z-index:2;
- bottom:22px;
- right:23px;
- color:white;
-}
-
-.hero-photo-label strong{
- display:block;
- font-size:17px;
-}
-
-.hero-photo-label small{
- color:#e5e8df;
- font-size:10px;
-}
-
+.hero-photo-label{position:absolute;z-index:2;bottom:20px;right:20px;color:white}
+.hero-photo-label strong{display:block;font-size:15px}
+.hero-photo-label small{color:#e5e8df;font-size:10px}
 .hero-floating{
- position:absolute;
- z-index:3;
- left:0;
- bottom:5px;
- background:rgba(255,255,255,.13);
- border:1px solid #ffffff55;
- backdrop-filter:blur(16px);
- border-radius:18px;
- padding:15px 19px;
- color:white;
- box-shadow:0 15px 40px #0003;
+ position:absolute;z-index:3;left:0;bottom:0;
+ background:#ffffff18;border:1px solid #ffffff55;
+ border-radius:16px;padding:14px 17px;color:white;
 }
-
-.hero-floating span{
- display:block;
- color:var(--gold);
- font-size:10px;
-}
-
-.hero-floating strong{
- font-size:13px;
-}
-
+.hero-floating span{display:block;color:var(--gold);font-size:10px}
+.hero-floating strong{font-size:12px}
 .hero-bottom{
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:15px;
- margin-top:60px;
- border-top:1px solid #ffffff35;
- padding-top:20px;
- color:#d3dfd7;
- font-size:10px;
+ display:flex;align-items:center;justify-content:space-between;
+ gap:15px;margin-top:50px;border-top:1px solid #ffffff35;
+ padding-top:18px;color:#d3dfd7;font-size:10px;
 }
+.scroll-hint{display:flex;align-items:center;gap:10px}
+.scroll-dot{width:8px;height:8px;background:var(--gold);border-radius:50%}
+.hero-index{font-size:11px;letter-spacing:2px;color:var(--gold)}
 
-.scroll-hint{
- display:flex;
- align-items:center;
- gap:10px;
-}
-
-.scroll-dot{
- width:8px;
- height:8px;
- background:var(--gold);
- border-radius:50%;
- animation:blink 1.5s infinite;
-}
-
-@keyframes blink{
- 50%{opacity:.2;transform:scale(.6)}
-}
-
-.hero-index{
- font-size:11px;
- letter-spacing:3px;
- color:var(--gold);
-}
-
-@keyframes fadeUp{
- from{opacity:0;transform:translateY(28px)}
- to{opacity:1;transform:translateY(0)}
-}
-
-/* QUICK ACCESS */
-
-.quick-section{
- position:relative;
- z-index:5;
- margin-top:-48px;
-}
-
-.quick-grid{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:13px;
-}
-
+/* QUICK LINKS */
+.quick-section{position:relative;z-index:5;margin-top:-42px}
+.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .quick-card{
- display:flex;
- align-items:center;
- gap:14px;
- background:var(--white);
- border:1px solid var(--line);
- border-radius:19px;
- padding:20px;
- box-shadow:var(--shadow);
- transition:.3s var(--ease);
+ display:flex;align-items:center;gap:12px;background:var(--white);
+ border:1px solid var(--line);border-radius:17px;padding:17px;
+ box-shadow:var(--shadow);transition:transform .2s,border-color .2s;
 }
-
-.quick-card:hover{
- transform:translateY(-7px);
- border-color:var(--gold);
-}
-
+.quick-card:hover{transform:translateY(-5px);border-color:var(--gold)}
 .quick-icon{
- width:47px;
- height:47px;
- border-radius:15px;
- background:var(--soft);
- display:grid;
- place-items:center;
- font-size:22px;
- flex:none;
+ width:44px;height:44px;border-radius:14px;background:var(--soft);
+ display:grid;place-items:center;font-size:21px;flex:none;
 }
+.quick-card strong{display:block;font-size:12px;font-weight:900}
+.quick-card small{display:block;color:var(--muted);font-size:9px;margin-top:3px}
 
-.quick-card strong{
- display:block;
- font-size:12px;
- font-weight:900;
-}
-
-.quick-card small{
- display:block;
- color:var(--muted);
- font-size:9px;
- margin-top:3px;
-}
-
-/* INTRODUCTION */
-
-.intro{
- padding-top:120px;
-}
-
-.intro-grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:75px;
- align-items:center;
-}
-
-.intro-visual{
- position:relative;
- min-height:420px;
-}
-
-.intro-photo{
- position:absolute;
- inset:0 0 35px 45px;
- border-radius:28px;
- overflow:hidden;
- box-shadow:var(--shadow);
-}
-
-.intro-photo img{
- width:100%;
- height:100%;
- object-fit:cover;
- transition:1s;
-}
-
-.intro-photo:hover img{transform:scale(1.06)}
-
-.intro-accent{
- position:absolute;
- bottom:0;
- left:0;
- width:45%;
- height:45%;
- border:2px solid var(--gold);
- border-radius:23px;
- z-index:-1;
-}
-
-.intro-stamp{
- position:absolute;
- bottom:10px;
- right:0;
- background:var(--green);
- color:white;
- padding:17px 20px;
- border-radius:17px;
- box-shadow:var(--shadow);
- max-width:190px;
-}
-
-.intro-stamp span{
- display:block;
- color:var(--gold);
- font-size:22px;
-}
-
-.intro-stamp strong{
- display:block;
- font-size:12px;
-}
-
-.intro-stamp small{
- font-size:9px;
- color:#c4d6ca;
-}
-
-.intro-copy h2{
- font-size:clamp(29px,4vw,43px);
- line-height:1.55;
- font-weight:900;
- margin:13px 0 18px;
-}
-
-.intro-copy p{
- font-size:13px;
- line-height:2.3;
- color:var(--muted);
- margin-bottom:14px;
-}
-
-.intro-note{
- margin-top:23px;
- padding:17px 20px;
- border-right:3px solid var(--gold);
- background:var(--white);
- border-radius:0 14px 14px 0;
- color:var(--muted);
- font-size:11px;
- line-height:2;
-}
+/* INTRO */
+.intro{padding-top:110px}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center}
+.intro-visual{position:relative;min-height:390px}
+.intro-photo{position:absolute;inset:0 0 30px 40px;border-radius:25px;overflow:hidden;box-shadow:var(--shadow)}
+.intro-photo img{width:100%;height:100%;object-fit:cover}
+.intro-accent{position:absolute;bottom:0;left:0;width:45%;height:45%;border:2px solid var(--gold);border-radius:20px;z-index:-1}
+.intro-stamp{position:absolute;bottom:8px;right:0;background:var(--green);color:white;padding:14px 18px;border-radius:15px;box-shadow:var(--shadow)}
+.intro-stamp span{display:block;color:var(--gold);font-size:20px}
+.intro-stamp strong{display:block;font-size:11px}
+.intro-stamp small{font-size:9px;color:#c4d6ca}
+.intro-copy h2{font-size:clamp(28px,4vw,42px);line-height:1.5;font-weight:900;margin:12px 0 17px}
+.intro-copy p{font-size:12px;line-height:2.3;color:var(--muted);margin-bottom:13px}
+.intro-note{margin-top:20px;padding:15px 18px;border-right:3px solid var(--gold);background:var(--white);border-radius:0 13px 13px 0;color:var(--muted);font-size:10px;line-height:2}
 
 /* VALUES */
-
-.values{
- background:var(--white);
- overflow:hidden;
-}
-
-.values-grid{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:15px;
-}
-
-.value-card{
- background:var(--cream);
- padding:25px 22px;
- border:1px solid var(--line);
- border-radius:20px;
- transition:.4s var(--ease);
- position:relative;
- overflow:hidden;
-}
-
-.value-card:after{
- content:"";
- position:absolute;
- bottom:0;
- right:0;
- width:0;
- height:3px;
- background:var(--gold);
- transition:.4s;
-}
-
-.value-card:hover{
- transform:translateY(-8px);
- box-shadow:var(--shadow);
-}
-
-.value-card:hover:after{width:100%}
-
-.value-icon{
- width:52px;
- height:52px;
- background:var(--green);
- color:var(--gold);
- border-radius:16px;
- display:grid;
- place-items:center;
- font-size:22px;
- margin-bottom:17px;
- transition:.4s;
-}
-
-.value-card:hover .value-icon{
- transform:rotate(-8deg) scale(1.08);
-}
-
-.value-card h3{
- font-size:14px;
- font-weight:900;
- margin-bottom:8px;
-}
-
-.value-card p{
- font-size:10px;
- line-height:2;
- color:var(--muted);
-}
+.values{background:var(--white)}
+.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.value-card{background:var(--cream);padding:22px 18px;border:1px solid var(--line);border-radius:18px;transition:transform .2s}
+.value-card:hover{transform:translateY(-5px)}
+.value-icon{width:48px;height:48px;background:var(--green);color:var(--gold);border-radius:14px;display:grid;place-items:center;font-size:21px;margin-bottom:14px}
+.value-card h3{font-size:13px;font-weight:900;margin-bottom:7px}
+.value-card p{font-size:10px;line-height:2;color:var(--muted)}
 
 /* SERVICES */
-
-.services-grid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:17px;
-}
-
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
 .service-card{
- position:relative;
- overflow:hidden;
- background:var(--white);
- border:1px solid var(--line);
- border-radius:21px;
- padding:25px;
- min-height:220px;
- transition:.35s var(--ease);
- box-shadow:0 7px 25px #102e2405;
+ position:relative;overflow:hidden;background:var(--white);
+ border:1px solid var(--line);border-radius:19px;padding:23px;
+ min-height:205px;transition:transform .2s,border-color .2s,box-shadow .2s;
 }
-
-.service-card:before{
- content:"";
- position:absolute;
- width:130px;
- height:130px;
- border:1px solid var(--line);
- border-radius:50%;
- left:-65px;
- bottom:-75px;
- transition:.4s;
-}
-
-.service-card:hover{
- transform:translateY(-8px);
- border-color:#d8b66a88;
- box-shadow:var(--shadow);
-}
-
-.service-card:hover:before{
- transform:scale(1.5);
-}
-
-.service-top{
- display:flex;
- justify-content:space-between;
- align-items:center;
-}
-
-.service-icon{
- width:51px;
- height:51px;
- background:var(--soft);
- border-radius:16px;
- display:grid;
- place-items:center;
- font-size:23px;
-}
-
-.service-number{
- color:#a8b5aa;
- font-size:10px;
- letter-spacing:2px;
-}
-
-.service-card h3{
- font-size:16px;
- font-weight:900;
- margin:18px 0 7px;
-}
-
-.service-card p{
- color:var(--muted);
- font-size:11px;
- line-height:2;
- min-height:42px;
-}
-
-.service-link{
- display:inline-flex;
- align-items:center;
- gap:8px;
- margin-top:14px;
- color:var(--green-light);
- font-size:10px;
- font-weight:900;
-}
-
+.service-card:hover{transform:translateY(-5px);border-color:#d8b66a88;box-shadow:var(--shadow)}
+.service-top{display:flex;justify-content:space-between;align-items:center}
+.service-icon{width:48px;height:48px;background:var(--soft);border-radius:14px;display:grid;place-items:center;font-size:22px}
+.service-number{color:#a8b5aa;font-size:10px;letter-spacing:2px}
+.service-card h3{font-size:15px;font-weight:900;margin:15px 0 6px}
+.service-card p{color:var(--muted);font-size:10px;line-height:2;min-height:40px}
+.service-link{display:inline-flex;gap:8px;margin-top:12px;color:var(--green-light);font-size:10px;font-weight:900}
 .dark .service-link{color:var(--gold)}
+.soon-label{position:absolute;top:15px;left:-27px;transform:rotate(-38deg);background:var(--gold);color:#243629;padding:4px 30px;font-size:8px;font-weight:900}
 
-.service-link:hover{gap:14px}
-
-.soon-label{
- position:absolute;
- top:17px;
- left:-27px;
- transform:rotate(-38deg);
- background:var(--gold);
- color:#243629;
- padding:4px 30px;
- font-size:8px;
- font-weight:900;
-}
-
-/* FEATURE BANNER */
-
+/* BANNER */
 .feature-banner{
- background:var(--green-dark);
- color:white;
- border-radius:28px;
- padding:42px;
- display:grid;
- grid-template-columns:1fr auto;
- align-items:center;
- gap:25px;
- position:relative;
- overflow:hidden;
+ background:var(--green-dark);color:white;border-radius:25px;
+ padding:38px;display:grid;grid-template-columns:1fr auto;
+ align-items:center;gap:22px;position:relative;overflow:hidden;
 }
-
-.feature-banner:after{
- content:"";
- position:absolute;
- width:270px;
- height:270px;
- border:1px solid #d8b66a44;
- border-radius:50%;
- left:-110px;
- top:-160px;
- box-shadow:0 0 0 35px #d8b66a0a,0 0 0 70px #d8b66a08;
-}
-
-.feature-banner small{
- color:var(--gold);
- font-size:10px;
- font-weight:900;
- letter-spacing:1px;
-}
-
-.feature-banner h2{
- font-size:clamp(22px,3vw,32px);
- margin:9px 0;
-}
-
-.feature-banner p{
- color:#cbd9ce;
- font-size:11px;
- line-height:2;
- max-width:600px;
-}
-
-.feature-banner .btn{
- position:relative;
- z-index:2;
-}
+.feature-banner small{color:var(--gold);font-size:10px;font-weight:900}
+.feature-banner h2{font-size:clamp(21px,3vw,30px);margin:8px 0}
+.feature-banner p{color:#cbd9ce;font-size:11px;line-height:2;max-width:590px}
+.feature-banner .btn{position:relative;z-index:2}
 
 /* ANNOUNCEMENTS */
-
-.announcement-layout{
- display:grid;
- grid-template-columns:1.1fr .9fr;
- gap:18px;
-}
-
+.announcement-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
 .announcement-main{
- background:var(--green);
- color:white;
- border-radius:23px;
- padding:31px;
- position:relative;
- overflow:hidden;
- min-height:245px;
- display:flex;
- flex-direction:column;
- justify-content:space-between;
+ background:var(--green);color:white;border-radius:20px;padding:28px;
+ min-height:235px;display:flex;flex-direction:column;justify-content:space-between;
 }
-
-.announcement-main:after{
- content:"📢";
- position:absolute;
- left:25px;
- top:15px;
- opacity:.12;
- font-size:100px;
- transform:rotate(-15deg);
-}
-
-.announcement-main small{
- color:var(--gold);
- font-size:10px;
- font-weight:900;
-}
-
-.announcement-main h3{
- font-size:24px;
- margin:10px 0;
-}
-
-.announcement-main p{
- color:#d6e1d8;
- font-size:11px;
- line-height:2;
- max-width:460px;
-}
-
-.announcement-side{
- display:grid;
- gap:13px;
-}
-
-.announcement-item{
- display:flex;
- align-items:center;
- gap:15px;
- background:var(--white);
- border:1px solid var(--line);
- border-radius:18px;
- padding:19px;
-}
-
-.announcement-symbol{
- width:43px;
- height:43px;
- display:grid;
- place-items:center;
- background:var(--soft);
- border-radius:14px;
- font-size:19px;
- flex:none;
-}
-
-.announcement-item strong{
- display:block;
- font-size:12px;
-}
-
-.announcement-item small{
- display:block;
- color:var(--muted);
- font-size:9px;
- margin-top:4px;
-}
+.announcement-main small{color:var(--gold);font-size:10px;font-weight:900}
+.announcement-main h3{font-size:22px;margin:9px 0}
+.announcement-main p{color:#d6e1d8;font-size:10px;line-height:2;max-width:450px}
+.announcement-side{display:grid;gap:11px}
+.announcement-item{display:flex;align-items:center;gap:13px;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:16px}
+.announcement-symbol{width:42px;height:42px;display:grid;place-items:center;background:var(--soft);border-radius:13px;font-size:19px;flex:none}
+.announcement-item strong{display:block;font-size:11px}
+.announcement-item small{display:block;color:var(--muted);font-size:9px;margin-top:4px}
 
 /* RESOURCES */
-
-.resources-grid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:15px;
-}
-
-.resource-card{
- background:var(--white);
- border:1px solid var(--line);
- border-radius:20px;
- padding:24px;
- transition:.3s;
- position:relative;
- overflow:hidden;
-}
-
-.resource-card:hover{
- transform:translateY(-7px);
- border-color:var(--gold);
- box-shadow:var(--shadow);
-}
-
-.resource-top{
- display:flex;
- justify-content:space-between;
- align-items:center;
-}
-
-.resource-level{
- color:var(--green-light);
- font-size:10px;
- font-weight:900;
-}
-
+.resources-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.resource-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px;transition:transform .2s,border-color .2s}
+.resource-card:hover{transform:translateY(-5px);border-color:var(--gold)}
+.resource-top{display:flex;justify-content:space-between;align-items:center}
+.resource-level{color:var(--green-light);font-size:10px;font-weight:900}
 .dark .resource-level{color:var(--gold)}
-
-.resource-icon{
- width:45px;
- height:45px;
- border-radius:14px;
- background:var(--soft);
- display:grid;
- place-items:center;
- font-size:21px;
-}
-
-.resource-card h3{
- font-size:16px;
- margin:14px 0 6px;
-}
-
-.resource-card p{
- color:var(--muted);
- font-size:10px;
- line-height:2;
- margin-bottom:15px;
-}
-
-.resource-card a{
- color:var(--green-light);
- font-size:10px;
- font-weight:900;
-}
-
+.resource-icon{width:43px;height:43px;border-radius:13px;background:var(--soft);display:grid;place-items:center;font-size:20px}
+.resource-card h3{font-size:15px;margin:13px 0 6px}
+.resource-card p{color:var(--muted);font-size:10px;line-height:2;margin-bottom:13px}
+.resource-card a{color:var(--green-light);font-size:10px;font-weight:900}
 .dark .resource-card a{color:var(--gold)}
 
 /* CONTACT */
-
-.contact-layout{
- display:grid;
- grid-template-columns:.8fr 1.2fr;
- gap:18px;
+.contact-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:16px}
+.contact-aside{background:var(--green-dark);color:white;border-radius:20px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;min-height:320px}
+.contact-aside .big-icon{font-size:38px;color:var(--gold)}
+.contact-aside h3{font-size:21px;margin:10px 0}
+.contact-aside p{color:#c8d8cd;font-size:10px;line-height:2.2}
+.contact-aside small{color:var(--gold);font-size:10px}
+.contact-form{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:25px}
+.field{margin-bottom:13px}
+.field label{display:block;font-size:10px;font-weight:900;margin-bottom:6px}
+.field input,.field textarea,.field select{
+ width:100%;padding:11px 13px;border:1px solid var(--line);
+ border-radius:11px;background:var(--cream);color:var(--ink);outline:0;font-size:11px;
 }
-
-.contact-aside{
- background:var(--green-dark);
- color:white;
- border-radius:22px;
- padding:32px;
- display:flex;
- flex-direction:column;
- justify-content:space-between;
- min-height:340px;
-}
-
-.contact-aside .big-icon{
- font-size:42px;
- color:var(--gold);
-}
-
-.contact-aside h3{
- font-size:23px;
- margin:10px 0;
-}
-
-.contact-aside p{
- color:#c8d8cd;
- font-size:11px;
- line-height:2.2;
-}
-
-.contact-aside small{
- color:var(--gold);
- font-size:10px;
-}
-
-.contact-form{
- background:var(--white);
- border:1px solid var(--line);
- border-radius:22px;
- padding:28px;
-}
-
-.field{margin-bottom:14px}
-
-.field label{
- display:block;
- font-size:10px;
- font-weight:900;
- margin-bottom:7px;
-}
-
-.field input,
-.field textarea,
-.field select{
- width:100%;
- padding:12px 14px;
- border:1px solid var(--line);
- border-radius:12px;
- background:var(--cream);
- color:var(--ink);
- outline:0;
- font-size:11px;
-}
-
-.field input:focus,
-.field textarea:focus,
-.field select:focus{
- border-color:var(--green-light);
- box-shadow:0 0 0 3px #1d70541a;
-}
-
-.field textarea{
- resize:vertical;
- min-height:115px;
-}
-
-.form-note{
- color:var(--muted);
- font-size:9px;
- margin-top:11px;
- line-height:1.9;
-}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--green-light);box-shadow:0 0 0 3px #1d70541a}
+.field textarea{resize:vertical;min-height:110px}
+.form-note{color:var(--muted);font-size:9px;margin-top:10px;line-height:1.9}
 
 /* FOOTER */
+.footer{background:#09251d;color:white;padding:48px 0 22px}
+.footer-top{display:grid;grid-template-columns:1.3fr .7fr .7fr;gap:30px;padding-bottom:30px;border-bottom:1px solid #ffffff20}
+.footer-brand{display:flex;align-items:center;gap:10px;color:var(--gold);font-size:16px;font-weight:900}
+.footer-brand span{width:39px;height:39px;border:1px solid #d8b66a77;border-radius:12px;display:grid;place-items:center}
+.footer p{color:#b8cbbd;font-size:10px;line-height:2.2;margin-top:11px;max-width:340px}
+.footer h4{color:var(--gold);font-size:11px;margin-bottom:12px}
+.footer-links{display:grid;gap:8px}
+.footer-links a{color:#d4e0d7;font-size:10px;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:18px;color:#91a497;font-size:9px}
 
-.footer{
- background:#09251d;
- color:white;
- padding:55px 0 23px;
-}
-
-.footer-top{
- display:grid;
- grid-template-columns:1.3fr .7fr .7fr;
- gap:35px;
- padding-bottom:35px;
- border-bottom:1px solid #ffffff20;
-}
-
-.footer-brand{
- display:flex;
- align-items:center;
- gap:11px;
- color:var(--gold);
- font-size:17px;
- font-weight:900;
-}
-
-.footer-brand span{
- width:40px;
- height:40px;
- border:1px solid #d8b66a77;
- border-radius:13px;
- display:grid;
- place-items:center;
-}
-
-.footer p{
- color:#b8cbbd;
- font-size:10px;
- line-height:2.2;
- margin-top:12px;
- max-width:340px;
-}
-
-.footer h4{
- color:var(--gold);
- font-size:12px;
- margin-bottom:13px;
-}
-
-.footer-links{
- display:grid;
- gap:9px;
-}
-
-.footer-links a{
- color:#d4e0d7;
- font-size:10px;
- transition:.2s;
-}
-
-.footer-links a:hover{
- color:var(--gold);
- transform:translateX(-3px);
-}
-
-.footer-bottom{
- display:flex;
- justify-content:space-between;
- gap:15px;
- flex-wrap:wrap;
- padding-top:20px;
- color:#91a497;
- font-size:9px;
-}
-
-/* TOAST */
-
+/* SEARCH / TOAST / BACK TO TOP */
 .toast{
- position:fixed;
- right:50%;
- bottom:25px;
- transform:translate(50%,25px);
- z-index:4000;
- width:min(420px,calc(100% - 30px));
- background:#103e32;
- color:white;
- border:1px solid #d8b66a99;
- border-radius:16px;
- padding:14px 17px;
- box-shadow:0 20px 60px #0004;
- display:flex;
- align-items:center;
- gap:12px;
- opacity:0;
- visibility:hidden;
- transition:.3s;
+ position:fixed;right:50%;bottom:22px;transform:translate(50%,15px);
+ z-index:4000;width:min(420px,calc(100% - 28px));
+ background:#103e32;color:white;border:1px solid #d8b66a99;
+ border-radius:15px;padding:13px 16px;box-shadow:0 18px 50px #0004;
+ display:flex;align-items:center;gap:11px;opacity:0;visibility:hidden;
+ transition:opacity .2s,transform .2s;
 }
-
-.toast.show{
- opacity:1;
- visibility:visible;
- transform:translate(50%,0);
-}
-
-.toast-icon{
- width:36px;
- height:36px;
- border-radius:11px;
- background:var(--gold);
- color:#103e32;
- display:grid;
- place-items:center;
- flex:none;
-}
-
-.toast strong{
- display:block;
- font-size:11px;
- color:var(--gold);
-}
-
-.toast p{
- font-size:10px;
- color:#e1e9e2;
- margin-top:2px;
-}
-
-/* SEARCH */
-
+.toast.show{opacity:1;visibility:visible;transform:translate(50%,0)}
+.toast-icon{width:34px;height:34px;border-radius:10px;background:var(--gold);color:#103e32;display:grid;place-items:center;flex:none}
+.toast strong{display:block;font-size:11px;color:var(--gold)}
+.toast p{font-size:10px;color:#e1e9e2;margin-top:2px}
 .search-overlay{
- position:fixed;
- inset:0;
- z-index:2500;
- background:rgba(4,18,13,.82);
- backdrop-filter:blur(12px);
- display:flex;
- justify-content:center;
- align-items:flex-start;
- padding:15vh 15px 20px;
- opacity:0;
- visibility:hidden;
- transition:.25s;
+ position:fixed;inset:0;z-index:2500;background:#04120dd9;
+ backdrop-filter:blur(9px);display:flex;justify-content:center;
+ align-items:flex-start;padding:14vh 15px 20px;opacity:0;visibility:hidden;transition:opacity .2s;
 }
-
-.search-overlay.open{
- opacity:1;
- visibility:visible;
-}
-
-.search-box{
- width:min(580px,100%);
- background:var(--white);
- border:1px solid var(--line);
- border-radius:20px;
- padding:22px;
- box-shadow:0 25px 90px #0005;
- transform:translateY(15px);
- transition:.3s;
-}
-
-.search-overlay.open .search-box{transform:none}
-
-.search-box h3{
- font-size:17px;
- margin-bottom:12px;
-}
-
-.search-input-wrap{
- display:flex;
- align-items:center;
- gap:10px;
- border:1px solid var(--line);
- border-radius:13px;
- padding:0 13px;
- background:var(--cream);
-}
-
-.search-input-wrap span{color:var(--muted)}
-
-.search-input-wrap input{
- width:100%;
- border:0;
- outline:0;
- background:transparent;
- color:var(--ink);
- padding:14px 0;
- font-size:12px;
-}
-
-.search-results{
- display:grid;
- gap:7px;
- margin-top:13px;
- max-height:300px;
- overflow:auto;
-}
-
-.search-result{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:12px;
- padding:12px;
- border-radius:11px;
- background:var(--cream);
- font-size:11px;
- transition:.2s;
-}
-
-.search-result:hover{
- background:var(--soft);
- color:var(--green-light);
-}
-
-.search-empty{
- color:var(--muted);
- font-size:11px;
- padding:13px;
-}
-
-.search-hint{
- color:var(--muted);
- font-size:9px;
- margin-top:12px;
-}
-
-/* BACK TO TOP */
-
+.search-overlay.open{opacity:1;visibility:visible}
+.search-box{width:min(580px,100%);background:var(--white);border:1px solid var(--line);border-radius:19px;padding:21px;box-shadow:0 25px 80px #0005}
+.search-box h3{font-size:16px;margin-bottom:12px}
+.search-input-wrap{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;padding:0 12px;background:var(--cream)}
+.search-input-wrap input{width:100%;border:0;outline:0;background:transparent;color:var(--ink);padding:13px 0;font-size:12px}
+.search-results{display:grid;gap:7px;margin-top:12px;max-height:280px;overflow:auto}
+.search-result{display:flex;justify-content:space-between;padding:11px;border-radius:10px;background:var(--cream);font-size:11px}
+.search-result:hover{background:var(--soft);color:var(--green-light)}
+.search-empty,.search-hint{color:var(--muted);font-size:10px;padding:10px}
 .backtop{
- position:fixed;
- left:20px;
- bottom:22px;
- width:44px;
- height:44px;
- border:0;
- border-radius:14px;
- background:var(--gold);
- color:#142d22;
- font-size:19px;
- opacity:0;
- pointer-events:none;
- transform:translateY(10px);
- transition:.25s;
- z-index:900;
- box-shadow:0 8px 25px #0002;
+ position:fixed;left:18px;bottom:18px;width:43px;height:43px;
+ border:0;border-radius:13px;background:var(--gold);color:#142d22;
+ font-size:19px;opacity:0;pointer-events:none;transform:translateY(8px);
+ transition:opacity .2s,transform .2s;z-index:900;
 }
-
-.backtop.show{
- opacity:1;
- pointer-events:auto;
- transform:none;
-}
+.backtop.show{opacity:1;pointer-events:auto;transform:none}
 
 /* RESPONSIVE */
-
 @media(max-width:1050px){
- .nav-links{gap:13px}
+ .nav-links{gap:10px}
  .nav-links a{font-size:10px}
- .hero-layout{grid-template-columns:1fr .75fr;gap:15px}
- .hero-visual{min-height:330px}
- .hero-photo{height:280px}
+ .hero-layout{grid-template-columns:1fr .8fr;gap:20px}
  .quick-grid{grid-template-columns:repeat(2,1fr)}
  .values-grid{grid-template-columns:repeat(2,1fr)}
 }
-
 @media(max-width:850px){
+ .navbar,.navbar.scrolled{height:70px}
+ .nav-inner{position:relative}
  .menu-btn{display:grid}
  .nav-links{
-  display:none;
-  position:absolute;
-  top:70px;
-  right:4%;
-  left:4%;
-  padding:15px;
-  background:var(--white);
-  border:1px solid var(--line);
-  border-radius:17px;
-  box-shadow:var(--shadow);
-  flex-direction:column;
-  align-items:stretch;
-  gap:0;
+  display:flex;visibility:hidden;opacity:0;pointer-events:none;
+  position:absolute;top:calc(100% + 9px);right:0;left:0;
+  padding:10px;background:var(--white);border:1px solid var(--line);
+  border-radius:17px;box-shadow:0 18px 45px #0002;
+  flex-direction:column;align-items:stretch;gap:3px;
+  transform:translateY(-7px);
+  transition:opacity .18s,transform .18s,visibility .18s;
  }
- .nav-links.open{display:flex}
- .nav-links a{
-  padding:11px;
-  border-radius:9px;
-  font-size:12px;
- }
- .nav-links a:hover{background:var(--soft)}
+ .nav-links.open{visibility:visible;opacity:1;pointer-events:auto;transform:none}
+ .nav-links a{padding:11px 13px;border-radius:10px;font-size:13px}
+ .nav-links a:hover,.nav-links a.active{background:var(--soft)}
  .nav-links a:after{display:none}
  .hero-layout{grid-template-columns:1fr}
  .hero-visual{display:none}
- .hero-copy{max-width:720px}
- .hero{min-height:690px}
- .intro-grid{gap:40px}
+ .hero{min-height:660px}
+ .intro-grid{gap:35px}
  .services-grid{grid-template-columns:repeat(2,1fr)}
- .announcement-layout{grid-template-columns:1fr}
- .contact-layout{grid-template-columns:1fr}
- .footer-top{grid-template-columns:1fr 1fr}
- .footer-top>div:first-child{grid-column:1/-1}
+ .announcement-layout,.contact-layout{grid-template-columns:1fr}
 }
-
 @media(max-width:600px){
- .container{width:calc(100% - 32px)}
- .navbar{height:70px}
- .brand-mark{width:41px;height:41px}
+ .container{width:calc(100% - 30px)}
+ .navbar,.navbar.scrolled{height:66px}
+ .brand-mark{width:39px;height:39px}
  .brand-text strong{font-size:13px}
  .brand-text small{font-size:8px}
  .nav-actions{gap:5px}
  .icon-btn{width:35px;height:35px;font-size:14px}
- .nav-links{top:65px}
- .hero{min-height:650px}
- .hero-content{padding-top:110px;padding-bottom:50px}
- .hero h1{font-size:43px}
+ .nav-links{top:calc(100% + 8px)}
+ .hero{min-height:620px}
+ .hero-content{padding-top:105px;padding-bottom:45px}
+ .hero h1{font-size:42px}
  .hero-desc{font-size:12px}
  .hero-buttons{display:grid;grid-template-columns:1fr}
  .hero-buttons .btn{width:100%}
- .hero-bottom{margin-top:45px;font-size:9px}
- .quick-section{margin-top:-30px}
- .quick-grid{grid-template-columns:1fr 1fr;gap:9px}
- .quick-card{padding:13px 11px;gap:9px}
- .quick-icon{width:38px;height:38px;font-size:18px}
+ .hero-bottom{margin-top:35px;font-size:9px}
+ .quick-section{margin-top:-25px}
+ .quick-grid{gap:8px}
+ .quick-card{padding:12px 9px;gap:8px}
+ .quick-icon{width:36px;height:36px;font-size:17px}
  .quick-card strong{font-size:10px}
  .quick-card small{font-size:8px}
- .section{padding:72px 0}
- .intro{padding-top:90px}
- .intro-grid{grid-template-columns:1fr;gap:35px}
- .intro-visual{min-height:320px}
- .intro-photo{inset:0 0 25px 28px}
- .intro-stamp{padding:12px 15px}
+ .section{padding:65px 0}
+ .intro{padding-top:85px}
+ .intro-grid{grid-template-columns:1fr;gap:30px}
+ .intro-visual{min-height:300px}
+ .intro-photo{inset:0 0 25px 25px}
+ .intro-stamp{padding:11px 13px}
  .intro-stamp strong{font-size:10px}
- .values-grid{grid-template-columns:1fr 1fr;gap:10px}
- .value-card{padding:18px 14px}
- .value-icon{width:43px;height:43px;font-size:18px}
- .value-card h3{font-size:12px}
+ .values-grid{gap:9px}
+ .value-card{padding:16px 12px}
+ .value-icon{width:40px;height:40px;font-size:17px}
+ .value-card h3{font-size:11px}
  .value-card p{font-size:9px}
- .services-grid{grid-template-columns:1fr}
- .service-card{min-height:195px;padding:22px}
- .feature-banner{grid-template-columns:1fr;padding:27px}
+ .services-grid,.resources-grid{grid-template-columns:1fr}
+ .service-card{min-height:185px;padding:20px}
+ .feature-banner{grid-template-columns:1fr;padding:25px}
  .feature-banner .btn{width:100%}
- .announcement-main{padding:25px}
- .announcement-main h3{font-size:21px}
- .resources-grid{grid-template-columns:1fr}
- .contact-aside{min-height:260px;padding:25px}
- .contact-form{padding:20px}
- .footer-top{grid-template-columns:1fr 1fr;gap:25px}
+ .announcement-main{padding:23px}
+ .contact-aside{min-height:250px;padding:23px}
+ .contact-form{padding:19px}
+ .footer-top{grid-template-columns:1fr 1fr;gap:22px}
  .footer-top>div:first-child{grid-column:1/-1}
- .footer-bottom{display:grid;gap:8px}
- .backtop{left:13px;bottom:15px}
+ .footer-bottom{display:grid;gap:7px}
+ .backtop{left:12px;bottom:13px}
 }
-
 @media(prefers-reduced-motion:reduce){
- *,*:before,*:after{
-  scroll-behavior:auto!important;
-  animation:none!important;
-  transition:none!important;
- }
+ html{scroll-behavior:auto}
+ *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
  .reveal{opacity:1;transform:none}
 }
 </style>
 </head>
 
 <body>
-
 <div class="progress" id="progress"></div>
 
 <header class="navbar" id="navbar">
  <div class="container nav-inner">
-
   <a class="brand" href="#top" aria-label="ثانوية مسغوني">
    <span class="brand-mark">✦</span>
    <span class="brand-text">
@@ -1574,41 +474,23 @@ img{display:block;max-width:100%}
    <button class="icon-btn" id="searchBtn" aria-label="البحث">⌕</button>
    <button class="icon-btn" id="themeBtn" aria-label="تغيير المظهر">◐</button>
    <button class="icon-btn" id="langBtn" aria-label="تغيير اللغة">FR</button>
-   <button class="icon-btn menu-btn" id="menuBtn" aria-label="فتح القائمة">☰</button>
+   <button class="icon-btn menu-btn" id="menuBtn" aria-label="فتح القائمة" aria-expanded="false">☰</button>
   </div>
-
  </div>
 </header>
 
 <main id="top">
 
-<!-- HERO -->
-
 <section class="hero">
  <div class="hero-bg"></div>
- <div class="hero-grid"></div>
- <div class="hero-circle"></div>
-
  <div class="container hero-content">
   <div class="hero-layout">
-
    <div class="hero-copy">
-    <div class="hero-tag">
-     <span></span>
-     <b data-ar="البوابة الرقمية للمؤسسة" data-fr="PORTAIL NUMÉRIQUE DU LYCÉE">البوابة الرقمية للمؤسسة</b>
-    </div>
-
-    <h1 data-ar="مساحة للمعرفة،<br><em>ومستقبل يبدأ هنا.</em>" data-fr="Un espace de savoir,<br><em>un avenir qui commence ici.</em>">
-     مساحة للمعرفة،<br>
-     <em>ومستقبل يبدأ هنا.</em>
-    </h1>
-
-    <p class="hero-desc"
-       data-ar="مرحباً بكم في البوابة الرقمية لثانوية المجاهد مسغوني محمد الصالح. اكتشفوا خدمات المؤسسة، تابعوا المستجدات، واستفيدوا من الموارد التعليمية وفضاء التلاميذ."
-       data-fr="Bienvenue sur le portail numérique du Lycée du moudjahid Mesgouni Mohamed Salah. Découvrez les services, les actualités et les ressources pédagogiques.">
+    <div class="hero-tag"><span></span><b data-ar="البوابة الرقمية للمؤسسة" data-fr="PORTAIL NUMÉRIQUE DU LYCÉE">البوابة الرقمية للمؤسسة</b></div>
+    <h1 data-ar="مساحة للمعرفة،<br><em>ومستقبل يبدأ هنا.</em>" data-fr="Un espace de savoir,<br><em>un avenir qui commence ici.</em>">مساحة للمعرفة،<br><em>ومستقبل يبدأ هنا.</em></h1>
+    <p class="hero-desc" data-ar="مرحباً بكم في البوابة الرقمية لثانوية المجاهد مسغوني محمد الصالح. اكتشفوا خدمات المؤسسة، تابعوا المستجدات، واستفيدوا من الموارد التعليمية وفضاء التلاميذ." data-fr="Bienvenue sur le portail numérique du Lycée du moudjahid Mesgouni Mohamed Salah. Découvrez les services, les actualités et les ressources pédagogiques.">
      مرحباً بكم في البوابة الرقمية لثانوية المجاهد مسغوني محمد الصالح. اكتشفوا خدمات المؤسسة، تابعوا المستجدات، واستفيدوا من الموارد التعليمية وفضاء التلاميذ.
     </p>
-
     <div class="hero-buttons">
      <a class="btn btn-primary" href="students.html" data-ar="اكتشف فضاء التلاميذ ←" data-fr="Découvrir l’espace élèves ←">اكتشف فضاء التلاميذ ←</a>
      <a class="btn btn-outline" href="about.html" data-ar="تعرّف على المؤسسة" data-fr="Découvrir le lycée">تعرّف على المؤسسة</a>
@@ -1617,314 +499,98 @@ img{display:block;max-width:100%}
 
    <div class="hero-visual">
     <div class="hero-photo">
-     <img src="facade.jpg" alt="واجهة ثانوية المجاهد مسغوني محمد الصالح">
+     <img src="facade.jpg" alt="واجهة ثانوية المجاهد مسغوني محمد الصالح" fetchpriority="high">
      <div class="hero-photo-label">
       <strong data-ar="ثانوية المجاهد مسغوني محمد الصالح" data-fr="Lycée du moudjahid Mesgouni Mohamed Salah">ثانوية المجاهد مسغوني محمد الصالح</strong>
       <small data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail, clés de la réussite">العلم والعمل أساس النجاح</small>
      </div>
     </div>
-
     <div class="hero-floating">
      <span data-ar="بوابتكم التعليمية" data-fr="VOTRE PORTAIL ÉDUCATIF">بوابتكم التعليمية</span>
      <strong data-ar="كل ما تحتاجونه في مكان واحد" data-fr="Tout au même endroit">كل ما تحتاجونه في مكان واحد</strong>
     </div>
    </div>
-
   </div>
 
   <div class="hero-bottom">
-   <div class="scroll-hint">
-    <span class="scroll-dot"></span>
-    <span data-ar="اكتشف خدمات ومرافق البوابة" data-fr="Découvrez les services du portail">اكتشف خدمات ومرافق البوابة</span>
-   </div>
+   <div class="scroll-hint"><span class="scroll-dot"></span><span data-ar="اكتشف خدمات ومرافق البوابة" data-fr="Découvrez les services du portail">اكتشف خدمات ومرافق البوابة</span></div>
    <span class="hero-index">LYCÉE MESGOUNI · 2026</span>
   </div>
  </div>
 </section>
 
-<!-- QUICK ACCESS -->
-
 <section class="quick-section">
  <div class="container">
   <div class="quick-grid">
-
-   <a class="quick-card reveal" href="students.html">
-    <span class="quick-icon">🎓</span>
-    <span>
-     <strong data-ar="فضاء التلاميذ" data-fr="Espace élèves">فضاء التلاميذ</strong>
-     <small data-ar="ملخصات ومناقشات" data-fr="Fiches et discussions">ملخصات ومناقشات</small>
-    </span>
-   </a>
-
-   <a class="quick-card reveal delay-1" href="#announcements">
-    <span class="quick-icon">📢</span>
-    <span>
-     <strong data-ar="الإعلانات" data-fr="Annonces">الإعلانات</strong>
-     <small data-ar="المستجدات المدرسية" data-fr="Actualités scolaires">المستجدات المدرسية</small>
-    </span>
-   </a>
-
-   <a class="quick-card reveal delay-2" href="#resources">
-    <span class="quick-icon">📚</span>
-    <span>
-     <strong data-ar="الموارد التعليمية" data-fr="Ressources">الموارد التعليمية</strong>
-     <small data-ar="دروس وتمارين" data-fr="Cours et exercices">دروس وتمارين</small>
-    </span>
-   </a>
-
-   <a class="quick-card reveal delay-3" href="about.html">
-    <span class="quick-icon">🏫</span>
-    <span>
-     <strong data-ar="عن المؤسسة" data-fr="Notre lycée">عن المؤسسة</strong>
-     <small data-ar="اكتشف ثانويتنا" data-fr="Découvrir le lycée">اكتشف ثانويتنا</small>
-    </span>
-   </a>
-
+   <a class="quick-card reveal" href="students.html"><span class="quick-icon">🎓</span><span><strong data-ar="فضاء التلاميذ" data-fr="Espace élèves">فضاء التلاميذ</strong><small data-ar="ملخصات ومناقشات" data-fr="Fiches et discussions">ملخصات ومناقشات</small></span></a>
+   <a class="quick-card reveal delay-1" href="#announcements"><span class="quick-icon">📢</span><span><strong data-ar="الإعلانات" data-fr="Annonces">الإعلانات</strong><small data-ar="المستجدات المدرسية" data-fr="Actualités scolaires">المستجدات المدرسية</small></span></a>
+   <a class="quick-card reveal delay-2" href="#resources"><span class="quick-icon">📚</span><span><strong data-ar="الموارد التعليمية" data-fr="Ressources">الموارد التعليمية</strong><small data-ar="دروس وتمارين" data-fr="Cours et exercices">دروس وتمارين</small></span></a>
+   <a class="quick-card reveal delay-3" href="about.html"><span class="quick-icon">🏫</span><span><strong data-ar="عن المؤسسة" data-fr="Notre lycée">عن المؤسسة</strong><small data-ar="اكتشف ثانويتنا" data-fr="Découvrir le lycée">اكتشف ثانويتنا</small></span></a>
   </div>
  </div>
 </section>
 
-<!-- INTRODUCTION -->
-
 <section class="section intro">
  <div class="container intro-grid">
-
   <div class="intro-visual reveal">
-   <div class="intro-photo">
-    <img src="facade.jpg" alt="صورة ثانوية مسغوني">
-   </div>
+   <div class="intro-photo"><img src="facade.jpg" alt="صورة ثانوية مسغوني" loading="lazy"></div>
    <div class="intro-accent"></div>
-   <div class="intro-stamp">
-    <span>✦</span>
-    <strong data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail">العلم والعمل أساس النجاح</strong>
-    <small data-ar="شعار المؤسسة" data-fr="Devise du lycée">شعار المؤسسة</small>
-   </div>
+   <div class="intro-stamp"><span>✦</span><strong data-ar="العلم والعمل أساس النجاح" data-fr="Le savoir et le travail">العلم والعمل أساس النجاح</strong><small data-ar="شعار المؤسسة" data-fr="Devise du lycée">شعار المؤسسة</small></div>
   </div>
 
   <div class="intro-copy reveal">
    <span class="eyebrow" data-ar="مرحباً بكم في بوابتنا" data-fr="BIENVENUE SUR NOTRE PORTAIL">مرحباً بكم في بوابتنا</span>
-
-   <h2 data-ar="التعليم رحلة،<br>وكل خطوة تصنع <span style='color:var(--green-light)'>المستقبل.</span>" data-fr="L’éducation est un voyage,<br>chaque étape construit <span style='color:var(--green-light)'>l’avenir.</span>">
-    التعليم رحلة،<br>
-    وكل خطوة تصنع <span style="color:var(--green-light)">المستقبل.</span>
-   </h2>
-
-   <p data-ar="تسعى البوابة الرقمية لثانوية المجاهد مسغوني محمد الصالح إلى تقريب الخدمات والمعلومات المدرسية من التلاميذ وأوليائهم، من خلال واجهة واضحة تجمع الموارد التعليمية والمستجدات والخدمات الرقمية."
-      data-fr="Le portail numérique du Lycée du moudjahid Mesgouni Mohamed Salah rapproche les services et les informations scolaires des élèves et de leurs familles.">
+   <h2 data-ar="التعليم رحلة،<br>وكل خطوة تصنع <span style='color:var(--green-light)'>المستقبل.</span>" data-fr="L’éducation est un voyage,<br>chaque étape construit <span style='color:var(--green-light)'>l’avenir.</span>">التعليم رحلة،<br>وكل خطوة تصنع <span style="color:var(--green-light)">المستقبل.</span></h2>
+   <p data-ar="تسعى البوابة الرقمية لثانوية المجاهد مسغوني محمد الصالح إلى تقريب الخدمات والمعلومات المدرسية من التلاميذ وأوليائهم، من خلال واجهة واضحة تجمع الموارد التعليمية والمستجدات والخدمات الرقمية." data-fr="Le portail numérique du Lycée du moudjahid Mesgouni Mohamed Salah rapproche les services et les informations scolaires des élèves et de leurs familles.">
     تسعى البوابة الرقمية لثانوية المجاهد مسغوني محمد الصالح إلى تقريب الخدمات والمعلومات المدرسية من التلاميذ وأوليائهم، من خلال واجهة واضحة تجمع الموارد التعليمية والمستجدات والخدمات الرقمية.
    </p>
-
-   <p data-ar="نعمل على تطوير تجربة رقمية سهلة الاستخدام، متوافقة مع الهواتف والحواسيب، وتساعد على الوصول إلى المعلومة بطريقة منظمة."
-      data-fr="Nous développons une expérience numérique simple, adaptée aux téléphones et aux ordinateurs, pour faciliter l’accès à l’information.">
+   <p data-ar="نعمل على تطوير تجربة رقمية سهلة الاستخدام، متوافقة مع الهواتف والحواسيب، وتساعد على الوصول إلى المعلومة بطريقة منظمة." data-fr="Nous développons une expérience numérique simple, adaptée aux téléphones et aux ordinateurs, pour faciliter l’accès à l’information.">
     نعمل على تطوير تجربة رقمية سهلة الاستخدام، متوافقة مع الهواتف والحواسيب، وتساعد على الوصول إلى المعلومة بطريقة منظمة.
    </p>
-
-   <div class="intro-note" data-ar="هذه البوابة فضاء رقمي مساعد للحياة المدرسية، ولا تعوّض الإعلانات والوثائق الرسمية الصادرة عن إدارة المؤسسة."
-        data-fr="Ce portail accompagne la vie scolaire et ne remplace pas les communications officielles de l’administration.">
+   <div class="intro-note" data-ar="هذه البوابة فضاء رقمي مساعد للحياة المدرسية، ولا تعوّض الإعلانات والوثائق الرسمية الصادرة عن إدارة المؤسسة." data-fr="Ce portail accompagne la vie scolaire et ne remplace pas les communications officielles de l’administration.">
     هذه البوابة فضاء رقمي مساعد للحياة المدرسية، ولا تعوّض الإعلانات والوثائق الرسمية الصادرة عن إدارة المؤسسة.
    </div>
   </div>
-
  </div>
 </section>
-
-<!-- VALUES -->
 
 <section class="section values">
  <div class="container">
-
   <div class="section-heading center reveal">
    <span class="eyebrow" data-ar="ما نؤمن به" data-fr="NOS VALEURS">ما نؤمن به</span>
    <h2 data-ar="قيم تصنع بيئة تعليمية أفضل" data-fr="Des valeurs pour un meilleur environnement éducatif">قيم تصنع بيئة تعليمية أفضل</h2>
-   <p data-ar="مبادئ تربوية أساسية تساهم في بناء شخصية التلميذ وتعزيز دوره داخل المجتمع."
-      data-fr="Des principes éducatifs qui contribuent au développement de l’élève et à son rôle dans la société.">
-    مبادئ تربوية أساسية تساهم في بناء شخصية التلميذ وتعزيز دوره داخل المجتمع.
-   </p>
+   <p data-ar="مبادئ تربوية أساسية تساهم في بناء شخصية التلميذ وتعزيز دوره داخل المجتمع." data-fr="Des principes éducatifs qui contribuent au développement de l’élève et à son rôle dans la société.">مبادئ تربوية أساسية تساهم في بناء شخصية التلميذ وتعزيز دوره داخل المجتمع.</p>
   </div>
-
   <div class="values-grid">
-
-   <article class="value-card reveal">
-    <div class="value-icon">📖</div>
-    <h3 data-ar="طلب العلم" data-fr="Le savoir">طلب العلم</h3>
-    <p data-ar="تشجيع الفضول والتعلّم المستمر واكتساب المعارف والمهارات."
-       data-fr="Encourager la curiosité, l’apprentissage continu et l’acquisition des compétences.">
-     تشجيع الفضول والتعلّم المستمر واكتساب المعارف والمهارات.
-    </p>
-   </article>
-
-   <article class="value-card reveal delay-1">
-    <div class="value-icon">🤝</div>
-    <h3 data-ar="التعاون" data-fr="La coopération">التعاون</h3>
-    <p data-ar="ترسيخ روح العمل الجماعي وتبادل الأفكار واحترام الآخرين."
-       data-fr="Développer le travail collectif, l’échange d’idées et le respect des autres.">
-     ترسيخ روح العمل الجماعي وتبادل الأفكار واحترام الآخرين.
-    </p>
-   </article>
-
-   <article class="value-card reveal delay-2">
-    <div class="value-icon">⚖️</div>
-    <h3 data-ar="المسؤولية" data-fr="La responsabilité">المسؤولية</h3>
-    <p data-ar="تعزيز الانضباط والالتزام وتحمل المسؤولية في الحياة المدرسية."
-       data-fr="Renforcer la discipline, l’engagement et le sens des responsabilités.">
-     تعزيز الانضباط والالتزام وتحمل المسؤولية في الحياة المدرسية.
-    </p>
-   </article>
-
-   <article class="value-card reveal delay-3">
-    <div class="value-icon">💡</div>
-    <h3 data-ar="الإبداع" data-fr="La créativité">الإبداع</h3>
-    <p data-ar="تنمية التفكير النقدي والابتكار والقدرة على إيجاد الحلول."
-       data-fr="Développer l’esprit critique, l’innovation et la résolution de problèmes.">
-     تنمية التفكير النقدي والابتكار والقدرة على إيجاد الحلول.
-    </p>
-   </article>
-
+   <article class="value-card reveal"><div class="value-icon">📖</div><h3 data-ar="طلب العلم" data-fr="Le savoir">طلب العلم</h3><p data-ar="تشجيع الفضول والتعلّم المستمر واكتساب المعارف والمهارات." data-fr="Encourager la curiosité, l’apprentissage continu et l’acquisition des compétences.">تشجيع الفضول والتعلّم المستمر واكتساب المعارف والمهارات.</p></article>
+   <article class="value-card reveal delay-1"><div class="value-icon">🤝</div><h3 data-ar="التعاون" data-fr="La coopération">التعاون</h3><p data-ar="ترسيخ روح العمل الجماعي وتبادل الأفكار واحترام الآخرين." data-fr="Développer le travail collectif, l’échange d’idées et le respect des autres.">ترسيخ روح العمل الجماعي وتبادل الأفكار واحترام الآخرين.</p></article>
+   <article class="value-card reveal delay-2"><div class="value-icon">⚖️</div><h3 data-ar="المسؤولية" data-fr="La responsabilité">المسؤولية</h3><p data-ar="تعزيز الانضباط والالتزام وتحمل المسؤولية في الحياة المدرسية." data-fr="Renforcer la discipline, l’engagement et le sens des responsabilités.">تعزيز الانضباط والالتزام وتحمل المسؤولية في الحياة المدرسية.</p></article>
+   <article class="value-card reveal delay-3"><div class="value-icon">💡</div><h3 data-ar="الإبداع" data-fr="La créativité">الإبداع</h3><p data-ar="تنمية التفكير النقدي والابتكار والقدرة على إيجاد الحلول." data-fr="Développer l’esprit critique, l’innovation et la résolution de problèmes.">تنمية التفكير النقدي والابتكار والقدرة على إيجاد الحلول.</p></article>
   </div>
  </div>
 </section>
-
-<!-- SERVICES -->
 
 <section class="section" id="services">
  <div class="container">
-
   <div class="section-heading reveal">
    <span class="eyebrow" data-ar="اكتشف البوابة" data-fr="DÉCOUVRIR LE PORTAIL">اكتشف البوابة</span>
    <h2 data-ar="خدمات رقمية للحياة المدرسية" data-fr="Des services numériques pour la vie scolaire">خدمات رقمية للحياة المدرسية</h2>
-   <p data-ar="مجموعة من المساحات والخدمات التي تسهّل الوصول إلى المعلومات والموارد والأدوات التعليمية."
-      data-fr="Des espaces et services qui facilitent l’accès aux informations et aux ressources pédagogiques.">
-    مجموعة من المساحات والخدمات التي تسهّل الوصول إلى المعلومات والموارد والأدوات التعليمية.
-   </p>
+   <p data-ar="مجموعة من المساحات والخدمات التي تسهّل الوصول إلى المعلومات والموارد والأدوات التعليمية." data-fr="Des espaces et services qui facilitent l’accès aux informations et aux ressources pédagogiques.">مجموعة من المساحات والخدمات التي تسهّل الوصول إلى المعلومات والموارد والأدوات التعليمية.</p>
   </div>
 
   <div class="services-grid">
-
-   <article class="service-card reveal">
-    <div class="service-top">
-     <span class="service-icon">🎓</span>
-     <span class="service-number">01 / 09</span>
-    </div>
-    <h3 data-ar="فضاء التلاميذ" data-fr="Espace élèves">فضاء التلاميذ</h3>
-    <p data-ar="مساحة مستقلة للملخصات والمناقشات والاقتراحات والخدمات الطلابية."
-       data-fr="Un espace dédié aux fiches, discussions et services aux élèves.">
-     مساحة مستقلة للملخصات والمناقشات والاقتراحات والخدمات الطلابية.
-    </p>
-    <a class="service-link" href="students.html" data-ar="الدخول إلى الفضاء ←" data-fr="Accéder à l’espace ←">الدخول إلى الفضاء ←</a>
-   </article>
-
-   <article class="service-card reveal delay-1">
-    <div class="service-top">
-     <span class="service-icon">📢</span>
-     <span class="service-number">02 / 09</span>
-    </div>
-    <h3 data-ar="الإعلانات المدرسية" data-fr="Annonces scolaires">الإعلانات المدرسية</h3>
-    <p data-ar="واجهة مخصصة لمتابعة الإعلانات والمواعيد والتنبيهات التي تنشرها الإدارة."
-       data-fr="Un espace consacré aux annonces et aux dates importantes publiées par l’administration.">
-     واجهة مخصصة لمتابعة الإعلانات والمواعيد والتنبيهات التي تنشرها الإدارة.
-    </p>
-    <a class="service-link" href="#announcements" data-ar="مشاهدة القسم ←" data-fr="Voir la rubrique ←">مشاهدة القسم ←</a>
-   </article>
-
-   <article class="service-card reveal delay-2">
-    <div class="service-top">
-     <span class="service-icon">🧭</span>
-     <span class="service-number">03 / 09</span>
-    </div>
-    <h3 data-ar="التوجيه الجامعي" data-fr="Orientation universitaire">التوجيه الجامعي</h3>
-    <p data-ar="الوصول إلى منصة التوجيه الجامعي الرسمية ومعلومات التسجيل."
-       data-fr="Accès à la plateforme officielle d’orientation universitaire.">
-     الوصول إلى منصة التوجيه الجامعي الرسمية ومعلومات التسجيل.
-    </p>
-    <a class="service-link" href="https://www.orientation-esi.dz/" target="_blank" rel="noopener noreferrer">زيارة المنصة ←</a>
-   </article>
-
-   <article class="service-card reveal">
-    <div class="service-top">
-     <span class="service-icon">🤖</span>
-     <span class="service-number">04 / 09</span>
-    </div>
-    <h3 data-ar="المساعد التعليمي" data-fr="Assistant éducatif">المساعد التعليمي</h3>
-    <p data-ar="أداة مساعدة لفهم الدروس وتنظيم المراجعة والتدرّب على حل التمارين."
-       data-fr="Un outil d’aide pour comprendre les cours et organiser les révisions.">
-     أداة مساعدة لفهم الدروس وتنظيم المراجعة والتدرّب على حل التمارين.
-    </p>
-    <a class="service-link" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">ابدأ الآن ←</a>
-   </article>
-
-   <article class="service-card reveal delay-1">
-    <div class="service-top">
-     <span class="service-icon">💡</span>
-     <span class="service-number">05 / 09</span>
-    </div>
-    <h3 data-ar="الاقتراحات والملاحظات" data-fr="Suggestions et remarques">الاقتراحات والملاحظات</h3>
-    <p data-ar="مساحة لإرسال الأفكار والملاحظات المتعلقة بتطوير البوابة."
-       data-fr="Un espace pour proposer des idées et des améliorations du portail.">
-     مساحة لإرسال الأفكار والملاحظات المتعلقة بتطوير البوابة.
-    </p>
-    <a class="service-link" href="#contact" data-ar="إرسال اقتراح ←" data-fr="Envoyer une suggestion ←">إرسال اقتراح ←</a>
-   </article>
-
-   <article class="service-card reveal delay-2">
-    <div class="service-top">
-     <span class="service-icon">📚</span>
-     <span class="service-number">06 / 09</span>
-    </div>
-    <h3 data-ar="المكتبة التعليمية" data-fr="Bibliothèque éducative">المكتبة التعليمية</h3>
-    <p data-ar="روابط الدروس والتمارين والاختبارات حسب المستوى الدراسي."
-       data-fr="Des cours, exercices et examens classés par niveau scolaire.">
-     روابط الدروس والتمارين والاختبارات حسب المستوى الدراسي.
-    </p>
-    <a class="service-link" href="#resources" data-ar="تصفح الموارد ←" data-fr="Explorer les ressources ←">تصفح الموارد ←</a>
-   </article>
-
-   <article class="service-card reveal">
-    <span class="soon-label" data-ar="قريباً" data-fr="BIENTÔT">قريباً</span>
-    <div class="service-top">
-     <span class="service-icon">⌕</span>
-     <span class="service-number">07 / 09</span>
-    </div>
-    <h3 data-ar="البحث الشامل" data-fr="Recherche globale">البحث الشامل</h3>
-    <p data-ar="تطوير البحث في الملخصات والموارد والإعلانات من مكان واحد."
-       data-fr="Recherche dans les fiches, ressources et annonces depuis un seul endroit.">
-     تطوير البحث في الملخصات والموارد والإعلانات من مكان واحد.
-    </p>
-    <span class="service-link" data-ar="قيد التطوير" data-fr="En développement">قيد التطوير</span>
-   </article>
-
-   <article class="service-card reveal delay-1">
-    <span class="soon-label" data-ar="قريباً" data-fr="BIENTÔT">قريباً</span>
-    <div class="service-top">
-     <span class="service-icon">🗺️</span>
-     <span class="service-number">08 / 09</span>
-    </div>
-    <h3 data-ar="دليل مرافق المؤسسة" data-fr="Guide des espaces">دليل مرافق المؤسسة</h3>
-    <p data-ar="دليل بصري يساعد على التعرف على مرافق المؤسسة."
-       data-fr="Un guide visuel pour découvrir les espaces de l’établissement.">
-     دليل بصري يساعد على التعرف على مرافق المؤسسة.
-    </p>
-    <span class="service-link" data-ar="قيد التطوير" data-fr="En développement">قيد التطوير</span>
-   </article>
-
-   <article class="service-card reveal delay-2">
-    <span class="soon-label" data-ar="قريباً" data-fr="BIENTÔT">قريباً</span>
-    <div class="service-top">
-     <span class="service-icon">📊</span>
-     <span class="service-number">09 / 09</span>
-    </div>
-    <h3 data-ar="مؤشرات البوابة" data-fr="Indicateurs du portail">مؤشرات البوابة</h3>
-    <p data-ar="مؤشرات استخدام حقيقية عند اكتمال ربط قاعدة البيانات."
-       data-fr="Des indicateurs d’utilisation après la connexion de la base de données.">
-     مؤشرات استخدام حقيقية عند اكتمال ربط قاعدة البيانات.
-    </p>
-    <span class="service-link" data-ar="قيد التطوير" data-fr="En développement">قيد التطوير</span>
-   </article>
-
+   <article class="service-card reveal"><div class="service-top"><span class="service-icon">🎓</span><span class="service-number">01 / 09</span></div><h3 data-ar="فضاء التلاميذ" data-fr="Espace élèves">فضاء التلاميذ</h3><p data-ar="مساحة مستقلة للملخصات والمناقشات والاقتراحات والخدمات الطلابية." data-fr="Un espace dédié aux fiches, discussions et services aux élèves.">مساحة مستقلة للملخصات والمناقشات والاقتراحات والخدمات الطلابية.</p><a class="service-link" href="students.html" data-ar="الدخول إلى الفضاء ←" data-fr="Accéder à l’espace ←">الدخول إلى الفضاء ←</a></article>
+   <article class="service-card reveal delay-1"><div class="service-top"><span class="service-icon">📢</span><span class="service-number">02 / 09</span></div><h3 data-ar="الإعلانات المدرسية" data-fr="Annonces scolaires">الإعلانات المدرسية</h3><p data-ar="واجهة مخصصة لمتابعة الإعلانات والمواعيد والتنبيهات التي تنشرها الإدارة." data-fr="Un espace consacré aux annonces et aux dates importantes publiées par l’administration.">واجهة مخصصة لمتابعة الإعلانات والمواعيد والتنبيهات التي تنشرها الإدارة.</p><a class="service-link" href="#announcements" data-ar="مشاهدة القسم ←" data-fr="Voir la rubrique ←">مشاهدة القسم ←</a></article>
+   <article class="service-card reveal delay-2"><div class="service-top"><span class="service-icon">🧭</span><span class="service-number">03 / 09</span></div><h3 data-ar="التوجيه الجامعي" data-fr="Orientation universitaire">التوجيه الجامعي</h3><p data-ar="الوصول إلى منصة التوجيه الجامعي الرسمية ومعلومات التسجيل." data-fr="Accès à la plateforme officielle d’orientation universitaire.">الوصول إلى منصة التوجيه الجامعي الرسمية ومعلومات التسجيل.</p><a class="service-link" href="https://www.orientation-esi.dz/" target="_blank" rel="noopener noreferrer">زيارة المنصة ←</a></article>
+   <article class="service-card reveal"><div class="service-top"><span class="service-icon">🤖</span><span class="service-number">04 / 09</span></div><h3 data-ar="المساعد التعليمي" data-fr="Assistant éducatif">المساعد التعليمي</h3><p data-ar="أداة مساعدة لفهم الدروس وتنظيم المراجعة والتدرّب على حل التمارين." data-fr="Un outil d’aide pour comprendre les cours et organiser les révisions.">أداة مساعدة لفهم الدروس وتنظيم المراجعة والتدرّب على حل التمارين.</p><a class="service-link" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">ابدأ الآن ←</a></article>
+   <article class="service-card reveal delay-1"><div class="service-top"><span class="service-icon">💡</span><span class="service-number">05 / 09</span></div><h3 data-ar="الاقتراحات والملاحظات" data-fr="Suggestions et remarques">الاقتراحات والملاحظات</h3><p data-ar="مساحة لإرسال الأفكار والملاحظات المتعلقة بتطوير البوابة." data-fr="Un espace pour proposer des idées et des améliorations du portail.">مساحة لإرسال الأفكار والملاحظات المتعلقة بتطوير البوابة.</p><a class="service-link" href="#contact" data-ar="إرسال اقتراح ←" data-fr="Envoyer une suggestion ←">إرسال اقتراح ←</a></article>
+   <article class="service-card reveal delay-2"><div class="service-top"><span class="service-icon">📚</span><span class="service-number">06 / 09</span></div><h3 data-ar="المكتبة التعليمية" data-fr="Bibliothèque éducative">المكتبة التعليمية</h3><p data-ar="روابط الدروس والتمارين والاختبارات حسب المستوى الدراسي." data-fr="Des cours, exercices et examens classés par niveau scolaire.">روابط الدروس والتمارين والاختبارات حسب المستوى الدراسي.</p><a class="service-link" href="#resources" data-ar="تصفح الموارد ←" data-fr="Explorer les ressources ←">تصفح الموارد ←</a></article>
+   <article class="service-card reveal"><span class="soon-label" data-ar="قريباً" data-fr="BIENTÔT">قريباً</span><div class="service-top"><span class="service-icon">⌕</span><span class="service-number">07 / 09</span></div><h3 data-ar="البحث الشامل" data-fr="Recherche globale">البحث الشامل</h3><p data-ar="تطوير البحث في الملخصات والموارد والإعلانات من مكان واحد." data-fr="Recherche dans les fiches, ressources et annonces depuis un seul endroit.">تطوير البحث في الملخصات والموارد والإعلانات من مكان واحد.</p><span class="service-link" data-ar="قيد التطوير" data-fr="En développement">قيد التطوير</span></article>
+   <article class="service-card reveal delay-1"><span class="soon-label" data-ar="قريباً" data-fr="BIENTÔT">قريباً</span><div class="service-top"><span class="service-icon">🗺️</span><span class="service-number">08 / 09</span></div><h3 data-ar="دليل مرافق المؤسسة" data-fr="Guide des espaces">دليل مرافق المؤسسة</h3><p data-ar="دليل بصري يساعد على التعرف على مرافق المؤسسة." data-fr="Un guide visuel pour découvrir les espaces de l’établissement.">دليل بصري يساعد على التعرف على مرافق المؤسسة.</p><span class="service-link" data-ar="قيد التطوير" data-fr="En développement">قيد التطوير</span></article>
+   <article class="service-card reveal delay-2"><span class="soon-label" data-ar="قريباً" data-fr="BIENTÔT">قريباً</span><div class="service-top"><span class="service-icon">📊</span><span class="service-number">09 / 09</span></div><h3 data-ar="مؤشرات البوابة" data-fr="Indicateurs du portail">مؤشرات البوابة</h3><p data-ar="مؤشرات استخدام حقيقية عند اكتمال ربط قاعدة البيانات." data-fr="Des indicateurs d’utilisation après la connexion de la base de données.">مؤشرات استخدام حقيقية عند اكتمال ربط قاعدة البيانات.</p><span class="service-link" data-ar="قيد التطوير" data-fr="En développement">قيد التطوير</span></article>
   </div>
  </div>
 </section>
-
-<!-- STUDENT SPACE BANNER -->
 
 <section class="section" style="padding-top:0">
  <div class="container">
@@ -1932,374 +598,193 @@ img{display:block;max-width:100%}
    <div>
     <small data-ar="فضاء خاص بالتلاميذ" data-fr="ESPACE RÉSERVÉ AUX ÉLÈVES">فضاء خاص بالتلاميذ</small>
     <h2 data-ar="تعلّم، شارك، واكتشف مع زملائك." data-fr="Apprenez, partagez et découvrez avec vos camarades.">تعلّم، شارك، واكتشف مع زملائك.</h2>
-    <p data-ar="اكتشف فضاء التلاميذ الذي يجمع الملخصات والمناقشات والأفكار في واجهة مستقلة."
-       data-fr="Découvrez l’espace élèves qui rassemble fiches, discussions et idées dans une interface dédiée.">
-     اكتشف فضاء التلاميذ الذي يجمع الملخصات والمناقشات والأفكار في واجهة مستقلة.
-    </p>
+    <p data-ar="اكتشف فضاء التلاميذ الذي يجمع الملخصات والمناقشات والأفكار في واجهة مستقلة." data-fr="Découvrez l’espace élèves qui rassemble fiches, discussions et idées dans une interface dédiée.">اكتشف فضاء التلاميذ الذي يجمع الملخصات والمناقشات والأفكار في واجهة مستقلة.</p>
    </div>
    <a class="btn btn-primary" href="students.html" data-ar="الدخول إلى فضاء التلاميذ ←" data-fr="Accéder à l’espace élèves ←">الدخول إلى فضاء التلاميذ ←</a>
   </div>
  </div>
 </section>
 
-<!-- ANNOUNCEMENTS -->
-
 <section class="section" id="announcements">
  <div class="container">
-
   <div class="section-heading reveal">
    <span class="eyebrow" data-ar="ابقَ على اطلاع" data-fr="RESTEZ INFORMÉS">ابقَ على اطلاع</span>
    <h2 data-ar="المستجدات والإعلانات" data-fr="Actualités et annonces">المستجدات والإعلانات</h2>
-   <p data-ar="قسم مخصص لمتابعة الإعلانات المدرسية والمواعيد المهمة."
-      data-fr="Une rubrique dédiée aux annonces scolaires et aux dates importantes.">
-    قسم مخصص لمتابعة الإعلانات المدرسية والمواعيد المهمة.
-   </p>
+   <p data-ar="قسم مخصص لمتابعة الإعلانات المدرسية والمواعيد المهمة." data-fr="Une rubrique dédiée aux annonces scolaires et aux dates importantes.">قسم مخصص لمتابعة الإعلانات المدرسية والمواعيد المهمة.</p>
   </div>
-
   <div class="announcement-layout">
-
    <article class="announcement-main reveal">
-    <div>
-     <small data-ar="مركز المستجدات" data-fr="CENTRE D’ACTUALITÉS">مركز المستجدات</small>
-     <h3 data-ar="كل جديد في مكان واحد" data-fr="Toutes les actualités au même endroit">كل جديد في مكان واحد</h3>
-     <p data-ar="سيتم عرض الإعلانات المنشورة من إدارة المؤسسة هنا بعد تفعيل نظام النشر وربطه بقاعدة البيانات."
-        data-fr="Les annonces publiées par l’administration apparaîtront ici après l’activation du système de publication.">
-      سيتم عرض الإعلانات المنشورة من إدارة المؤسسة هنا بعد تفعيل نظام النشر وربطه بقاعدة البيانات.
-     </p>
-    </div>
+    <div><small data-ar="مركز المستجدات" data-fr="CENTRE D’ACTUALITÉS">مركز المستجدات</small><h3 data-ar="كل جديد في مكان واحد" data-fr="Toutes les actualités au même endroit">كل جديد في مكان واحد</h3><p data-ar="سيتم عرض الإعلانات المنشورة من إدارة المؤسسة هنا بعد تفعيل نظام النشر وربطه بقاعدة البيانات." data-fr="Les annonces publiées par l’administration apparaîtront ici après l’activation du système de publication.">سيتم عرض الإعلانات المنشورة من إدارة المؤسسة هنا بعد تفعيل نظام النشر وربطه بقاعدة البيانات.</p></div>
     <span style="color:var(--gold);font-size:10px;font-weight:900" data-ar="قسم الإعلانات الرسمي للبوابة" data-fr="Rubrique officielle du portail">قسم الإعلانات الرسمي للبوابة</span>
    </article>
-
    <div class="announcement-side">
-
-    <div class="announcement-item reveal">
-     <span class="announcement-symbol">📅</span>
-     <span>
-      <strong data-ar="المواعيد المدرسية" data-fr="Calendrier scolaire">المواعيد المدرسية</strong>
-      <small data-ar="سيتم عرض المواعيد عند نشرها." data-fr="Les dates seront affichées après publication.">سيتم عرض المواعيد عند نشرها.</small>
-     </span>
-    </div>
-
-    <div class="announcement-item reveal delay-1">
-     <span class="announcement-symbol">📌</span>
-     <span>
-      <strong data-ar="تنبيهات المؤسسة" data-fr="Avis de l’établissement">تنبيهات المؤسسة</strong>
-      <small data-ar="مساحة مخصصة للتنبيهات المهمة." data-fr="Un espace pour les avis importants.">مساحة مخصصة للتنبيهات المهمة.</small>
-     </span>
-    </div>
-
-    <div class="announcement-item reveal delay-2">
-     <span class="announcement-symbol">📰</span>
-     <span>
-      <strong data-ar="أخبار المؤسسة" data-fr="Actualités du lycée">أخبار المؤسسة</strong>
-      <small data-ar="سيتم تحديث هذا القسم بعد تفعيل النشر." data-fr="Cette rubrique sera mise à jour après activation.">سيتم تحديث هذا القسم بعد تفعيل النشر.</small>
-     </span>
-    </div>
-
+    <div class="announcement-item reveal"><span class="announcement-symbol">📅</span><span><strong data-ar="المواعيد المدرسية" data-fr="Calendrier scolaire">المواعيد المدرسية</strong><small data-ar="سيتم عرض المواعيد عند نشرها." data-fr="Les dates seront affichées après publication.">سيتم عرض المواعيد عند نشرها.</small></span></div>
+    <div class="announcement-item reveal delay-1"><span class="announcement-symbol">📌</span><span><strong data-ar="تنبيهات المؤسسة" data-fr="Avis de l’établissement">تنبيهات المؤسسة</strong><small data-ar="مساحة مخصصة للتنبيهات المهمة." data-fr="Un espace pour les avis importants.">مساحة مخصصة للتنبيهات المهمة.</small></span></div>
+    <div class="announcement-item reveal delay-2"><span class="announcement-symbol">📰</span><span><strong data-ar="أخبار المؤسسة" data-fr="Actualités du lycée">أخبار المؤسسة</strong><small data-ar="سيتم تحديث هذا القسم بعد تفعيل النشر." data-fr="Cette rubrique sera mise à jour après activation.">سيتم تحديث هذا القسم بعد تفعيل النشر.</small></span></div>
    </div>
   </div>
  </div>
 </section>
 
-<!-- RESOURCES -->
-
 <section class="section" id="resources" style="background:var(--white)">
  <div class="container">
-
   <div class="section-heading reveal">
    <span class="eyebrow" data-ar="طريقك نحو المعرفة" data-fr="SUR LE CHEMIN DU SAVOIR">طريقك نحو المعرفة</span>
    <h2 data-ar="الموارد التعليمية" data-fr="Ressources pédagogiques">الموارد التعليمية</h2>
-   <p data-ar="روابط خارجية مفيدة للوصول إلى الدروس والتمارين والاختبارات حسب المستوى الدراسي."
-      data-fr="Des liens utiles vers les cours, exercices et examens selon le niveau scolaire.">
-    روابط خارجية مفيدة للوصول إلى الدروس والتمارين والاختبارات حسب المستوى الدراسي.
-   </p>
+   <p data-ar="روابط خارجية مفيدة للوصول إلى الدروس والتمارين والاختبارات حسب المستوى الدراسي." data-fr="Des liens utiles vers les cours, exercices et examens selon le niveau scolaire.">روابط خارجية مفيدة للوصول إلى الدروس والتمارين والاختبارات حسب المستوى الدراسي.</p>
   </div>
-
   <div class="resources-grid">
-
-   <article class="resource-card reveal">
-    <div class="resource-top">
-     <span class="resource-level">01 / 1AS</span>
-     <span class="resource-icon">📘</span>
-    </div>
-    <h3 data-ar="السنة الأولى ثانوي" data-fr="Première année secondaire">السنة الأولى ثانوي</h3>
-    <p data-ar="دروس وملخصات وتمارين واختبارات للمراجعة."
-       data-fr="Cours, résumés, exercices et examens pour réviser.">
-     دروس وملخصات وتمارين واختبارات للمراجعة.
-    </p>
-    <a href="https://www.dzexams.com/ar/1as" target="_blank" rel="noopener noreferrer" data-ar="تصفح الموارد ←" data-fr="Explorer les ressources ←">تصفح الموارد ←</a>
-   </article>
-
-   <article class="resource-card reveal delay-1">
-    <div class="resource-top">
-     <span class="resource-level">02 / 2AS</span>
-     <span class="resource-icon">📗</span>
-    </div>
-    <h3 data-ar="السنة الثانية ثانوي" data-fr="Deuxième année secondaire">السنة الثانية ثانوي</h3>
-    <p data-ar="موارد تعليمية متنوعة حسب المواد والشعب."
-       data-fr="Des ressources variées selon les matières et les filières.">
-     موارد تعليمية متنوعة حسب المواد والشعب.
-    </p>
-    <a href="https://www.dzexams.com/ar/2as" target="_blank" rel="noopener noreferrer" data-ar="تصفح الموارد ←" data-fr="Explorer les ressources ←">تصفح الموارد ←</a>
-   </article>
-
-   <article class="resource-card reveal delay-2">
-    <div class="resource-top">
-     <span class="resource-level">03 / 3AS</span>
-     <span class="resource-icon">📕</span>
-    </div>
-    <h3 data-ar="السنة الثالثة ثانوي" data-fr="Troisième année secondaire">السنة الثالثة ثانوي</h3>
-    <p data-ar="دروس وملخصات وتمارين للتحضير للبكالوريا."
-       data-fr="Cours, résumés et exercices pour préparer le baccalauréat.">
-     دروس وملخصات وتمارين للتحضير للبكالوريا.
-    </p>
-    <a href="https://www.dzexams.com/ar/3as" target="_blank" rel="noopener noreferrer" data-ar="تصفح الموارد ←" data-fr="Explorer les ressources ←">تصفح الموارد ←</a>
-   </article>
-
+   <article class="resource-card reveal"><div class="resource-top"><span class="resource-level">01 / 1AS</span><span class="resource-icon">📘</span></div><h3 data-ar="السنة الأولى ثانوي" data-fr="Première année secondaire">السنة الأولى ثانوي</h3><p data-ar="دروس وملخصات وتمارين واختبارات للمراجعة." data-fr="Cours, résumés, exercices et examens pour réviser.">دروس وملخصات وتمارين واختبارات للمراجعة.</p><a href="https://www.dzexams.com/ar/1as" target="_blank" rel="noopener noreferrer" data-ar="تصفح الموارد ←" data-fr="Explorer les ressources ←">تصفح الموارد ←</a></article>
+   <article class="resource-card reveal delay-1"><div class="resource-top"><span class="resource-level">02 / 2AS</span><span class="resource-icon">📗</span></div><h3 data-ar="السنة الثانية ثانوي" data-fr="Deuxième année secondaire">السنة الثانية ثانوي</h3><p data-ar="موارد تعليمية متنوعة حسب المواد والشعب." data-fr="Des ressources variées selon les matières et les filières.">موارد تعليمية متنوعة حسب المواد والشعب.</p><a href="https://www.dzexams.com/ar/2as" target="_blank" rel="noopener noreferrer" data-ar="تصفح الموارد ←" data-fr="Explorer les ressources ←">تصفح الموارد ←</a></article>
+   <article class="resource-card reveal delay-2"><div class="resource-top"><span class="resource-level">03 / 3AS</span><span class="resource-icon">📕</span></div><h3 data-ar="السنة الثالثة ثانوي" data-fr="Troisième année secondaire">السنة الثالثة ثانوي</h3><p data-ar="دروس وملخصات وتمارين للتحضير للبكالوريا." data-fr="Cours, résumés et exercices pour préparer le baccalauréat.">دروس وملخصات وتمارين للتحضير للبكالوريا.</p><a href="https://www.dzexams.com/ar/3as" target="_blank" rel="noopener noreferrer" data-ar="تصفح الموارد ←" data-fr="Explorer les ressources ←">تصفح الموارد ←</a></article>
   </div>
  </div>
 </section>
 
-<!-- CONTACT -->
-
 <section class="section" id="contact">
  <div class="container">
-
   <div class="section-heading reveal">
    <span class="eyebrow" data-ar="نستمع إليكم" data-fr="NOUS VOUS ÉCOUTONS">نستمع إليكم</span>
    <h2 data-ar="أفكاركم تصنع الفرق" data-fr="Vos idées font la différence">أفكاركم تصنع الفرق</h2>
-   <p data-ar="يمكنكم كتابة اقتراحاتكم وملاحظاتكم للمساهمة في تطوير البوابة."
-      data-fr="Vous pouvez écrire vos suggestions et remarques pour contribuer à l’amélioration du portail.">
-    يمكنكم كتابة اقتراحاتكم وملاحظاتكم للمساهمة في تطوير البوابة.
-   </p>
+   <p data-ar="يمكنكم كتابة اقتراحاتكم وملاحظاتكم للمساهمة في تطوير البوابة." data-fr="Vous pouvez écrire vos suggestions et remarques pour contribuer à l’amélioration du portail.">يمكنكم كتابة اقتراحاتكم وملاحظاتكم للمساهمة في تطوير البوابة.</p>
   </div>
-
   <div class="contact-layout">
-
    <aside class="contact-aside reveal">
-    <div>
-     <div class="big-icon">✉</div>
-     <h3 data-ar="ساهم في تطوير البوابة" data-fr="Contribuez au portail">ساهم في تطوير البوابة</h3>
-     <p data-ar="كل اقتراح بنّاء يساعد على جعل الموقع أكثر فائدة وسهولة لجميع أفراد الأسرة المدرسية."
-        data-fr="Chaque suggestion constructive contribue à rendre le portail plus utile et plus facile à utiliser.">
-      كل اقتراح بنّاء يساعد على جعل الموقع أكثر فائدة وسهولة لجميع أفراد الأسرة المدرسية.
-     </p>
-    </div>
+    <div><div class="big-icon">✉</div><h3 data-ar="ساهم في تطوير البوابة" data-fr="Contribuez au portail">ساهم في تطوير البوابة</h3><p data-ar="كل اقتراح بنّاء يساعد على جعل الموقع أكثر فائدة وسهولة لجميع أفراد الأسرة المدرسية." data-fr="Chaque suggestion constructive contribue à rendre le portail plus utile et plus facile à utiliser.">كل اقتراح بنّاء يساعد على جعل الموقع أكثر فائدة وسهولة لجميع أفراد الأسرة المدرسية.</p></div>
     <small data-ar="معاً نحو تجربة مدرسية أفضل." data-fr="Ensemble pour une meilleure expérience scolaire.">معاً نحو تجربة مدرسية أفضل.</small>
    </aside>
-
    <form class="contact-form reveal" id="suggestionForm">
-
-    <div class="field">
-     <label for="messageType" data-ar="نوع الرسالة" data-fr="Type de message">نوع الرسالة</label>
-     <select id="messageType" required>
-      <option value="اقتراح">اقتراح</option>
-      <option value="ملاحظة">ملاحظة</option>
-      <option value="شكوى">شكوى</option>
-     </select>
-    </div>
-
-    <div class="field">
-     <label for="messageText" data-ar="رسالتك" data-fr="Votre message">رسالتك</label>
-     <textarea id="messageText" minlength="5" maxlength="2000" required placeholder="اكتب رسالتك هنا..."></textarea>
-    </div>
-
+    <div class="field"><label for="messageType" data-ar="نوع الرسالة" data-fr="Type de message">نوع الرسالة</label><select id="messageType" required><option value="اقتراح">اقتراح</option><option value="ملاحظة">ملاحظة</option><option value="شكوى">شكوى</option></select></div>
+    <div class="field"><label for="messageText" data-ar="رسالتك" data-fr="Votre message">رسالتك</label><textarea id="messageText" minlength="5" maxlength="2000" required placeholder="اكتب رسالتك هنا..."></textarea></div>
     <button class="btn btn-primary" type="submit" data-ar="إرسال الرسالة ←" data-fr="Envoyer le message ←">إرسال الرسالة ←</button>
-
-    <p class="form-note" data-ar="واجهة النموذج جاهزة، لكن إرسال الرسائل وحفظها لن يعمل حتى يتم ربط النموذج بقاعدة البيانات."
-       data-fr="Le formulaire est prêt visuellement, mais l’envoi et l’enregistrement nécessitent une connexion à la base de données.">
-     واجهة النموذج جاهزة، لكن إرسال الرسائل وحفظها لن يعمل حتى يتم ربط النموذج بقاعدة البيانات.
-    </p>
-
+    <p class="form-note" data-ar="واجهة النموذج جاهزة، لكن إرسال الرسائل وحفظها لن يعمل حتى يتم ربط النموذج بقاعدة البيانات." data-fr="Le formulaire est prêt visuellement, mais l’envoi et l’enregistrement nécessitent une connexion à la base de données.">واجهة النموذج جاهزة، لكن إرسال الرسائل وحفظها لن يعمل حتى يتم ربط النموذج بقاعدة البيانات.</p>
    </form>
-
   </div>
  </div>
 </section>
 
 </main>
 
-<!-- FOOTER -->
-
 <footer class="footer">
  <div class="container">
-
   <div class="footer-top">
-
    <div>
-    <div class="footer-brand">
-     <span>✦</span>
-     <b data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</b>
-    </div>
-    <p data-ar="الموقع الرسمي لثانوية المجاهد مسغوني محمد الصالح. العلم والعمل أساس النجاح."
-       data-fr="Site officiel du Lycée du moudjahid Mesgouni Mohamed Salah. Le savoir et le travail, clés de la réussite.">
-     الموقع الرسمي لثانوية المجاهد مسغوني محمد الصالح. العلم والعمل أساس النجاح.
-    </p>
+    <div class="footer-brand"><span>✦</span><b data-ar="ثانوية مسغوني" data-fr="Lycée Mesgouni">ثانوية مسغوني</b></div>
+    <p data-ar="الموقع الرسمي لثانوية المجاهد مسغوني محمد الصالح. العلم والعمل أساس النجاح." data-fr="Site officiel du Lycée du moudjahid Mesgouni Mohamed Salah. Le savoir et le travail, clés de la réussite.">الموقع الرسمي لثانوية المجاهد مسغوني محمد الصالح. العلم والعمل أساس النجاح.</p>
    </div>
-
-   <div>
-    <h4 data-ar="روابط الموقع" data-fr="Navigation">روابط الموقع</h4>
-    <div class="footer-links">
-     <a href="#top" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a>
-     <a href="about.html" data-ar="عن المؤسسة" data-fr="Notre lycée">عن المؤسسة</a>
-     <a href="students.html" data-ar="فضاء التلاميذ" data-fr="Espace élèves">فضاء التلاميذ</a>
-    </div>
-   </div>
-
-   <div>
-    <h4 data-ar="اكتشف المزيد" data-fr="Découvrir">اكتشف المزيد</h4>
-    <div class="footer-links">
-     <a href="#services" data-ar="الخدمات" data-fr="Services">الخدمات</a>
-     <a href="#announcements" data-ar="الإعلانات" data-fr="Annonces">الإعلانات</a>
-     <a href="#resources" data-ar="الموارد" data-fr="Ressources">الموارد</a>
-     <a href="#contact" data-ar="تواصل معنا" data-fr="Contact">تواصل معنا</a>
-    </div>
-   </div>
-
+   <div><h4 data-ar="روابط الموقع" data-fr="Navigation">روابط الموقع</h4><div class="footer-links"><a href="#top" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a><a href="about.html" data-ar="عن المؤسسة" data-fr="Notre lycée">عن المؤسسة</a><a href="students.html" data-ar="فضاء التلاميذ" data-fr="Espace élèves">فضاء التلاميذ</a></div></div>
+   <div><h4 data-ar="اكتشف المزيد" data-fr="Découvrir">اكتشف المزيد</h4><div class="footer-links"><a href="#services" data-ar="الخدمات" data-fr="Services">الخدمات</a><a href="#announcements" data-ar="الإعلانات" data-fr="Annonces">الإعلانات</a><a href="#resources" data-ar="الموارد" data-fr="Ressources">الموارد</a><a href="#contact" data-ar="تواصل معنا" data-fr="Contact">تواصل معنا</a></div></div>
   </div>
-
   <div class="footer-bottom">
    <span>© 2026 Lycée Mesgouni</span>
    <span data-ar="القسم: 1ج ع ت 2" data-fr="Classe : 1AS">القسم: 1ج ع ت 2</span>
    <span data-ar="تطوير: مجد بن حرزالله وأيوب شبيرات" data-fr="Développement : Madjd Ben Harzallah et Ayoub Chibirat">تطوير: مجد بن حرزالله وأيوب شبيرات</span>
   </div>
-
  </div>
 </footer>
 
-<!-- BACK TO TOP -->
-
 <button class="backtop" id="backTop" aria-label="العودة إلى الأعلى">↑</button>
-
-<!-- NOTIFICATION -->
 
 <div class="toast" id="toast" role="status" aria-live="polite">
  <span class="toast-icon">✦</span>
- <div>
-  <strong id="toastTitle">تنبيه</strong>
-  <p id="toastText">هذه الميزة قيد التجهيز.</p>
- </div>
+ <div><strong id="toastTitle">تنبيه</strong><p id="toastText">هذه الميزة قيد التجهيز.</p></div>
 </div>
-
-<!-- SEARCH -->
 
 <div class="search-overlay" id="searchOverlay">
  <div class="search-box" role="dialog" aria-modal="true" aria-label="البحث في الموقع">
   <h3 data-ar="ابحث في البوابة" data-fr="Rechercher sur le portail">ابحث في البوابة</h3>
-
-  <div class="search-input-wrap">
-   <span>⌕</span>
-   <input type="search" id="searchInput" placeholder="ابحث عن خدمة أو قسم..." autocomplete="off">
-  </div>
-
+  <div class="search-input-wrap"><span>⌕</span><input type="search" id="searchInput" placeholder="ابحث عن خدمة أو قسم..." autocomplete="off"></div>
   <div class="search-results" id="searchResults"></div>
-  <p class="search-hint" data-ar="اضغط على نتيجة للانتقال مباشرة إلى القسم المطلوب. اضغط Esc للإغلاق."
-     data-fr="Sélectionnez un résultat pour accéder directement à la rubrique. Appuyez sur Échap pour fermer.">
-   اضغط على نتيجة للانتقال مباشرة إلى القسم المطلوب. اضغط Esc للإغلاق.
-  </p>
+  <p class="search-hint" data-ar="اضغط على نتيجة للانتقال مباشرة إلى القسم المطلوب. اضغط Esc للإغلاق." data-fr="Sélectionnez un résultat pour accéder à la rubrique. Appuyez sur Échap pour fermer.">اضغط على نتيجة للانتقال مباشرة إلى القسم المطلوب. اضغط Esc للإغلاق.</p>
  </div>
 </div>
 
 <script>
 "use strict";
 
-/* ELEMENTS */
-
-const $ = id => document.getElementById(id);
-
-let lang = "ar";
-let toastTimer = null;
-
-/* THEME AND LANGUAGE */
+const $=id=>document.getElementById(id);
+let lang="ar";
+let toastTimer=null;
 
 try{
- if(localStorage.getItem("mesgouni-theme")==="dark"){
-  document.body.classList.add("dark");
- }
-
- if(localStorage.getItem("mesgouni-lang")==="fr"){
-  lang="fr";
- }
-}catch(error){}
+ if(localStorage.getItem("mesgouni-theme")==="dark")document.body.classList.add("dark");
+ if(localStorage.getItem("mesgouni-lang")==="fr")lang="fr";
+}catch(e){}
 
 function applyLanguage(){
  document.documentElement.lang=lang;
  document.documentElement.dir=lang==="ar"?"rtl":"ltr";
-
- document.querySelectorAll("[data-ar][data-fr]").forEach(element=>{
-  element.innerHTML=element.dataset[lang];
+ document.querySelectorAll("[data-ar][data-fr]").forEach(el=>{
+  el.innerHTML=el.dataset[lang];
  });
-
  $("langBtn").textContent=lang==="ar"?"FR":"AR";
-
- $("searchInput").placeholder=lang==="ar"
-  ?"ابحث عن خدمة أو قسم..."
-  :"Rechercher un service ou une rubrique...";
+ $("searchInput").placeholder=lang==="ar"?"ابحث عن خدمة أو قسم...":"Rechercher un service ou une rubrique...";
 }
 
 $("langBtn").addEventListener("click",()=>{
  lang=lang==="ar"?"fr":"ar";
-
- try{
-  localStorage.setItem("mesgouni-lang",lang);
- }catch(error){}
-
+ try{localStorage.setItem("mesgouni-lang",lang)}catch(e){}
  applyLanguage();
 });
 
-/* DARK MODE */
-
 $("themeBtn").addEventListener("click",()=>{
  document.body.classList.toggle("dark");
-
- try{
-  localStorage.setItem(
-   "mesgouni-theme",
-   document.body.classList.contains("dark")?"dark":"light"
-  );
- }catch(error){}
+ try{localStorage.setItem("mesgouni-theme",document.body.classList.contains("dark")?"dark":"light")}catch(e){}
 });
 
-/* MOBILE MENU */
+/* Mobile navigation */
+const menuButton=$("menuBtn");
+const mobileNav=$("navLinks");
 
-$("menuBtn").addEventListener("click",()=>{
- $("navLinks").classList.toggle("open");
+function closeMobileNav(){
+ mobileNav.classList.remove("open");
+ menuButton.setAttribute("aria-expanded","false");
+ menuButton.setAttribute("aria-label",lang==="ar"?"فتح القائمة":"Open menu");
+}
+
+menuButton.addEventListener("click",()=>{
+ const opened=mobileNav.classList.toggle("open");
+ menuButton.setAttribute("aria-expanded",String(opened));
+ menuButton.setAttribute("aria-label",opened?(lang==="ar"?"إغلاق القائمة":"Close menu"):(lang==="ar"?"فتح القائمة":"Open menu"));
 });
 
-$("navLinks").querySelectorAll("a").forEach(link=>{
- link.addEventListener("click",()=>{
-  $("navLinks").classList.remove("open");
- });
+mobileNav.querySelectorAll("a").forEach(link=>{
+ link.addEventListener("click",closeMobileNav);
 });
 
-/* NAVBAR SCROLL */
+document.addEventListener("click",event=>{
+ if(!mobileNav.contains(event.target)&&!menuButton.contains(event.target))closeMobileNav();
+});
 
+document.addEventListener("keydown",event=>{
+ if(event.key==="Escape"){
+  closeMobileNav();
+  $("searchOverlay").classList.remove("open");
+ }
+});
+
+window.addEventListener("resize",()=>{
+ if(window.innerWidth>850)closeMobileNav();
+},{passive:true});
+
+/* Navbar scroll state */
 const navbar=$("navbar");
-
 function updateNavbar(){
  navbar.classList.toggle("scrolled",window.scrollY>35);
 }
-
 window.addEventListener("scroll",updateNavbar,{passive:true});
 updateNavbar();
 
-/* TOAST */
-
+/* Toast messages */
 function showToast(title,message){
  $("toastTitle").textContent=title;
  $("toastText").textContent=message;
-
  $("toast").classList.add("show");
-
  clearTimeout(toastTimer);
-
- toastTimer=setTimeout(()=>{
-  $("toast").classList.remove("show");
- },4000);
+ toastTimer=setTimeout(()=>$("toast").classList.remove("show"),3500);
 }
 
-/* SEARCH SYSTEM */
-
+/* Search */
 const searchItems=[
  {title:"فضاء التلاميذ",keywords:"تلاميذ ملخصات مناقشات الطلاب fiches élèves",url:"students.html"},
  {title:"عن المؤسسة",keywords:"المؤسسة الثانوية المدرسة معلومات lycée établissement",url:"about.html"},
@@ -2322,17 +807,14 @@ function renderSearch(query=""){
   return;
  }
 
- const matches=searchItems.filter(item=>
-  (item.title+" "+item.keywords).toLowerCase().includes(normalized)
- );
+ const matches=searchItems.filter(item=>(item.title+" "+item.keywords).toLowerCase().includes(normalized));
 
- if(matches.length===0){
+ if(!matches.length){
   results.innerHTML='<div class="search-empty">لم يتم العثور على نتائج مطابقة.</div>';
   return;
  }
 
  results.innerHTML="";
-
  matches.forEach(item=>{
   const link=document.createElement("a");
   link.className="search-result";
@@ -2345,12 +827,10 @@ function renderSearch(query=""){
   arrow.textContent="←";
 
   link.append(title,arrow);
-
   link.addEventListener("click",()=>{
    $("searchOverlay").classList.remove("open");
    $("searchInput").value="";
   });
-
   results.appendChild(link);
  });
 }
@@ -2362,15 +842,10 @@ function openSearch(){
 }
 
 $("searchBtn").addEventListener("click",openSearch);
-
-$("searchInput").addEventListener("input",event=>{
- renderSearch(event.target.value);
-});
+$("searchInput").addEventListener("input",event=>renderSearch(event.target.value));
 
 $("searchOverlay").addEventListener("click",event=>{
- if(event.target===$("searchOverlay")){
-  $("searchOverlay").classList.remove("open");
- }
+ if(event.target===$("searchOverlay"))$("searchOverlay").classList.remove("open");
 });
 
 document.addEventListener("keydown",event=>{
@@ -2378,99 +853,66 @@ document.addEventListener("keydown",event=>{
   event.preventDefault();
   openSearch();
  }
-
- if(event.key==="Escape"){
-  $("searchOverlay").classList.remove("open");
-  $("navLinks").classList.remove("open");
- }
 });
 
-/* CONTACT FORM NOTICE */
-
+/* Demo-only form: no message is sent or stored */
 $("suggestionForm").addEventListener("submit",event=>{
  event.preventDefault();
-
  showToast(
   lang==="ar"?"النموذج غير مفعّل بعد":"Formulaire non activé",
-  lang==="ar"
-   ?"تم تجهيز الواجهة فقط. لن يتم إرسال رسالتك أو حفظها حتى يتم ربط النموذج بقاعدة البيانات."
-   :"L’interface est prête. Le message ne sera pas envoyé ni enregistré avant la connexion à la base de données."
+  lang==="ar"?"تم تجهيز الواجهة فقط. لن يتم إرسال رسالتك أو حفظها حتى يتم ربط النموذج بقاعدة البيانات.":"L’interface est prête. Le message ne sera pas envoyé ni enregistré avant la connexion à la base de données."
  );
 });
 
-/* BACK TO TOP */
+/* Back to top */
+$("backTop").addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
 
-$("backTop").addEventListener("click",()=>{
- window.scrollTo({top:0,behavior:"smooth"});
-});
-
-/* SCROLL PROGRESS */
-
+/* Scroll progress and back-to-top visibility */
+let scrollTick=false;
 window.addEventListener("scroll",()=>{
- const documentHeight=document.documentElement.scrollHeight-window.innerHeight;
-
- const progress=documentHeight>0
-  ?(window.scrollY/documentHeight)*100
-  :0;
-
- $("progress").style.width=progress+"%";
-
- $("backTop").classList.toggle("show",window.scrollY>450);
+ if(scrollTick)return;
+ scrollTick=true;
+ requestAnimationFrame(()=>{
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+  const progress=max>0?(window.scrollY/max)*100:0;
+  $("progress").style.width=progress+"%";
+  $("backTop").classList.toggle("show",window.scrollY>450);
+  scrollTick=false;
+ });
 },{passive:true});
 
-/* REVEAL ANIMATIONS */
-
+/* Reveal only when elements enter the viewport */
 if("IntersectionObserver" in window){
-
- const observer=new IntersectionObserver(entries=>{
+ const revealObserver=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
    if(entry.isIntersecting){
     entry.target.classList.add("visible");
-    observer.unobserve(entry.target);
+    revealObserver.unobserve(entry.target);
    }
   });
  },{threshold:.12});
-
- document.querySelectorAll(".reveal").forEach(element=>{
-  observer.observe(element);
- });
-
+ document.querySelectorAll(".reveal").forEach(el=>revealObserver.observe(el));
 }else{
- document.querySelectorAll(".reveal").forEach(element=>{
-  element.classList.add("visible");
- });
+ document.querySelectorAll(".reveal").forEach(el=>el.classList.add("visible"));
 }
 
-/* ACTIVE NAVIGATION */
-
-const sections=document.querySelectorAll("main section[id]");
-const navLinks=document.querySelectorAll(".nav-links a[href^='#']");
-
+/* Current section in navigation */
 if("IntersectionObserver" in window){
+ const sectionLinks=document.querySelectorAll(".nav-links a[href^='#']");
  const sectionObserver=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
    if(entry.isIntersecting){
-    navLinks.forEach(link=>{
-     link.classList.toggle(
-      "active",
-      link.getAttribute("href")==="#"+entry.target.id
-     );
+    sectionLinks.forEach(link=>{
+     link.classList.toggle("active",link.getAttribute("href")==="#"+entry.target.id);
     });
    }
   });
  },{rootMargin:"-30% 0px -60% 0px"});
-
- sections.forEach(section=>{
-  sectionObserver.observe(section);
- });
+ document.querySelectorAll("main section[id]").forEach(section=>sectionObserver.observe(section));
 }
-
-/* INITIALIZE */
 
 applyLanguage();
 renderSearch("");
-
 </script>
-
 </body>
 </html>
