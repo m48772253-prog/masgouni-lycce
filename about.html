@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b211b">
-<meta name="description" content="اكتشف ثانوية المجاهد مسغوني محمد الصالح، رسالتها التربوية وقيمها ومرافقها ورؤيتها التعليمية.">
+<meta name="description" content="اكتشف ثانوية المجاهد مسغوني محمد الصالح، رسالتها التربوية وقيمها وفضاءاتها التعليمية.">
 <meta name="keywords" content="ثانوية مسغوني, ثانوية المجاهد مسغوني محمد الصالح, التعليم, الجزائر">
 <title>عن الثانوية | ثانوية مسغوني</title>
 
@@ -26,10 +26,11 @@
  --surface2:#edf3ef;
  --text:#172c24;
  --muted:#718078;
- --border:rgba(20,92,67,.12);
- --shadow:0 15px 45px rgba(13,55,39,.09);
+ --border:rgba(20,92,67,.13);
+ --glass:rgba(255,255,255,.68);
+ --shadow:0 18px 55px rgba(13,55,39,.10);
  --radius:25px;
- --transition:.35s cubic-bezier(.2,.8,.2,1);
+ --transition:.38s cubic-bezier(.2,.8,.2,1);
 }
 
 [data-theme="dark"]{
@@ -38,8 +39,9 @@
  --surface2:#163329;
  --text:#edf5ef;
  --muted:#a5b8ad;
- --border:rgba(255,255,255,.09);
- --shadow:0 15px 45px rgba(0,0,0,.25);
+ --border:rgba(255,255,255,.10);
+ --glass:rgba(16,39,30,.72);
+ --shadow:0 18px 55px rgba(0,0,0,.28);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -57,26 +59,26 @@ body{
  transition:background .4s,color .4s;
 }
 
+body.modal-open{overflow:hidden}
+
 a{text-decoration:none;color:inherit}
 button{font:inherit}
 img{max-width:100%;display:block}
+button,a{-webkit-tap-highlight-color:transparent}
 
 ::selection{background:var(--gold);color:#14251c}
 
-.container{
- width:min(1200px,92%);
- margin:auto;
-}
+.container{width:min(1200px,92%);margin:auto}
 
 .section{
- padding:110px 0;
+ padding:105px 0;
  position:relative;
 }
 
 .section-heading{
  text-align:center;
  max-width:720px;
- margin:0 auto 55px;
+ margin:0 auto 52px;
 }
 
 .eyebrow{
@@ -120,22 +122,21 @@ img{max-width:100%;display:block}
  background:#0b211b;
  display:grid;
  place-items:center;
- transition:.6s;
+ opacity:1;
+ visibility:visible;
+ transition:opacity .65s ease,visibility .65s ease;
 }
 
-.loader.hide{
- opacity:0;
- visibility:hidden;
-}
+.loader.hide{opacity:0;visibility:hidden;pointer-events:none}
 
 .loader-inner{text-align:center;color:white}
 
 .loader-logo{
- width:65px;
- height:65px;
- margin:auto auto 18px;
- border:1px solid rgba(217,180,91,.6);
- border-radius:20px;
+ width:68px;
+ height:68px;
+ margin:0 auto 18px;
+ border:1px solid rgba(217,180,91,.65);
+ border-radius:21px;
  display:grid;
  place-items:center;
  color:var(--gold);
@@ -144,7 +145,7 @@ img{max-width:100%;display:block}
 }
 
 .loader-line{
- width:150px;
+ width:155px;
  height:3px;
  background:#29493b;
  margin:20px auto;
@@ -167,10 +168,10 @@ img{max-width:100%;display:block}
 }
 
 @keyframes loaderPulse{
- 50%{transform:scale(1.08);box-shadow:0 0 30px #d9b45b44}
+ 50%{transform:scale(1.08);box-shadow:0 0 30px #d9b45b55}
 }
 
-/* READING PROGRESS */
+/* PROGRESS */
 
 .reading-progress{
  position:fixed;
@@ -183,7 +184,7 @@ img{max-width:100%;display:block}
  box-shadow:0 0 12px var(--gold);
 }
 
-/* NAVBAR */
+/* NAVIGATION */
 
 .navbar{
  position:fixed;
@@ -196,10 +197,12 @@ img{max-width:100%;display:block}
 }
 
 .navbar.scrolled{
- background:rgba(8,33,24,.94);
- backdrop-filter:blur(18px);
- border-bottom:1px solid rgba(255,255,255,.09);
  height:72px;
+ background:rgba(8,33,24,.88);
+ -webkit-backdrop-filter:blur(18px);
+ backdrop-filter:blur(18px);
+ border-bottom:1px solid rgba(255,255,255,.10);
+ box-shadow:0 8px 30px rgba(0,0,0,.10);
 }
 
 .nav-inner{
@@ -221,21 +224,17 @@ img{max-width:100%;display:block}
 .brand-logo{
  width:46px;
  height:46px;
- border:1px solid rgba(217,180,91,.6);
+ border:1px solid rgba(217,180,91,.65);
  border-radius:15px;
  display:grid;
  place-items:center;
  color:var(--gold);
  font-size:20px;
- background:rgba(217,180,91,.08);
+ background:rgba(217,180,91,.09);
+ box-shadow:inset 0 0 18px rgba(217,180,91,.08);
 }
 
-.brand-text strong{
- display:block;
- font-size:15px;
- font-weight:900;
-}
-
+.brand-text strong{display:block;font-size:15px;font-weight:900}
 .brand-text small{
  font-family:'Outfit',sans-serif;
  color:#c7d5cc;
@@ -246,60 +245,145 @@ img{max-width:100%;display:block}
 .nav-links{
  display:flex;
  align-items:center;
- gap:24px;
+ gap:22px;
  list-style:none;
 }
 
 .nav-links a{
+ position:relative;
  color:#e0eae3;
  font-size:12px;
  font-weight:700;
  transition:.3s;
+ padding:10px 0;
 }
 
-.nav-links a:hover{color:var(--gold)}
-
-.nav-actions{
- display:flex;
- align-items:center;
- gap:9px;
+.nav-links a:after{
+ content:"";
+ position:absolute;
+ bottom:2px;
+ right:0;
+ width:0;
+ height:2px;
+ background:var(--gold);
+ border-radius:5px;
+ transition:.3s;
 }
+
+.nav-links a:hover,
+.nav-links a.active{color:var(--gold)}
+
+.nav-links a:hover:after,
+.nav-links a.active:after{width:100%}
+
+.nav-actions{display:flex;align-items:center;gap:9px}
 
 .icon-btn{
- width:40px;
- height:40px;
- border:1px solid rgba(255,255,255,.17);
- border-radius:13px;
- background:rgba(255,255,255,.07);
+ width:41px;
+ height:41px;
+ border:1px solid rgba(255,255,255,.20);
+ border-radius:14px;
+ background:rgba(255,255,255,.08);
  color:white;
  cursor:pointer;
- transition:.3s;
+ transition:var(--transition);
 }
 
 .icon-btn:hover{
  background:var(--gold);
  color:#13281e;
  transform:translateY(-3px);
+ box-shadow:0 7px 20px #d9b45b44;
 }
 
 .menu-btn{display:none}
 
+/* BUTTONS */
+
+.btn{
+ min-height:51px;
+ padding:0 24px;
+ display:inline-flex;
+ justify-content:center;
+ align-items:center;
+ gap:11px;
+ border-radius:14px;
+ font-weight:800;
+ font-size:13px;
+ cursor:pointer;
+ transition:var(--transition);
+ border:1px solid transparent;
+ position:relative;
+ overflow:hidden;
+ isolation:isolate;
+}
+
+.btn:before,
+.home-top:before,
+.bottom-home:before{
+ content:"";
+ position:absolute;
+ top:-100%;
+ left:-40%;
+ width:35%;
+ height:300%;
+ transform:rotate(25deg);
+ background:linear-gradient(90deg,transparent,#ffffff55,transparent);
+ transition:.7s;
+ z-index:-1;
+}
+
+.btn:hover:before,
+.home-top:hover:before,
+.bottom-home:hover:before{left:120%}
+
+.btn-gold{
+ background:linear-gradient(120deg,#d9b45b,#f0d58c);
+ color:#173326;
+ box-shadow:0 8px 24px rgba(217,180,91,.18);
+}
+
+.btn-gold:hover{
+ transform:translateY(-5px);
+ box-shadow:0 13px 30px #d9b45b55;
+}
+
+.btn-outline{
+ color:white;
+ border-color:rgba(255,255,255,.35);
+ background:rgba(255,255,255,.07);
+ -webkit-backdrop-filter:blur(10px);
+ backdrop-filter:blur(10px);
+}
+
+.btn-outline:hover{
+ border-color:var(--gold);
+ color:var(--gold);
+ transform:translateY(-4px);
+ box-shadow:0 0 20px #d9b45b22;
+}
+
+/* HOME TOP BUTTON */
+
 .home-top{
+ position:relative;
+ isolation:isolate;
  display:flex;
  align-items:center;
  justify-content:center;
  gap:12px;
  width:100%;
- min-height:52px;
+ min-height:53px;
  background:linear-gradient(110deg,#d9b45b,#f0d58c);
  color:#173326;
- border:0;
- border-radius:13px;
+ border:1px solid rgba(255,255,255,.55);
+ border-radius:15px;
  font-size:14px;
  font-weight:900;
  margin-top:105px;
  margin-bottom:20px;
  cursor:pointer;
+ overflow:hidden;
  transition:var(--transition);
  box-shadow:0 8px 25px rgba(217,180,91,.18);
 }
@@ -319,28 +403,31 @@ img{max-width:100%;display:block}
  overflow:hidden;
  background:#0b211b;
  color:white;
+ isolation:isolate;
 }
 
 .hero-bg{
  position:absolute;
  inset:0;
+ z-index:-2;
  background:
- linear-gradient(90deg,rgba(5,25,18,.88),rgba(5,25,18,.48)),
- linear-gradient(0deg,rgba(5,25,18,.85),transparent 70%),
+ linear-gradient(90deg,rgba(5,25,18,.90),rgba(5,25,18,.48)),
+ linear-gradient(0deg,rgba(5,25,18,.88),transparent 70%),
  url("facade.jpg") center/cover no-repeat;
  transform:scale(1.03);
  animation:heroZoom 18s ease-in-out infinite alternate;
 }
 
-@keyframes heroZoom{
- to{transform:scale(1.12)}
-}
+@keyframes heroZoom{to{transform:scale(1.12)}}
 
 .hero:after{
  content:"";
  position:absolute;
  inset:0;
- background:radial-gradient(circle at 15% 40%,rgba(217,180,91,.16),transparent 35%);
+ z-index:-1;
+ background:
+ radial-gradient(circle at 15% 40%,rgba(217,180,91,.17),transparent 35%),
+ linear-gradient(120deg,transparent 55%,rgba(255,255,255,.025));
  pointer-events:none;
 }
 
@@ -363,6 +450,7 @@ img{max-width:100%;display:block}
  font-size:12px;
  font-weight:700;
  margin-bottom:25px;
+ -webkit-backdrop-filter:blur(10px);
  backdrop-filter:blur(10px);
 }
 
@@ -375,10 +463,7 @@ img{max-width:100%;display:block}
  margin-bottom:20px;
 }
 
-.hero h1 span{
- color:var(--gold);
- display:block;
-}
+.hero h1 span{color:var(--gold);display:block}
 
 .hero-desc{
  max-width:620px;
@@ -388,48 +473,7 @@ img{max-width:100%;display:block}
  margin-bottom:32px;
 }
 
-.hero-actions{
- display:flex;
- flex-wrap:wrap;
- gap:13px;
-}
-
-.btn{
- min-height:51px;
- padding:0 24px;
- display:inline-flex;
- justify-content:center;
- align-items:center;
- gap:11px;
- border-radius:13px;
- font-weight:800;
- font-size:13px;
- cursor:pointer;
- transition:var(--transition);
- border:1px solid transparent;
-}
-
-.btn-gold{
- background:var(--gold);
- color:#173326;
-}
-
-.btn-gold:hover{
- transform:translateY(-5px);
- box-shadow:0 10px 25px #d9b45b44;
-}
-
-.btn-outline{
- color:white;
- border-color:rgba(255,255,255,.35);
- background:rgba(255,255,255,.07);
- backdrop-filter:blur(10px);
-}
-
-.btn-outline:hover{
- border-color:var(--gold);
- color:var(--gold);
-}
+.hero-actions{display:flex;flex-wrap:wrap;gap:13px}
 
 .hero-scroll{
  position:absolute;
@@ -446,10 +490,7 @@ img{max-width:100%;display:block}
 }
 
 .hero-scroll i{animation:scrollDown 1.5s infinite}
-
-@keyframes scrollDown{
- 50%{transform:translateY(7px)}
-}
+@keyframes scrollDown{50%{transform:translateY(7px)}}
 
 /* INTRO */
 
@@ -460,17 +501,14 @@ img{max-width:100%;display:block}
  align-items:center;
 }
 
-.intro-visual{
- position:relative;
- min-height:420px;
-}
+.intro-visual{position:relative;min-height:420px}
 
 .intro-image{
  position:absolute;
  inset:0 0 35px 35px;
  border-radius:30px;
  overflow:hidden;
- background:#123d2c;
+ background:linear-gradient(135deg,#0b3022,#145c43);
  box-shadow:var(--shadow);
 }
 
@@ -487,7 +525,8 @@ img{max-width:100%;display:block}
  content:"";
  position:absolute;
  inset:0;
- background:linear-gradient(0deg,#0b211b77,transparent);
+ background:linear-gradient(0deg,#0b211b66,transparent);
+ pointer-events:none;
 }
 
 .intro-decoration{
@@ -507,25 +546,18 @@ img{max-width:100%;display:block}
  z-index:3;
  right:-10px;
  bottom:65px;
- background:var(--surface);
+ background:var(--glass);
+ -webkit-backdrop-filter:blur(18px);
+ backdrop-filter:blur(18px);
  border:1px solid var(--border);
  box-shadow:var(--shadow);
  padding:17px 22px;
  border-radius:17px;
 }
 
-.intro-badge strong{
- display:block;
- color:var(--green);
- font-size:15px;
-}
-
+.intro-badge strong{display:block;color:var(--green);font-size:15px}
 [data-theme="dark"] .intro-badge strong{color:var(--gold)}
-
-.intro-badge small{
- color:var(--muted);
- font-size:11px;
-}
+.intro-badge small{color:var(--muted);font-size:11px}
 
 .intro-content h2{
  font-size:clamp(26px,4vw,40px);
@@ -573,10 +605,7 @@ img{max-width:100%;display:block}
 
 /* VALUES */
 
-.values-section{
- background:var(--surface2);
- overflow:hidden;
-}
+.values-section,.gallery-section{background:var(--surface2);overflow:hidden}
 
 .values-grid{
  display:grid;
@@ -592,6 +621,7 @@ img{max-width:100%;display:block}
  padding:29px 23px;
  overflow:hidden;
  transition:var(--transition);
+ isolation:isolate;
 }
 
 .value-card:before{
@@ -601,8 +631,19 @@ img{max-width:100%;display:block}
  right:0;
  width:0;
  height:4px;
- background:var(--gold);
+ background:linear-gradient(90deg,var(--gold),var(--gold2));
  transition:.5s;
+}
+
+.value-card:after,
+.area-card:after{
+ content:"";
+ position:absolute;
+ inset:0;
+ border-radius:inherit;
+ border:1px solid transparent;
+ pointer-events:none;
+ transition:.4s;
 }
 
 .value-card:hover{
@@ -611,6 +652,7 @@ img{max-width:100%;display:block}
 }
 
 .value-card:hover:before{width:100%}
+.value-card:hover:after{border-color:rgba(217,180,91,.65)}
 
 .value-icon{
  width:55px;
@@ -630,19 +672,11 @@ img{max-width:100%;display:block}
 .value-card:hover .value-icon{
  background:var(--green);
  color:white;
- transform:rotate(-8deg);
+ transform:rotate(-8deg) scale(1.06);
 }
 
-.value-card h3{
- font-size:16px;
- margin-bottom:10px;
-}
-
-.value-card p{
- color:var(--muted);
- font-size:12px;
- line-height:2;
-}
+.value-card h3{font-size:16px;margin-bottom:10px}
+.value-card p{color:var(--muted);font-size:12px;line-height:2}
 
 /* BENTO */
 
@@ -679,9 +713,7 @@ img{max-width:100%;display:block}
  background:linear-gradient(0deg,rgba(5,23,16,.95),rgba(5,23,16,.02) 80%);
 }
 
-.bento-card:hover img{
- transform:scale(1.09);
-}
+.bento-card:hover img{transform:scale(1.09)}
 
 .bento-info{
  position:absolute;
@@ -692,22 +724,9 @@ img{max-width:100%;display:block}
  padding:24px;
 }
 
-.bento-info small{
- color:var(--gold);
- font-size:10px;
- font-weight:800;
-}
-
-.bento-info h3{
- font-size:19px;
- margin:7px 0;
-}
-
-.bento-info p{
- font-size:11px;
- color:#d5e2d9;
- line-height:1.9;
-}
+.bento-info small{color:var(--gold);font-size:10px;font-weight:800}
+.bento-info h3{font-size:19px;margin:7px 0}
+.bento-info p{font-size:11px;color:#d5e2d9;line-height:1.9}
 
 .bento-arrow{
  position:absolute;
@@ -732,10 +751,6 @@ img{max-width:100%;display:block}
 
 /* GALLERY */
 
-.gallery-section{
- background:var(--surface2);
-}
-
 .gallery-grid{
  display:grid;
  grid-template-columns:repeat(3,1fr);
@@ -755,13 +770,10 @@ img{max-width:100%;display:block}
 .gallery-card:hover{
  transform:translateY(-8px);
  box-shadow:var(--shadow);
+ border-color:rgba(217,180,91,.6);
 }
 
-.gallery-image{
- height:220px;
- overflow:hidden;
- position:relative;
-}
+.gallery-image{height:220px;overflow:hidden;position:relative}
 
 .gallery-image img{
  width:100%;
@@ -770,15 +782,14 @@ img{max-width:100%;display:block}
  transition:.7s;
 }
 
-.gallery-card:hover .gallery-image img{
- transform:scale(1.1);
-}
+.gallery-card:hover .gallery-image img{transform:scale(1.1)}
 
 .gallery-image:after{
  content:"";
  position:absolute;
  inset:0;
  background:linear-gradient(0deg,#0004,transparent);
+ pointer-events:none;
 }
 
 .gallery-open{
@@ -802,25 +813,12 @@ img{max-width:100%;display:block}
 }
 
 .gallery-info{padding:21px}
-
-.gallery-info h3{
- font-size:16px;
- margin-bottom:8px;
-}
-
-.gallery-info p{
- font-size:12px;
- color:var(--muted);
- line-height:2;
-}
+.gallery-info h3{font-size:16px;margin-bottom:8px}
+.gallery-info p{font-size:12px;color:var(--muted);line-height:2}
 
 /* TIMELINE */
 
-.timeline{
- max-width:850px;
- margin:auto;
- position:relative;
-}
+.timeline{max-width:850px;margin:auto;position:relative}
 
 .timeline:before{
  content:"";
@@ -832,10 +830,7 @@ img{max-width:100%;display:block}
  background:linear-gradient(var(--gold),var(--green),transparent);
 }
 
-.timeline-item{
- position:relative;
- padding:0 65px 40px 0;
-}
+.timeline-item{position:relative;padding:0 65px 40px 0}
 
 .timeline-dot{
  position:absolute;
@@ -864,28 +859,15 @@ img{max-width:100%;display:block}
 .timeline-content:hover{
  transform:translateX(-7px);
  box-shadow:var(--shadow);
+ border-color:rgba(217,180,91,.55);
 }
 
-.timeline-content small{
- color:var(--green);
- font-weight:900;
- font-size:11px;
-}
-
+.timeline-content small{color:var(--green);font-weight:900;font-size:11px}
 [data-theme="dark"] .timeline-content small{color:var(--gold)}
+.timeline-content h3{font-size:17px;margin:8px 0}
+.timeline-content p{color:var(--muted);font-size:12px;line-height:2}
 
-.timeline-content h3{
- font-size:17px;
- margin:8px 0;
-}
-
-.timeline-content p{
- color:var(--muted);
- font-size:12px;
- line-height:2;
-}
-
-/* EDUCATION AREAS */
+/* AREAS */
 
 .areas-grid{
  display:grid;
@@ -894,6 +876,8 @@ img{max-width:100%;display:block}
 }
 
 .area-card{
+ position:relative;
+ overflow:hidden;
  background:var(--surface);
  border:1px solid var(--border);
  padding:26px;
@@ -906,6 +890,8 @@ img{max-width:100%;display:block}
  border-color:var(--gold);
  box-shadow:var(--shadow);
 }
+
+.area-card:hover:after{border-color:rgba(217,180,91,.65)}
 
 .area-top{
  display:flex;
@@ -928,22 +914,14 @@ img{max-width:100%;display:block}
 [data-theme="dark"] .area-icon{color:var(--gold)}
 
 .area-number{
- font-family:'Outfit';
+ font-family:'Outfit',sans-serif;
  font-size:24px;
  color:var(--gold);
  font-weight:800;
 }
 
-.area-card h3{
- font-size:15px;
- margin-bottom:9px;
-}
-
-.area-card p{
- color:var(--muted);
- font-size:12px;
- line-height:2;
-}
+.area-card h3{font-size:15px;margin-bottom:9px}
+.area-card p{color:var(--muted);font-size:12px;line-height:2}
 
 /* QUOTE */
 
@@ -973,23 +951,9 @@ img{max-width:100%;display:block}
  z-index:2;
 }
 
-.quote-icon{
- color:var(--gold);
- font-size:34px;
- margin-bottom:20px;
-}
-
-.quote-inner h2{
- font-size:clamp(21px,3.5vw,34px);
- line-height:1.9;
- font-weight:800;
-}
-
-.quote-inner p{
- color:#c6d8cc;
- font-size:12px;
- margin-top:22px;
-}
+.quote-icon{color:var(--gold);font-size:34px;margin-bottom:20px}
+.quote-inner h2{font-size:clamp(21px,3.5vw,34px);line-height:1.9;font-weight:800}
+.quote-inner p{color:#c6d8cc;font-size:12px;margin-top:22px}
 
 /* CTA */
 
@@ -1018,21 +982,12 @@ img{max-width:100%;display:block}
  left:-80px;
  top:-140px;
  box-shadow:0 0 0 30px #ffffff08,0 0 0 60px #ffffff05;
+ pointer-events:none;
 }
 
 .cta-content{position:relative;z-index:2}
-
-.cta-content h2{
- font-size:clamp(22px,3vw,34px);
- margin-bottom:12px;
-}
-
-.cta-content p{
- color:#c9d9ce;
- font-size:13px;
- line-height:2;
- max-width:570px;
-}
+.cta-content h2{font-size:clamp(22px,3vw,34px);margin-bottom:12px}
+.cta-content p{color:#c9d9ce;font-size:13px;line-height:2;max-width:570px}
 
 .cta-actions{
  position:relative;
@@ -1042,7 +997,7 @@ img{max-width:100%;display:block}
  gap:12px;
 }
 
-/* BACK TO HOME BOTTOM */
+/* BOTTOM HOME */
 
 .bottom-home-wrap{
  display:flex;
@@ -1051,18 +1006,21 @@ img{max-width:100%;display:block}
 }
 
 .bottom-home{
+ position:relative;
+ isolation:isolate;
  display:inline-flex;
  align-items:center;
  justify-content:center;
  gap:10px;
- padding:11px 25px;
- min-width:175px;
- border-radius:8px;
+ padding:12px 25px;
+ min-width:180px;
+ border-radius:10px;
  color:white;
  background:#16834f;
  border:1px solid #16834f;
  font-size:12px;
  font-weight:800;
+ overflow:hidden;
  transition:var(--transition);
  box-shadow:0 5px 16px #16834f25;
 }
@@ -1096,17 +1054,8 @@ img{max-width:100%;display:block}
  margin-top:18px;
 }
 
-.footer h3{
- font-size:14px;
- color:var(--gold);
- margin-bottom:20px;
-}
-
-.footer-links{
- list-style:none;
- display:grid;
- gap:12px;
-}
+.footer h3{font-size:14px;color:var(--gold);margin-bottom:20px}
+.footer-links{list-style:none;display:grid;gap:12px}
 
 .footer-links a{
  color:#b5c6ba;
@@ -1114,10 +1063,7 @@ img{max-width:100%;display:block}
  transition:.3s;
 }
 
-.footer-links a:hover{
- color:var(--gold);
- padding-right:5px;
-}
+.footer-links a:hover{color:var(--gold);padding-right:5px}
 
 .footer-bottom{
  border-top:1px solid #ffffff17;
@@ -1130,13 +1076,14 @@ img{max-width:100%;display:block}
  font-size:11px;
 }
 
-/* MODAL */
+/* GALLERY MODAL */
 
 .modal{
  position:fixed;
  inset:0;
  z-index:10010;
- background:rgba(3,15,10,.85);
+ background:rgba(3,15,10,.86);
+ -webkit-backdrop-filter:blur(12px);
  backdrop-filter:blur(12px);
  display:grid;
  place-items:center;
@@ -1146,44 +1093,33 @@ img{max-width:100%;display:block}
  transition:.3s;
 }
 
-.modal.show{
- opacity:1;
- visibility:visible;
-}
+.modal.show{opacity:1;visibility:visible}
 
 .modal-box{
  width:min(700px,100%);
  max-height:90vh;
  overflow:auto;
  background:var(--surface);
+ border:1px solid var(--border);
  border-radius:24px;
  position:relative;
  transform:translateY(30px) scale(.97);
  transition:.4s;
+ box-shadow:0 25px 80px #0005;
 }
 
-.modal.show .modal-box{
- transform:translateY(0) scale(1);
-}
+.modal.show .modal-box{transform:translateY(0) scale(1)}
 
 .modal-image{
  height:310px;
  width:100%;
  object-fit:cover;
+ background:var(--surface2);
 }
 
 .modal-content{padding:25px}
-
-.modal-content h3{
- font-size:22px;
- margin-bottom:10px;
-}
-
-.modal-content p{
- color:var(--muted);
- font-size:13px;
- line-height:2.2;
-}
+.modal-content h3{font-size:22px;margin-bottom:10px}
+.modal-content p{color:var(--muted);font-size:13px;line-height:2.2}
 
 .modal-close{
  position:absolute;
@@ -1210,19 +1146,17 @@ img{max-width:100%;display:block}
  background:#0d3022;
  color:white;
  padding:13px 22px;
- border:1px solid #d9b45b66;
+ border:1px solid #d9b45b88;
  border-radius:13px;
  z-index:11000;
  font-size:12px;
  box-shadow:var(--shadow);
  opacity:0;
  transition:.4s;
+ pointer-events:none;
 }
 
-.toast.show{
- transform:translate(50%,0);
- opacity:1;
-}
+.toast.show{transform:translate(50%,0);opacity:1}
 
 /* SCROLL TOP */
 
@@ -1230,25 +1164,23 @@ img{max-width:100%;display:block}
  position:fixed;
  bottom:25px;
  left:22px;
- width:43px;
- height:43px;
+ width:45px;
+ height:45px;
  border:1px solid var(--gold);
  background:var(--green2);
  color:var(--gold);
- border-radius:14px;
+ border-radius:15px;
  cursor:pointer;
  z-index:900;
  opacity:0;
  visibility:hidden;
  transform:translateY(15px);
  transition:.3s;
+ box-shadow:0 8px 25px #0002;
 }
 
-.scroll-top.show{
- opacity:1;
- visibility:visible;
- transform:translateY(0);
-}
+.scroll-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+.scroll-top:hover{background:var(--gold);color:var(--green3);transform:translateY(-4px)}
 
 /* REVEAL */
 
@@ -1258,26 +1190,92 @@ img{max-width:100%;display:block}
  transition:opacity .8s,transform .8s;
 }
 
-.reveal.visible{
- opacity:1;
- transform:translateY(0);
-}
-
+.reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-delay-1{transition-delay:.1s}
 .reveal-delay-2{transition-delay:.2s}
 .reveal-delay-3{transition-delay:.3s}
+
+/* LIQUID GLASS EFFECT */
+
+.value-card,
+.area-card,
+.gallery-card,
+.timeline-content,
+.intro-badge{
+ position:relative;
+}
+
+.value-card,
+.area-card,
+.gallery-card,
+.timeline-content{
+ isolation:isolate;
+}
+
+.value-card:before,
+.area-card:before,
+.gallery-card:before,
+.timeline-content:before{
+ pointer-events:none;
+}
+
+.value-card:hover,
+.area-card:hover,
+.gallery-card:hover,
+.timeline-content:hover{
+ box-shadow:0 18px 48px rgba(13,55,39,.13),0 0 0 1px rgba(217,180,91,.14);
+}
+
+[data-theme="dark"] .value-card:hover,
+[data-theme="dark"] .area-card:hover,
+[data-theme="dark"] .gallery-card:hover,
+[data-theme="dark"] .timeline-content:hover{
+ box-shadow:0 18px 48px rgba(0,0,0,.30),0 0 0 1px rgba(217,180,91,.18);
+}
+
+.btn:focus-visible,
+.icon-btn:focus-visible,
+a:focus-visible,
+button:focus-visible,
+.gallery-card:focus-visible{
+ outline:2px solid var(--gold);
+ outline-offset:4px;
+}
 
 /* CURSOR GLOW */
 
 .cursor-glow{
  position:fixed;
- width:240px;
- height:240px;
+ width:260px;
+ height:260px;
  border-radius:50%;
  pointer-events:none;
  z-index:0;
- background:radial-gradient(circle,rgba(217,180,91,.065),transparent 70%);
+ background:radial-gradient(circle,rgba(217,180,91,.075),transparent 70%);
  transform:translate(-50%,-50%);
+}
+
+/* INTERACTION LIGHT */
+
+.btn,
+.icon-btn,
+.home-top,
+.bottom-home,
+.value-card,
+.area-card,
+.gallery-card{
+ --mx:50%;
+ --my:50%;
+}
+
+.value-card:hover,
+.area-card:hover,
+.gallery-card:hover{
+ background-image:radial-gradient(circle at var(--mx) var(--my),rgba(217,180,91,.09),transparent 48%);
+}
+
+.gold-pressed{
+ box-shadow:0 0 0 2px var(--gold),0 0 24px rgba(217,180,91,.35)!important;
 }
 
 /* RESPONSIVE */
@@ -1288,28 +1286,26 @@ img{max-width:100%;display:block}
   top:75px;
   right:4%;
   left:4%;
-  background:#0c2d20;
-  border:1px solid #ffffff18;
-  border-radius:18px;
-  padding:20px;
+  background:rgba(8,38,26,.97);
+  border:1px solid #ffffff20;
+  border-radius:19px;
+  padding:18px;
   display:none;
   flex-direction:column;
   align-items:stretch;
   gap:0;
   box-shadow:0 15px 40px #0005;
+  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(18px);
  }
- .nav-links.open{display:flex}
- .nav-links a{
-  display:block;
-  padding:13px 10px;
- }
+ .nav-links.open{display:flex;animation:menuIn .25s ease}
+ @keyframes menuIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+ .nav-links a{display:block;padding:13px 10px}
+ .nav-links a:after{bottom:5px}
  .menu-btn{display:grid;place-items:center}
  .intro-grid{gap:35px}
  .values-grid{grid-template-columns:repeat(2,1fr)}
- .bento-grid{
-  grid-template-columns:1fr 1fr;
-  grid-template-rows:250px 210px 210px;
- }
+ .bento-grid{grid-template-columns:1fr 1fr;grid-template-rows:250px 210px 210px}
  .bento-card:first-child{grid-column:span 2;grid-row:auto}
  .gallery-grid{grid-template-columns:repeat(2,1fr)}
  .footer-grid{gap:30px}
@@ -1330,11 +1326,7 @@ img{max-width:100%;display:block}
  .value-card{padding:20px 15px}
  .value-card h3{font-size:14px}
  .value-card p{font-size:11px}
- .bento-grid{
-  grid-template-columns:1fr 1fr;
-  grid-template-rows:230px 180px 180px;
-  gap:11px;
- }
+ .bento-grid{grid-template-columns:1fr 1fr;grid-template-rows:230px 180px 180px;gap:11px}
  .bento-card:first-child{grid-column:span 2}
  .bento-info{padding:15px}
  .bento-info h3{font-size:15px}
@@ -1349,17 +1341,14 @@ img{max-width:100%;display:block}
  .timeline:before{right:12px}
  .timeline-dot{right:0}
  .timeline-content{padding:18px}
- .cta-box{
-  padding:35px 23px;
-  flex-direction:column;
-  align-items:flex-start;
- }
+ .cta-box{padding:35px 23px;flex-direction:column;align-items:flex-start}
  .cta-actions{width:100%}
  .cta-actions .btn{width:100%}
  .footer-grid{grid-template-columns:1fr 1fr;gap:30px 20px}
  .footer-brand{grid-column:span 2}
  .footer-bottom{flex-direction:column;text-align:center}
  .modal-image{height:220px}
+ .scroll-top{bottom:17px;left:14px}
 }
 
 @media(max-width:390px){
@@ -1369,6 +1358,7 @@ img{max-width:100%;display:block}
  .areas-grid{grid-template-columns:1fr}
  .hero h1{font-size:32px}
  .intro-points{grid-template-columns:1fr}
+ .hero-actions .btn{width:100%}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -1379,15 +1369,7 @@ img{max-width:100%;display:block}
   transition-duration:.01ms!important;
  }
  .reveal{opacity:1;transform:none}
-}
-/* Page Transition - About to Home */
-.loader {
-    transition: opacity .6s ease, visibility .6s ease;
-}
-
-.loader:not(.hide) {
-    opacity: 1;
-    visibility: visible;
+ .hero-bg{animation:none}
 }
 </style>
 </head>
@@ -1406,11 +1388,8 @@ img{max-width:100%;display:block}
 <div class="reading-progress" id="readingProgress"></div>
 <div class="cursor-glow" id="cursorGlow"></div>
 
-<!-- NAVBAR -->
-
 <header class="navbar" id="navbar">
  <div class="container nav-inner">
-
   <a href="index.html" class="brand">
    <div class="brand-logo"><i class="fa-solid fa-graduation-cap"></i></div>
    <div class="brand-text">
@@ -1432,17 +1411,15 @@ img{max-width:100%;display:block}
    <button class="icon-btn" id="themeToggle" aria-label="تغيير المظهر">
     <i class="fa-solid fa-moon"></i>
    </button>
-   <button class="icon-btn menu-btn" id="menuBtn" aria-label="فتح القائمة">
+   <button class="icon-btn menu-btn" id="menuBtn" aria-label="فتح القائمة" aria-expanded="false">
     <i class="fa-solid fa-bars"></i>
    </button>
   </div>
-
  </div>
 </header>
 
-<!-- LARGE HOME BUTTON -->
-
 <main>
+
 <div class="container">
  <a href="index.html" class="home-top">
   <i class="fa-solid fa-house"></i>
@@ -1451,23 +1428,16 @@ img{max-width:100%;display:block}
  </a>
 </div>
 
-<!-- HERO -->
-
 <section class="hero">
  <div class="hero-bg"></div>
-
  <div class="container">
   <div class="hero-content reveal visible">
-
    <div class="hero-label">
     <i class="fa-solid fa-circle"></i>
     اكتشف عالم ثانوية مسغوني
    </div>
 
-   <h1>
-    حيث تبدأ رحلة
-    <span>العلم والطموح</span>
-   </h1>
+   <h1>حيث تبدأ رحلة <span>العلم والطموح</span></h1>
 
    <p class="hero-desc">
     ثانوية المجاهد مسغوني محمد الصالح، فضاء تربوي يجمع بين المعرفة
@@ -1477,26 +1447,19 @@ img{max-width:100%;display:block}
 
    <div class="hero-actions">
     <a href="#about" class="btn btn-gold">
-     اكتشف الثانوية
-     <i class="fa-solid fa-arrow-down"></i>
+     اكتشف الثانوية <i class="fa-solid fa-arrow-down"></i>
     </a>
-
     <a href="#values" class="btn btn-outline">
-     مبادئنا وقيمنا
-     <i class="fa-solid fa-compass"></i>
+     مبادئنا وقيمنا <i class="fa-solid fa-compass"></i>
     </a>
    </div>
-
   </div>
  </div>
 
  <a href="#about" class="hero-scroll">
-  اكتشف المزيد
-  <i class="fa-solid fa-chevron-down"></i>
+  اكتشف المزيد <i class="fa-solid fa-chevron-down"></i>
  </a>
 </section>
-
-<!-- INTRO -->
 
 <section class="section" id="about">
  <div class="container intro-grid">
@@ -1514,15 +1477,8 @@ img{max-width:100%;display:block}
   </div>
 
   <div class="intro-content reveal reveal-delay-1">
-   <span class="eyebrow">
-    <i class="fa-solid fa-building-columns"></i>
-    من نحن؟
-   </span>
-
-   <h2>
-    مؤسسة تربوية،
-    <span>ورؤية نحو المستقبل</span>
-   </h2>
+   <span class="eyebrow"><i class="fa-solid fa-building-columns"></i> من نحن؟</span>
+   <h2>مؤسسة تربوية، <span>ورؤية نحو المستقبل</span></h2>
 
    <p>
     تمثل الثانوية مرحلة أساسية في المسار الدراسي للتلميذ،
@@ -1537,44 +1493,24 @@ img{max-width:100%;display:block}
    </p>
 
    <div class="intro-points">
-    <div class="intro-point">
-     <i class="fa-solid fa-book-open"></i>
-     تعليم هادف
-    </div>
-    <div class="intro-point">
-     <i class="fa-solid fa-lightbulb"></i>
-     تنمية الإبداع
-    </div>
-    <div class="intro-point">
-     <i class="fa-solid fa-users"></i>
-     روح التعاون
-    </div>
-    <div class="intro-point">
-     <i class="fa-solid fa-award"></i>
-     التميز والاجتهاد
-    </div>
+    <div class="intro-point"><i class="fa-solid fa-book-open"></i> تعليم هادف</div>
+    <div class="intro-point"><i class="fa-solid fa-lightbulb"></i> تنمية الإبداع</div>
+    <div class="intro-point"><i class="fa-solid fa-users"></i> روح التعاون</div>
+    <div class="intro-point"><i class="fa-solid fa-award"></i> التميز والاجتهاد</div>
    </div>
   </div>
-
  </div>
 </section>
 
-<!-- VALUES -->
-
 <section class="section values-section" id="values">
  <div class="container">
-
   <div class="section-heading reveal">
    <span class="eyebrow">ما الذي نؤمن به؟</span>
    <h2>قيم تصنع <span>شخصية المستقبل</span></h2>
-   <p>
-    المبادئ التي ينبغي أن ترافق كل متعلم في رحلته العلمية
-    وتساعده على بناء شخصية متوازنة وناجحة.
-   </p>
+   <p>المبادئ التي ينبغي أن ترافق كل متعلم في رحلته العلمية وتساعده على بناء شخصية متوازنة وناجحة.</p>
   </div>
 
   <div class="values-grid">
-
    <article class="value-card reveal">
     <div class="value-icon"><i class="fa-solid fa-book-open"></i></div>
     <h3>طلب العلم</h3>
@@ -1598,27 +1534,19 @@ img{max-width:100%;display:block}
     <h3>الطموح</h3>
     <p>تحفيز المتعلم على وضع أهداف واضحة والسعي لتحقيقها.</p>
    </article>
-
   </div>
  </div>
 </section>
 
-<!-- BENTO GRID -->
-
 <section class="section">
  <div class="container">
-
   <div class="section-heading reveal">
    <span class="eyebrow">بيئة تعليمية متكاملة</span>
    <h2>التعليم أبعد من <span>جدران القسم</span></h2>
-   <p>
-    تتنوع مجالات التعلم بين المعرفة النظرية والتجربة
-    والأنشطة التي تساهم في تطوير مهارات التلميذ.
-   </p>
+   <p>تتنوع مجالات التعلم بين المعرفة النظرية والتجربة والأنشطة التي تساهم في تطوير مهارات التلميذ.</p>
   </div>
 
   <div class="bento-grid">
-
    <article class="bento-card reveal">
     <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1000&q=85" alt="بيئة تعليمية توضيحية" loading="lazy">
     <span class="bento-arrow"><i class="fa-solid fa-arrow-up-left"></i></span>
@@ -1668,112 +1596,83 @@ img{max-width:100%;display:block}
      <p>استخدام التقنية في التعلم والابتكار.</p>
     </div>
    </article>
-
   </div>
  </div>
 </section>
 
-<!-- INTERACTIVE GALLERY -->
-
 <section class="section gallery-section" id="gallery">
  <div class="container">
-
   <div class="section-heading reveal">
    <span class="eyebrow">EXPLORE & DISCOVER</span>
    <h2>اكتشف فضاءات <span>التعلم</span></h2>
-   <p>
-    صور توضيحية لمجالات ومرافق تعليمية متنوعة.
-    اضغط على أي بطاقة لاستكشاف المزيد.
-   </p>
+   <p>صور توضيحية لمجالات ومرافق تعليمية متنوعة. اضغط على أي بطاقة لاستكشاف المزيد.</p>
   </div>
 
   <div class="gallery-grid">
-
-   <article class="gallery-card reveal"
+   <article class="gallery-card reveal" tabindex="0"
     data-title="فضاء التعلم"
     data-description="تعد قاعات الدراسة فضاء أساسيا للتفاعل بين الأستاذ والتلميذ، وتبادل المعرفة وبناء المهارات العلمية والفكرية.">
     <div class="gallery-image">
      <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=850&q=85" alt="فضاء التعلم - صورة توضيحية" loading="lazy">
      <span class="gallery-open"><i class="fa-solid fa-expand"></i></span>
     </div>
-    <div class="gallery-info">
-     <h3>فضاء التعلم</h3>
-     <p>بيئة تساعد على التركيز واكتساب المعرفة والتفاعل.</p>
-    </div>
+    <div class="gallery-info"><h3>فضاء التعلم</h3><p>بيئة تساعد على التركيز واكتساب المعرفة والتفاعل.</p></div>
    </article>
 
-   <article class="gallery-card reveal reveal-delay-1"
+   <article class="gallery-card reveal reveal-delay-1" tabindex="0"
     data-title="المكتبة المدرسية"
     data-description="المكتبة مجال لتنمية الثقافة العامة، وتشجيع القراءة والبحث والاطلاع، وتوسيع آفاق التلميذ المعرفية.">
     <div class="gallery-image">
      <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=850&q=85" alt="مكتبة مدرسية - صورة توضيحية" loading="lazy">
      <span class="gallery-open"><i class="fa-solid fa-expand"></i></span>
     </div>
-    <div class="gallery-info">
-     <h3>المكتبة المدرسية</h3>
-     <p>مساحة للقراءة والبحث والاستكشاف.</p>
-    </div>
+    <div class="gallery-info"><h3>المكتبة المدرسية</h3><p>مساحة للقراءة والبحث والاستكشاف.</p></div>
    </article>
 
-   <article class="gallery-card reveal reveal-delay-2"
+   <article class="gallery-card reveal reveal-delay-2" tabindex="0"
     data-title="المخابر العلمية"
     data-description="تساعد التجارب العلمية على ربط المفاهيم النظرية بالتطبيق العملي، وتنمية مهارات الملاحظة والاستنتاج والتفكير المنهجي.">
     <div class="gallery-image">
      <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=850&q=85" alt="مخبر علمي - صورة توضيحية" loading="lazy">
      <span class="gallery-open"><i class="fa-solid fa-expand"></i></span>
     </div>
-    <div class="gallery-info">
-     <h3>المخابر العلمية</h3>
-     <p>التجربة والملاحظة والتفكير العلمي.</p>
-    </div>
+    <div class="gallery-info"><h3>المخابر العلمية</h3><p>التجربة والملاحظة والتفكير العلمي.</p></div>
    </article>
 
-   <article class="gallery-card reveal"
+   <article class="gallery-card reveal" tabindex="0"
     data-title="الأنشطة الرياضية"
     data-description="تساهم الأنشطة الرياضية في تعزيز التعاون والانضباط والروح الجماعية، وتساعد على تنمية المهارات البدنية.">
     <div class="gallery-image">
      <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=850&q=85" alt="نشاط رياضي - صورة توضيحية" loading="lazy">
      <span class="gallery-open"><i class="fa-solid fa-expand"></i></span>
     </div>
-    <div class="gallery-info">
-     <h3>الأنشطة الرياضية</h3>
-     <p>الحركة والصحة وروح الفريق.</p>
-    </div>
+    <div class="gallery-info"><h3>الأنشطة الرياضية</h3><p>الحركة والصحة وروح الفريق.</p></div>
    </article>
 
-   <article class="gallery-card reveal reveal-delay-1"
+   <article class="gallery-card reveal reveal-delay-1" tabindex="0"
     data-title="التكنولوجيا والإعلام الآلي"
     data-description="يساعد تعلم التكنولوجيا والإعلام الآلي على فهم العالم الرقمي وتطوير مهارات التفكير المنطقي والإبداع وحل المشكلات.">
     <div class="gallery-image">
      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=850&q=85" alt="التكنولوجيا - صورة توضيحية" loading="lazy">
      <span class="gallery-open"><i class="fa-solid fa-expand"></i></span>
     </div>
-    <div class="gallery-info">
-     <h3>التكنولوجيا والإعلام الآلي</h3>
-     <p>المهارات الرقمية والابتكار.</p>
-    </div>
+    <div class="gallery-info"><h3>التكنولوجيا والإعلام الآلي</h3><p>المهارات الرقمية والابتكار.</p></div>
    </article>
 
-   <article class="gallery-card reveal reveal-delay-2"
+   <article class="gallery-card reveal reveal-delay-2" tabindex="0"
     data-title="الثقافة والأنشطة"
     data-description="تساعد الأنشطة الثقافية على اكتشاف المواهب، وتنمية التعبير والثقة بالنفس، وتعزيز المشاركة الإيجابية في الحياة المدرسية.">
     <div class="gallery-image">
      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=850&q=85" alt="نشاط ثقافي - صورة توضيحية" loading="lazy">
      <span class="gallery-open"><i class="fa-solid fa-expand"></i></span>
     </div>
-    <div class="gallery-info">
-     <h3>الثقافة والأنشطة</h3>
-     <p>اكتشاف المواهب وتنمية الشخصية.</p>
-    </div>
+    <div class="gallery-info"><h3>الثقافة والأنشطة</h3><p>اكتشاف المواهب وتنمية الشخصية.</p></div>
    </article>
-
   </div>
  </div>
 </section>
 
-<!-- MODAL -->
-
-<div class="modal" id="galleryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+<div class="modal" id="galleryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
  <div class="modal-box">
   <button class="modal-close" id="modalClose" aria-label="إغلاق">
    <i class="fa-solid fa-xmark"></i>
@@ -1786,22 +1685,15 @@ img{max-width:100%;display:block}
  </div>
 </div>
 
-<!-- JOURNEY -->
-
 <section class="section" id="journey">
  <div class="container">
-
   <div class="section-heading reveal">
    <span class="eyebrow">THE LEARNING JOURNEY</span>
    <h2>رحلة التلميذ <span>نحو النجاح</span></h2>
-   <p>
-    مراحل متكاملة تساعد المتعلم على بناء معارفه
-    واكتشاف قدراته والاستعداد لمستقبله.
-   </p>
+   <p>مراحل متكاملة تساعد المتعلم على بناء معارفه واكتشاف قدراته والاستعداد لمستقبله.</p>
   </div>
 
   <div class="timeline">
-
    <div class="timeline-item reveal">
     <div class="timeline-dot"><i class="fa-solid fa-1"></i></div>
     <div class="timeline-content">
@@ -1837,131 +1729,87 @@ img{max-width:100%;display:block}
      <p>بناء مشروع شخصي ومواصلة مسار التعلم والتطور وتحمل المسؤولية.</p>
     </div>
    </div>
-
   </div>
  </div>
 </section>
 
-<!-- EDUCATIONAL AREAS -->
-
 <section class="section" style="background:var(--surface2)">
  <div class="container">
-
   <div class="section-heading reveal">
    <span class="eyebrow">OUR EDUCATIONAL VISION</span>
    <h2>مجالات تنمية <span>المتعلم</span></h2>
-   <p>
-    التعليم المتكامل يهتم بالعقل والمهارات والشخصية،
-    ولا يقتصر على التحصيل الدراسي فقط.
-   </p>
+   <p>التعليم المتكامل يهتم بالعقل والمهارات والشخصية، ولا يقتصر على التحصيل الدراسي فقط.</p>
   </div>
 
   <div class="areas-grid">
-
    <article class="area-card reveal">
-    <div class="area-top">
-     <div class="area-icon"><i class="fa-solid fa-brain"></i></div>
-     <span class="area-number">01</span>
-    </div>
+    <div class="area-top"><div class="area-icon"><i class="fa-solid fa-brain"></i></div><span class="area-number">01</span></div>
     <h3>التفكير والتحليل</h3>
     <p>تطوير القدرة على فهم المشكلات وتحليل المعلومات وبناء الاستنتاجات.</p>
    </article>
 
    <article class="area-card reveal reveal-delay-1">
-    <div class="area-top">
-     <div class="area-icon"><i class="fa-solid fa-comments"></i></div>
-     <span class="area-number">02</span>
-    </div>
+    <div class="area-top"><div class="area-icon"><i class="fa-solid fa-comments"></i></div><span class="area-number">02</span></div>
     <h3>التواصل والتعبير</h3>
     <p>تعزيز مهارات الحوار والتعبير عن الأفكار واحترام وجهات النظر.</p>
    </article>
 
    <article class="area-card reveal reveal-delay-2">
-    <div class="area-top">
-     <div class="area-icon"><i class="fa-solid fa-laptop-code"></i></div>
-     <span class="area-number">03</span>
-    </div>
+    <div class="area-top"><div class="area-icon"><i class="fa-solid fa-laptop-code"></i></div><span class="area-number">03</span></div>
     <h3>المهارات الرقمية</h3>
     <p>فهم التكنولوجيا واستخدام الأدوات الرقمية في التعلم والبحث.</p>
    </article>
 
    <article class="area-card reveal">
-    <div class="area-top">
-     <div class="area-icon"><i class="fa-solid fa-people-group"></i></div>
-     <span class="area-number">04</span>
-    </div>
+    <div class="area-top"><div class="area-icon"><i class="fa-solid fa-people-group"></i></div><span class="area-number">04</span></div>
     <h3>العمل الجماعي</h3>
     <p>تنمية روح التعاون والمشاركة وتحمل المسؤولية المشتركة.</p>
    </article>
 
    <article class="area-card reveal reveal-delay-1">
-    <div class="area-top">
-     <div class="area-icon"><i class="fa-solid fa-palette"></i></div>
-     <span class="area-number">05</span>
-    </div>
+    <div class="area-top"><div class="area-icon"><i class="fa-solid fa-palette"></i></div><span class="area-number">05</span></div>
     <h3>الإبداع والابتكار</h3>
     <p>تشجيع الأفكار الجديدة والتعبير الإبداعي والبحث عن حلول مبتكرة.</p>
    </article>
 
    <article class="area-card reveal reveal-delay-2">
-    <div class="area-top">
-     <div class="area-icon"><i class="fa-solid fa-seedling"></i></div>
-     <span class="area-number">06</span>
-    </div>
+    <div class="area-top"><div class="area-icon"><i class="fa-solid fa-seedling"></i></div><span class="area-number">06</span></div>
     <h3>النمو الشخصي</h3>
     <p>بناء الثقة بالنفس وتنظيم الوقت وتطوير الاستقلالية والالتزام.</p>
    </article>
-
   </div>
  </div>
 </section>
-
-<!-- QUOTE -->
 
 <section class="quote-section">
  <div class="container">
   <div class="quote-inner reveal">
    <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
-   <h2>
-    العلم والعمل أساس النجاح،
-    وبالمعرفة نبني الحاضر ونصنع المستقبل.
-   </h2>
+   <h2>العلم والعمل أساس النجاح، وبالمعرفة نبني الحاضر ونصنع المستقبل.</h2>
    <p>ثانوية المجاهد مسغوني محمد الصالح</p>
   </div>
  </div>
 </section>
 
-<!-- CTA -->
-
 <section class="cta-section" id="contact">
  <div class="container">
   <div class="cta-box reveal">
-
    <div class="cta-content">
     <h2>رحلتك التعليمية تبدأ من هنا</h2>
-    <p>
-     اكتشف فضاء التلاميذ، وتابع الموارد التعليمية،
-     واستفد من الخدمات الرقمية المتاحة عبر موقع الثانوية.
-    </p>
+    <p>اكتشف فضاء التلاميذ، وتابع الموارد التعليمية، واستفد من الخدمات الرقمية المتاحة عبر موقع الثانوية.</p>
    </div>
 
    <div class="cta-actions">
     <a href="students.html" class="btn btn-gold">
-     <i class="fa-solid fa-graduation-cap"></i>
-     فضاء التلاميذ
+     <i class="fa-solid fa-graduation-cap"></i> فضاء التلاميذ
     </a>
-
     <a href="index.html" class="btn btn-outline">
-     <i class="fa-solid fa-house"></i>
-     الرئيسية
+     <i class="fa-solid fa-house"></i> الرئيسية
     </a>
    </div>
-
   </div>
  </div>
 </section>
-
-<!-- SMALL GREEN HOME BUTTON -->
 
 <div class="container bottom-home-wrap">
  <a href="index.html" class="bottom-home">
@@ -1973,24 +1821,18 @@ img{max-width:100%;display:block}
 
 </main>
 
-<!-- FOOTER -->
-
 <footer class="footer">
  <div class="container">
-
   <div class="footer-grid">
 
    <div class="footer-brand">
     <a href="index.html" class="brand">
-     <div class="brand-logo">
-      <i class="fa-solid fa-graduation-cap"></i>
-     </div>
+     <div class="brand-logo"><i class="fa-solid fa-graduation-cap"></i></div>
      <div class="brand-text">
       <strong>ثانوية مسغوني</strong>
       <small>LYCÉE MESGOUNI</small>
      </div>
     </a>
-
     <p>
      الموقع الرقمي لثانوية المجاهد مسغوني محمد الصالح،
      فضاء يجمع المعرفة والخدمات المدرسية والتواصل
@@ -2025,7 +1867,6 @@ img{max-width:100%;display:block}
    <span>العلم والعمل أساس النجاح</span>
    <span>تطوير: مجد بن حرزالله وأيوب شبيرات</span>
   </div>
-
  </div>
 </footer>
 
@@ -2036,85 +1877,112 @@ img{max-width:100%;display:block}
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-/* ======================================
-   LYCÉE MESGOUNI - ABOUT PAGE PRO MAX
-====================================== */
+(function(){
+"use strict";
 
-const $ = (selector, parent=document) =>
- parent.querySelector(selector);
+const $ = (selector,parent=document) => parent.querySelector(selector);
+const $$ = (selector,parent=document) => Array.from(parent.querySelectorAll(selector));
 
-const $$ = (selector, parent=document) =>
- [...parent.querySelectorAll(selector)];
+const loader=$("#loader");
+const navbar=$("#navbar");
+const scrollTop=$("#scrollTop");
+const progress=$("#readingProgress");
+const themeToggle=$("#themeToggle");
+const menuBtn=$("#menuBtn");
+const navLinks=$("#navLinks");
+const modal=$("#galleryModal");
+const modalImage=$("#modalImage");
+const modalTitle=$("#modalTitle");
+const modalDescription=$("#modalDescription");
+const modalClose=$("#modalClose");
+const toast=$("#toast");
+
+let toastTimer=null;
+let lastFocused=null;
+let navigating=false;
 
 /* LOADER */
 
-window.addEventListener("load",()=>{
- setTimeout(()=>{
-  $("#loader").classList.add("hide");
- },450);
+function hideLoader(){
+ if(loader)loader.classList.add("hide");
+}
+
+window.addEventListener("load",function(){
+ setTimeout(hideLoader,350);
 });
 
-setTimeout(()=>{
- $("#loader")?.classList.add("hide");
-},3500);
+setTimeout(hideLoader,3000);
 
 /* THEME */
 
-const themeToggle=$("#themeToggle");
-const savedTheme=localStorage.getItem("mesgouni-theme");
-
-if(savedTheme==="dark"){
- document.documentElement.setAttribute("data-theme","dark");
- themeToggle.innerHTML='<i class="fa-solid fa-sun"></i>';
+function getSavedTheme(){
+ try{return localStorage.getItem("mesgouni-theme")}catch(e){return null}
 }
 
-themeToggle.addEventListener("click",()=>{
- const dark=document.documentElement.getAttribute("data-theme")==="dark";
+function saveTheme(theme){
+ try{localStorage.setItem("mesgouni-theme",theme)}catch(e){}
+}
 
- if(dark){
-  document.documentElement.removeAttribute("data-theme");
-  localStorage.setItem("mesgouni-theme","light");
-  themeToggle.innerHTML='<i class="fa-solid fa-moon"></i>';
-  showToast("تم تفعيل الوضع النهاري");
- }else{
+function setTheme(theme,notify){
+ if(theme==="dark"){
   document.documentElement.setAttribute("data-theme","dark");
-  localStorage.setItem("mesgouni-theme","dark");
   themeToggle.innerHTML='<i class="fa-solid fa-sun"></i>';
-  showToast("تم تفعيل الوضع الليلي");
+  themeToggle.setAttribute("aria-label","تفعيل الوضع النهاري");
+ }else{
+  document.documentElement.removeAttribute("data-theme");
+  themeToggle.innerHTML='<i class="fa-solid fa-moon"></i>';
+  themeToggle.setAttribute("aria-label","تفعيل الوضع الليلي");
  }
+
+ saveTheme(theme);
+
+ if(notify)showToast(theme==="dark"?"تم تفعيل الوضع الليلي":"تم تفعيل الوضع النهاري");
+}
+
+const savedTheme=getSavedTheme();
+setTheme(savedTheme==="dark"?"dark":"light",false);
+
+themeToggle.addEventListener("click",function(){
+ const dark=document.documentElement.getAttribute("data-theme")==="dark";
+ setTheme(dark?"light":"dark",true);
 });
 
 /* MOBILE MENU */
 
-const menuBtn=$("#menuBtn");
-const navLinks=$("#navLinks");
+function closeMenu(){
+ navLinks.classList.remove("open");
+ menuBtn.innerHTML='<i class="fa-solid fa-bars"></i>';
+ menuBtn.setAttribute("aria-expanded","false");
+}
 
-menuBtn.addEventListener("click",()=>{
+menuBtn.addEventListener("click",function(){
  const opened=navLinks.classList.toggle("open");
  menuBtn.innerHTML=opened
   ? '<i class="fa-solid fa-xmark"></i>'
   : '<i class="fa-solid fa-bars"></i>';
+ menuBtn.setAttribute("aria-expanded",String(opened));
 });
 
-$$(".nav-links a").forEach(link=>{
- link.addEventListener("click",()=>{
-  navLinks.classList.remove("open");
-  menuBtn.innerHTML='<i class="fa-solid fa-bars"></i>';
- });
+$$(".nav-links a").forEach(function(link){
+ link.addEventListener("click",closeMenu);
 });
 
-document.addEventListener("click",e=>{
- if(!navLinks.contains(e.target)&&!menuBtn.contains(e.target)){
-  navLinks.classList.remove("open");
-  menuBtn.innerHTML='<i class="fa-solid fa-bars"></i>';
- }
+document.addEventListener("click",function(e){
+ if(!navLinks.contains(e.target)&&!menuBtn.contains(e.target))closeMenu();
 });
+
+/* TOAST */
+
+function showToast(message){
+ toast.textContent=message;
+ toast.classList.add("show");
+ clearTimeout(toastTimer);
+ toastTimer=setTimeout(function(){
+  toast.classList.remove("show");
+ },2600);
+}
 
 /* SCROLL EFFECTS */
-
-const navbar=$("#navbar");
-const scrollTop=$("#scrollTop");
-const progress=$("#readingProgress");
 
 function handleScroll(){
  const y=window.scrollY;
@@ -2129,164 +1997,210 @@ function handleScroll(){
 window.addEventListener("scroll",handleScroll,{passive:true});
 handleScroll();
 
-scrollTop.addEventListener("click",()=>{
+scrollTop.addEventListener("click",function(){
  window.scrollTo({top:0,behavior:"smooth"});
 });
 
-/* REVEAL ANIMATION */
+/* REVEAL */
 
-const revealObserver=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(entry.isIntersecting){
-   entry.target.classList.add("visible");
-   revealObserver.unobserve(entry.target);
-  }
+if("IntersectionObserver" in window){
+ const revealObserver=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+   if(entry.isIntersecting){
+    entry.target.classList.add("visible");
+    revealObserver.unobserve(entry.target);
+   }
+  });
+ },{threshold:.12});
+
+ $$(".reveal:not(.visible)").forEach(function(el){
+  revealObserver.observe(el);
  });
-},{threshold:.12});
+}else{
+ $$(".reveal").forEach(function(el){el.classList.add("visible")});
+}
 
-$$(".reveal:not(.visible)").forEach(el=>{
- revealObserver.observe(el);
-});
+/* ACTIVE NAVIGATION */
+
+if("IntersectionObserver" in window){
+ const sections=$$("main section[id]");
+ const navAnchors=$$(".nav-links a[href^='#']");
+
+ const sectionObserver=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+   if(entry.isIntersecting){
+    navAnchors.forEach(function(link){
+     const active=link.getAttribute("href")==="#"+entry.target.id;
+     link.classList.toggle("active",active);
+    });
+   }
+  });
+ },{rootMargin:"-35% 0px -55% 0px"});
+
+ sections.forEach(function(section){sectionObserver.observe(section)});
+}
 
 /* GALLERY MODAL */
 
-const modal=$("#galleryModal");
-const modalImage=$("#modalImage");
-const modalTitle=$("#modalTitle");
-const modalDescription=$("#modalDescription");
-const modalClose=$("#modalClose");
+function openModal(card){
+ const img=$("img",card);
+ if(!img)return;
 
-let lastFocused=null;
+ lastFocused=card;
+ modalImage.src=img.src;
+ modalImage.alt=img.alt;
+ modalTitle.textContent=card.dataset.title||"";
+ modalDescription.textContent=card.dataset.description||"";
 
-$$(".gallery-card").forEach(card=>{
- card.addEventListener("click",()=>{
-  const img=$("img",card);
-
-  lastFocused=card;
-  modalImage.src=img.src;
-  modalImage.alt=img.alt;
-  modalTitle.textContent=card.dataset.title;
-  modalDescription.textContent=card.dataset.description;
-
-  modal.classList.add("show");
-  document.body.style.overflow="hidden";
-  modalClose.focus();
- });
-});
+ modal.classList.add("show");
+ modal.setAttribute("aria-hidden","false");
+ document.body.classList.add("modal-open");
+ modalClose.focus();
+}
 
 function closeModal(){
  modal.classList.remove("show");
- document.body.style.overflow="";
- modalImage.src="";
+ modal.setAttribute("aria-hidden","true");
+ document.body.classList.remove("modal-open");
+ modalImage.removeAttribute("src");
+
  if(lastFocused)lastFocused.focus();
 }
 
+$$(".gallery-card").forEach(function(card){
+ card.addEventListener("click",function(){openModal(card)});
+ card.addEventListener("keydown",function(e){
+  if(e.key==="Enter"||e.key===" "){
+   e.preventDefault();
+   openModal(card);
+  }
+ });
+});
+
 modalClose.addEventListener("click",closeModal);
 
-modal.addEventListener("click",e=>{
+modal.addEventListener("click",function(e){
  if(e.target===modal)closeModal();
 });
 
-document.addEventListener("keydown",e=>{
- if(e.key==="Escape"){
-  if(modal.classList.contains("show"))closeModal();
+document.addEventListener("keydown",function(e){
+ if(e.key==="Escape"&&modal.classList.contains("show"))closeModal();
+});
+
+/* MODAL FOCUS */
+
+modal.addEventListener("keydown",function(e){
+ if(e.key!=="Tab")return;
+
+ const focusable=$$("button",modal);
+ if(!focusable.length)return;
+
+ if(e.shiftKey&&document.activeElement===focusable[0]){
+  e.preventDefault();
+  focusable[focusable.length-1].focus();
+ }else if(!e.shiftKey&&document.activeElement===focusable[focusable.length-1]){
+  e.preventDefault();
+  focusable[0].focus();
  }
 });
 
-/* TOAST */
-
-let toastTimer;
-
-function showToast(message){
- const toast=$("#toast");
- toast.textContent=message;
- toast.classList.add("show");
-
- clearTimeout(toastTimer);
- toastTimer=setTimeout(()=>{
-  toast.classList.remove("show");
- },2600);
-}
-
-/* CURSOR LIGHT - DESKTOP ONLY */
+/* CURSOR GLOW */
 
 const cursorGlow=$("#cursorGlow");
 
-if(window.matchMedia("(pointer:fine)").matches){
- window.addEventListener("mousemove",e=>{
+if(window.matchMedia&&window.matchMedia("(pointer:fine)").matches){
+ window.addEventListener("mousemove",function(e){
   cursorGlow.style.left=e.clientX+"px";
   cursorGlow.style.top=e.clientY+"px";
- });
+ },{passive:true});
 }else{
  cursorGlow.style.display="none";
 }
 
-/* SMOOTH INTERNAL NAVIGATION */
+/* POINTER LIGHT ON CARDS */
 
-$$('a[href^="#"]').forEach(link=>{
- link.addEventListener("click",e=>{
-  const target=$(link.getAttribute("href"));
+const interactiveCards=$$(".value-card,.area-card,.gallery-card");
 
-  if(target){
-   e.preventDefault();
-   target.scrollIntoView({behavior:"smooth",block:"start"});
-  }
+interactiveCards.forEach(function(card){
+ card.addEventListener("pointermove",function(e){
+  const rect=card.getBoundingClientRect();
+  const x=((e.clientX-rect.left)/rect.width)*100;
+  const y=((e.clientY-rect.top)/rect.height)*100;
+
+  card.style.setProperty("--mx",x+"%");
+  card.style.setProperty("--my",y+"%");
  });
 });
 
-/* ACCESSIBILITY: MODAL KEYBOARD */
+/* GOLD PRESS FEEDBACK */
 
-modal.addEventListener("keydown",e=>{
- if(e.key==="Tab"){
-  const focusable=$$("button",modal);
-  if(focusable.length===0)return;
+$$(".btn,.icon-btn,.home-top,.bottom-home").forEach(function(el){
+ el.addEventListener("pointerdown",function(){
+  el.classList.add("gold-pressed");
+ });
 
-  if(e.shiftKey&&document.activeElement===focusable[0]){
-   e.preventDefault();
-   focusable[focusable.length-1].focus();
-  }else if(!e.shiftKey&&document.activeElement===focusable[focusable.length-1]){
-   e.preventDefault();
-   focusable[0].focus();
-  }
- }
+ ["pointerup","pointerleave","pointercancel"].forEach(function(eventName){
+  el.addEventListener(eventName,function(){
+   el.classList.remove("gold-pressed");
+  });
+ });
 });
 
-</script>
-<script>
-/* ABOUT → INDEX PAGE TRANSITION */
-(function () {
-    const loader = document.querySelector('.loader');
+/* SMOOTH INTERNAL LINKS */
 
-    if (!loader) return;
+$$('a[href^="#"]').forEach(function(link){
+ link.addEventListener("click",function(e){
+  const selector=link.getAttribute("href");
+  if(!selector||selector==="#")return;
 
-    let navigating = false;
+  const target=$(selector);
+  if(!target)return;
 
-    document.querySelectorAll('a[href]').forEach(link => {
-        link.addEventListener('click', function (e) {
+  e.preventDefault();
+  target.scrollIntoView({behavior:"smooth",block:"start"});
+ });
+});
 
-            const target = new URL(this.href, location.href);
+/* ABOUT TO HOME TRANSITION */
 
-            const isHome =
-                target.origin === location.origin &&
-                (
-                    target.pathname.endsWith('/index.html') ||
-                    target.pathname.endsWith('/')
-                );
+document.querySelectorAll('a[href]').forEach(function(link){
+ link.addEventListener("click",function(e){
+  if(e.defaultPrevented||e.button!==0)return;
+  if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;
+  if(link.target==="_blank"||link.hasAttribute("download"))return;
 
-            if (!isHome || navigating) return;
+  let target;
+  try{target=new URL(link.href,location.href)}catch(err){return}
 
-            e.preventDefault();
-            navigating = true;
+  const isHome=
+   target.origin===location.origin&&
+   (target.pathname.endsWith("/index.html")||target.pathname.endsWith("/"));
 
-            loader.classList.remove('hide');
+  if(!isHome||navigating)return;
 
-            setTimeout(() => {
-                window.location.href = target.href;
-            }, 650);
+  e.preventDefault();
+  navigating=true;
 
-        });
-    });
+  loader.classList.remove("hide");
+
+  setTimeout(function(){
+   window.location.href=target.href;
+  },600);
+ });
+});
+
+/* IMAGE FALLBACK */
+
+$$("img").forEach(function(img){
+ img.addEventListener("error",function(){
+  if(img.dataset.failed)return;
+  img.dataset.failed="true";
+  img.style.opacity=".35";
+ });
+});
+
 })();
 </script>
+
 </body>
 </html>
